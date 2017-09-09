@@ -75,6 +75,7 @@ select_music_directory()
   done
   NEW_CATEGORY=false
   while true; do
+    # TODO: escape &s
     CATEGORY_INPUT=$(zenity --width 1000 --height 500 \
       --list --radiolist \
       --title "Select a Category" \

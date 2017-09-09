@@ -4,11 +4,13 @@
 #  - "scripts/bash/common.sh"
 #  - "scripts/bash/config.sh"
 
+FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"places.sqlite
+
 # Gets the ID of a Firefox folder named 'Music".
 get_music_folder_id()
 {
   # Grab the ID of the first first music folder.
-  echo "$(sqlite3 $FIREFOX_PLACES_DATABASE "SELECT id FROM 'moz_bookmarks' WHERE title='Music' \
+  echo "$(sqlite3 "$FIREFOX_USER_DIRECTORY"places.sqlite "SELECT id FROM 'moz_bookmarks' WHERE title='Music' \
   AND type=2 LIMIT 0,1")"
 }
 
@@ -27,7 +29,6 @@ remove_bookmark()
 # Concatenates all bookmarks in the 'Music' folder of the Firefox places SQLite database.
 get_music_list()
 {
-  FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"places.sqlite
   MUSIC_ID=$(get_music_folder_id)
   # Get a list of the URL IDs in the music folder.
   URL_IDS=$(sqlite3 $FIREFOX_PLACES_DATABASE "SELECT fk FROM 'moz_bookmarks' WHERE parent=$MUSIC_ID")
