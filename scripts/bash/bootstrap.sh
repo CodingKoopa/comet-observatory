@@ -15,20 +15,20 @@ r()
 bootstrap()
 {
   # info is needed right off the bat.
+  # shellcheck disable=SC1090
   source "$DOTFILES/scripts/bash/common.sh"
   info "Koopa's Dotfiles Bootstrap starting up."
 
   info "Adding binaries to path."
   ERROR_OCCURED=false
 
-  for DIRECTORY in "$DOTFILES"scripts/*/; do
+  for DIRECTORY in "$DOTFILES"/scripts/*; do
     info "Reading script category \"$DIRECTORY\"."
-    for SCRIPT in "$DIRECTORY"*sh; do
+    for SCRIPT in "$DIRECTORY"/*sh; do
       if [[ ! "$SCRIPT" = *.template.sh* ]]; then
         info "Sourcing script \"$SCRIPT\"."
         # shellcheck source=/dev/null
-        source $SCRIPT
-        if [ $? -ne 0 ]; then
+        if ! source $SCRIPT; then
           ERROR_OCCURED=true
         fi
       fi
