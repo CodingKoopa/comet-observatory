@@ -14,6 +14,8 @@ r()
 # Loads all of the scripts, should be placed in the BashRC.
 bootstrap()
 {
+  # info is needed right off the bat.
+  source "$DOTFILES/scripts/bash/common.sh"
   info "Koopa's Dotfiles Bootstrap starting up."
 
   info "Adding binaries to path."
