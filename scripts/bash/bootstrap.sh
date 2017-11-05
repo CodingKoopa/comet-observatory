@@ -40,6 +40,7 @@ bootstrap()
     info "Not clearing screen because one or more errors have occured."
   else
     # Terminal escape code to clear screen, because clear doesn't work.
-    info "\033cThe dotfiles are up and running 👌"
+    printf "\033c"
+    info "The dotfiles are up and running 👌"
   fi
 }
