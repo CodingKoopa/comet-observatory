@@ -11,18 +11,18 @@ DEBUG=false
 debug()
 {
   if $DEBUG; then
-    printf $BLUE"Debug: $*\n"$NORMAL
+    printf "${BLUE}Debug: %s\n${NORMAL}" "$*"
   fi
 }
 
 info()
 {
-  printf $GREEN"Info: $*\n"$NORMAL
+  printf "${GREEN}Info: %s\n${NORMAL}" "$*"
 }
 
 error()
 {
-  printf $RED"Error: $*\n"$NORMAL
+  printf "${RED}Error: %s\n${NORMAL}" "$*"
 }
 
 get_package_manager()
@@ -31,9 +31,9 @@ get_package_manager()
     printf "What package manager do you use?\n"
     printf "P - pacaur (Arch Linux)\n"
     printf "S - Skip this, I'll install the packages myself\n"
-    read PACKAGE_MANAGER
-    if [ $PACKAGE_MANAGER != 'P' ] && [ $PACKAGE_MANAGER != 'p' ] && \
-    [ $PACKAGE_MANAGER != 'S' ] && [ $PACKAGE_MANAGER != 's' ]; then
+    read -r PACKAGE_MANAGER
+    if [ "$PACKAGE_MANAGER" != 'P' ] && [ "$PACKAGE_MANAGER" != 'p' ] && \
+    [ "$PACKAGE_MANAGER" != 'S' ] && [ "$PACKAGE_MANAGER" != 's' ]; then
       printf "Invalid package manager, try again.\n"
     else
       return
@@ -46,7 +46,7 @@ get_package_manager()
 # 2: pacaur package name.
 check_install()
 {
-  if [ -z $PACKAGE_MANAGER ]; then
+  if [ -z "$PACKAGE_MANAGER" ]; then
     get_package_manager
   fi
 

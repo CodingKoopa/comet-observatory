@@ -33,14 +33,14 @@ select_music_directory()
 {
   declare -a CATEGORIES
   declare -a PARENT_CATEGORIES
-  while read CATEGORY_DIRECTORY_PATH; do
+  while read -r CATEGORY_DIRECTORY_PATH; do
     # Find will first output the starting point.
     if [ "$CATEGORY_DIRECTORY_PATH" = "$MUSIC_DIRECTORY_PATH" ]; then
       continue
     fi
     HAS_SUBDIRECTORIES=false
     # Check if the category has subcategories.
-     while read SUBCATEGORY_DIRECTORY_PATH; do
+     while read -r SUBCATEGORY_DIRECTORY_PATH; do
       # Find will first output the starting point, again.
       if [ "$SUBCATEGORY_DIRECTORY_PATH" = "$CATEGORY_DIRECTORY_PATH" ]; then
         continue
@@ -84,9 +84,9 @@ select_music_directory()
       --print-column 2,3 \
       TRUE "Make a new category" " " "${ARGS[@]}")
     CATEGORY_NAME=$(echo "$CATEGORY_INPUT" | cut -d'|' -f1)
-    CATEGORY_NAME_VALID=$(validate_input $CATEGORY_NAME)
+    CATEGORY_NAME_VALID=$(validate_input "$CATEGORY_NAME")
     PARENT_CATEGORY_NAME=$(echo "$CATEGORY_INPUT" | cut -d'|' -f2)
-    PARENT_CATEGORY_NAME_VALID=$(validate_input $PARENT_CATEGORY_NAME)
+    PARENT_CATEGORY_NAME_VALID=$(validate_input "$PARENT_CATEGORY_NAME")
     debug "Category name: \"$CATEGORY_NAME\". Parent category name: \"$PARENT_CATEGORY_NAME\""
     # If the user wants to make a new category.
     if [ "$CATEGORY_NAME" = "Make a new category" ]; then
@@ -162,5 +162,5 @@ select_music_directory()
     error "Category path not found."
     return 1
   fi
-  echo $CATEGORY_PATH
+  echo "$CATEGORY_PATH"
 }

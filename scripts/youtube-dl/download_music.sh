@@ -18,8 +18,7 @@ download_music()
       return 1
     fi
     info "Downloading to \"$FILE_PATH\"."
-    youtube-dl -o "$FILE_PATH/%(title)s.%(ext)s" -x --audio-format mp3 --embed-thumbnail "$URL"
-    if [ $? -ne 0 ]; then
+    if ! youtube-dl -o "$FILE_PATH/%(title)s.%(ext)s" -x --audio-format mp3 --embed-thumbnail "$URL"; then
       error "An error occured while downloading the file."
       return 1
     fi
