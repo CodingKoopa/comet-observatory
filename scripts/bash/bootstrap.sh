@@ -7,7 +7,7 @@
 # Refresh the dotfiles.
 r()
 {
-  # shellcheck source=.bashrc
+  # shellcheck disable=SC1090
   source "$HOME/.bashrc"
 }
 
