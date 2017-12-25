@@ -1,5 +1,0 @@
-// These settings override both User and Default settings for the Shell-Unix-Generic syntax
-{
-	// Don't split words on '$' to make selection of variables easier.
-	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
-}
