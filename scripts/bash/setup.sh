@@ -11,7 +11,6 @@ ln_()
 {
   TARGET=$1
   NAME=$2
-  # Make sure the target's parent directory exists.
   if [ -L "$NAME" ]; then
     info "Symbolic link $NAME exists, skipping."
     return
@@ -21,6 +20,13 @@ ln_()
     mv "$NAME" "$NAME_OLD"
   fi
 
+  PARENT_DIRECTORY=$(dirname "$NAME")
+  # Make sure the target's parent directory exists.
+  if ! [ -d "$PARENT_DIRECTORY" ]; then
+    info "Making parent directory $PARENT_DIRECTORY."
+    mkdir -p "$PARENT_DIRECTORY"
+  fi
+
   ln -s "$TARGET" "$NAME"
 }
 
@@ -28,11 +34,57 @@ ln_()
 setup()
 {
   # TODO:
-  # - Add a  udev rule for backing up SD card files when plugged in.
-  # - Games and recordings are too big to be practical to sync with MEGA. Not sure how I should
-  # backup them.
+  # - Add a udev rule for backing up SD card files when plugged in.
 
+  ##################################################################################################
+  ### Stage 1: Tweak the Pacman configuration.
+  ##################################################################################################
+  info "Tweaking Pacman configuration."
+
+  # Pacman's configuration is only writeable by root, and the configuration that would be stored in
+  # the MEGA private documents isn't accessable yet, so we manually write the config ourselves.
+  echo "
+[DEB_Arch_Extra]
+SigLevel = Optional TrustAll
+Server = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64" | sudo tee -a /etc/pacman.conf
+
+  ##################################################################################################
+  ### Stage 2: Install pacaur from the AUR.
+  ##################################################################################################
+  info "Installing pacaur."
+
+  PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
+  if ! $DEBUG; then
+    # Install the development packages, and Git.
+    sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git
+    # Make an Arch Build System directory. Technically, AUR packages are not part of the ABS, but this
+    # is an easy way of organizing.
+    LOCAL_AUR_DIR="$HOME/Documents/ABS/aur"
+    mkdir -p "$LOCAL_AUR_DIR"
+    PACAUR_DIR="$LOCAL_AUR_DIR/pacaur"
+    # Make sure there's no pacaur dir becuase, if there is, Git will throw a fit.
+    rm -rf "$PACAUR_DIR"
+    # Clone the pacaur AUR package.
+    git clone -q https://aur.archlinux.org/pacaur.git "$PACAUR_DIR"
+    cd "$PACAUR_DIR" || return 1
+    makepkg -cis
+  fi
+
+  ##################################################################################################
+  ### Stage 3: Install all of the packages in the list, ignoring comments.
+  ##################################################################################################
+  info "Installing packages from the list."
+
+  if ! $DEBUG; then
+    pacaur -S "${PACMAN_ARGS[@]}" \
+        "$(sed 's/#.*$//g;/^\s*$/d' "$HOME/Documents/Private/Package List.txt")"
+  fi
+
+  ##################################################################################################
+  ### Stage 4: Make a directory structure to work off of.
+  ##################################################################################################
   info "Making directory structure."
+
   declare -a NEW_PATHS=(
       "$HOME/Uploads"
       "$HOME/Documents/Private"
@@ -43,19 +95,70 @@ setup()
     mkdir -p "$LOCAL_PATH"
   done
 
+  ##################################################################################################
+  ### Stage 5: Sign into MEGA to sync the private documents.
+  ##################################################################################################
+  info "Signing into MEGA."
+
+  # Don't prompt for MEGA info if debugging.
+  if ! $DEBUG; then
+    while true; do
+      read -rp "Enter your MEGA username: " USERNAME
+      read -rsp "Enter your password: " PASSWORD
+      mega-login "$USERNAME" "$PASSWORD"
+      # MEGA returns 0 regardless of whether the login was successful or not.
+      read -rp "Are you sure? Enter y to continue: " CHOICE
+      if [[ $CHOICE = 'y' ]]; then
+        break
+      fi
+    done
+  fi
+
+  ##################################################################################################
+  ### Stage 6: Create MEGA syncs to home folder subdirectories.
+  ##################################################################################################
+  info "Syncing local folders to MEGA."
+
   PRIVATE_DOCUMENTS_LOCAL_DIRECTORY="$HOME/Documents/Private"
-  SUBLIME_TEXT_3_CONFIG_PATH="sublime-text-3/Packages/User"
+  declare -A SYNCED_PATHS=(
+      ["$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY"]="/Private Documents"
+      ["$HOME/Music"]="/Music"
+      ["$HOME/Videos"]="/Videos"
+      ["$HOME/Pictures"]="/Pictures"
+      ["$HOME/Documents/Timers"]="/Timers"
+      ["$HOME/Documents/Models"]="/Models"
+      ["$HOME/Uploads"]="/Uploads"
+      ["$HOME/External/"]="/Uploads"
+      ["$HOME/Uploads"]="/Uploads"
+  )
+
+  for LOCAL_PATH in "${!SYNCED_PATHS[@]}"; do
+    debug "Local path $LOCAL_PATH gets synced to remote path ${SYNCED_PATHS[$LOCAL_PATH]}."
+    mkdir -p "$LOCAL_PATH"
+    if ! $DEBUG; then
+      # Supress error for existing sync.
+      mega-sync "$LOCAL_PATH" "${SYNCED_PATHS[$LOCAL_PATH]}"
+    fi
+  done
+
+  ##################################################################################################
+  ### Stage 7: Import GPG data from the private documents.
+  ##################################################################################################
+  info "Importing GnuPG keys."
 
   # GPG should be initialized before making the symlinks so that it can make the config dir if it
   # hasn't been ran already.
-  info "Importing GnuPG keys."
   gpg -q --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Private Key.key"
   # This actually isn't necessary, as the public key is stored inside OpenPGP compliant private
   # keys.
   # gpg --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Public Key.key"
   gpg -q --import-ownertrust "$HOME/Documents/Private/GnuPG/Owner Trust.txt"
 
+  ##################################################################################################
+  ### Stage 8: Link directories from the private documents to other paths in the system.
+  ##################################################################################################
   info "Making symbolic links."
+
   declare -A LINKED_PATHS=(
       # Link downloads from external to home folder.
       ["$HOME/Downloads"]="$HOME/External/Downloads"
@@ -95,38 +198,25 @@ setup()
       # reason to keep this private, it's just this is so big I don't even know if it has sensitive
       # info.
       ["$HOME/.config/QtProject"]="$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Configuration/QtProject"
-      # Link The Simpsons: Hit & Run save data from private docs to home folder.
-      ["$HOME/Documents/My Games/Lucas' Simpsons Hit & Run Mod Launcher/Saved Games"]=\
-"$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Data/SHAR Saves"
+      # Link Clementine configuration from private docs to home folder. Only link the configuration,
+      # because other files in the directory are subject to change.
+      ["$HOME/.config/Clementine/Clementine.conf"]=\
+"$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Configuration/Clementine.conf"
+
+      # Link The Simpsons: Hit & Run data from private docs to home folder.
+      ["$HOME/.local/share/lucas-simpsons-hit-and-run-mod-launcher"]=\
+"$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Data/Lucas' Simpsons Hit & Run Mod Launcher"
 
       # Link icons from dotfiles to home folder.
       ["$HOME/.icons"]="$DOTFILES/data/icons"
-      # Link Sublime Text config from dotfiles to home folder.
-      ["$HOME/.config/$SUBLIME_TEXT_3_CONFIG_PATH"]="$DOTFILES/config/$SUBLIME_TEXT_3_CONFIG_PATH"
   )
 
   for LOCAL_PATH in "${!LINKED_PATHS[@]}"; do
-    info "Local path $LOCAL_PATH gets linked to path ${LINKED_PATHS[$LOCAL_PATH]}."
+    debug "Local path $LOCAL_PATH gets linked to path ${LINKED_PATHS[$LOCAL_PATH]}."
     ln_ "${LINKED_PATHS[${LOCAL_PATH}]}" "$LOCAL_PATH"
   done
 
-
-  info "Syncing local folders to MEGA."
-  declare -A SYNCED_PATHS=(
-      ["$HOME/Music"]="/Music"
-      ["$HOME/Videos"]="/Videos"
-      ["$HOME/Pictures"]="/Pictures"
-      [$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY]="/Private Documents"
-      ["$HOME/Documents/Timers"]="/Timers"
-      ["$HOME/Documents/Models"]="/Models"
-      ["$HOME/Uploads"]="/Uploads"
-      ["$HOME/External/"]="/Uploads"
-      ["$HOME/Uploads"]="/Uploads"
-  )
-
-  for LOCAL_PATH in "${!SYNCED_PATHS[@]}"; do
-    debug "Local path $LOCAL_PATH gets synced to remote path ${SYNCED_PATHS[$LOCAL_PATH]}."
-    # Supress error for existing sync.
-    mega-sync "$LOCAL_PATH" "${SYNCED_PATHS[$LOCAL_PATH]}" &> /dev/null
-  done
+  # sudo ln -fs "$DOTFILES/bin/add_sd_card_sync.sh" /opt/add_sd_card_sync
+  # TODO: fill out more of the service.
+  # sudo ln -fs "$DOTFILES/data/services/add-sd-card-sync.service" /etc/systemd/system/
 }
