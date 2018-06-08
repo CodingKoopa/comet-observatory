@@ -80,9 +80,20 @@ setup()
   fi
 
   ##################################################################################################
+  ### Stage 3: Install pacaur from the AUR.
   ##################################################################################################
+  info "Stage 3: Installing pacaur."
 
+  PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
 
+  mkdir -p "$LOCAL_AUR_DIR"
+
+  info "Installing development packages and Git."
+  # Install the development packages, and Git.
+  sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git > /dev/null
+
+  ( install_aur_package cower )
+  ( install_aur_package pacaur )
 
   ##################################################################################################
   ### Stage 5: Sign into MEGA to sync the private documents.
