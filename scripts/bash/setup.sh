@@ -148,9 +148,9 @@ setup()
   done
 
   ##################################################################################################
-  ### Stage 7: Import GPG data from the private documents.
+  ### Stage 6: Import GPG data from the private documents.
   ##################################################################################################
-  info "Importing GnuPG keys."
+  info "Stage 6: Importing GnuPG keys."
 
   # GPG should be initialized before making the symlinks so that it can make the config dir if it
   # hasn't been ran already.
@@ -161,9 +161,9 @@ setup()
   gpg -q --import-ownertrust "$HOME/Documents/Private/GnuPG/Owner Trust.txt"
 
   ##################################################################################################
-  ### Stage 8: Link directories from the private documents to other paths in the system.
+  ### Stage 7: Link directories from the private documents to other paths in the system.
   ##################################################################################################
-  info "Making symbolic links."
+  info "Stage 7: Making symbolic links."
 
   declare -A LINKED_PATHS=(
       # Link downloads from external to home folder.
