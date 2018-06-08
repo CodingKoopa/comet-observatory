@@ -3,6 +3,29 @@
 # Dependencies:
 #  - "scripts/bash/common.sh"
 
+# Manually installs an AUR package, if it is not already present.
+# Arguments:
+#  - The name of the package.
+install_aur_package()
+{
+  NAME=$1
+  info "Installing AUR package $NAME. Checking if package is already installed."
+
+  if ! pacman -Qi $NAME > /dev/null; then
+    info "Package not found, installing."
+
+    PACKAGE_BUILD_DIR="$LOCAL_AUR_DIR/$NAME"
+    # Make sure there's no pacaur dir becuase, if there is, Git will throw a fit.
+    rm -rf "$PACKAGE_BUILD_DIR"
+    # Clone the AUR package Git repository.
+    git clone -q https://aur.archlinux.org/$NAME.git "$PACKAGE_BUILD_DIR"
+    # Skip the PGP check becasue we have not yet established our PGP keyring.
+    cd "$PACKAGE_BUILD_DIR" && makepkg -cis --skippgpcheck
+  else
+    info "Package found, skipping."
+  fi
+}
+
 # Links one file to another and resolves conflicts.
 # Arguments:
 #  - The destination.
@@ -221,6 +244,16 @@ setup()
     debug "Local path $LOCAL_PATH gets linked to path ${LINKED_PATHS[$LOCAL_PATH]}."
     ln_ "${LINKED_PATHS[${LOCAL_PATH}]}" "$LOCAL_PATH"
   done
+
+  ##################################################################################################
+  ### Stage 8: Install all of the packages in the list, ignoring comments.
+  ##################################################################################################
+  info "Stage 8: Installing packages from the list."
+
+  # For libc++.
+  gpg --recv-key 8F0871F202119294 > /dev/null
+  pacaur -S "${PACMAN_ARGS[@]}" \
+      "$(sed 's/#.*$//g;/^\s*$/d' "$HOME/Documents/Private/Package List.txt")"
 
   # sudo ln -fs "$DOTFILES/bin/add_sd_card_sync.sh" /opt/add_sd_card_sync
   # TODO: fill out more of the service.
