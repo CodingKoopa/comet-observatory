@@ -56,9 +56,6 @@ ln_()
 # Sets up a new system.
 setup()
 {
-  # TODO:
-  # - Add a udev rule for backing up SD card files when plugged in.
-
   ##################################################################################################
   ### Stage 1: Make a directory structure to work off of.
   ##################################################################################################
