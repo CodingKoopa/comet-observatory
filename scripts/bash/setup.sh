@@ -96,12 +96,19 @@ setup()
   ( install_aur_package pacaur )
 
   ##################################################################################################
-  ### Stage 5: Sign into MEGA to sync the private documents.
+  ### Stage 4: Sign into MEGA to sync the private documents.
   ##################################################################################################
-  info "Signing into MEGA."
+  info "Stage 4: Signing into MEGA."
 
-  # Don't prompt for MEGA info if debugging.
-  if ! $DEBUG; then
+  info "Installing MegaCMD and MegaSync."
+  sudo pacman -S "${PACMAN_ARGS[@]}" megacmd megasync > /dev/null
+
+  info "Checking if signed into MEGA."
+  mega-login > /dev/null
+  if [[ $? -eq 202 ]]; then
+    info "Already signed into MEGA. Skipping."
+  else
+    info "Not signed into MEGA, signing in."
     while true; do
       read -rp "Enter your MEGA username: " USERNAME
       read -rsp "Enter your password: " PASSWORD
@@ -115,9 +122,9 @@ setup()
   fi
 
   ##################################################################################################
-  ### Stage 6: Create MEGA syncs to home folder subdirectories.
+  ### Stage 5: Create MEGA syncs to home folder subdirectories.
   ##################################################################################################
-  info "Syncing local folders to MEGA."
+  info "Stage 5: Syncing local folders to MEGA."
 
   PRIVATE_DOCUMENTS_LOCAL_DIRECTORY="$HOME/Documents/Private"
   declare -A SYNCED_PATHS=(
@@ -136,7 +143,6 @@ setup()
     debug "Local path $LOCAL_PATH gets synced to remote path ${SYNCED_PATHS[$LOCAL_PATH]}."
     mkdir -p "$LOCAL_PATH"
     if ! $DEBUG; then
-      # Supress error for existing sync.
       mega-sync "$LOCAL_PATH" "${SYNCED_PATHS[$LOCAL_PATH]}"
     fi
   done
