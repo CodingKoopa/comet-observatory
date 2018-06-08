@@ -37,63 +37,52 @@ setup()
   # - Add a udev rule for backing up SD card files when plugged in.
 
   ##################################################################################################
-  ### Stage 1: Tweak the Pacman configuration.
+  ### Stage 1: Make a directory structure to work off of.
   ##################################################################################################
-  info "Tweaking Pacman configuration."
+  info "Stage 1: Making directory structure."
 
-  # Pacman's configuration is only writeable by root, and the configuration that would be stored in
-  # the MEGA private documents isn't accessable yet, so we manually write the config ourselves.
-  echo "
-[DEB_Arch_Extra]
-SigLevel = Optional TrustAll
-Server = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64" | sudo tee -a /etc/pacman.conf
-
-  ##################################################################################################
-  ### Stage 2: Install pacaur from the AUR.
-  ##################################################################################################
-  info "Installing pacaur."
-
-  PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
-  if ! $DEBUG; then
-    # Install the development packages, and Git.
-    sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git
-    # Make an Arch Build System directory. Technically, AUR packages are not part of the ABS, but this
-    # is an easy way of organizing.
-    LOCAL_AUR_DIR="$HOME/Documents/ABS/aur"
-    mkdir -p "$LOCAL_AUR_DIR"
-    PACAUR_DIR="$LOCAL_AUR_DIR/pacaur"
-    # Make sure there's no pacaur dir becuase, if there is, Git will throw a fit.
-    rm -rf "$PACAUR_DIR"
-    # Clone the pacaur AUR package.
-    git clone -q https://aur.archlinux.org/pacaur.git "$PACAUR_DIR"
-    cd "$PACAUR_DIR" || return 1
-    makepkg -cis
-  fi
-
-  ##################################################################################################
-  ### Stage 3: Install all of the packages in the list, ignoring comments.
-  ##################################################################################################
-  info "Installing packages from the list."
-
-  if ! $DEBUG; then
-    pacaur -S "${PACMAN_ARGS[@]}" \
-        "$(sed 's/#.*$//g;/^\s*$/d' "$HOME/Documents/Private/Package List.txt")"
-  fi
-
-  ##################################################################################################
-  ### Stage 4: Make a directory structure to work off of.
-  ##################################################################################################
-  info "Making directory structure."
+  # Arch Build System directory. Technically, AUR packages are not part of the ABS, but this is an
+  # easy way of organizing.
+  LOCAL_AUR_DIR="$HOME/Documents/ABS/aur"
 
   declare -a NEW_PATHS=(
       "$HOME/Uploads"
       "$HOME/Documents/Private"
+      "$LOCAL_AUR_DIR"
   )
 
   for LOCAL_PATH in "${NEW_PATHS[@]}"; do
     debug "Making new path $LOCAL_PATH."
     mkdir -p "$LOCAL_PATH"
   done
+
+  ##################################################################################################
+  ### Stage 2: Tweak the Pacman configuration.
+  ##################################################################################################
+  info "Stage 2: Installing Pacman configuration."
+
+  # TODO: update this comment
+  # Pacman's configuration is only writeable by root, and the configuration that would be stored in
+  # the MEGA private documents isn't accessable yet, so we manually write the config ourselves.
+  # TODO: enable multilib repo
+  info "Linking dotfiles Pacman configuration to system path. Checking if system path is a symlink."
+  if [[ -L /etc/pacman.conf ]]; then
+    info "System path is a symlink, skipping."
+  else
+    info "System path is not a symlink, linking."
+
+    sudo mv /etc/pacman.conf /etc/pacman.conf.old
+    sudo ln -sf $DOTFILES/config/pacman.conf /etc/pacman.conf
+
+    info "Syncing package database."
+    # Refresh everything.
+    sudo pacman -Syu > /dev/null
+  fi
+
+  ##################################################################################################
+  ##################################################################################################
+
+
 
   ##################################################################################################
   ### Stage 5: Sign into MEGA to sync the private documents.
