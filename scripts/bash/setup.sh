@@ -104,7 +104,7 @@ setup()
   ##################################################################################################
   info "Stage 3: Installing pacaur."
 
-  PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
+  PACMAN_ARGS=(-q --noconfirm --needed --noprogressbar)
 
   mkdir -p "$LOCAL_AUR_DIR"
 
