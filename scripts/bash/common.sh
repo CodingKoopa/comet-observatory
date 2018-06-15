@@ -41,16 +41,16 @@ readonly PRIVATE_DOCUMENTS_LOCAL_DIRECTORY="$HOME/Documents/Private"
 debug()
 {
   if $DEBUG; then
-    printf "${BLUE}Debug: %s\n${NORMAL}" "$*"
+    printf "[${BLUE}Debug${NORMAL}] %s\n" "$*"
   fi
 }
 
 info()
 {
-  printf "${GREEN}Info: %s\n${NORMAL}" "$*"
+  printf "[${GREEN}Info${NORMAL} ] %s\n" "$*"
 }
 
 error()
 {
-  printf "${RED}Error: %s\n${NORMAL}" "$*"
+  printf "[${RED}Error${NORMAL}] %s\n" "$*"
 }
