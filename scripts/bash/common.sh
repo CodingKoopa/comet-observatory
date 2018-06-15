@@ -33,6 +33,10 @@ readonly REVERSE
 UNDERLINE=$(tput smul)
 readonly UNDERLINE
 
+####################################################################################################
+### Path Constants
+####################################################################################################
+readonly PRIVATE_DOCUMENTS_LOCAL_DIRECTORY="$HOME/Documents/Private"
 
 debug()
 {
