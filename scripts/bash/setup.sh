@@ -112,8 +112,8 @@ setup()
   # Install the development packages, and Git.
   sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git > /dev/null
 
-  ( install_aur_package cower )
-  ( install_aur_package pacaur )
+  # ( install_aur_package cower )
+  # ( install_aur_package pacaur )
 
   ##################################################################################################
   ### Stage 4: Sign into MEGA to sync the private documents.
