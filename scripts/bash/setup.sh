@@ -69,12 +69,16 @@ setup()
       "$HOME/Uploads"
       "$HOME/Documents/Private"
       "$LOCAL_AUR_DIR"
+      "$HOME/.gnupg"
   )
 
   for LOCAL_PATH in "${NEW_PATHS[@]}"; do
     debug "Making new path $LOCAL_PATH."
     mkdir -p "$LOCAL_PATH"
   done
+
+  # The GPG home directory needs special permissions.
+  chmod 700 "$HOME/.gnupg"
 
   ##################################################################################################
   ### Stage 2: Tweak the Pacman configuration.
