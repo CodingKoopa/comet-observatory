@@ -170,15 +170,12 @@ setup()
   ##################################################################################################
   ### Stage 6: Import GPG data from the private documents.
   ##################################################################################################
-  info "Stage 6: Importing GnuPG keys."
+  info "Stage 6: Importing GnuPG data from the private documents."
 
   # GPG should be initialized before making the symlinks so that it can make the config dir if it
   # hasn't been ran already.
   gpg -q --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Private Key.key"
-  # This actually isn't necessary, as the public key is stored inside OpenPGP compliant private
-  # keys.
-  # gpg --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/Public Key.key"
-  gpg -q --import-ownertrust "$HOME/Documents/Private/GnuPG/Owner Trust.txt"
+  gpg -q --import-ownertrust "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Owner Trust.txt"
 
   ##################################################################################################
   ### Stage 7: Link directories from the private documents to other paths in the system.

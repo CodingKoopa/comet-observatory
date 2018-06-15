@@ -7,7 +7,7 @@
 update_keys()
 {
   info "Updating synced GnuPGP keys to local keys."
-  gpg -ao "$HOME/Documents/Private/GnuPG/Private Key.key" --export-secret-keys "<thekoopakingdom@gmail.com>"
-  gpg -ao "$HOME/Documents/Private/GnuPG/Public Key.key" --export "<thekoopakingdom@gmail.com>"
-  gpg --export-ownertrust > "$HOME/Documents/Private/GnuPG/Owner Trust.txt"
+  gpg -q --export-secret-keys "<codingkoopa@gmail.com>" -ao > \
+      "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Private Key.key"
+  gpg -q --export-ownertrust > "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Owner Trust.txt"
 }
