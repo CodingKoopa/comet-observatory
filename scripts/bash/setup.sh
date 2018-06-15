@@ -238,8 +238,8 @@ setup()
   info "Stage 8: Importing GnuPG data from the private documents."
 
 
-  gpg --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Private Key.key"
-  gpg --import-ownertrust "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Owner Trust.txt"
+  gpg -q --import "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Private Key.key"
+  gpg -q --import-ownertrust "$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY/GnuPG/Owner Trust.txt"
 
   ##################################################################################################
   ### Stage 9: Install all of the packages in the list, ignoring comments.
