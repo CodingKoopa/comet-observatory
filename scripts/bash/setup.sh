@@ -146,7 +146,6 @@ setup()
   ##################################################################################################
   info "Stage 5: Syncing local folders to MEGA."
 
-  PRIVATE_DOCUMENTS_LOCAL_DIRECTORY="$HOME/Documents/Private"
   declare -A SYNCED_PATHS=(
       ["$PRIVATE_DOCUMENTS_LOCAL_DIRECTORY"]="/Private Documents"
       ["$HOME/Music"]="/Music"
