@@ -247,9 +247,9 @@ setup()
   info "Stage 9: Installing packages from the list."
 
   # For libc++.
-  gpg --recv-key 8F0871F202119294 > /dev/null
-  pacaur -S "${PACMAN_ARGS[@]}" \
-      "$(sed 's/#.*$//g;/^\s*$/d' "$HOME/Documents/Private/Package List.txt")"
+  # gpg --recv-key 8F0871F202119294 > /dev/null
+  # pacaur -S "${PACMAN_ARGS[@]}" \
+  #     "$(sed 's/#.*$//g;/^\s*$/d' "$HOME/Documents/Private/Package List.txt")"
 
   # sudo ln -fs "$DOTFILES/bin/add_sd_card_sync.sh" /opt/add_sd_card_sync
   # TODO: fill out more of the service.
