@@ -41,6 +41,5 @@ bootstrap()
   else
     # Terminal escape code to clear screen, because clear doesn't work.
     printf "\033c"
-    info "The dotfiles are up and running 👌"
   fi
 }
