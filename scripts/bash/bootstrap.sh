@@ -28,7 +28,7 @@ bootstrap()
       if [[ ! "$SCRIPT" = *.template.sh* ]]; then
         info "Sourcing script \"$SCRIPT\"."
         # shellcheck source=/dev/null
-        if ! source $SCRIPT; then
+        if ! source "$SCRIPT"; then
           ERROR_OCCURED=true
         fi
       fi

@@ -11,14 +11,14 @@ install_aur_package()
   NAME=$1
   info "Installing AUR package $NAME. Checking if package is already installed."
 
-  if ! pacman -Qi $NAME > /dev/null; then
+  if ! pacman -Qi "$NAME" > /dev/null; then
     info "Package not found, installing."
 
     PACKAGE_BUILD_DIR="$LOCAL_AUR_DIR/$NAME"
     # Make sure there's no pacaur dir becuase, if there is, Git will throw a fit.
     rm -rf "$PACKAGE_BUILD_DIR"
     # Clone the AUR package Git repository.
-    git clone -q https://aur.archlinux.org/$NAME.git "$PACKAGE_BUILD_DIR"
+    git clone -q "https://aur.archlinux.org/$NAME.git" "$PACKAGE_BUILD_DIR"
     # Skip the PGP check becasue we have not yet established our PGP keyring.
     cd "$PACKAGE_BUILD_DIR" && makepkg -cis --skippgpcheck
   else
@@ -96,7 +96,7 @@ setup()
     info "System path is not a symlink, linking."
 
     sudo mv /etc/pacman.conf /etc/pacman.conf.old
-    sudo ln -sf $DOTFILES/config/pacman.conf /etc/pacman.conf
+    sudo ln -sf "$DOTFILES/config/pacman.conf" /etc/pacman.conf
 
     info "Syncing package database."
     # Refresh everything.
