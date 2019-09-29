@@ -13,12 +13,12 @@ set -e
 #   The escaped string.
 sed_escape_pattern()
 {
-	if [ $# -ge 1 ]; then
-		# shellcheck disable=SC1003
-		printf '%s\n' "$1" | sed 's/[]\\'"${2:-/}"'$*.^[]/\\&/g'
-	else
-		sed 's/[]\\/$*.^[]/\\&/g'
-	fi
+  if [ $# -ge 1 ]; then
+    # shellcheck disable=SC1003
+    printf '%s\n' "$1" | sed 's/[]\\'"${2:-/}"'$*.^[]/\\&/g'
+  else
+    sed 's/[]\\/$*.^[]/\\&/g'
+  fi
 }
 
 # Finds the bootnum from the name of a boot entry.
@@ -28,7 +28,7 @@ sed_escape_pattern()
 #   The bootnums of the found boot entries, or nothing if none is found.
 find_bootnum()
 {
-	efibootmgr | sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/\1/p'
+  efibootmgr | sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/\1/p'
 }
 
 # Updates a boot entry with new parameters. Empty parameters are handled like unset. See
@@ -47,11 +47,11 @@ update_entry()
 
   # It's necessary to delete the existing entry and replace it, because efibootmgr doesn't support
   # editing an existing entry: https://github.com/rhboot/efibootmgr/issues/49.
-	old_bootnum="$(find_bootnum "$1")"
-	if [ -n "$old_bootnum" ]; then
-		efibootmgr -q -b "$old_bootnum" -B
-	fi
-	efibootmgr -q -c --label "$LABEL" -l "$LOADER" -u "$CMDLINE"
+  old_bootnum="$(find_bootnum "$1")"
+  if [ -n "$old_bootnum" ]; then
+    efibootmgr -q -b "$old_bootnum" -B
+  fi
+  efibootmgr -q -c --label "$LABEL" -l "$LOADER" -u "$CMDLINE"
 }
 
 # Updates Arch Linux UEFI boot entries.
