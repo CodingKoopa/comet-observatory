@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# shellcheck source=../scripts/qemu/qemu-reeves.sh
+source "${BASH_SOURCE%/*}/../scripts/qemu/qemu-reeves.sh"
+qemu-reeves "$@"
