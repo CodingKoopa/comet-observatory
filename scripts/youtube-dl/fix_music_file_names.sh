@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Dependencies:
-#  - "$DOTFILES/scripts/bash/common.sh"
-#  - "$DOTFILES/scripts/bash/config.sh"
+# shellcheck source=../bash/common.sh
+source "$COMET_OBSERVATORY/scripts/bash/common.sh"
+# shellcheck source=../bash/config.sh
+source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 # Fixes youtube-dl default filenames.
 # Outputs:

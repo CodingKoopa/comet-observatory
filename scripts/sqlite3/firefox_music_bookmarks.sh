@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Dependencies:
-#  - "scripts/bash/common.sh"
-#  - "scripts/bash/config.sh"
+# shellcheck source=../bash/common.sh
+source "$COMET_OBSERVATORY/scripts/bash/common.sh"
+# shellcheck source=../bash/config.sh
+source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
 

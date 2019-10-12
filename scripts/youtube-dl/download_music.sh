@@ -5,6 +5,15 @@
 #  - "/scripts/youtube-dl/select_music_directory.sh"
 #  - "/scripts/firefox/music_bookmarks.sh"
 
+# shellcheck source=../bash/common.sh
+source "$COMET_OBSERVATORY/scripts/bash/common.sh"
+# shellcheck source=../youtube-dl/select_music_directory.sh
+source "$COMET_OBSERVATORY/scripts/youtube-dl/select_music_directory.sh"
+# shellcheck source=../sqlite3/firefox_music_bookmarks.sh
+source "$COMET_OBSERVATORY/scripts/sqlite3/firefox_music_bookmarks.sh"
+# shellcheck source=../eyed3/tag_mp3.sh
+source "$COMET_OBSERVATORY/scripts/eyed3/tag_mp3.sh"
+
 # Downloads music from the Firefox music folder.
 download_music()
 {
