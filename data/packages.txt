@@ -1,0 +1,389 @@
+# Hardware
+
+# UEFI shell, for UEFI.
+# TODO: Reenable this, when its build is fixed.
+# uefi-shell-git
+# AMD Microcode, for CPU patches.
+amd-ucode
+# Linux kernel, for doing stuff.
+linux
+# Linux kernel headers, for compiling kernel modules.
+linux-headers
+# VDPAU backend for VA-API, for more GPU support.
+libva-vdpau-driver
+# xboxdrv, for controller support.
+xboxdrv
+# PulseAudio, for audio support.
+pulseaudio
+# PulseAudio ALSA, for ALSA support.
+pulseaudio-alsa
+# NTFS drivers, for NTFS support.
+ntfs-3g
+# exfat-utils, for exFAT support.
+exfat-utils
+# Gutenprint, for printer support.
+gutenprint
+# Canon Pixma MX920 series drivers, for printer support.
+canon-pixma-mx920-complete
+# VHBA module, for disk drive support.
+vhba-module-dkms
+
+# System Services
+
+# Docker, for hosting containerized services.
+docker
+# Docker Compose, for controlling Docker.
+docker-compose
+# Apache, for hosting HTTP services.
+apache
+# php-apache, for adding PHP support to Apache.
+php-apache
+# CUPS, for managing printer services.
+cups
+
+# Package Management
+
+# Pacman scripts, for cleaning the package cache.
+pacman-contrib
+# Reflector, for updating pacman mirros.
+reflector
+# PIP, for managing Python packages.
+python-pip
+# PIP, for managing Python 2 packages.
+python2-pip
+# npm, for managing Node.JS packages.
+npm
+
+# System Tools
+
+# neofetch, for obtaining system info.
+neofetch
+# efibootmgr, for managing the UEFI.
+efibootmgr
+# Nvidia Settings, for managing the GPU.
+nvidia-settings
+# hdparm, for managing HDDs.
+hdparm
+# GParted, for managing disks.
+gparted
+# bluez, for the Bluetooth stack.
+bluez
+
+# Desktop Environment
+
+# xinit, for logging in.
+xorg-xinit
+# Plasma Desktop, for Plasma Shell.
+plasma-desktop
+# Plasma Addons, for improving Plasma Shell.
+kdeplasma-addons
+# Plasma Browser Integration, for integrating Firefox with Plasma.
+plasma-browser-integration
+# KDE GTK config, for customizing GTK applications.
+kde-gtk-config
+# Breeze GTK theme, for GTK applications to look nice.
+breeze-gtk
+# Papirus icon thme, to make things look nice.
+papirus-icon-theme
+# GNOME icon theme, for when applications ask about it.
+gnome-icon-theme
+# Hardcoded Icon Fixer, for fixing application icons.
+hardcode-fixer-git
+# Hardcode-Tray, for fixing application tray icons.
+hardcode-tray
+# RSIBreak, for taking breaks.
+rsibreak
+# Redshift, for managing screen colors.
+redshift
+# Redshift Control, for managing screen colors.
+plasma5-applets-redshift-control
+# Plasma PulseAudio, for managing audio, integrating with Plasma.
+plasma-pa
+# PulseAudio Volume Control, for managing audio, with more features.
+pavucontrol
+# Bluedevil, for managing bluetooth.
+bluedevil
+# Plasma NetworkManager, for managing internet.
+plasma-nm
+# print-manager, for managing printer.
+print-manager
+# XDG Desktop Portal, for better desktop integration.
+xdg-desktop-portal
+# XDG KDE Desktop Portal, for better desktop integration (KDE file dialogs in Firefox.).
+xdg-desktop-portal-kde
+
+# File Managers
+
+# Dolphin, for managing files.
+dolphin
+# kdegraphics-thumbnailers, for Dolphin image/PDF thumbnails.
+kdegraphics-thumbnailers
+# ffmpegthumbs, for Dolphin video thumbnails.
+ffmpegthumbs
+# Ark, for managing archives.
+ark
+# p7zip, for managing archives.
+p7zip
+# unrar, for managing archives.
+unrar
+# ncdu, for cleaning large files.
+ncdu
+# MEGASync, for managing files with MEGA.
+megasync
+# Dropbox, for managing files with Dropbox
+dropbox
+
+# Resources
+
+# Hack font.
+ttf-hack
+
+# Other Tools
+
+# xdotool, for automation.
+xdotool
+# xkill, for forcibly killing programs.
+xorg-xkill
+# Flameshot, for taking screenshots.
+flameshot
+# Konsole, for using the terminal.
+konsole
+# figlet, for making ASCII figures.
+figlet
+# lolcat, for making rainbow text.
+lolcat
+# KeepassXC, for managing passwords.
+keepassxc
+# Kalgebra, for doing algebra.
+kalgebra
+# evtest, for testing evdev inputs.
+evtest
+# f3, for error checking drives.
+f3
+# CDEmu daemon, for emulating drives.
+cdemu-daemon
+# KDE CDEmu manager, for emulating drives.
+kde-cdemu-manager-kf5
+# KDEConnect, for integrating with Android.
+kdeconnect
+# OpenSSH, for connecting to other computers.
+openssh
+# QEMU, for virtualization.
+qemu
+# virt-viewer, for viewing virtual machines.
+virt-viewer
+# Wine, for running Windows programs.
+wine-staging
+# Winetricks, for managing Wine.
+winetricks
+
+# Media
+
+# Gwenview, for viewing images.
+gwenview
+# GIMP, for editing images.
+gimp
+# GraphicsMagick, for editing images.
+graphicsmagick
+# eyed3, for tagging audio.
+python-eyed3
+# Clementine, for playing audio.
+clementine
+# Audacity, for recording and editing audio. 
+audacity
+# youtube-dl, for downloading video and audio.
+youtube-dl
+# MPV, for playing video and audio.
+mpv
+# OBS Studio, for recording video and audio.
+obs-studio
+# guvcview, for recording video and audio.
+guvcview
+# Blender, for editing 3D models.
+blender
+# GStreamer base plugins, for decoding media.
+gst-plugins-base
+# GStreamer Libav plugin, for decoding media.
+gst-libav
+# GStreamer good plugins, for decoding media.
+gst-plugins-good
+# GStreamer good plugins with licensing issues, for decoding media.
+gst-plugins-ugly
+# GStreamer VA-API support, for decoding media.
+gstreamer-vaapi
+
+# Internet
+
+# Firefox, for browsing the web.
+firefox
+# Chromium, for browsing the web.
+chromium
+# Deluge, for downloading.
+deluge
+# wget, for downloading.
+wget
+# Discord, for messaging.
+discord
+# HexChat, for messaging.
+hexchat
+
+# Gaming
+
+# Steam, for managing games.
+steam
+# Steam native runtime, for making games work.
+steam-native-runtime
+# Lutris, for managing games.
+lutris
+# Minecraft Launcher, for launching Minecraft.
+minecraft-launcher
+# MultiMC5, for launching Minecraft but not suck at it.
+multimc5
+# MGBA, for playing GBA games.
+mgba-qt
+# DeSmuMe, for playing DS games.
+desmume
+# Dolphin, for playing Wii and Gamecube games.
+dolphin-emu
+# xdelta3, for patching games.
+xdelta3
+
+# Programming (Tools, Compilers/Interpreters, Linters, Build Systems)
+
+# Visual Studio Code, for writing code.
+code
+# Git, for version control.
+git
+# Subversion, for version control.
+subversion
+# GDB, for debugging code.
+gdb
+# ccache, for increasing build times.
+ccache
+# PHP, for PHP software
+php
+# ShellCheck, for Bash linting.
+shellcheck
+# namcap, for PKGBUILD linting.
+namcap
+# Cmake, for building.
+cmake
+# Ninja, for building.
+ninja
+# Gradle, for building.
+gradle
+# Gulp.js, for some Node.js build systems.
+gulp
+# Hugo, for building websites.
+hugo
+# Doxygen, for building documentation.
+doxygen
+
+# Libraries
+
+# Bullet, for physics.
+bullet
+
+# Hacking
+
+# Okteta, for editing hex.
+okteta
+
+# Disabled (May or may not be needed)
+# TODO: Test these, by seeing whether they are needed on a new installation.
+
+# lib32-gtk2
+# lib32-gtk3
+# lib32-libappindicator-gtk3
+# lib32-libcanberra
+# lib32-libcanberra-pulse
+# lib32-libpulse
+# lib32-libva
+# lib32-libvdpau
+# lib32-nvidia-utils
+# lib32-openal
+# lib32-vulkan-icd-loader
+# libappindicator-gtk3
+# python2-notify
+# ttf-liberation
+# ttf-symbola
+# noto-fonts-cjk
+# noto-fonts-emoji
+# alsa-utils
+# bcm20702a1-firmware
+# bcm20702b0-firmware
+# bcm20703a1-firmware
+# bcm43142a0-firmware
+# bcm4335c0-firmware
+# bcm4350c5-firmware
+# bcm4356a2-firmware
+# ksshaskpass
+# system-config-printer
+# lib32-curl
+
+# AUR
+
+# Hardware
+
+# TkG Linux kernel, for doing stuff.
+linux-tkg-pds-zen
+# TkG Linux kernel headers, for compiling kernel modules.
+linux-tkg-pds-zen-headers
+# TkG Nvidia DKMS drivers, for GPU support.
+nvidia-dkms-tkg
+# TkG Nvidia utilities, for more GPU support.
+nvidia-utils-tkg
+# TkG Nvidia utilities, for more GPU support in 32-bit programs.
+lib32-nvidia-utils-tkg
+# Etcher, for flashing drives.
+etcher-bin
+# Antimicro, for remapping inputs.
+antimicro
+# PixyMon, for PixyCam support.
+pixymon-git
+
+# Package Management
+
+# Octopi, for managing packages.
+octopi
+# pikaur, for managing AUR packages.
+pikaur
+
+# Other Tools
+
+# Fancy Wine build, for running Windows programs with style.
+wine-tkg-staging-fsync-vkd3d-faudio-opt-git
+# TILP, for integrating with TI calculators.
+tilp
+
+# Media
+
+# GIMP DDS plugin, for adding DDS support to GIMP.
+gimp-dds
+
+# Gaming
+
+# Citra, for playing 3DS games.
+citra-canary-git
+# yuzu, for playing Switch games.
+yuzu-canary-git
+# Lucas' Simpsons Hit & Run Mod Launcher, for playing mods.
+lucas-simpsons-hit-and-run-mod-launcher
+
+# Programming
+
+# JDK 12 w/ OpenJ9, for developing Java applications.
+jdk12-openj9-bin
+# Android Studio, for developing Android applications.
+android-studio
+
+# Hacking
+
+# 3dstool, for managing 3DS ROMs.
+3dstool
+# ctrtool, for managing 3DS ROMs.
+ctrtool-git
+# firmtool, for managine 3DS firmware.
+firmtool-git
+
+# There must be an empty line at the end here.
