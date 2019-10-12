@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-tkg-pds-zen' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-tkg-pds-zen"
+
+PRESETS=('default')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-tkg-pds-zen.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-tkg-pds-zen-fallback.img"
+fallback_options="-S autodetect"
