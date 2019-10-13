@@ -320,6 +320,7 @@ okteta
 # ksshaskpass
 # system-config-printer
 # lib32-curl
+# arm-none-eabi-gcc
 
 # AUR
 
