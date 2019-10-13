@@ -17,8 +17,10 @@ xboxdrv
 pulseaudio
 # PulseAudio ALSA, for ALSA support.
 pulseaudio-alsa
-# NTFS drivers, for NTFS support.
+# Ext2/3/4 utilities, for Ext4 support.
 ntfs-3g
+# NTFS utilities, for NTFS support.
+e2fsprogs
 # exfat-utils, for exFAT support.
 exfat-utils
 # Gutenprint, for printer support.
