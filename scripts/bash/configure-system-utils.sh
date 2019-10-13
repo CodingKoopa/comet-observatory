@@ -71,8 +71,9 @@ configure_system_units()
     ["getty@tty1.service"]="getty-autologin.conf"
   )
   for UNIT in "${!UNIT_OVERRIDES[@]}"; do
-    safe_cp ../../config/systemd-overrides/"${UNIT_OVERRIDES[${UNIT}]}" \
-/etc/systemd/system/"$UNIT".d/override.conf
+    local -r DESTINATION=/etc/systemd/system/"$UNIT".d/override.conf
+    safe_cp ../../config/systemd-overrides/"${UNIT_OVERRIDES[${UNIT}]}" "$DESTINATION"
+    chmod -x "$DESTINATION"
   done
 
   safe_cp ../../config/httpd.conf /etc/httpd/conf/httpd.conf
