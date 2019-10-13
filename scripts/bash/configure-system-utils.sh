@@ -67,8 +67,14 @@ create_swap()
 #   - Copy feedback.
 configure_system_units()
 {
-  safe_cp ../../config/systemd-overrides/getty-autologin.conf \
-/etc/systemd/system/getty@tty1.service.d/override.conf
+  local -rA UNIT_OVERRIDES=(
+    ["getty@tty1.service"]="getty-autologin.conf"
+  )
+  for UNIT in "${!UNIT_OVERRIDES[@]}"; do
+    safe_cp ../../config/systemd-overrides/"${UNIT_OVERRIDES[${UNIT}]}" \
+/etc/systemd/system/"$UNIT".d/override.conf
+  done
+
   safe_cp ../../config/httpd.conf /etc/httpd/conf/httpd.conf
   safe_cp ../../config/journald.conf /etc/systemd/journald.conf
 }
@@ -80,7 +86,7 @@ configure_system_units()
 #   - Installation progress.
 enable_system_units()
 {
-  UNITS=(
+  local -ra UNITS=(
     # Enable periodic TRIM.
     "fstrim.timer"
     # Enable bluetooth.
