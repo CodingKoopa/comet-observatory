@@ -148,6 +148,8 @@ xorg-xkill
 flameshot
 # Konsole, for using the terminal.
 konsole
+# Ksshaskpass, for inputting SSH passwords.
+ksshaskpass
 # figlet, for making ASCII figures.
 figlet
 # lolcat, for making rainbow text.
@@ -317,7 +319,6 @@ okteta
 # bcm4335c0-firmware
 # bcm4350c5-firmware
 # bcm4356a2-firmware
-# ksshaskpass
 # system-config-printer
 # lib32-curl
 # arm-none-eabi-gcc
