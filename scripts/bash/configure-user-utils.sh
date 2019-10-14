@@ -226,7 +226,7 @@ Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Lau
     fi
   fi
 
-  if [[ $(stat -c "%a" "$SSH_DIR") != "700" ]]; then
+  if [[ $SYNCED_DOCUMENTS = true && $(stat -c "%a" "$SSH_DIR" || true) != "700" ]]; then
     info "Setting SSH directory permissions to 700."
     if [[ $DRY_RUN = false ]]; then
       # The SSH home directory needs special permissions.
