@@ -359,8 +359,6 @@ pikaur
 
 # Fancy Wine build, for running Windows programs with style.
 wine-tkg-staging-fsync-vkd3d-faudio-opt-git
-# TILP, for integrating with TI calculators.
-tilp
 
 # Media
 
