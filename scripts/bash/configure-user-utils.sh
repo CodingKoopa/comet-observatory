@@ -163,6 +163,8 @@ link_directories()
     
     # Gaming
 
+    # Link MultiMC data from documents to user configuration.
+    ["$SYNCED_DOCUMENTS_DIR/Program Data/MultiMC"]="$INSTALL_HOME/.local/share/multimc"
     # Link Citra configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Citra"]="$INSTALL_HOME/.config/citra-emu"
     # Link Citra data from documents to user data.
