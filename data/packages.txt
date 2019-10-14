@@ -23,8 +23,6 @@ ntfs-3g
 e2fsprogs
 # exfat-utils, for exFAT support.
 exfat-utils
-# Gutenprint, for printer support.
-gutenprint
 # Canon Pixma MX920 series drivers, for printer support.
 canon-pixma-mx920-complete
 # VHBA module, for disk drive support.
