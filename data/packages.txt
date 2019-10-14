@@ -238,8 +238,6 @@ firefox
 chromium
 # Deluge, for downloading.
 deluge
-# wget, for downloading.
-wget
 # Discord, for messaging.
 discord
 # HexChat, for messaging.
