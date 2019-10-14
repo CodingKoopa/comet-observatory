@@ -62,8 +62,6 @@ npm
 neofetch
 # efibootmgr, for managing the UEFI.
 efibootmgr
-# Nvidia Settings, for managing the GPU.
-nvidia-settings
 # hdparm, for managing HDDs.
 hdparm
 # GParted, for managing disks.
