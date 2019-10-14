@@ -208,31 +208,6 @@ Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Lau
     fi
     safe_ln "$TARGET" "${LINKED_PATHS[${TARGET}]}"
   done
-
-  # SSH needs special perms, but we also want to backup its directory in its entirety (unlike GPG,
-  # where we manually import the keys from the backup and leave "~/.gpg" as-is.) Our backup
-  # directory is on a permission-less NTFS drive, so move the backup over and then link it back to
-  # the backup directory so that MEGA can do it's thing.
-  if [[ $SYNCED_DOCUMENTS = true ]]; then
-    local -r SSH_BACKUP_DIR="$SYNCED_DOCUMENTS_DIR/Program Data/SSH"
-    # Technically ensuring that it's a directory is redundant with checking if documents are synced.
-    if [[ -d "$SSH_BACKUP_DIR" && ! -L $SSH_BACKUP_DIR ]]; then
-      info "SSH directory found in synced documents. Moving to home directory and linking."
-      if [[ $DRY_RUN = false ]]; then
-        mv "$SSH_BACKUP_DIR" "$SSH_DIR"
-      fi
-      # This operation is in fact the reverse of the majority of the other links.
-      safe_ln "$SSH_DIR" "$SSH_BACKUP_DIR"
-    fi
-  fi
-
-  if [[ $SYNCED_DOCUMENTS = true && $(stat -c "%a" "$SSH_DIR" || true) != "700" ]]; then
-    info "Setting SSH directory permissions to 700."
-    if [[ $DRY_RUN = false ]]; then
-      # The SSH home directory needs special permissions.
-      chmod 700 -R "$SSH_DIR"
-    fi
-  fi
 }
 
 # Configures user systemd units.
