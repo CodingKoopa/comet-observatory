@@ -148,6 +148,12 @@ xorg-xkill
 flameshot
 # Konsole, for using the terminal.
 konsole
+# kwallet, for storing passwords.
+kwallet
+# kwallet PAM, for logging in and unlocking the wallet.
+kwallet-pam
+# kwalletmanager, for managing the wallet.
+kwalletmanager
 # Ksshaskpass, for inputting SSH passwords.
 ksshaskpass
 # figlet, for making ASCII figures.
