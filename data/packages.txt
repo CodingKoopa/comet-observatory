@@ -326,14 +326,6 @@ okteta
 # ttf-liberation
 # ttf-symbola
 # alsa-utils
-# bcm20702a1-firmware
-# bcm20702b0-firmware
-# bcm20703a1-firmware
-# bcm43142a0-firmware
-# bcm4335c0-firmware
-# bcm4350c5-firmware
-# bcm4356a2-firmware
-# system-config-printer
 # lib32-curl
 # arm-none-eabi-gcc
 
