@@ -220,6 +220,8 @@ gstreamer-vaapi
 
 # Firefox, for browsing the web.
 firefox
+# Arch Website Firefox search entries, for reference.
+arch-firefox-search
 # Chromium, for browsing the web.
 chromium
 # Deluge, for downloading.
