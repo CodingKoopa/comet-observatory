@@ -138,32 +138,6 @@ setup()
   info "Setting constants."
   export_constants
 
-  # Kernel & Hardware
-  info_section "Setting Up Kernel & Hardware"
-
-  info "Configuring initial ramdisk."
-  configure_initial_ramdisk
-
-  info "Making initial ramdisks."
-  if [[ $DRY_RUN = false ]]; then    
-    mkinitcpio -P
-  fi
-
-  info "Configuring kernel attributes."
-  configure_kernel_attributes
-
-  info "Configuring kernel modules."
-  configure_kernel_modules
-
-  info "Configuring filesystems."
-  safe_cp ../../config/fstab /etc/fstab
-
-  info "Creating swap memory."
-  create_swap
-
-  info "Configuring udev."
-  configure_udev_rules
-
   # System Tools
   info_section "Setting Up System Programs"
 
@@ -178,12 +152,31 @@ setup()
   fi
 
   info "Installing new packages."
-  grep -v "^#" "$COMET_OBSERVATORY/data/packages.txt" | pikaur -S "${PACMAN_ARGS[@]}"
+  grep -v "^#" "$COMET_OBSERVATORY/data/packages.txt" | xargs pikaur -S "${PACMAN_ARGS[@]}"
 
-  info "Setting up root GTK."
-  # Apply the GTK configuration to root, to make applications like Gparted look nice.
-  safe_ln "$SYNCED_GTK3_DIR" /root/.config/gtk-3.0
-  
+  # Kernel & Hardware
+  info_section "Setting Up Kernel & Hardware"
+
+  info "Configuring initial ramdisk."
+  configure_initial_ramdisk
+
+  info "Making initial ramdisks."
+  if [[ $DRY_RUN = false ]]; then    
+    mkinitcpio -P || true
+  fi
+
+  info "Configuring kernel attributes."
+  configure_kernel_attributes
+
+  info "Configuring kernel modules."
+  configure_kernel_modules
+
+  info "Configuring filesystems."
+  safe_cp ../../config/fstab /etc/fstab
+
+  info "Creating swap memory."
+  create_swap
+
   # System Services
   info_section "Setting Up System Services"
 
@@ -193,6 +186,13 @@ setup()
   info "Enabling system systemd services."
   enable_system_units
 
+  info "Configuring udev."
+  configure_udev_rules
+
+  info "Setting up root GTK."
+  # Apply the GTK configuration to root, to make applications like Gparted look nice.
+  safe_ln "$SYNCED_GTK3_DIR" /root/.config/gtk-3.0
+  
   popd > /dev/null
 
   info "Setup complete!"
