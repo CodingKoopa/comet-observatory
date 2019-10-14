@@ -148,6 +148,8 @@ xorg-xkill
 flameshot
 # Konsole, for using the terminal.
 konsole
+# nano, for editing text.
+nano
 # kwallet, for storing passwords.
 kwallet
 # kwallet PAM, for logging in and unlocking the wallet.
