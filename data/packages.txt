@@ -133,6 +133,16 @@ dropbox
 
 # Resources
 
+# Noto fonts, for most applications.
+noto-fonts
+# Chinese/Japanese/Korean Noto fonts, for foreign text in applications.
+noto-fonts-cjk
+# Emoji Noto fonts, for emoji in applications.
+noto-fonts-emoji
+# Extra Noto fontss, for monospaced text.
+noto-fonts-extra
+# Fira Code font, for programming.
+ttf-fira-code
 
 # Other Tools
 
@@ -315,8 +325,6 @@ okteta
 # python2-notify
 # ttf-liberation
 # ttf-symbola
-# noto-fonts-cjk
-# noto-fonts-emoji
 # alsa-utils
 # bcm20702a1-firmware
 # bcm20702b0-firmware
