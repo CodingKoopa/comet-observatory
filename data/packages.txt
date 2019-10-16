@@ -145,6 +145,8 @@ noto-fonts-emoji
 noto-fonts-extra
 # Fira Code font, for programming.
 ttf-fira-code
+# Hunspell English dictionary, for spellcheck.
+hunspell-en_US
 
 # Other Tools
 
