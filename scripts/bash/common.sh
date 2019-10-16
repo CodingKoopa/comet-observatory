@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright 2019 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
 # Color Variables
 
 NORMAL=$(tput sgr0)

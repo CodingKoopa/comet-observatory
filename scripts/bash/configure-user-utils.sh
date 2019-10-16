@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright 2019 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
 # Creates new directories, and sets them up with proper permissions if necessary.
 # Globals Read:
 #   - DRY_RUN: See setup().

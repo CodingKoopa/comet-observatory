@@ -1,7 +1,8 @@
 #!/bin/bash
-#
-# ~/.bashrc
-#
+
+# Copyright 2019 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

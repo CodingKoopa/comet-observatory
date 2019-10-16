@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright 2019 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
 # Copies a file, checking to see if it's already updated or not.
 # Arguments:
 #   - The source file path.

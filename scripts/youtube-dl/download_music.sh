@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright 2019 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
 # shellcheck source=../bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 # shellcheck source=../youtube-dl/select_music_directory.sh
