@@ -25,4 +25,4 @@ export GTK_USE_PORTAL=1
 export SSH_ASKPASS='/usr/bin/ksshaskpass'
 
 # Start KDE Plasma.
-exec startkde
+exec startplasma-x11
