@@ -91,10 +91,6 @@ hardcode-fixer-git
 hardcode-tray
 # RSIBreak, for taking breaks.
 rsibreak
-# Redshift, for managing screen colors.
-redshift
-# Redshift Control, for managing screen colors.
-plasma5-applets-redshift-control
 # Plasma PulseAudio, for managing audio, integrating with Plasma.
 plasma-pa
 # PulseAudio Volume Control, for managing audio, with more features.
