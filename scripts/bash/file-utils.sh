@@ -38,7 +38,6 @@ function safe_ln()
 
   if [[ -L "$LINK_NAME" ]] && cmp "$TARGET" "$LINK_NAME" >/dev/null 2>&1; then
     verbose "$LINK_NAME is already updated."
-    return
   else
     local -r TARGET_PARENT_DIRECTORY=$(dirname "$TARGET")
     # Make sure the target's parent directory exists.
