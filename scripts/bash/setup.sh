@@ -268,6 +268,9 @@ setup_user()
   # User Services
   info_section "Setting Up User Programs"
 
+  info "Configuring user directories."
+  safe_cp ../../config/user-dirs.dirs "$INSTALL_HOME/.config/user-dirs.dirs"
+
   info "Silencing login message."
   if [[ $DRY_RUN = false ]]; then
     touch ~/.hushlogin
