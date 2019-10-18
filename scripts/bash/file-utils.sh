@@ -42,7 +42,7 @@ function safe_ln()
     local -r TARGET_PARENT_DIRECTORY=$(dirname "$TARGET")
     # Make sure the target's parent directory exists.
     if ! [ -d "$TARGET_PARENT_DIRECTORY" ]; then
-      info "Making target parent directory $PARENT_DIRECTORY."
+      info "Making target parent directory $TARGET_PARENT_DIRECTORY."
       if [[ $DRY_RUN = false ]]; then
         mkdir -p "$TARGET_PARENT_DIRECTORY"
       fi
