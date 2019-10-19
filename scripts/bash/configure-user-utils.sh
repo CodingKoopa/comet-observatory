@@ -157,8 +157,8 @@ link_directories()
     # configuration, because other files in the directory are subject to change.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Clementine.conf"]=\
 "$INSTALL_HOME/.config/Clementine/Clementine.conf"
-    # Link mpv files from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/mpv"]="$INSTALL_HOME/.config/mpv"
+    # Link mpv configuration from CO to user configuration.
+    ["$COMET_OBSERVATORY/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
     # Link OBS Studio configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
     # Link Blender files from documents to user configuration.
