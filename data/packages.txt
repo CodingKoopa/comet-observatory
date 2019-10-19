@@ -213,8 +213,8 @@ clementine
 audacity
 # youtube-dl, for downloading video and audio.
 youtube-dl
-# MPV, for playing video and audio.
-mpv
+# Vapoursynth, for MPV post processing effects with SVP
+vapoursynth
 # OBS Studio, for recording video and audio.
 obs-studio
 # guvcview, for recording video and audio.
@@ -318,7 +318,6 @@ okteta
 # lib32-libpulse
 # lib32-libva
 # lib32-libvdpau
-# lib32-nvidia-utils
 # lib32-openal
 # lib32-vulkan-icd-loader
 # libappindicator-gtk3
@@ -341,6 +340,8 @@ nvidia-dkms-tkg
 nvidia-utils-tkg
 # TkG Nvidia utilities, for more GPU support in 32-bit programs.
 lib32-nvidia-utils-tkg
+# Nvidia OpenCL implementation, for GPU processing with SVP.
+opencl-nvidia-tkg
 # Etcher, for flashing drives.
 etcher-bin
 # Antimicro, for remapping inputs.
@@ -362,6 +363,8 @@ wine-tkg-staging-fsync-vkd3d-faudio-opt-git
 
 # Media
 
+# mpv Git, for playing video and audio with Vapoursynth support.
+mpv-git
 # GIMP DDS plugin, for adding DDS support to GIMP.
 gimp-dds
 
