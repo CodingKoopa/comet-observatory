@@ -84,7 +84,7 @@ function enter_script_dir()
 #   - DRY_RUN: See setup().
 # Arguments:
 #   - Whether to require root or to require non root.
-function check-user()
+function check_user()
 {
   local -r REQUIRE_ROOT=$1
 
@@ -137,7 +137,7 @@ function setup()
   enter_script_dir
 
   info "Checking permissions."
-  check-user true
+  check_user true
 
   info "Setting constants."
   export_constants
@@ -242,7 +242,7 @@ function setup_user()
   enter_script_dir
 
   info "Checking permissions."
-  check-user false
+  check_user false
 
   info "Setting constants."
   export_constants
