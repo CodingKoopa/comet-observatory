@@ -16,7 +16,7 @@ readonly FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
 #   - The name of the folder.
 # Outputs:
 #   - The ID of the folder, which can be used to further index the database.
-get_firefox_folder_id()
+function get_firefox_folder_id()
 {
   local -r FOLDER_NAME=$1
 
@@ -32,7 +32,7 @@ get_firefox_folder_id()
 #   - The name of the folder.
 # Outputs:
 #   - The list of bookmark URLs in the folder, delimited with spaces.
-get_bookmark_urls()
+function get_bookmark_urls()
 {
   local -r FOLDER_NAME=$1
 
@@ -55,7 +55,7 @@ get_bookmark_urls()
 #   - The URL to be removed.
 # Outputs:
 #   - Bookmark removal progress.
-remove_firefox_bookmark()
+function remove_firefox_bookmark()
 {
   local -r FOLDER=$1
   local -r URL=$2

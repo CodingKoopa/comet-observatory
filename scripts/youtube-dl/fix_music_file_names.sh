@@ -12,7 +12,7 @@ source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 # Fixes youtube-dl default filenames.
 # Outputs:
 #   - Fixing progress.
-fix_music_file_names()
+function fix_music_file_names()
 {
   info "Checking music file names for Youtube video IDs."
   # TODO: soundcloud downloads

@@ -11,7 +11,7 @@ set -e
 #   - The name of the boot entry to find.
 # Outputs:
 #   The bootnums of the found boot entries, or nothing if none is found.
-find_bootnum()
+function find_bootnum()
 {
   # Escapes a string for usage in a sed pattern. Sed expression copied from 
   # https://stackoverflow.com/a/2705678.
@@ -19,7 +19,7 @@ find_bootnum()
   #   - The string to escape.
   # Outputs:
   #   The escaped string.
-  sed_escape_pattern()
+  function sed_escape_pattern()
   {
     sed 's/[]\\/$*.^[]/\\&/g'
   }
@@ -32,7 +32,7 @@ find_bootnum()
 #   - The label of the boot entry.
 # Outputs:
 #   Deletion message.
-remove_entry_if_existing()
+function remove_entry_if_existing()
 {
   local -r LABEL=$1
 
@@ -51,7 +51,7 @@ remove_entry_if_existing()
 #   - Command line arguments for the loader.
 # Outputs:
 #   The bootnum of the boot entry.
-update_entry()
+function update_entry()
 {
   local -r LABEL=$1
   local -r LOADER=$2

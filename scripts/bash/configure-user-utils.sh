@@ -9,7 +9,7 @@
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-create_directories()
+function create_directories()
 {
   declare -ra NEW_PATHS=(
     "$ABS_DIR"
@@ -43,7 +43,7 @@ create_directories()
 #   - SYNCED_GTK3_DIR: See export_constants().
 # Outputs;
 #   - Link feedback.
-link_directories()
+function link_directories()
 {
   # The structure here (although will be random at runtime) is parallel to that of the package list.
   declare -rA LINKED_PATHS=(
@@ -223,7 +223,7 @@ Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Lau
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_user_units()
+function configure_user_units()
 {
   for SERVICE in ../../config/systemd-user-units/*.service; do
     safe_cp "$SERVICE" "$INSTALL_HOME/.config/systemd/user/$(basename "$SERVICE")"
@@ -235,7 +235,7 @@ configure_user_units()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-enable_user_units()
+function enable_user_units()
 {
   local -ra UNITS=(
     # Enable the SSH agent.
@@ -257,7 +257,7 @@ enable_user_units()
 # Imports data into GPG.
 # Globals Read:
 #   - DRY_RUN: See setup().
-configure_gpg()
+function configure_gpg()
 {
   if [[ $DRY_RUN = false && $SYNCED_DOCUMENTS = true ]]; then
     info "Importing GnuPG data from the private documents."
@@ -273,7 +273,7 @@ configure_gpg()
 #   - AUR_DIR: See export_constants().
 # Outputs:
 #   - Installation progress.
-install_pikaur()
+function install_pikaur()
 {
   local -r PACKAGE=pikaur
   if ! pacman -Qi "$PACKAGE" > /dev/null; then

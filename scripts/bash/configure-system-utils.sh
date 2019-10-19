@@ -9,7 +9,7 @@
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_initial_ramdisk()
+function configure_initial_ramdisk()
 {
   safe_cp ../../config/mkinitcpio.conf /etc/mkinitcpio.conf
 
@@ -23,7 +23,7 @@ configure_initial_ramdisk()
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_kernel_attributes()
+function configure_kernel_attributes()
 {
   for CONF in ../../config/sysctl/*.conf; do
     safe_cp "$CONF" "/etc/sysctl.d/$(basename "$CONF")"
@@ -35,7 +35,7 @@ configure_kernel_attributes()
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_kernel_modules()
+function configure_kernel_modules()
 {
   for CONF in ../../config/modules-load/*.conf; do
     safe_cp "$CONF" "/etc/modules-load.d/$(basename "$CONF")"
@@ -46,7 +46,7 @@ configure_kernel_modules()
 }
 
 # Creates 4GB of swap. See: https://wiki.archlinux.org/index.php/Swap#Manually
-create_swap()
+function create_swap()
 {
   if [[ -f /swapfile ]]; then
       verbose "Swap file already exists."
@@ -69,7 +69,7 @@ create_swap()
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_system_units()
+function configure_system_units()
 {
   local -rA UNIT_OVERRIDES=(
     ["getty@tty1.service"]="getty-autologin.conf"
@@ -92,7 +92,7 @@ configure_system_units()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-enable_system_units()
+function enable_system_units()
 {
   local -ra UNITS=(
     # Enable periodic TRIM.
@@ -126,7 +126,7 @@ enable_system_units()
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_udev_rules()
+function configure_udev_rules()
 {
   for RULE in ../../config/udev/*.rules; do
     safe_cp "$RULE" "/etc/udev/rules.d/$(basename "$RULE")"
@@ -138,7 +138,7 @@ configure_udev_rules()
 #   - DRY_RUN: See setup().
 # Outputs;
 #   - Copy feedback.
-configure_pacman()
+function configure_pacman()
 {
   safe_cp "../../config/pacman.conf" /etc/pacman.conf
   safe_cp "../../config/makepkg.conf" /etc/makepkg.conf

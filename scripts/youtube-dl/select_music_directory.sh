@@ -12,7 +12,7 @@ source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 # Makes sure a field isn't empty
 # Arguments:
 #  - The input string.
-validate_input()
+function validate_input()
 {
   local -r INPUT=$1
   # If the string is empty/unset, or just consists of a space.
@@ -29,7 +29,7 @@ validate_input()
 #  - The title of the song.
 # Outputs:
 #   - Selection progress.
-select_music_directory()
+function select_music_directory()
 {
   if [[ -z "$MUSIC_DIRECTORY" ]]; then
     echo "\"MUSIC_DIRECTORY\" variable not set."

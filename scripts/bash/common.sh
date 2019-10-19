@@ -30,7 +30,7 @@ export NORMAL
 #   - Name of the section.
 # Outputs:
 #   - The section message.
-info_section()
+function info_section()
 {
   printf "[${WHITE}Section${NORMAL}] ${BOLD}%s${NORMAL}\n" "$*"
 }
@@ -40,7 +40,7 @@ info_section()
 #   - Info to be printed.
 # Outputs:
 #   - The info message.
-info()
+function info()
 {
   printf "[${GREEN}Info${NORMAL}   ] %s\n" "$*"
 }
@@ -54,7 +54,7 @@ info()
 #   - The configured variable.
 # Outputs:
 #   - The configuration prompt.
-config_bool()
+function config_bool()
 {
   local -r QUESTION=$1
   local -r VARIABLE_NAME=$2
@@ -84,7 +84,7 @@ config_bool()
 #   - The configured variable.
 # Outputs:
 #   - The configuration prompt.
-config_str()
+function config_str()
 {
   local -r QUESTION=$1
   local -r VARIABLE_NAME=$2
@@ -108,7 +108,7 @@ config_str()
 #   - Debug info to be printed.
 # Outputs:
 #   - The debug message.
-debug()
+function debug()
 {
   if [[ $DEBUG = true ]]; then
     printf "[${BLUE}Debug${NORMAL}  ] %s\n" "$*"
@@ -122,7 +122,7 @@ debug()
 #   - Verbose info to be printed.
 # Outputs:
 #   - The verbose message.
-verbose()
+function verbose()
 {
   if [[ $VERBOSE = true ]]; then
     printf "[${MAGENTA}Verbose${NORMAL}] %s\n" "$*"
@@ -134,7 +134,7 @@ verbose()
 #   - Error to be printed.
 # Outputs:
 #   - The error message.
-error()
+function error()
 {
   printf "[${RED}Error${NORMAL}  ] %s\n" "$*"
 }
@@ -144,7 +144,7 @@ error()
 # Asks if the directory selection process should be canceled or not.
 # Outputs:
 #   - 1 if the user wants to exit, else 0.
-prompt_exit()
+function prompt_exit()
 {
   zenity --question --text "The list dialog was closed, or cancel was clicked. Exit?"
   echo $?

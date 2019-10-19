@@ -12,7 +12,7 @@ source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 #   - The path to the MP3 file.
 # Outputs:
 #   - Error message if arguments are invalid. 
-tag_mp3()
+function tag_mp3()
 {
   readonly MP3=$1
 

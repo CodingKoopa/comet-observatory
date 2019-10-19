@@ -21,7 +21,7 @@ source "$COMET_OBSERVATORY/scripts/bash/configure-user-utils.sh"
 #   - The name of the script.
 # Outputs:
 #   - The Luma ASCII art, and repository info.
-print_header()
+function print_header()
 {
   local -r SCRIPT=$1
 
@@ -47,7 +47,7 @@ print_header()
 #   - PACMAN_ARGS: List of Pacman arguments useful for scripts.
 # Arguments:
 #   - The user that is being installed for, and owns the Comet Observatory.
-export_constants()
+function export_constants()
 {
   INSTALL_HOME=$(eval echo "~$INSTALL_USER")
   readonly INSTALL_HOME
@@ -72,7 +72,7 @@ export_constants()
 # Enters the script directory, and sets up a trap to return.
 # Arguments:
 #   - The name of the script.
-enter_script_dir()
+function enter_script_dir()
 {
   # Enter the script directory so that we can use relative paths.
   pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null
@@ -84,7 +84,7 @@ enter_script_dir()
 #   - DRY_RUN: See setup().
 # Arguments:
 #   - Whether to require root or to require non root.
-check-user()
+function check-user()
 {
   local -r REQUIRE_ROOT=$1
 
@@ -115,7 +115,7 @@ check-user()
 #   - Installation progress.
 # Returns:
 #   - 1 if the user couldn't be found.
-setup()
+function setup()
 {
   print_header "System Setup"
 
@@ -221,7 +221,7 @@ setup()
 #   - Installation progress messages.
 # Returns:
 #   - 1 if the user couldn't be found.
-setup_user()
+function setup_user()
 {
   print_header "User Setup"
 

@@ -16,7 +16,7 @@ source "$COMET_OBSERVATORY/scripts/eyed3/tag_mp3.sh"
 # Downloads music from the Firefox music folder.
 # Outputs:
 #   - Download progress.
-download_music()
+function download_music()
 {
   info "Downloading music from Firefox music bookmark folder."
   local -ra MUSIC_LIST=$(get_bookmark_urls Music)
