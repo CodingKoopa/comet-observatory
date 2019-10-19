@@ -56,6 +56,8 @@ link_directories()
 
     # Shell
 
+    # Link PAM environemnt from CO to home directory.
+    ["$COMET_OBSERVATORY/config/pam-environment.env"]="$INSTALL_HOME/.pam_environment"
     # Link Bash profile from CO to home directory.
     ["$COMET_OBSERVATORY/scripts/bash/bash-profile.sh"]="$INSTALL_HOME/.bash_profile"
     # Link Bash RC file from CO to home directory.
@@ -74,6 +76,8 @@ link_directories()
 
     # Desktop Environment
 
+    # Link user directory configuration from CO to user configuration.
+    ["$COMET_OBSERVATORY/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
     # Link GTK 3.0 configuration from documents to user configuration.
     ["$SYNCED_GTK3_DIR"]="$INSTALL_HOME/.config/gtk-3.0"
     # Link GTK 3.0 configuration from documents to user configuration.
