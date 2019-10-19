@@ -106,15 +106,15 @@ printk.devkmsg=on"
         update_entry "$1 (Debug)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
 $CMDLINE_STR $CMDLINE_DEBUG_STR"
         ;;
-      *rescue*)
-        echo "Updating $1 rescue UEFI boot entry ($VMLINUZ_PATH)."
-        update_entry "$1 (Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
-$CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR"
-        ;;
       *rescue-fallback*)
         echo "Updating $1 fallback rescue UEFI boot entry ($VMLINUZ_PATH)."
         update_entry "$1 (Fallback Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR \
 $FALLBACK_KERNEL_INITRD_STR $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR"
+        ;;
+      *rescue*)
+        echo "Updating $1 rescue UEFI boot entry ($VMLINUZ_PATH)."
+        update_entry "$1 (Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
+$CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR"
         ;;
       *)
         echo "Updating $1 quiet UEFI boot entry ($VMLINUZ_PATH)."
