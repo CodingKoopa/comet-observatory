@@ -1,11 +1,5 @@
 # Configuration file with sensitive info.
 scripts/bash/config.sh
 
-# Sublime Text Package Control uneeded files.
-Package Control.cache
-Package Control.last-run
-Package Control.merged-ca-bundle
-Package Control.user-ca-bundle
-
-# Sublime Text uneeded files.
-*.sublime-workspace
+# VSCode data.
+.vscode
