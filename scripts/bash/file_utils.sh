@@ -4,6 +4,9 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
+# shellcheck source=../bash/common.sh
+source "$COMET_OBSERVATORY/scripts/bash/common.sh"
+
 # Copies a file, checking to see if it's already updated or not.
 # Arguments:
 #   - The source file path.
