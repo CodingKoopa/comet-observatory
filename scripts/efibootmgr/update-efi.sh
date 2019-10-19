@@ -33,6 +33,22 @@ find_bootnum()
   efibootmgr | sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/\1/p'
 }
 
+# Removes a boot entry if it exists.
+# Arguments:
+#   - The label of the boot entry.
+# Outputs:
+#   Deletion message.
+remove_entry_if_existing()
+{
+  local -r LABEL=$1
+
+  bootnum="$(find_bootnum "$LABEL")"
+  if [[ -n "$bootnum" ]]; then
+    echo "Existing boot entry for \"$LABEL\" found, deleting."
+    efibootmgr -q -b "$bootnum" -B
+  fi
+}
+
 # Updates a boot entry with new parameters. Empty parameters are handled like unset. See
 # efibootmgr(8) for parameter defaults.
 # Arguments:
@@ -49,10 +65,7 @@ update_entry()
 
   # It's necessary to delete the existing entry and replace it, because efibootmgr doesn't support
   # editing an existing entry: https://github.com/rhboot/efibootmgr/issues/49.
-  old_bootnum="$(find_bootnum "$1")"
-  if [[ -n "$old_bootnum" ]]; then
-    efibootmgr -q -b "$old_bootnum" -B
-  fi
+  remove_entry_if_existing "$LABEL"
   efibootmgr -q -c --label "$LABEL" -l "$LOADER" -u "$CMDLINE"
 }
 
@@ -124,11 +137,37 @@ $CMDLINE_STR $CMDLINE_SILENT_STR"
     esac
   }
 
-  local -r VMLINUZ_TKG_PATH="$(find /boot -mindepth 1 -maxdepth 1 -type f -name 'vmlinuz-linux-tkg*' -print -quit)"
-  _update_entry "Arch Linux (TkG)" "${VMLINUZ_TKG_PATH#/boot/vmlinuz-linux}"
-  _update_entry "Arch Linux (Vanilla)"
+  local -r VMLINUZ_TKG_PATH=$(find /boot -mindepth 1 -maxdepth 1 -type f \
+-name 'vmlinuz-linux-tkg*' -print -quit)
+  # Assign a vmlinux suffix to the different kernels.
+  local -rA KERNELS=(
+    ["Vanilla"]=""
+    ["TkG"]="${VMLINUZ_TKG_PATH#/boot/vmlinuz-linux}"
+  )
 
-  echo "Setting Arch Linux (TkG) (Silent) as default."
-  efibootmgr -q -O
-  efibootmgr -q -o  "$(find_bootnum "Arch Linux (TkG) (Silent)")"
+  local -ra CONFIGURATIONS=(
+    "Debug"
+    "Rescue"
+    "Fallback Rescue"
+    "Silent"
+  )
+
+  echo "Scanning existing boot entries."
+  for KERNEL in "${!KERNELS[@]}"; do
+    for CONFIGURATION in "${CONFIGURATIONS[@]}"; do
+      remove_entry_if_existing "Arch Linux ($KERNEL) ($CONFIGURATION)"
+    done
+  done
+
+  echo "Adding new boot entries."
+  for KERNEL in "${!KERNELS[@]}"; do
+    _update_entry "Arch Linux ($KERNEL)" "${KERNELS[${KERNEL}]}"
+  done
+
+  local -r DEFAULT_ENTRY_NUM=$(find_bootnum "Arch Linux (TkG) (Silent)")
+  if [[ -n $DEFAULT_ENTRY_NUM ]]; then
+    echo "Setting Arch Linux (TkG) (Silent) as default."
+    efibootmgr -q -O
+    efibootmgr -q -o "$DEFAULT_ENTRY_NUM"
+  fi
 }
