@@ -42,7 +42,7 @@ function safe_ln()
     local -r TARGET_PARENT_DIRECTORY=$(dirname "$TARGET")
     # Handle conflicts with nonexistent target parent directories. This is a pretty unlikely
     # scenario, but possible if the path will later be populated with files.
-    if ! [ -d "$TARGET_PARENT_DIRECTORY" ]; then
+    if ! [[ -d "$TARGET_PARENT_DIRECTORY" ]]; then
       info "Making target parent directory $TARGET_PARENT_DIRECTORY."
       if [[ $DRY_RUN = false ]]; then
         mkdir -p "$TARGET_PARENT_DIRECTORY"
@@ -50,7 +50,7 @@ function safe_ln()
     fi
     
     # Handle conflicts with preexisting files or directories.
-    if [ -f "$LINK_NAME" ] || [ -d "$LINK_NAME" ]; then
+    if [[ -f "$LINK_NAME" ]] || [[ -d "$LINK_NAME" ]]; then
       local -r COMMON_STR="Path $LINK_NAME exists"
       if [[ -L "$LINK_NAME" ]]; then
         info "$COMMON_STR, is a link. Overwriting."

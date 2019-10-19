@@ -43,7 +43,7 @@ select_music_directory()
   local -a PARENT_CATEGORIES
   while read -r CATEGORY_DIRECTORY_PATH; do
     # Find will first output the starting point.
-    if [ "$CATEGORY_DIRECTORY_PATH" = "$MUSIC_DIRECTORY" ]; then
+    if [[ "$CATEGORY_DIRECTORY_PATH" = "$MUSIC_DIRECTORY" ]]; then
       continue
     # Ignore directories left by file synchronization.
     # .debris   MEGA
@@ -54,7 +54,7 @@ select_music_directory()
     # Check if the category has subcategories.
     while read -r SUBCATEGORY_DIRECTORY_PATH; do
       # Find will first output the starting point, again.
-      if [ "$SUBCATEGORY_DIRECTORY_PATH" = "$CATEGORY_DIRECTORY_PATH" ]; then
+      if [[ "$SUBCATEGORY_DIRECTORY_PATH" = "$CATEGORY_DIRECTORY_PATH" ]]; then
         continue
       # Check if the directory is just a disc folder. Regex:
       # Disc    Match the word Disc.
@@ -69,7 +69,7 @@ select_music_directory()
       has_subdirectories=true
       # Don't run the while loop in a subshell.
     done <<< "$(find "$CATEGORY_DIRECTORY_PATH" -maxdepth 1 -type d)"
-    if [ $has_subdirectories = false ]; then
+    if [[ $has_subdirectories = false ]]; then
       debug "Category $CATEGORY_DIRECTORY_PATH."
       local CATEGORIES+=("$( basename "$CATEGORY_DIRECTORY_PATH" )")
       local PARENT_CATEGORIES+=("")
@@ -79,7 +79,7 @@ select_music_directory()
   local -a args
   for (( INDEX=0; INDEX<${#CATEGORIES[@]}; ++INDEX )); do
     args+=(FALSE "${CATEGORIES[INDEX]}" )
-    if [ "${PARENT_CATEGORIES[INDEX]}" ]; then
+    if [[ "${PARENT_CATEGORIES[INDEX]}" ]]; then
       args+=("${PARENT_CATEGORIES[INDEX]}" )
     else
       args+=(" ")
@@ -101,7 +101,7 @@ select_music_directory()
     local -r PARENT_CATEGORY_NAME_VALID=$(validate_input "$PARENT_CATEGORY_NAME")
     # debug "Category name: \"$CATEGORY_NAME\". Parent category name: \"$PARENT_CATEGORY_NAME\""
     # If the user wants to make a new category.
-    if [ "$CATEGORY_NAME" = "Make a new category" ]; then
+    if [[ "$CATEGORY_NAME" = "Make a new category" ]]; then
       debug "New category selected."
       new_category=true
       break
@@ -118,7 +118,7 @@ select_music_directory()
     else
       # Prompt for exit.
       # If the user doesn't want to exit.
-      if [ "$(prompt_exit)" -eq 1 ]; then
+      if [[ "$(prompt_exit)" -eq 1 ]]; then
         # Open up the list dialog again.
         continue
       # If the user does want to exit.
@@ -154,7 +154,7 @@ select_music_directory()
       else
         # Prompt for exit.
         # If the user doesn't want to exit.
-        if [ "$(prompt_exit)" -eq 1 ]; then
+        if [[ "$(prompt_exit)" -eq 1 ]]; then
           # Open up the list dialog again.
           continue
         # If the user does want to exit.
@@ -166,12 +166,12 @@ select_music_directory()
     mkdir "$CATEGORY_PATH"
   fi
 
-  if [ -z "$CATEGORY_PATH" ]; then
+  if [[ -z "$CATEGORY_PATH" ]]; then
     echo "Category path not set."
     return 1
   fi
   debug "Category path: \"$CATEGORY_PATH\"."
-  if [ ! -d "$CATEGORY_PATH" ]; then
+  if [[ ! -d "$CATEGORY_PATH" ]]; then
     echo "Category path not found."
     return 1
   fi

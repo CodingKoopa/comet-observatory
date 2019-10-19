@@ -15,7 +15,7 @@ set -e
 #   The escaped string.
 sed_escape_pattern()
 {
-  if [ $# -ge 1 ]; then
+  if [[ $# -ge 1 ]]; then
     # shellcheck disable=SC1003
     printf '%s\n' "$1" | sed 's/[]\\'"${2:-/}"'$*.^[]/\\&/g'
   else
@@ -50,7 +50,7 @@ update_entry()
   # It's necessary to delete the existing entry and replace it, because efibootmgr doesn't support
   # editing an existing entry: https://github.com/rhboot/efibootmgr/issues/49.
   old_bootnum="$(find_bootnum "$1")"
-  if [ -n "$old_bootnum" ]; then
+  if [[ -n "$old_bootnum" ]]; then
     efibootmgr -q -b "$old_bootnum" -B
   fi
   efibootmgr -q -c --label "$LABEL" -l "$LOADER" -u "$CMDLINE"
