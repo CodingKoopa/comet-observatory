@@ -35,7 +35,7 @@ export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d"
 function r
 {
   clear
-  # shellcheck source=./bash-rc.sh
+  # shellcheck source=./bash_rc.sh
   source ~/.bashrc
 }
 

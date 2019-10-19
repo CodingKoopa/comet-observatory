@@ -9,6 +9,6 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-# shellcheck source=../scripts/efibootmgr/update-efi.sh
-source "${BASH_SOURCE%/*}/../scripts/efibootmgr/update-efi.sh"
+# shellcheck source=../scripts/efibootmgr/update_efi.sh
+source "${BASH_SOURCE%/*}/../scripts/efibootmgr/update_efi.sh"
 update-efi "$@"

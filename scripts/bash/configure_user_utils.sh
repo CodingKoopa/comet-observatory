@@ -59,11 +59,11 @@ function link_directories()
     # Link PAM environemnt from CO to home directory.
     ["$COMET_OBSERVATORY/config/pam-environment.env"]="$INSTALL_HOME/.pam_environment"
     # Link Bash profile from CO to home directory.
-    ["$COMET_OBSERVATORY/scripts/bash/bash-profile.sh"]="$INSTALL_HOME/.bash_profile"
+    ["$COMET_OBSERVATORY/scripts/bash/bash_profile.sh"]="$INSTALL_HOME/.bash_profile"
     # Link Bash RC file from CO to home directory.
-    ["$COMET_OBSERVATORY/scripts/bash/bash-rc.sh"]="$INSTALL_HOME/.bashrc"
+    ["$COMET_OBSERVATORY/scripts/bash/bash_rc.sh"]="$INSTALL_HOME/.bashrc"
     # Link X RC file from CO to home directory.
-    ["$COMET_OBSERVATORY/scripts/x/x-rc.sh"]="$INSTALL_HOME/.xinitrc"
+    ["$COMET_OBSERVATORY/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
     # Link CO configuration from documents to CO.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Dotfiles Configuration.sh"]=\
 "$COMET_OBSERVATORY/scripts/bash/config.sh"

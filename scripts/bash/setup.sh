@@ -9,12 +9,12 @@ set -e
 
 # shellcheck source=../bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/file-utils.sh
-source "$COMET_OBSERVATORY/scripts/bash/file-utils.sh"
-# shellcheck source=../bash/configure-system-utils.sh
-source "$COMET_OBSERVATORY/scripts/bash/configure-system-utils.sh"
-# shellcheck source=../bash/configure-user-utils.sh
-source "$COMET_OBSERVATORY/scripts/bash/configure-user-utils.sh"
+# shellcheck source=../bash/file_utils.sh
+source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
+# shellcheck source=../bash/configure_system_utils.sh
+source "$COMET_OBSERVATORY/scripts/bash/configure_system_utils.sh"
+# shellcheck source=../bash/configure_user_utils.sh
+source "$COMET_OBSERVATORY/scripts/bash/configure_user_utils.sh"
 
 # Prints a header.
 # Arguments:
