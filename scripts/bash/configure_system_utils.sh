@@ -59,7 +59,7 @@ function create_swap()
       info "Creating swapfile."
       if [[ $DRY_RUN = false ]]; then
         truncate -s 0 /swapfile
-        fallocate -l 4G /swapfile
+        fallocate -l 8G /swapfile
         chmod 600 /swapfile
         mkswap /swapfile
         swapon /swapfile
