@@ -6,6 +6,8 @@
   "window.zoomLevel": -1,
   // Restore all windows.
   "window.restoreWindows": "all",
+  // Use the custom tile bar style. I think it's pretty.
+  "window.titleBarStyle": "custom",
   // If there aren't previous windows to open, create a new file.
   "workbench.startupEditor": "newUntitledFile",
   // Use the Solarized Dark theme.
