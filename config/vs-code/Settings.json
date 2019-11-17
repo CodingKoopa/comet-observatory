@@ -25,8 +25,9 @@
   ],
   // Make each tab represent 2 spaces.
   "editor.tabSize": 2,
-  // Never autoclose quotes, because they get in the way more than they help.
+  // Never autoclose quotes or brackets, because they get in the way more than they help.
   "editor.autoClosingQuotes": "never",
+  "editor.autoClosingBrackets": "never",
   // Use Fira 
   "editor.fontFamily": "'Fira Code', 'Noto Sans Mono'",
   "editor.fontLigatures": true,
