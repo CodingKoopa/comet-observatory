@@ -110,8 +110,6 @@ function enable_system_units()
     "NetworkManager.service"
     # Enable Apache.
     "httpd.service"
-    # Enable octopi speedup.
-    "octopi.service"
   )
 
   for UNIT in "${UNITS[@]}"; do

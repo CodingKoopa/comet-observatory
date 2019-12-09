@@ -349,8 +349,6 @@ pixymon-git
 
 # Package Management
 
-# Octopi, for managing packages.
-octopi
 # pikaur, for managing AUR packages.
 pikaur
 

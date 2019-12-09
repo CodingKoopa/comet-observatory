@@ -73,12 +73,6 @@ function link_directories()
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Dotfiles Configuration.sh"]=\
 "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
-    # Package Management
-
-    # Link Octopi configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Octopi.conf"]=\
-"$INSTALL_HOME/.config/octopi/octopi.conf"
-
     # Desktop Environment
 
     # Link user directory configuration from CO to user configuration.
