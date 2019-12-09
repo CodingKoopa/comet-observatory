@@ -43,6 +43,7 @@
   "debug.openExplorerOnEnd": true,
   // Format when saving.
   "editor.formatOnSave": true,
+  "csscomb.formatOnSave": true,
   // Contribute dictionary additions to the system.
   "spellright.addToSystemDictionary": true,
   // Use English for spell checking.
