@@ -11,6 +11,8 @@ linux
 linux-headers
 # VDPAU backend for VA-API, for more GPU support.
 libva-vdpau-driver
+# xinput, for enhancing tablet support.
+xorg-xinput
 # xboxdrv, for controller support.
 xboxdrv
 # PulseAudio, for audio support.
@@ -344,6 +346,8 @@ opencl-nvidia-tkg
 etcher-bin
 # Antimicro, for remapping inputs.
 antimicro
+# GfxTablet, for using an Android tablet as a drawing tablet.
+gfxtablet-git
 # PixyMon, for PixyCam support.
 pixymon-git
 
