@@ -6,7 +6,7 @@
 
 ### Dotfiles Configuration
 
-## firefox
+## Firefox
 export FIREFOX_USER_DIRECTORY=
 
 ## youtube-dl
