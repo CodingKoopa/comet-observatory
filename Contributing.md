@@ -1,4 +1,5 @@
-
+# Contributing
+All files in this repository should use 2 spaces for a level of indentation. For Bash in particular, the [Google Shell Style Guide](https://google.github.io/styleguide/shell.xml) should be followed. The exceptions to this reference are that `main` is not used in this repository, executable scripts should be named with kebab case, and commenting should be done as documented below.
 
 ## Function Documentation
 Functions must have certain attributes marked, if applicable.
