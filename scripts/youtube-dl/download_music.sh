@@ -6,7 +6,7 @@
 
 # shellcheck source=../bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../youtube-dl/select_music_directory.sh
+# shellcheck source=./select_music_directory.sh
 source "$COMET_OBSERVATORY/scripts/youtube-dl/select_music_directory.sh"
 # shellcheck source=../sqlite3/firefox_music_bookmarks.sh
 source "$COMET_OBSERVATORY/scripts/sqlite3/firefox_music_bookmarks.sh"

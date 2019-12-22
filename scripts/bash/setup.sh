@@ -7,13 +7,13 @@
 # This file does things that can harm the system if done incorrectly, so exit upon error.
 set -e
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=./common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/file_utils.sh
+# shellcheck source=./file_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
-# shellcheck source=../bash/configure_system_utils.sh
+# shellcheck source=./configure_system_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/configure_system_utils.sh"
-# shellcheck source=../bash/configure_user_utils.sh
+# shellcheck source=./configure_user_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/configure_user_utils.sh"
 
 # Prints a header.

@@ -4,9 +4,9 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=./common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/file_utils.sh
+# shellcheck source=./file_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
 
 # Creates new directories, and sets them up with proper permissions if necessary.
