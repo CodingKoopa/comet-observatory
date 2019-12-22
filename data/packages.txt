@@ -334,12 +334,12 @@ okteta
 linux-tkg-pds-zen
 # TkG Linux kernel headers, for compiling kernel modules.
 linux-tkg-pds-zen-headers
-# TkG Nvidia DKMS drivers, for GPU support.
-nvidia-dkms-tkg
-# TkG Nvidia utilities, for more GPU support.
-nvidia-utils-tkg
-# TkG Nvidia utilities, for more GPU support in 32-bit programs.
-lib32-nvidia-utils-tkg
+# Nvidia DKMS drivers, for GPU support.
+nvidia-dkms
+# Nvidia utilities, for more GPU support.
+nvidia-utils
+# Nvidia utilities, for more GPU support in 32-bit programs.
+lib32-nvidia-utils
 # Nvidia OpenCL implementation, for GPU processing with SVP.
 opencl-nvidia-tkg
 # Etcher, for flashing drives.
