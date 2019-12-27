@@ -80,5 +80,5 @@ emotions are the reason they thrive and also the reason they fight." \
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
-# shellcheck source=../../externals/agnoster-bash/agnoster.bash
-source "$COMET_OBSERVATORY/externals/agnoster-bash/agnoster.bash"
+# shellcheck source=./agnoster-bash.sh
+source "$COMET_OBSERVATORY/scripts/bash/agnoster-bash.sh"
