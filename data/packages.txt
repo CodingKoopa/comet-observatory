@@ -28,7 +28,7 @@ exfat-utils
 # Canon Pixma MX920 series drivers, for printer support.
 canon-pixma-mx920-complete
 # VHBA module, for disk drive support.
-vhba-module-dkms
+# vhba-module-dkms
 
 # System Services
 
@@ -181,9 +181,9 @@ evtest
 # f3, for error checking drives.
 f3
 # CDEmu daemon, for emulating drives.
-cdemu-daemon
+# cdemu-daemon
 # KDE CDEmu manager, for emulating drives.
-kde-cdemu-manager-kf5
+# kde-cdemu-manager-kf5
 # KDEConnect, for integrating with Android.
 kdeconnect
 # OpenSSH, for connecting to other computers.
