@@ -44,6 +44,9 @@
   // Format when saving.
   "editor.formatOnSave": true,
   "csscomb.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   // Contribute dictionary additions to the system.
   "spellright.addToSystemDictionary": true,
   // Use English for spell checking.
