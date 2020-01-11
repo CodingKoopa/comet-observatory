@@ -358,6 +358,11 @@ pixymon-git
 # pikaur, for managing AUR packages.
 pikaur
 
+# Resources
+
+# Microsoft fonts, for making spicy impact font memes.
+ttf-ms-fonts
+
 # Other Tools
 
 # Fancy Wine build, for running Windows programs with style.
