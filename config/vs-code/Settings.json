@@ -59,8 +59,6 @@
   "yaml.format.printWidth": 100,
   // Disable builtin JS formatting since ESLint fixing is enabled.
   "javascript.format.enable": false,
-  // Automatically fix ESLint issues.
-  "eslint.autoFixOnSave": true,
   // Set the Shellcheck executable to the wrapper, to allow customization of parameters.
   "shellcheck.executablePath": "/home/kyle/Documents/Projects/Bash/comet-observatory/bin/shellcheck-alt",
   // Default to the C++17 standard when formatting.
