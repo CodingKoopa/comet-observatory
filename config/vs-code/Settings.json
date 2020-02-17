@@ -18,6 +18,13 @@
   "explorer.autoReveal": false,
   // Don't confirm explorer deletes.
   "explorer.confirmDelete": false,
+  // Exclude files that aren't generally edited.
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
   // Wrap words at the viewport limit.
   "editor.wordWrap": "on",
   // Display a vertical ruler at 100 characters.
