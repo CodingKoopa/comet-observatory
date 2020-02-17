@@ -293,5 +293,5 @@ function update()
   pikaur -Syu --devel --noconfirm
   # This shouldn't be necessary in theory, but I have had things break many times because of it
   # having not been run.
-  mkinitcpio -P
+  sudo mkinitcpio -P
 }
