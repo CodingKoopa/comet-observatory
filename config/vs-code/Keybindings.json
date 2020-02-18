@@ -44,17 +44,6 @@
     "key": "ctrl+r",
     "command": "-workbench.action.openRecent"
   },
-  // Remap debug mode start binding to be easier to use.
-  {
-    "key": "f5",
-    "command": "-workbench.action.debug.start",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "workbench.action.debug.start",
-    "when": "!inDebugMode"
-  },
   // Remap debug mode restart bindings to be consistent with the new debug binding.
   {
     "key": "ctrl+shift+f5",
@@ -64,18 +53,6 @@
   {
     "key": "ctrl+shift+r",
     "command": "workbench.action.debug.restart",
-    "when": "inDebugMode"
-  },
-  // Remap debug mode exit bindings because there's no exact alternative with the new CMake debug
-  // binding.
-  {
-    "key": "shift+f5",
-    "command": "-workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "escape escape",
-    "command": "workbench.action.debug.stop",
     "when": "inDebugMode"
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,5 +98,29 @@
   {
     "key": "ctrl+b",
     "command": "cmake.build"
+  },
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /// Macros
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  // Remap debug mode start binding.
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.start",
+    "when": "!inDebugMode"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "macros.powerRun"
+  },
+  // Remap debug mode exit bindings.
+  {
+    "key": "shift+f5",
+    "command": "-workbench.action.debug.stop",
+    // "when": "inDebugMode"
+  },
+  {
+    "key": "escape escape",
+    "command": "macros.stopDebuggingAndKillTerminal",
+    // "when": "inDebugMode"
   }
 ]
