@@ -12,11 +12,15 @@
 # Set the Comet Observatory path.
 export COMET_OBSERVATORY=$HOME/Documents/Projects/Bash/comet-observatory
 
-# Set the PATHt to prioritize ccache, and deprioritize local binaries and secondary toolchains.
+# shellcheck disable=2012
+CURRENT_FRC_YEAR=$(ls "$HOME/wpilib/" | tail -1)
+
+# Set the PATH to prioritize ccache, and deprioritize local binaries and secondary toolchains.
 export PATH=/usr/lib/ccache/bin/\
 :$PATH:$COMET_OBSERVATORY/bin:\
 $HOME/Android/Sdk/platform-tools:\
-$HOME/frc2019/roborio/bin
+$HOME/wpilib/$CURRENT_FRC_YEAR/roborio/bin/:\
+$HOME/wpilib/$CURRENT_FRC_YEAR/tools/
 
 # Set the editor to nano.
 export EDITOR=nano
