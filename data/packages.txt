@@ -372,8 +372,6 @@ wine-tkg-staging-fsync-vkd3d-faudio-opt-git
 
 # mpv Git, for playing video and audio with Vapoursynth support.
 mpv-git
-# GIMP DDS plugin, for adding DDS support to GIMP.
-gimp-dds
 
 # Internet
 # Google Chrome, for browsing the internet.
