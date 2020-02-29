@@ -379,7 +379,7 @@ google-chrome
 # Citra, for playing 3DS games.
 citra-canary-git
 # yuzu, for playing Switch games.
-yuzu-canary-git
+yuzu-mainline-git
 # Lucas' Simpsons Hit & Run Mod Launcher, for playing mods.
 lucas-simpsons-hit-and-run-mod-launcher
 
