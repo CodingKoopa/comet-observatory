@@ -45,6 +45,8 @@ cups
 
 # Package Management
 
+# arch-audit, for alerting of security vulnerabilities.
+arch-audit
 # Pacman scripts, for cleaning the package cache.
 pacman-contrib
 # Reflector, for updating pacman mirros.
