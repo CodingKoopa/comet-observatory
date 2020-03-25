@@ -7,9 +7,27 @@
 # shellcheck source=../bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 
+declare -r PROGRAM_NAME=${0##*/}
+
+# Prints the usage message for this script.
+print_help()
+{
+  # Keep the help string in its own variable because a single quote in a heredoc messes up syntax
+  # highlighting.
+  HELP_STRING="
+Usage: $PROGRAM_NAME [-h] {run | install | create | uefi} [image [video-driver [viewer [
+install-image [driver-image]]]]]
+Launches QEMU with an image. Please see the source of this script for possible options."
+  echo "$HELP_STRING"
+  exit 0
+}
+
 # Launches a QEMU image with the best options.
 # Arguments:
 #   - The name of the image to launch.
+#   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "qxl".
+#   - (Optional) Viewer to use, out of "spice", "qemu-stl", and "qemu-gtk". Default "spice".
+#   - (Optional) An image to mount to the CD drive.
 function launch_qemu() {
   # Use arguments.
   local -r QEMU_IMG="$1"
@@ -144,15 +162,29 @@ mount_tag=share,security_model=none"
 # Calls launch-qemu(), prompting the user with a dialog to select a QEMU image if needed.
 # Arguments:
 #   - (Optional) Name of the image to launch. Defaults to user selection.
-#   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "virtio".
+#   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "qxl".
 #   - (Optional) Viewer to use, out of "spice", "qemu-stl", and "qemu-gtk". Default "spice".
 # Outputs:
 #   Output of QEMU.
 function qemu_reeves()
 {
-  local -r IMAGE_NAME="$1"
-  local -r VIDEO_DRIVER=${2-virtio}
-  local -r VIEWER=${3-spice}
+  local -r ACTION="${1-run}"
+  local -r IMAGE_NAME="$2"
+  local -r VIDEO_DRIVER=${3-qxl}
+  local -r VIEWER=${4-spice}
+  local -r INSTALLER_IMAGE="$5"
+  local -r DRIVER_IMAGE="$6"
+
+  while getopts "h" opt; do
+    case $opt in
+      h)
+        print_help
+        ;;
+      *)
+        break
+        ;;
+    esac
+  done
 
   info "QEMU Reeves Starting"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
