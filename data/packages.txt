@@ -87,8 +87,6 @@ plasma-browser-integration
 kde-gtk-config
 # Breeze GTK theme, for GTK applications to look nice.
 breeze-gtk
-# Papirus icon thme, to make things look nice.
-papirus-icon-theme
 # GNOME icon theme, for when applications ask about it.
 gnome-icon-theme
 # Hardcoded Icon Fixer, for fixing application icons.
