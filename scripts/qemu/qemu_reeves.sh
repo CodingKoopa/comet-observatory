@@ -107,6 +107,8 @@ function launch_qemu() {
   fi
   # Allow the VM 3GB of RAM.
   qemu_opts+=" -m 3G"
+  # Add Intel HD Audio.
+  qemu_opts+=" -soundhw hda"
   # For QXL, add QXL paravirtual graphics card, for performance. Doing this from here allows us to
   # allocate more video memory, for supporting multiple heads if needed.
   # Workaround: max_outputs is required to avoid a low-resolution issue with QXL video.
