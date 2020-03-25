@@ -114,7 +114,8 @@ function launch_qemu() {
   qemu_opts+=" -m 3G"
   # For QXL, add QXL paravirtual graphics card, for performance. Doing this from here allows us to
   # allocate more video memory, for supporting multiple heads if needed.
-  qemu_opts+=${QXL+" -device qxl-vga,vgamem_mb=32"}
+  # Workaround: max_outputs is required to avoid a low-resolution issue with QXL video.
+  qemu_opts+=${QXL+" -device qxl-vga,max_outputs=1,vgamem_mb=32"}
   # For Virtio graphics, add Virtio graphics card, for performance. Doing this from here seems to
   # work better
   qemu_opts+=${VIRTIO+" -device virtio-vga"}
