@@ -31,6 +31,11 @@ Launches QEMU with an image. Please see the source of this script for possible o
 function launch_qemu() {
   # Use arguments.
   local -r MAIN_IMG="$1"
+  if [[ $MAIN_IMG = *"Win*" || $MAIN_IMG = *"w10"* ]]; then
+    local -r WINDOWS=true;
+  else
+    local -r WINDOWS=false;
+  fi
   local -r QEMU_VIDEO_DRIVER="$2"
   local -r QEMU_VIEWER="$3"
   if [[ -n $4 ]]; then
@@ -93,7 +98,13 @@ function launch_qemu() {
   # the following warning being printed:
   # "kernel: Decoding supported only on Scalable MCA processors."
   # Disabling the mca or mce flags doesn't seem to help this.
-  qemu_opts+=" -cpu host"
+  #
+  if [[ $WINDOWS = true ]]; then
+    # Workaround: For Windows, core2duo is needed to avoid a BSOD on boot..
+    qemu_opts+=" -cpu core2duo"
+  else
+    qemu_opts+=" -cpu host"
+  fi
   # Allow 4 CPU cores.
   qemu_opts+=" -smp 4"
   if [[ -n $INSTALLER_IMG ]]; then
