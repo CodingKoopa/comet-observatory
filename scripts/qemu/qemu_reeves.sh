@@ -218,6 +218,9 @@ function qemu_reeves()
       zenity --error --text "Image not found."
     fi
   fi
+  elif [[ $ACTION = "create" ]]; then
+    info "Creating a blank image."
+    qemu-img create -f qcow2 blank-image.img 15G
   elif [[ "$ACTION" = "uefi" ]]; then
     info "Booting into Tianocore UEFI."
     launch_qemu none "$VIDEO_DRIVER" "$VIEWER"
