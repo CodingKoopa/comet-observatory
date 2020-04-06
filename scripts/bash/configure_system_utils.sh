@@ -42,9 +42,9 @@ function configure_kernel_attributes()
 #   - Copy feedback.
 function configure_kernel_modules()
 {
-  for CONF in ../../config/modules-load/*.conf; do
-    safe_cp "$CONF" "/etc/modules-load.d/$(basename "$CONF")"
-  done
+  # for CONF in ../../config/modules-load/*.conf; do
+  #   safe_cp "$CONF" "/etc/modules-load.d/$(basename "$CONF")"
+  # done
   for CONF in ../../config/modules/*.conf; do
     safe_cp "$CONF" "/etc/modprobe.d/$(basename "$CONF")"
   done
