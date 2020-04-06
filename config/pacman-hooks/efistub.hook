@@ -2,7 +2,8 @@
 Operation = Install
 Operation = Upgrade
 Type = File
-Target = boot/vmlinuz*
+Target = linux
+Target = linux-tkg-pds-zen
 
 [Action]
 Description = Updating UEFI boot entries.
