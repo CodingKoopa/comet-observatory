@@ -6,8 +6,6 @@ Type = Package
 Target = nvidia
 Target = nvidia-dkms
 Target = nvidia-dkms-tkg
-Target = linux
-Target = linux-tkg-pds-zen
 
 [Action]
 Description = Creating initial ramdisk.
