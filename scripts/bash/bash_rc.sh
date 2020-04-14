@@ -4,36 +4,6 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-# Export environmental variables.
-
-# Set the Comet Observatory path.
-export COMET_OBSERVATORY=$HOME/Documents/Projects/Bash/comet-observatory
-
-# shellcheck disable=2012
-CURRENT_FRC_YEAR=$(ls "$HOME/wpilib/" | tail -1)
-
-# Set the PATH to prioritize ccache, and deprioritize local binaries and secondary toolchains.
-export PATH=/usr/lib/ccache/bin/\
-:$PATH:$COMET_OBSERVATORY/bin:\
-$HOME/Android/Sdk/platform-tools:\
-$HOME/wpilib/$CURRENT_FRC_YEAR/roborio/bin/:\
-$HOME/wpilib/$CURRENT_FRC_YEAR/tools/
-
-# Set the editor to nano.
-export EDITOR=nano
-
-# Disable the Wine menu builder, to prevent creation of desktop entries for Windows programs, Mono,
-# to prevent the Mono installation dialog, and Gecko, to prevent the Gecko installation dialog.
-export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d"
-
-# Execute initialization scripts.
-
-# Export FRC toolchain variables.
-# $HOME/frc2019/frccode/frcvars2019.sh
-
 # Set functions and aliases.
 
 # Reloads this script.
@@ -87,5 +57,9 @@ emotions are the reason they thrive and also the reason they fight." \
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
-# shellcheck source=./agnoster-bash.sh
-source "$COMET_OBSERVATORY/scripts/bash/agnoster-bash.sh"
+# Don't use Agnoster for login shells, because VTYs lack ligature font support by default.
+if [[ $- == *i* ]]; then
+  # shellcheck source=./agnoster-bash.sh
+  source "$COMET_OBSERVATORY/scripts/bash/agnoster-bash.sh"
+
+fi

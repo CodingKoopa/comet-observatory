@@ -21,6 +21,7 @@ Although functional on my own system, this repository isn't intended to be used 
 
 ## Documentation
 Some subsystems of the Comet Observatory have their own write-ups:
+- [Initialization](docs/Init.md), how environment variables are set once the user logs in, and in what order.
 - [Authentication Setup](docs/Auth.md), how `gpg-agent` and `ssh-agent` are configured to be integrated with KWallet.
 
 ## Features

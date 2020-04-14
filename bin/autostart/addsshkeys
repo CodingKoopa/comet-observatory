@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Copyright 2019 Comet Observatory
-# Licensed under GPLv3.
-# Refer to License.txt file included.
-
-ssh-add -q ~/.ssh/id_rsa ~/.ssh/aur ~/.ssh/do < /dev/null

@@ -5,7 +5,10 @@
 # Refer to License.txt file included.
 
 # If the systemd graphical target unit is active, the display isn't setup, and the first virtual
-# console is active, start X.
+# console is active, start X. See /docs/Init.md.
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   startx -- -keeptty &> "$HOME/.local/share/xorg/startx.log"
+else
+  # shellcheck source=./bash_rc.sh
+  "$COMET_OBSERVATORY/scripts/bash/bash_rc.sh"
 fi
