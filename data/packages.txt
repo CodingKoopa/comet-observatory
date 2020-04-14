@@ -171,8 +171,6 @@ kgpg
 
 # Other Tools
 
-# xmousepasteblock, for preventing accidental mouse button press pastes.
-xmousepasteblock-git
 # xdotool, for automation.
 xdotool
 # xkill, for forcibly killing programs.
@@ -357,6 +355,8 @@ linux-tkg-pds-zen
 linux-tkg-pds-zen-headers
 # Etcher, for flashing drives.
 etcher-bin
+# xmousepasteblock, for preventing accidental mouse button press pastes.
+xmousepasteblock-git
 # Antimicro, for remapping inputs.
 antimicro
 # Nintendo Switch udev rules, for not requiring root for access.
