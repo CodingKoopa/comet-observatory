@@ -1,5 +1,5 @@
 # Initialization
-In the process of booting up and starting Plasma, the `rc` and `env` files should get ran in the following order:
+This document details how the user portion of the booting process works, particularly focusing in on environment variables. In the process of booting up and starting Plasma, the `rc` and `env` files should get ran in the following order:
 - Systemd starts the Getty service on VTY 1.
 - Getty logs us in, using its [configuration](/config/systemd-overrides/getty-autologin.conf).
 - PAM for our user loads pam_env, which loads our [`env` file](/config/pam-environment.env), which sets environmental variables used by all programs.
