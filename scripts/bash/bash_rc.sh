@@ -61,5 +61,4 @@ echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 if [[ $- == *i* ]]; then
   # shellcheck source=./agnoster-bash.sh
   source "$COMET_OBSERVATORY/scripts/bash/agnoster-bash.sh"
-
 fi
