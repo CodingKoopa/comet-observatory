@@ -19,6 +19,10 @@ Although functional on my own system, this repository isn't intended to be used 
 - The `COMET_OBSERVATORY` variable, expected to be pointed to this repository, should be changed or accounted for if necessary.
 - All scripts are GPL 3.0 licensed.
 
+## Documentation
+Some subsystems of the Comet Observatory have their own write-ups:
+- [Authentication Setup](docs/Auth.md), how `gpg-agent` and `ssh-agent` are configured to be integrated with KWallet.
+
 ## Features
 
 ### Setup Scripts (Installation Scripts)

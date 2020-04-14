@@ -156,6 +156,19 @@ ttf-fira-code
 # Hunspell English dictionary, for spellcheck.
 hunspell-en_US
 
+# Authentication (See /docs/Auth.md)
+
+# KWallet, for storing passwords.
+kwallet
+# KWalletManager, for managing passwords.
+kwalletmanager
+# kwalletcli, for using KWallet for GPG key passwords.
+kwalletcli
+# Ksshaskpass, for Using KWallet for SSH key passwords.
+ksshaskpass
+# KGpg, for managing GnuPG keys.
+kgpg
+
 # Other Tools
 
 # xmousepasteblock, for preventing accidental mouse button press pastes.
@@ -170,14 +183,6 @@ flameshot
 konsole
 # nano, for editing text.
 nano
-# kwallet, for storing passwords.
-kwallet
-# kwallet PAM, for logging in and unlocking the wallet.
-kwallet-pam
-# kwalletmanager, for managing the wallet.
-kwalletmanager
-# Ksshaskpass, for inputting SSH passwords.
-ksshaskpass
 # figlet, for making ASCII figures.
 figlet
 # lolcat, for making rainbow text.
