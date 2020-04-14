@@ -44,3 +44,18 @@ UUID=a9501a38-5326-46ef-b427-3b811581df27 none              swap    sw          
 # started without the Plan 9 folder sharing being properly setup on the host.
 share                                     /home/koopa/Share 9p      noauto,x-systemd.automount,nofail,x-systemd.mount-timeout=1 0 0
 ```
+`build-essential` install:
+```
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu dpkg-dev fakeroot g++ g++-8 gcc gcc-8 libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libbinutils libc-dev-bin libc6-dev
+  libcc1-0 libdpkg-perl libfakeroot libfile-fcntllock-perl libgcc-8-dev libitm1 liblsan0 libmpx2 libstdc++-8-dev libtsan0 libubsan1 linux-libc-dev make manpages-dev patch
+Suggested packages:
+  binutils-doc debian-keyring g++-multilib g++-8-multilib gcc-8-doc libstdc++6-8-dbg gcc-multilib autoconf automake libtool flex bison gdb gcc-doc gcc-8-multilib gcc-8-locales libgcc1-dbg libgomp1-dbg
+  libitm1-dbg libatomic1-dbg libasan5-dbg liblsan0-dbg libtsan0-dbg libubsan1-dbg libmpx2-dbg libquadmath0-dbg glibc-doc git bzr libstdc++-8-doc make-doc ed diffutils-doc
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential dpkg-dev fakeroot g++ g++-8 gcc gcc-8 libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libbinutils
+  libc-dev-bin libc6-dev libcc1-0 libdpkg-perl libfakeroot libfile-fcntllock-perl libgcc-8-dev libitm1 liblsan0 libmpx2 libstdc++-8-dev libtsan0 libubsan1 linux-libc-dev make manpages-dev patch
+0 upgraded, 32 newly installed, 0 to remove and 0 not upgraded.
+Need to get 38.9 MB of archives.
+After this operation, 155 MB of additional disk space will be used.
+```
