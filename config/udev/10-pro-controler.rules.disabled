@@ -1,2 +1,0 @@
-# Match a Nintendo Switch Controller synced over Bluetooth, and enable r/w for everyone.
-KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0666"
