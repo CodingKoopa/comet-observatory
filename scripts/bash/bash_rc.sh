@@ -22,7 +22,7 @@ function r
 function export-env
 {
   set -o allexport
-  # shellcheck disable=1090
+  # shellcheck source=/dev/null
   source "$1"
   set +o allexport
 }
