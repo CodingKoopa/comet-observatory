@@ -70,6 +70,8 @@ npm
 
 # System Tools
 
+# LSDeluxe, for listing directories with style.
+lsd
 # neofetch, for obtaining system info.
 neofetch
 # efibootmgr, for managing the UEFI.

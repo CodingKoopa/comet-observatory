@@ -27,8 +27,13 @@ function export-env
   set +o allexport
 }
 
-# Executes "ls", with color on.
-alias ls='ls --color=auto'
+alias lss='/usr/bin/ls --color=auto'
+# Replace ls with LSDeluxe.
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # Customize the prompt.
 
