@@ -91,7 +91,7 @@ function enable_system_units()
     else
       if [[ $DRY_RUN = false ]]; then
         info "Enabling systemd unit $UNIT"
-        systemctl -q enable "$UNIT"
+        systemctl -q enable --now "$UNIT"
       fi
     fi
   done
