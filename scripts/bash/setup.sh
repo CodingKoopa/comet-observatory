@@ -108,13 +108,11 @@ function setup_system()
   info "Setting constants."
   export_constants
 
-  # System Tools
-  info_section "Setting Up System Programs"
+  # Package Management
+  info_section "Setting Up Packages"
 
   info "Configuring pacman."
   configure_pacman
-
-  info_section "Setting Up System Packages"
 
   info "Syncing packages."
   if [[ $DRY_RUN = false ]]; then    
