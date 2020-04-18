@@ -141,6 +141,30 @@ function error()
 
 # Other Utilities
 
+# Checks the user running the script.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Arguments:
+#   - Whether to require root.
+function check_user()
+{
+  local -r REQUIRE_ROOT=$1
+
+  if [[ $DRY_RUN = false ]]; then
+    if [[ $EUID -eq 0 ]]; then
+      if [[ $REQUIRE_ROOT = false ]]; then
+        error "This script cannot be run as root."
+        exit 1
+      fi
+    else
+      if [[ $REQUIRE_ROOT = true ]]; then
+        error "This script must be run as root."
+        exit 1
+      fi
+    fi
+  fi
+}
+
 # Asks if the directory selection process should be canceled or not.
 # Outputs:
 #   - 1 if the user wants to exit, else 0.

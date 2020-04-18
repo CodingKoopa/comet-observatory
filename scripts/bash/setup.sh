@@ -79,30 +79,6 @@ function enter_script_dir()
   trap popd ERR
 }
 
-# Checks the user running the script.
-# Globals Read:
-#   - DRY_RUN: See setup().
-# Arguments:
-#   - Whether to require root or to require non root.
-function check_user()
-{
-  local -r REQUIRE_ROOT=$1
-
-  if [[ $DRY_RUN = false ]]; then
-    if [[ $EUID -eq 0 ]]; then
-      if [[ $REQUIRE_ROOT = false ]]; then
-        error "This script cannot be run as root."
-        exit 1
-      fi
-    else
-      if [[ $REQUIRE_ROOT = true ]]; then
-        error "This script must be run as root."
-        exit 1
-      fi
-    fi
-  fi
-}
-
 # Sets up the system components of the system.
 # Globals Read:
 #   - COMET_OBSERVATORY: See export_constants().
