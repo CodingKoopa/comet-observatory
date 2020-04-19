@@ -15,9 +15,8 @@ analyze:ec:
 analyze:shfmt:
   # Add to the analysis stage.
   stage: analyze
-  # Use the latest shfmt Docker image. There is a "latest-alpine" tag, but it's triple the size of
-  # "latest" for some reason.
-  image: mvdan/shfmt:latest
+  # Use the latest Alpine Linux shfmt Docker image.
+  image: mvdan/shfmt:latest-alpine
   script:
     # Check that all Bash code has proper formatting.
     - shfmt -d .
