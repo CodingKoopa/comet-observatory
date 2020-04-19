@@ -6,7 +6,7 @@
 
 # shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=scripts/bash/config.sh
+# shellcheck source=scripts/bash/config.template.sh
 source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 readonly FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
