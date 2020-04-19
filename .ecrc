@@ -2,7 +2,7 @@
   "exclude": [
     "config/gpg.conf",
     "config/pacman.conf",
-    "config/pacman.conf",
+    "config/httpd.conf",
     "data/*",
     "License.txt"
   ]
