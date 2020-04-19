@@ -23,7 +23,7 @@ analyze:shfmt:
 
 shell check:
   image: koalaman/shellcheck-alpine:stable
-  stage: test
+  stage: analyze
   before_script:
     - shellcheck --version
   script:
