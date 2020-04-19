@@ -4,7 +4,7 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=./common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 
 # Copies a file, checking to see if it's already updated or not.
@@ -13,8 +13,7 @@ source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 #   - The destination file paths.
 # Outputs:
 #   - Copy feedback.
-function safe_cp()
-{
+function safe_cp() {
   local -r SOURCE=$1
   local -r DESTINATION=$2
 
@@ -34,8 +33,7 @@ function safe_cp()
 # - The link file path.
 # Outputs:
 #   - Link feedback.
-function safe_ln()
-{
+function safe_ln() {
   local -r TARGET=$1
   local -r LINK_NAME=$2
 
@@ -51,7 +49,7 @@ function safe_ln()
         mkdir -p "$TARGET_PARENT_DIRECTORY"
       fi
     fi
-    
+
     # Handle conflicts with preexisting files or directories.
     if [[ -f "$LINK_NAME" ]] || [[ -d "$LINK_NAME" ]]; then
       local -r COMMON_STR="Path $LINK_NAME exists"
@@ -64,7 +62,7 @@ function safe_ln()
           mv "$LINK_NAME" "$LINK_NAME_OLD"
         fi
       fi
-      
+
     # Handle conflcits with nonexistent link name parent directories.
     else
       local -r LINK_NAME_PARENT_DIRECTORY=$(dirname "$LINK_NAME")

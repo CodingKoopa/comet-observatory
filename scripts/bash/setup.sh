@@ -7,13 +7,13 @@
 # This file does things that can harm the system if done incorrectly, so exit upon error.
 set -e
 
-# shellcheck source=./common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=./file_utils.sh
+# shellcheck source=scripts/bash/file_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
-# shellcheck source=./configure_system_utils.sh
+# shellcheck source=scripts/bash/configure_system_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/configure_system_utils.sh"
-# shellcheck source=./configure_user_utils.sh
+# shellcheck source=scripts/bash/configure_user_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/configure_user_utils.sh"
 
 # Prints a header.
@@ -21,8 +21,7 @@ source "$COMET_OBSERVATORY/scripts/bash/configure_user_utils.sh"
 #   - The name of the script.
 # Outputs:
 #   - The Luma ASCII art, and repository info.
-function print_header()
-{
+function print_header() {
   local -r SCRIPT=$1
 
   # The comet observatory variable has not yet been checked.
@@ -47,8 +46,7 @@ function print_header()
 #   - PACMAN_ARGS: List of Pacman arguments useful for scripts.
 # Arguments:
 #   - The user that is being installed for, and owns the Comet Observatory.
-function export_constants()
-{
+function export_constants() {
   INSTALL_HOME=$(eval echo "~$INSTALL_USER")
   readonly INSTALL_HOME
   export INSTALL_HOME
@@ -81,8 +79,7 @@ function export_constants()
 #   - Installation progress.
 # Returns:
 #   - 1 if the user couldn't be found.
-function setup_system()
-{
+function setup_system() {
   print_header "System Setup"
 
   # Customize the setup.
@@ -93,7 +90,7 @@ function setup_system()
   # actions. All functions called here should have dry run support implemented within the function,
   # for consistency.
   config_bool "Is this a dry run? (y/n)?" DRY_RUN "$1"
-  config_str "What user owns the Comet Observatory?" INSTALL_USER "$2" 
+  config_str "What user owns the Comet Observatory?" INSTALL_USER "$2"
   if ! id "$INSTALL_USER" >/dev/null 2>&1; then
     error "User \"$INSTALL_USER\" doesn't exist."
     exit 1
@@ -115,12 +112,12 @@ function setup_system()
   configure_pacman
 
   info "Syncing packages."
-  if [[ $DRY_RUN = false ]]; then    
+  if [[ $DRY_RUN = false ]]; then
     pacman -Syu "${PACMAN_ARGS[@]}"
   fi
 
   info "Installing packages."
-  if [[ $DRY_RUN = false ]]; then  
+  if [[ $DRY_RUN = false ]]; then
     # Initially run pikaur as the user, to utilize the pikaur cache in their home directory.
     grep -v "^#" "$COMET_OBSERVATORY/data/packages.txt" | sudo -u "$INSTALL_USER" xargs pikaur -S "${PACMAN_ARGS[@]}"
   fi
@@ -132,7 +129,7 @@ function setup_system()
   configure_initial_ramdisk
 
   info "Making initial ramdisks."
-  if [[ $DRY_RUN = false ]]; then    
+  if [[ $DRY_RUN = false ]]; then
     mkinitcpio -P || true
   fi
 
@@ -164,13 +161,13 @@ function setup_system()
   info "Setting up root GTK."
   # Apply the GTK configuration to root, to make applications like Gparted look nice.
   safe_ln "$SYNCED_GTK3_DIR" /root/.config/gtk-3.0
-  
-  popd > /dev/null
+
+  popd >/dev/null
 
   info "Setup complete!"
 }
 
-# Sets up the user components of the system. Strictly only user commands that cannot be ran as 
+# Sets up the user components of the system. Strictly only user commands that cannot be ran as
 # root.
 # Globals Read:
 #   - INSTALL_HOME: See export_constants().
@@ -189,8 +186,7 @@ function setup_system()
 #   - Installation progress messages.
 # Returns:
 #   - 1 if the user couldn't be found.
-function setup_user()
-{
+function setup_user() {
   print_header "User Setup"
 
   # Customize the setup.
@@ -247,7 +243,7 @@ function setup_user()
   info_section "Setting Up Pikaur"
   install_pikaur
 
-  popd > /dev/null
+  popd >/dev/null
 
   info "Setup complete!"
 }

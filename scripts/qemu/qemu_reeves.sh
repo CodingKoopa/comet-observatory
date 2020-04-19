@@ -4,14 +4,13 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 
 declare -r PROGRAM_NAME=${0##*/}
 
 # Prints the usage message for this script.
-print_help()
-{
+print_help() {
   # Keep the help string in its own variable because a single quote in a heredoc messes up syntax
   # highlighting.
   HELP_STRING="
@@ -32,9 +31,9 @@ function launch_qemu() {
   # Use arguments.
   local -r MAIN_IMG="$1"
   if [[ $MAIN_IMG = *"Win*" || $MAIN_IMG = *"w10"* ]]; then
-    local -r WINDOWS=true;
+    local -r WINDOWS=true
   else
-    local -r WINDOWS=false;
+    local -r WINDOWS=false
   fi
   local -r QEMU_VIDEO_DRIVER="$2"
   local -r QEMU_VIEWER="$3"
@@ -51,37 +50,38 @@ function launch_qemu() {
   # Define options.
   local -a qemu_opts
   case ${QEMU_VIDEO_DRIVER,,} in
-    *qxl*)
-      info "Using QXL video driver."
-      local -r QXL=true
-      local -r VIDEO_DRIVER_STR="QXL"
-      ;;
-    *virtio*)
-      info "Using Virtio video driver."
-      local -r VIRTIO=true
-      local -r VIDEO_DRIVER_STR="Virtio"
-      ;;
-    *)
-      info "Using standard video driver."
-      local -r STD=true
-      local -r VIDEO_DRIVER_STR="Standard"
+  *qxl*)
+    info "Using QXL video driver."
+    local -r QXL=true
+    local -r VIDEO_DRIVER_STR="QXL"
+    ;;
+  *virtio*)
+    info "Using Virtio video driver."
+    local -r VIRTIO=true
+    local -r VIDEO_DRIVER_STR="Virtio"
+    ;;
+  *)
+    info "Using standard video driver."
+    local -r STD=true
+    local -r VIDEO_DRIVER_STR="Standard"
+    ;;
   esac
   case ${QEMU_VIEWER,,} in
-    *spice*)
-      info "Using SPICE viewer."
-      local -r SPICE=true
-      local -r VIEWER_STR="SPICE"
-      ;;
-    *qemu-sdl)
-      info "Using QEMU SDL viewer."
-      local -r QEMUSDL=true
-      local -r VIEWER_STR="QEMU-SDL"
-      ;;
-    *)
-      info "Using QEMU GTK viewer."
-      local -r QEMUGTK=true
-      local -r VIEWER_STR="QEMU-GTK"
-      ;;
+  *spice*)
+    info "Using SPICE viewer."
+    local -r SPICE=true
+    local -r VIEWER_STR="SPICE"
+    ;;
+  *qemu-sdl)
+    info "Using QEMU SDL viewer."
+    local -r QEMUSDL=true
+    local -r VIEWER_STR="QEMU-SDL"
+    ;;
+  *)
+    info "Using QEMU GTK viewer."
+    local -r QEMUGTK=true
+    local -r VIEWER_STR="QEMU-GTK"
+    ;;
   esac
   if [[ -n $INSTALLER_IMG ]]; then
     info "Using installer image \"$INSTALLER_IMG\"."
@@ -91,7 +91,7 @@ function launch_qemu() {
   fi
 
   # Standard Options
-  # Emulate a PC with KVM acceleration. KVM is the best hypervisor currently, requiring the least 
+  # Emulate a PC with KVM acceleration. KVM is the best hypervisor currently, requiring the least
   # setup, and with good results.
   qemu_opts+="-machine pc,accel=kvm"
   # Pass through CPU attributes so that specific optimizations can be applied. This will result in
@@ -118,7 +118,7 @@ function launch_qemu() {
   qemu_opts+=${VIRTIO+" -device virtio-vga"}
   # Add a virtio serial port PCI device, to integrate with SPICE.
   qemu_opts+=${SPICE+" -device virtio-serial-pci"}
-  # Add a virtio serial port input device, that the guest spice-vdagent can access. 
+  # Add a virtio serial port input device, that the guest spice-vdagent can access.
   qemu_opts+=${SPICE+" -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"}
   # Set the name of the VM.
   qemu_opts+=" -name Debian.$VIDEO_DRIVER_STR.$VIEWER_STR"
@@ -164,7 +164,7 @@ mount_tag=share,security_model=none"
   qemu_opts+=${SPICE+" -spice unix,disable-ticketing"}
 
   # i386 Target Options
-  
+
   # Network Options
 
   # Character Device Options
@@ -172,7 +172,7 @@ mount_tag=share,security_model=none"
   qemu_opts+=${SPICE+" -chardev spicevmc,id=spicechannel0,name=vdagent"}
 
   # Bluetooth Options
-  
+
   # TPM Options
 
   # Linux/Multiboot Boot Options
@@ -200,8 +200,7 @@ mount_tag=share,security_model=none"
 #   - (Optional) Viewer to use, out of "spice", "qemu-stl", and "qemu-gtk". Default "spice".
 # Outputs:
 #   Output of QEMU.
-function qemu_reeves()
-{
+function qemu_reeves() {
   local -r ACTION="${1-run}"
   local -r IMAGE_NAME="$2"
   local -r VIDEO_DRIVER=${3-qxl}
@@ -211,19 +210,19 @@ function qemu_reeves()
 
   while getopts "h" opt; do
     case $opt in
-      h)
-        print_help
-        ;;
-      *)
-        break
-        ;;
+    h)
+      print_help
+      ;;
+    *)
+      break
+      ;;
     esac
   done
 
   info "QEMU Reeves Starting"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
-  if [[ $ACTION = "run" ||  $ACTION = "install" ]]; then
+  if [[ $ACTION = "run" || $ACTION = "install" ]]; then
     local image="$HOME"/Library/Virtualization/"$IMAGE_NAME".img
 
     if [[ ! -f "$image" ]]; then
@@ -233,21 +232,21 @@ function qemu_reeves()
       local -ra IMAGES=("$HOME"/Library/Virtualization/*.img)
 
       image=$(zenity --list \
-          --width 1000 \
-          --height 400 \
-          --title "Select an image to launch" \
-          --column="Name" \
-          "${IMAGES[@]}")
+        --width 1000 \
+        --height 400 \
+        --title "Select an image to launch" \
+        --column="Name" \
+        "${IMAGES[@]}")
     fi
     if [[ -n "$image" ]]; then
       if [[ -f "$image" ]]; then
         if [[ $ACTION = "install" ]]; then
           if [[ ! -f "$INSTALLER_IMAGE" ]]; then
             zenity --error \
-                --width 1000 \
-                --height 400 \
-                --title "Install image not provided" \
-                --text="You must provide an installer image to be mounted."
+              --width 1000 \
+              --height 400 \
+              --title "Install image not provided" \
+              --text="You must provide an installer image to be mounted."
             return 1
           else
             launch_qemu "$image" "$VIDEO_DRIVER" "$VIEWER" "$INSTALLER_IMAGE" "$DRIVER_IMAGE"

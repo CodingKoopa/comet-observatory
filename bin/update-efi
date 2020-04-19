@@ -11,6 +11,6 @@ fi
 
 export COMET_OBSERVATORY=/home/kyle/Documents/Projects/Bash/comet-observatory
 
-# shellcheck source=../scripts/efibootmgr/update_efi.sh
+# shellcheck source=scripts/efibootmgr/update_efi.sh
 source "${BASH_SOURCE%/*}/../scripts/efibootmgr/update_efi.sh"
 update_efi "$@"

@@ -71,7 +71,7 @@ PROMPT_DIRTRIM=2 # bash4 and above
 DEBUG=0
 debug() {
     if [[ ${DEBUG} -ne 0 ]]; then
-        >&2 echo -e "$@"
+        echo >&2 -e "$@"
     fi
 }
 
@@ -86,9 +86,9 @@ RIGHT_SEPARATOR=''
 
 text_effect() {
     case "$1" in
-        reset)      echo 0;;
-        bold)       echo 1;;
-        underline)  echo 4;;
+    reset) echo 0 ;;
+    bold) echo 1 ;;
+    underline) echo 4 ;;
     esac
 }
 
@@ -97,42 +97,42 @@ text_effect() {
 # under the "256 (8-bit) Colors" section, and follow the example for orange below
 fg_color() {
     case "$1" in
-        black)      echo 30;;
-        red)        echo 31;;
-        green)      echo 32;;
-        yellow)     echo 33;;
-        blue)       echo 34;;
-        magenta)    echo 35;;
-        cyan)       echo 36;;
-        white)      echo 37;;
-        orange)     echo 38\;5\;166;;
-        # !!! Comet Observatory: Add otherblue.
-        otherblue)  echo 38\;5\;27;;
-        # !!! Comet Observatory: Add purple.
-        purple)     echo 38\;5\;99;;
-        # !!! Comet Observatory: Add normal.
-        normal)     echo 38\;267\;99;;
+    black) echo 30 ;;
+    red) echo 31 ;;
+    green) echo 32 ;;
+    yellow) echo 33 ;;
+    blue) echo 34 ;;
+    magenta) echo 35 ;;
+    cyan) echo 36 ;;
+    white) echo 37 ;;
+    orange) echo 38\;5\;166 ;;
+    # !!! Comet Observatory: Add otherblue.
+    otherblue) echo 38\;5\;27 ;;
+    # !!! Comet Observatory: Add purple.
+    purple) echo 38\;5\;99 ;;
+    # !!! Comet Observatory: Add normal.
+    normal) echo 38\;267\;99 ;;
     esac
 }
 
 bg_color() {
     case "$1" in
-        black)      echo 40;;
-        red)        echo 41;;
-        green)      echo 42;;
-        yellow)     echo 43;;
-        blue)       echo 44;;
-        magenta)    echo 45;;
-        cyan)       echo 46;;
-        white)      echo 47;;
-        orange)     echo 48\;5\;166;;
-        # !!! Comet Observatory: Add otherblue.
-        otherblue)  echo 48\;5\;27;;
-        # !!! Comet Observatory: Add purple.
-        purple)     echo 48\;5\;99;;
-        # !!! Comet Observatory: Add normal.
-        normal)     echo 38\;267\;99;;
-    esac;
+    black) echo 40 ;;
+    red) echo 41 ;;
+    green) echo 42 ;;
+    yellow) echo 43 ;;
+    blue) echo 44 ;;
+    magenta) echo 45 ;;
+    cyan) echo 46 ;;
+    white) echo 47 ;;
+    orange) echo 48\;5\;166 ;;
+    # !!! Comet Observatory: Add otherblue.
+    otherblue) echo 48\;5\;27 ;;
+    # !!! Comet Observatory: Add purple.
+    purple) echo 48\;5\;99 ;;
+    # !!! Comet Observatory: Add normal.
+    normal) echo 38\;267\;99 ;;
+    esac
 }
 
 # TIL: declare is global not local, so best use a different name
@@ -226,7 +226,6 @@ prompt_virtualenv() {
     fi
 }
 
-
 ### Prompt components
 # Each component will draw itself, and hide itself if no information needs to be shown
 
@@ -246,9 +245,8 @@ prompt_histdt() {
     prompt_segment black default "\! [\A]"
 }
 
-
 git_status_dirty() {
-    dirty=$(git status -s 2> /dev/null | tail -n 1)
+    dirty=$(git status -s 2>/dev/null | tail -n 1)
     [[ -n $dirty ]] && echo " ●"
 }
 
@@ -257,7 +255,7 @@ prompt_git() {
     local ref dirty
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         dirty=$(git_status_dirty)
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
         if [[ -n $dirty ]]; then
             # !!! Comet Observatory: Change prompt from yellow to green.
             prompt_segment purple black
@@ -302,11 +300,11 @@ rightprompt() {
 __command_rprompt() {
     local times='' n=$COLUMNS tz
     for tz in ZRH:Europe/Zurich PIT:US/Eastern \
-              MTV:US/Pacific TOK:Asia/Tokyo; do
+        MTV:US/Pacific TOK:Asia/Tokyo; do
         [ $n -gt 40 ] || break
         times="$times ${tz%%:*}\e[30;1m:\e[0;36;1m"
         times="$times$(TZ=${tz#*:} date +%H:%M)\e[0m"
-        n=$(( "$n" - 10 ))
+        n=$(("$n" - 10))
     done
     [ -z "$times" ] || printf "%${n}s$times\\r" ''
 }
@@ -367,7 +365,7 @@ prompt_right_segment() {
     #     $CURRENT_RBG=
     # fi
     # shellcheck disable=2034
-    declare -a intermediate2=("$(fg_color "$1")" "$(bg_color $CURRENT_RBG)" )
+    declare -a intermediate2=("$(fg_color "$1")" "$(bg_color $CURRENT_RBG)")
     # PRIGHT="$PRIGHT---"
     debug "pre prompt " "$(ansi_r intermediate2[@])"
     PRIGHT="$PRIGHT$(ansi_r intermediate2[@])$RIGHT_SEPARATOR"

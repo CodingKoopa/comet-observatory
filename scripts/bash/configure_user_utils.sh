@@ -4,9 +4,9 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=./common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=./file_utils.sh
+# shellcheck source=scripts/bash/file_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
 
 # Creates new directories, and sets them up with proper permissions if necessary.
@@ -14,8 +14,7 @@ source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-function create_directories()
-{
+function create_directories() {
   declare -ra NEW_PATHS=(
     "$ABS_DIR"
     "$AUR_DIR"
@@ -48,8 +47,7 @@ function create_directories()
 #   - SYNCED_GTK3_DIR: See export_constants().
 # Outputs:
 #   - Link feedback.
-function link_directories()
-{
+function link_directories() {
   # The structure here (although will be random at runtime) is parallel to that of the package list.
   declare -rA LINKED_PATHS=(
     # Storage
@@ -72,8 +70,7 @@ function link_directories()
     # Link X Compose file from CO to home directory.
     ["$COMET_OBSERVATORY/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
     # Link CO configuration from documents to CO.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Dotfiles Configuration.sh"]=\
-"$COMET_OBSERVATORY/scripts/bash/config.sh"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Dotfiles Configuration.sh"]="$COMET_OBSERVATORY/scripts/bash/config.sh"
 
     # Desktop Environment
 
@@ -83,69 +80,54 @@ function link_directories()
     ["$SYNCED_GTK3_DIR"]="$INSTALL_HOME/.config/gtk-3.0"
     # Link GTK 3.0 configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/GTK 2.0.ini"]="$INSTALL_HOME/.gtkrc-2.0"
-    # Link KDE global configuration from documents to user configuration, including standard 
+    # Link KDE global configuration from documents to user configuration, including standard
     # shortcuts among other settings
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Common.conf"]=\
-"$INSTALL_HOME/.config/kdeglobals"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Common.conf"]="$INSTALL_HOME/.config/kdeglobals"
     # Link KDE global shortcuts from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Global Shortcuts.conf"]=\
-"$INSTALL_HOME/.config/kglobalshortcutsrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Global Shortcuts.conf"]="$INSTALL_HOME/.config/kglobalshortcutsrc"
     # Link KDE custom shortcuts from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Custom Shortcuts.conf"]=\
-"$INSTALL_HOME/.config/khotkeysrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Custom Shortcuts.conf"]="$INSTALL_HOME/.config/khotkeysrc"
     # Link KDED configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/KDED.conf"]="$INSTALL_HOME/.config/kded5rc"
     # Link Baloo configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Baloo.conf"]=\
-"$INSTALL_HOME/.config/baloofilerc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Baloo.conf"]="$INSTALL_HOME/.config/baloofilerc"
     # Link KWin configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/KWin.conf"]="$INSTALL_HOME/.config/kwinrc"
     # Link Plasma configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma.conf"]=\
-"$INSTALL_HOME/.config/plasmarc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma.conf"]="$INSTALL_HOME/.config/plasmarc"
     # Link Plasma Shell configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Shell.conf"]=\
-"$INSTALL_HOME/.config/plasmashellrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Shell.conf"]="$INSTALL_HOME/.config/plasmashellrc"
     # Link Plasma Desktop configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Desktop.conf"]=\
-"$INSTALL_HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Desktop.conf"]="$INSTALL_HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
     # Link Plasma Notification configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Notifications.conf"]=\
-"$INSTALL_HOME/.config/plasmanotifyrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Plasma Notifications.conf"]="$INSTALL_HOME/.config/plasmanotifyrc"
 
     # KDE Accessories
 
     # Link autostart programs from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/LinuxAutostartPrograms"]="$INSTALL_HOME/.config/autostart"
     # Link autostart scripts from CO to user configuration.
-    ["$COMET_OBSERVATORY/bin/autostart/"]="$INSTALL_HOME/.config/autostart-scripts"
+    ["$COMET_OBSERVATORY/config/autostart/"]="$INSTALL_HOME/.config/autostart-scripts"
     # Link Konsole configuration from documents to user data.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Konsole Profile.profile"]=\
-"$INSTALL_HOME/.local/share/konsole/Garage.profile"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Konsole Profile.profile"]="$INSTALL_HOME/.local/share/konsole/Garage.profile"
     # Link RSIBreak configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/RSIBreak.conf"]=\
-"$INSTALL_HOME/.config/rsibreakrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/RSIBreak.conf"]="$INSTALL_HOME/.config/rsibreakrc"
     # Link KDE Connect files from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/KDE Connect"]=\
-"$INSTALL_HOME/.config/kdeconnect"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/KDE Connect"]="$INSTALL_HOME/.config/kdeconnect"
 
     # File Managers
 
     # Link Dolphin configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Dolphin.conf"]=\
-"$INSTALL_HOME/.config/dolphinrc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KDE/Dolphin.conf"]="$INSTALL_HOME/.config/dolphinrc"
     # Link ROM properties files from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/rom-properties"]=\
-"$INSTALL_HOME/.config/rom-properties"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/rom-properties"]="$INSTALL_HOME/.config/rom-properties"
     # Link MEGAsync configuration from documents to user data.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/MEGAsync.cfg"]=\
-"$INSTALL_HOME/.local/share/data/Mega Limited/MEGAsync/MEGAsync.cfg"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/MEGAsync.cfg"]="$INSTALL_HOME/.local/share/data/Mega Limited/MEGAsync/MEGAsync.cfg"
 
     # Tools
 
     # Link top configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Top Configuration"]=\
-"$INSTALL_HOME/.config/procps/toprc"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
     # Link Git configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
     # Link GPG configuration file from CO to home directory.
@@ -155,15 +137,13 @@ function link_directories()
     # Link Pikaur configuration file from CO to home directory.
     ["$COMET_OBSERVATORY/config/pikaur.conf"]="$INSTALL_HOME/.config/pikaur.conf"
     # Link KeePassX configuration from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KeePassXC.ini"]=\
-"$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
 
     # Media
 
     # Link Clementine configuration from documents to user configuration. Only link the
     # configuration, because other files in the directory are subject to change.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Clementine.conf"]=\
-"$INSTALL_HOME/.config/Clementine/Clementine.conf"
+    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Clementine.conf"]="$INSTALL_HOME/.config/Clementine/Clementine.conf"
     # Link mpv configuration from CO to user configuration.
     ["$COMET_OBSERVATORY/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
     # Link SVP configuration from documents to user configuration.
@@ -177,7 +157,7 @@ function link_directories()
 
     # Link HexChat files from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/HexChat"]="$INSTALL_HOME/.config/hexchat"
-    
+
     # Gaming
 
     # Link MultiMC data from documents to user configuration.
@@ -195,20 +175,16 @@ function link_directories()
     # Link Yuzu data from documents to user data.
     ["$SYNCED_DOCUMENTS_DIR/Program Data/Yuzu"]="$INSTALL_HOME/.local/share/yuzu"
     # Link testing mod launcher from user data to documents.
-    ["$INSTALL_HOME/.local/share/Dropbox/Donut Team Tools/Lucas' Simpsons Hit & Run Mod Launcher/\
-Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Launcher/launcher"
+    ["$INSTALL_HOME/.local/share/Dropbox/Donut Team Tools/Lucas' Simpsons Hit & Run Mod Launcher/Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Launcher/launcher"
     # Link The Simpsons: Hit & Run data from documents to user data.
-    ["$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Launcher"]=\
-"$INSTALL_HOME/.local/share/lucas-simpsons-hit-and-run-mod-launcher"
+    ["$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Launcher"]="$INSTALL_HOME/.local/share/lucas-simpsons-hit-and-run-mod-launcher"
 
     # Programming
 
     # Link VSCode keybindings from CO to user configuration.
-    ["$COMET_OBSERVATORY/config/vs-code/Keybindings.json"]=\
-"$INSTALL_HOME/.config/Code - OSS/User/keybindings.json"
+    ["$COMET_OBSERVATORY/config/vs-code/Keybindings.json"]="$INSTALL_HOME/.config/Code - OSS/User/keybindings.json"
     # Link VSCode settings from documents to user configuration.
-    ["$COMET_OBSERVATORY/config/vs-code/Settings.json"]=\
-"$INSTALL_HOME/.config/Code - OSS/User/settings.json"
+    ["$COMET_OBSERVATORY/config/vs-code/Settings.json"]="$INSTALL_HOME/.config/Code - OSS/User/settings.json"
     # Link VSCode snippets from documents to user configuration.
     ["$COMET_OBSERVATORY/config/vs-code/Snippets/"]="$INSTALL_HOME/.config/Code - OSS/User/snippets"
     # Link VSCode extensions from documents to user configuration.
@@ -230,8 +206,7 @@ Testing/"]="$SYNCED_DOCUMENTS_DIR/Program Data/Lucas' Simpsons Hit & Run Mod Lau
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Copy feedback.
-function configure_user_units()
-{
+function configure_user_units() {
   for SERVICE in ../../config/systemd-user-units/*.service; do
     safe_cp "$SERVICE" "$INSTALL_HOME/.config/systemd/user/$(basename "$SERVICE")"
   done
@@ -242,8 +217,7 @@ function configure_user_units()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-function enable_user_units()
-{
+function enable_user_units() {
   local -ra UNITS=(
     # Enable the SSH agent.
     "ssh-agent.service"
@@ -266,8 +240,7 @@ function enable_user_units()
 # Imports data into GPG.
 # Globals Read:
 #   - DRY_RUN: See setup().
-function configure_gpg()
-{
+function configure_gpg() {
   if [[ $DRY_RUN = false && $SYNCED_DOCUMENTS = true ]]; then
     info "Importing GnuPG data from the private documents."
     gpg -q --import "$SYNCED_DOCUMENTS_DIR/Passwords & 2FA/GnuPG/Private Key.key"
@@ -282,13 +255,12 @@ function configure_gpg()
 #   - AUR_DIR: See export_constants().
 # Outputs:
 #   - Installation progress.
-function install_pikaur()
-{
+function install_pikaur() {
   local -r PACKAGE=pikaur
-  if ! pacman -Qi "$PACKAGE" > /dev/null; then
+  if ! pacman -Qi "$PACKAGE" >/dev/null; then
     info "Installing build dependencies."
-    if [[ $DRY_RUN = false ]]; then 
-      sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git > /dev/null
+    if [[ $DRY_RUN = false ]]; then
+      sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git >/dev/null
     fi
 
     info "Installing pikaur."

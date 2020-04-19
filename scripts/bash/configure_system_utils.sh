@@ -4,9 +4,9 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=./common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=./file_utils.sh
+# shellcheck source=scripts/bash/file_utils.sh
 source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
 
 # Configures the initial ramdisk.
@@ -14,8 +14,7 @@ source "$COMET_OBSERVATORY/scripts/bash/file_utils.sh"
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Copy feedback.
-function configure_initial_ramdisk()
-{
+function configure_initial_ramdisk() {
   safe_cp ../../config/mkinitcpio.conf /etc/mkinitcpio.conf
 
   for PRESET in ../../config/mkinitcpio-presets/*.preset; do
@@ -28,23 +27,22 @@ function configure_initial_ramdisk()
 #   - DRY_RUN: See setup().
 # Arguments:
 #   - The number of gigabytes of swap to create.
-function create_swap()
-{
+function create_swap() {
   local -r GIGABYTES=$1
 
   if [[ -f /swapfile ]]; then
-      verbose "Swap file already exists."
+    verbose "Swap file already exists."
   else
-      info "Creating swapfile."
-      if [[ $DRY_RUN = false ]]; then
-        truncate -s 0 /swapfile
-        fallocate -l "${GIGABYTES}G" /swapfile
-        chmod 600 /swapfile
-        mkswap /swapfile
-        swapon /swapfile
-        # This is applied upon reboot in /etc/sysctl.conf
-        sysctl -q vm.swappiness=10
-      fi
+    info "Creating swapfile."
+    if [[ $DRY_RUN = false ]]; then
+      truncate -s 0 /swapfile
+      fallocate -l "${GIGABYTES}G" /swapfile
+      chmod 600 /swapfile
+      mkswap /swapfile
+      swapon /swapfile
+      # This is applied upon reboot in /etc/sysctl.conf
+      sysctl -q vm.swappiness=10
+    fi
   fi
 }
 
@@ -53,8 +51,7 @@ function create_swap()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Copy feedback.
-function configure_system_units()
-{
+function configure_system_units() {
   local -rA UNIT_OVERRIDES=(
     ["getty@tty1.service"]="getty-autologin.conf"
   )
@@ -76,8 +73,7 @@ function configure_system_units()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Installation progress.
-function enable_system_units()
-{
+function enable_system_units() {
   local -ra UNITS=(
     # Enable periodic TRIM.
     "fstrim.timer"
@@ -108,8 +104,7 @@ function enable_system_units()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Copy feedback.
-function configure_udev_rules()
-{
+function configure_udev_rules() {
   for RULE in ../../config/udev/*.rules; do
     safe_cp "$RULE" "/etc/udev/rules.d/$(basename "$RULE")"
   done
@@ -120,14 +115,13 @@ function configure_udev_rules()
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Copy feedback.
-function configure_pacman()
-{
+function configure_pacman() {
   safe_cp "../../config/pacman.conf" /etc/pacman.conf
   safe_cp "../../config/makepkg.conf" /etc/makepkg.conf
 
   if [[ $DRY_RUN = false ]]; then
     info "Importing Chaotic AUR keys into pacman."
-    pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB > /dev/null
-    pacman-key --lsign-key 3056513887B78AEB > /dev/null
+    pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB >/dev/null
+    pacman-key --lsign-key 3056513887B78AEB >/dev/null
   fi
 }

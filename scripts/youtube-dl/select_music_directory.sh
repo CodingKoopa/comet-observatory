@@ -4,16 +4,15 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/config.sh
+# shellcheck source=scripts/bash/config.sh
 source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 # Makes sure a field isn't empty
 # Arguments:
 #  - The input string.
-function validate_input()
-{
+function validate_input() {
   local -r INPUT=$1
   # If the string is empty/unset, or just consists of a space.
   if [[ -z $INPUT ]]; then
@@ -29,8 +28,7 @@ function validate_input()
 #  - The title of the song.
 # Outputs:
 #   - Selection progress.
-function select_music_directory()
-{
+function select_music_directory() {
   if [[ -z "$MUSIC_DIRECTORY" ]]; then
     echo "\"MUSIC_DIRECTORY\" variable not set."
     return 1
@@ -64,23 +62,23 @@ function select_music_directory()
         continue
       fi
       debug "Subcategory $SUBCATEGORY_DIRECTORY_PATH."
-      local CATEGORIES+=("$( basename "$SUBCATEGORY_DIRECTORY_PATH" )")
-      local PARENT_CATEGORIES+=("$( basename "$CATEGORY_DIRECTORY_PATH" )")
+      local CATEGORIES+=("$(basename "$SUBCATEGORY_DIRECTORY_PATH")")
+      local PARENT_CATEGORIES+=("$(basename "$CATEGORY_DIRECTORY_PATH")")
       has_subdirectories=true
       # Don't run the while loop in a subshell.
-    done <<< "$(find "$CATEGORY_DIRECTORY_PATH" -maxdepth 1 -type d)"
+    done <<<"$(find "$CATEGORY_DIRECTORY_PATH" -maxdepth 1 -type d)"
     if [[ $has_subdirectories = false ]]; then
       debug "Category $CATEGORY_DIRECTORY_PATH."
-      local CATEGORIES+=("$( basename "$CATEGORY_DIRECTORY_PATH" )")
+      local CATEGORIES+=("$(basename "$CATEGORY_DIRECTORY_PATH")")
       local PARENT_CATEGORIES+=("")
     fi
-  # Don't run the while loop in a subshell.
-  done <<< "$(find "$MUSIC_DIRECTORY" -maxdepth 1 -type d)"
+    # Don't run the while loop in a subshell.
+  done <<<"$(find "$MUSIC_DIRECTORY" -maxdepth 1 -type d)"
   local -a args
-  for (( INDEX=0; INDEX<${#CATEGORIES[@]}; ++INDEX )); do
-    args+=(FALSE "${CATEGORIES[INDEX]}" )
+  for ((INDEX = 0; INDEX < ${#CATEGORIES[@]}; ++INDEX)); do
+    args+=(FALSE "${CATEGORIES[INDEX]}")
     if [[ "${PARENT_CATEGORIES[INDEX]}" ]]; then
-      args+=("${PARENT_CATEGORIES[INDEX]}" )
+      args+=("${PARENT_CATEGORIES[INDEX]}")
     else
       args+=(" ")
     fi
@@ -133,11 +131,11 @@ function select_music_directory()
     debug "Making new category \"$CATEGORY_NAME\""
     while true; do
       local -ra NEW_CATEGORY_INPUT=$(zenity --width 1000 --height 500 \
-      --forms \
-      --title "Add a Category" \
-      --text "Enter information for the category to put \"$1\" in.". \
-      --add-entry "Category Name" \
-      --add-entry "Parent Category (Optional)")
+        --forms \
+        --title "Add a Category" \
+        --text "Enter information for the category to put \"$1\" in.". \
+        --add-entry "Category Name" \
+        --add-entry "Parent Category (Optional)")
       local -r CATEGORY_NAME=$(echo "$NEW_CATEGORY_INPUT" | cut -d'|' -f1)
       local -r CATEGORY_NAME_VALID=$(validate_input "$CATEGORY_NAME")
       local -r PARENT_CATEGORY_NAME=$(echo "$NEW_CATEGORY_INPUT" | cut -d'|' -f2)

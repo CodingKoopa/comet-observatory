@@ -4,9 +4,9 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/config.sh
+# shellcheck source=scripts/bash/config.sh
 source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 readonly FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
@@ -16,8 +16,7 @@ readonly FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
 #   - The name of the folder.
 # Outputs:
 #   - The ID of the folder, which can be used to further index the database.
-function get_firefox_folder_id()
-{
+function get_firefox_folder_id() {
   local -r FOLDER_NAME=$1
 
   # Grab the ID of the first first music folder.
@@ -32,8 +31,7 @@ function get_firefox_folder_id()
 #   - The name of the folder.
 # Outputs:
 #   - The list of bookmark URLs in the folder, delimited with spaces.
-function get_bookmark_urls()
-{
+function get_bookmark_urls() {
   local -r FOLDER_NAME=$1
 
   local -r MUSIC_ID=$(get_firefox_folder_id "$FOLDER_NAME")
@@ -55,8 +53,7 @@ function get_bookmark_urls()
 #   - The URL to be removed.
 # Outputs:
 #   - Bookmark removal progress.
-function remove_firefox_bookmark()
-{
+function remove_firefox_bookmark() {
   local -r FOLDER=$1
   local -r URL=$2
 

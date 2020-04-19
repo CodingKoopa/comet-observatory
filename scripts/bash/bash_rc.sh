@@ -9,18 +9,16 @@
 # Reloads this script.
 # Globals Exported:
 #   - Everything exported in this script.
-function r
-{
+function r() {
   clear
-  # shellcheck source=./bash_rc.sh
+  # shellcheck source=scripts/bash/bash_rc.sh
   source ~/.bashrc
 }
 
 # Exports the contents of an "ENV" file.
 # Arguments:
 #   - The path to the "ENV" file.
-function export-env
-{
+function export-env() {
   set -o allexport
   # shellcheck source=/dev/null
   source "$1"
@@ -57,13 +55,13 @@ also feel that to live is to suffer."
   "Kimochi warui."
   # Mob Psycho 100
   "The biggest distinguishing feature of humans is how rich and varied their emotions are. These \
-emotions are the reason they thrive and also the reason they fight." \
+emotions are the reason they thrive and also the reason they fight."
   "You should realize that you're only able to survive thanks to the help of others."
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
 # Don't use Agnoster for login shells, because VTYs lack ligature font support by default.
 if [[ $- == *i* ]]; then
-  # shellcheck source=./agnoster-bash.sh
+  # shellcheck source=scripts/bash/agnoster-bash.sh
   source "$COMET_OBSERVATORY/scripts/bash/agnoster-bash.sh"
 fi

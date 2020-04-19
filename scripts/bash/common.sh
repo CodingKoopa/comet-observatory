@@ -30,8 +30,7 @@ export RED
 #   - Name of the section.
 # Outputs:
 #   - The section message.
-function info_section()
-{
+function info_section() {
   printf "[${WHITE}Section${NORMAL}] ${BOLD}%s${NORMAL}\n" "$*"
 }
 
@@ -40,8 +39,7 @@ function info_section()
 #   - Info to be printed.
 # Outputs:
 #   - The info message.
-function info()
-{
+function info() {
   printf "[${GREEN}Info${NORMAL}   ] %s\n" "$*"
 }
 
@@ -54,8 +52,7 @@ function info()
 #   - The configured variable.
 # Outputs:
 #   - The configuration prompt.
-function config_bool()
-{
+function config_bool() {
   local -r QUESTION=$1
   local -r VARIABLE_NAME=$2
   local -r ANSWER=$3
@@ -84,8 +81,7 @@ function config_bool()
 #   - The configured variable.
 # Outputs:
 #   - The configuration prompt.
-function config_str()
-{
+function config_str() {
   local -r QUESTION=$1
   local -r VARIABLE_NAME=$2
   local answer=$3
@@ -97,7 +93,7 @@ function config_str()
   else
     read -rp "$MESSAGE " answer
   fi
-  
+
   export "$VARIABLE_NAME"="$answer"
 }
 
@@ -108,8 +104,7 @@ function config_str()
 #   - Debug info to be printed.
 # Outputs:
 #   - The debug message.
-function debug()
-{
+function debug() {
   if [[ $DEBUG = true ]]; then
     printf "[${BLUE}Debug${NORMAL}  ] %s\n" "$*"
   fi
@@ -122,8 +117,7 @@ function debug()
 #   - Verbose info to be printed.
 # Outputs:
 #   - The verbose message.
-function verbose()
-{
+function verbose() {
   if [[ $VERBOSE = true ]]; then
     printf "[${MAGENTA}Verbose${NORMAL}] %s\n" "$*"
   fi
@@ -134,8 +128,7 @@ function verbose()
 #   - Error to be printed.
 # Outputs:
 #   - The error message.
-function error()
-{
+function error() {
   printf "[${RED}Error${NORMAL}  ] %s\n" "$*"
 }
 
@@ -146,8 +139,7 @@ function error()
 #   - DRY_RUN: See setup().
 # Arguments:
 #   - Whether to require root.
-function check_user()
-{
+function check_user() {
   local -r REQUIRE_ROOT=$1
 
   if [[ $DRY_RUN = false ]]; then
@@ -168,18 +160,16 @@ function check_user()
 # Enters the script directory, and sets up a trap to return.
 # Arguments:
 #   - The name of the script.
-function enter_script_dir()
-{
+function enter_script_dir() {
   # Enter the script directory so that we can use relative paths.
-  pushd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null
+  pushd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null || exit
   trap popd ERR
 }
 
 # Asks if the directory selection process should be canceled or not.
 # Outputs:
 #   - 1 if the user wants to exit, else 0.
-function prompt_exit()
-{
+function prompt_exit() {
   zenity --question --text "The list dialog was closed, or cancel was clicked. Exit?"
   echo $?
 }

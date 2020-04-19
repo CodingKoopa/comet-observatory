@@ -6,7 +6,7 @@
 
 set -e
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 
 # Finds the bootnum from the name of a boot entry.
@@ -14,16 +14,14 @@ source "$COMET_OBSERVATORY/scripts/bash/common.sh"
 #   - The name of the boot entry to find.
 # Outputs:
 #   The bootnums of the found boot entries, or nothing if none is found.
-function find_bootnum()
-{
-  # Escapes a string for usage in a sed pattern. Sed expression copied from 
+function find_bootnum() {
+  # Escapes a string for usage in a sed pattern. Sed expression copied from
   # https://stackoverflow.com/a/2705678.
   # Arguments:
   #   - The string to escape.
   # Outputs:
   #   The escaped string.
-  function sed_escape_pattern()
-  {
+  function sed_escape_pattern() {
     if [[ $# -ge 1 ]]; then
       # shellcheck disable=SC1003
       printf '%s\n' "$1" | sed 's/[]\\'"${2:-/}"'$*.^[]/\\&/g'
@@ -40,8 +38,7 @@ function find_bootnum()
 #   - The label of the boot entry.
 # Outputs:
 #   Deletion message.
-function remove_entry_if_existing()
-{
+function remove_entry_if_existing() {
   local -r LABEL=$1
 
   bootnum="$(find_bootnum "$LABEL")"
@@ -58,8 +55,7 @@ function remove_entry_if_existing()
 #   - Command line arguments for the loader.
 # Outputs:
 #   The bootnum of the boot entry.
-function add_entry()
-{
+function add_entry() {
   local -r LABEL=$1
   local -r LOADER=$2
   local -r CMDLINE=$3
@@ -76,13 +72,12 @@ function add_entry()
 # "fallback-rescue".
 # Outputs:
 #   Changes being made to EFI boot entries.
-function update_efi()
-{
+function update_efi() {
   figlet -k -f slant update-efi | lolcat -f -s 100 -p 1
   info "Comet Observatory UEFI Boot Entry Updater Script"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
-  local -r TYPE=$1  
+  local -r TYPE=$1
 
   local -r ROOT="PARTUUID=91fb9373-d9b2-4e6d-a376-0388afe85bf0"
   local -r MICROCODE="amd-ucode.img"
@@ -121,42 +116,41 @@ systemd.log_level=debug systemd.log_target=kmsg printk.devkmsg=on"
   #   - The vmlinux suffix, if applicable.
   # Outputs:
   #   Entry addition progress.
-  function add_entry_decide_configuration
-  {
+  function add_entry_decide_configuration() {
     local -r VMLINUZ_PATH=/vmlinuz-linux${2}
     local -r KERNEL_INITRD_STR=initrd=initramfs-linux${2}.img
     local -r FALLBACK_KERNEL_INITRD_STR=initrd=initramfs-linux${2}.img
 
     case $TYPE in
-      *debug*)
-        info "Updating $1 debug UEFI boot entry ($VMLINUZ_PATH)."
-        add_entry "$1 (Debug)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
+    *debug*)
+      info "Updating $1 debug UEFI boot entry ($VMLINUZ_PATH)."
+      add_entry "$1 (Debug)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
 $CMDLINE_STR $CMDLINE_DEBUG_STR"
-        ;;
-      *rescue-fallback*)
-        info "Updating $1 fallback rescue UEFI boot entry ($VMLINUZ_PATH)."
-        add_entry "$1 (Fallback Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR \
+      ;;
+    *rescue-fallback*)
+      info "Updating $1 fallback rescue UEFI boot entry ($VMLINUZ_PATH)."
+      add_entry "$1 (Fallback Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR \
 $FALLBACK_KERNEL_INITRD_STR $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR"
-        ;;
-      *rescue*)
-        info "Updating $1 rescue UEFI boot entry ($VMLINUZ_PATH)."
-        add_entry "$1 (Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
+      ;;
+    *rescue*)
+      info "Updating $1 rescue UEFI boot entry ($VMLINUZ_PATH)."
+      add_entry "$1 (Rescue)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
 $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR"
-        ;;
-      *quiet*)
-        info "Updating $1 quiet UEFI boot entry ($VMLINUZ_PATH)."
-        add_entry "$1 (Silent)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
+      ;;
+    *quiet*)
+      info "Updating $1 quiet UEFI boot entry ($VMLINUZ_PATH)."
+      add_entry "$1 (Silent)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR \
 $CMDLINE_STR $CMDLINE_SILENT_STR"
-        ;;
-      *)
-        info "Updating $1 normal UEFI boot entry ($VMLINUZ_PATH)."
-        add_entry "$1 (Normal)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR $CMDLINE_STR"
-        ;;
+      ;;
+    *)
+      info "Updating $1 normal UEFI boot entry ($VMLINUZ_PATH)."
+      add_entry "$1 (Normal)" "$VMLINUZ_PATH" "$MICROCODE_INITRD_STR $KERNEL_INITRD_STR $CMDLINE_STR"
+      ;;
     esac
   }
 
   local -r VMLINUZ_TKG_PATH=$(find /boot -mindepth 1 -maxdepth 1 -type f \
--name 'vmlinuz-linux-tkg*' -print -quit)
+    -name 'vmlinuz-linux-tkg*' -print -quit)
   # Assign a vmlinux suffix to the different kernels.
   local -rA KERNELS=(
     ["Vanilla"]=""

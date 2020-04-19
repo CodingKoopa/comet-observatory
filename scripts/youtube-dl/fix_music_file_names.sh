@@ -4,16 +4,15 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=../bash/common.sh
+# shellcheck source=scripts/bash/common.sh
 source "$COMET_OBSERVATORY/scripts/bash/common.sh"
-# shellcheck source=../bash/config.sh
+# shellcheck source=scripts/bash/config.sh
 source "$COMET_OBSERVATORY/scripts/bash/config.sh"
 
 # Fixes youtube-dl default filenames.
 # Outputs:
 #   - Fixing progress.
-function fix_music_file_names()
-{
+function fix_music_file_names() {
   info "Checking music file names for Youtube video IDs."
   # TODO: soundcloud downloads
   find "$MUSIC_DIRECTORY" -type f -name '*.mp3' -o -name '*.wav' | while read -r FILE_PATH; do
@@ -29,7 +28,7 @@ function fix_music_file_names()
     # $                   The end of the string.
     if [[ $FILE_NAME =~ -[-|0-9|A-Z|_|a-z]{11}\.(mp3|wav)$ ]]; then
       # The 16 here is made up of: 1 char dash + 11 char video ID + 3 char extention + 1 char dot.
-      local -r NEW_FILE_NAME=${FILE_NAME:0:${#FILE_NAME} - 16}${FILE_NAME: -4}
+      local -r NEW_FILE_NAME=${FILE_NAME:0:${#FILE_NAME}-16}${FILE_NAME: -4}
       info "$FILE_NAME -> $NEW_FILE_NAME"
       mv "$FILE_DIRECTORY/$FILE_NAME" "$FILE_DIRECTORY/$NEW_FILE_NAME"
     fi
