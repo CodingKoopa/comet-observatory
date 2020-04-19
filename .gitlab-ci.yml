@@ -26,6 +26,8 @@ analyze:shellcheck:
   stage: analyze
   # Use the latest stable shellchecl Docker image.
   image: koalaman/shellcheck-alpine:stable
+  variables:
+    COMET_OBSERVATORY: "."
   script:
     # Check that all Bash code is proper.
     - shellcheck scripts/**/*.sh bin/**/*.sh
