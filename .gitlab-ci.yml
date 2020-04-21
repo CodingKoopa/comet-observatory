@@ -3,7 +3,7 @@ stages:
   # Create a static code analysis stage.
   - analyze
 
-analyze:ec:
+analysis:ec:
   # Add to the analysis stage.
   stage: analyze
   # Use the latest ec Docker image.
@@ -12,7 +12,7 @@ analyze:ec:
     # Check that all text complies with the EditorConfig file.
     - ec
 
-analyze:shfmt:
+analysis:shfmt:
   # Add to the analysis stage.
   stage: analyze
   # Use the latest Alpine Linux shfmt Docker image.
@@ -21,7 +21,7 @@ analyze:shfmt:
     # Check that all Bash code has proper formatting.
     - shfmt -d .
 
-analyze:shellcheck:
+analysis:shellcheck:
   # Add to the analysis stage.
   stage: analyze
   # Use the latest stable shellchecl Docker image.
