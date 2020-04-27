@@ -7,22 +7,39 @@
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
 
-# Copies a file, checking to see if it's already updated or not.
+# Copies a file, checking to see if it's already updated or not. Supports dry run.
 # Arguments:
-#   - The source file path.
-#   - The destination file paths.
-# Outputs:
-#   - Copy feedback.
-function safe_cp() {
+# - The source file path.
+# - The destination file paths.
+# - The owner to set the destination to (optional).
+# - The permission to set the destination to (optional).
+#  set the destination to.
+# Returns:
+#   None.
+safe_cp() {
   local -r SOURCE=$1
   local -r DESTINATION=$2
+  local -r OWNER=$3
+  local -r PERMISSION=$4
 
   if cmp "$SOURCE" "$DESTINATION" >/dev/null 2>&1; then
-    verbose "$DESTINATION is already copied."
+    info "$DESTINATION is already copied."
   else
     info "Copying file $SOURCE => $DESTINATION."
     if [[ $DRY_RUN = false ]]; then
-      install -D "$SOURCE" "$DESTINATION"
+      cp "$SOURCE" "$DESTINATION"
+    fi
+  fi
+  if [[ -n $OWNER ]]; then
+    info "Setting owner of $DESTINATION to $OWNER."
+    if [[ $DRY_RUN = false ]]; then
+      chown "$OWNER" "$DESTINATION"
+    fi
+  fi
+  if [[ -n $PERMISSION ]]; then
+    info "Setting permissions of $DESTINATION to $PERMISSION."
+    if [[ $DRY_RUN = false ]]; then
+      chmod "$PERMISSION" "$DESTINATION"
     fi
   fi
 }
