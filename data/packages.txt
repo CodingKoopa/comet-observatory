@@ -228,7 +228,7 @@ graphicsmagick
 python-eyed3
 # Clementine, for playing audio.
 clementine
-# Audacity, for recording and editing audio. 
+# Audacity, for recording and editing audio.
 audacity
 # youtube-dl, for downloading video and audio.
 youtube-dl
