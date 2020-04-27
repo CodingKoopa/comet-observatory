@@ -8,6 +8,8 @@
 source "$CO"/scripts/bash/common.sh
 
 # Copies a file, checking to see if it's already updated or not. Supports dry run.
+# Globals Read:
+#   - DRY_RUN: See setup().
 # Arguments:
 # - The source file path.
 # - The destination file paths.
