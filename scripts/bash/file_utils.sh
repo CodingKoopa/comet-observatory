@@ -45,9 +45,11 @@ safe_cp() {
 }
 
 # Links one file to another and resolves conflicts.
+# Globals Read:
+#   - DRY_RUN: See setup().
 # Arguments:
-# - The target file path.
-# - The link file path.
+#   - The target file path.
+#   - The link file path.
 # Outputs:
 #   - Link feedback.
 function safe_ln() {
