@@ -300,8 +300,6 @@ gdb
 ccache
 # PHP, for PHP software
 php
-# ShellCheck, for Bash linting.
-shellcheck
 # namcap, for PKGBUILD linting.
 namcap
 # Cmake, for building.
@@ -409,6 +407,8 @@ lucas-simpsons-hit-and-run-mod-launcher
 
 # Programming
 
+# Statically linked ShellCheck, for Bash linting.
+shellcheck-static
 # JDK 12 w/ OpenJ9, for developing Java applications.
 jdk12-openj9-bin
 # Android Studio, for developing Android applications.
