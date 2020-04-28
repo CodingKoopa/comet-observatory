@@ -29,7 +29,7 @@ safe_cp() {
   else
     info "Copying file $SOURCE => $DESTINATION."
     if [[ $DRY_RUN = false ]]; then
-      mkdir -p "$DESTINATION"
+      mkdir -p "$(dirname "$DESTINATION")"
       cp "$SOURCE" "$DESTINATION"
     fi
   fi
