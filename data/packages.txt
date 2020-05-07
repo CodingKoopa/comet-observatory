@@ -61,6 +61,8 @@ cups
 pacman-contrib
 # Reflector, for updating pacman mirros.
 reflector
+# pkgstats, for contributing to package statistics.
+pkgstats
 # PIP, for managing Python packages.
 python-pip
 # PIP, for managing Python 2 packages.

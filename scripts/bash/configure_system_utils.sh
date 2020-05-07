@@ -97,6 +97,11 @@ function enable_system_units() {
       fi
     fi
   done
+  # pkgstats doesn't seem to like being enabled.
+  if [[ $DRY_RUN = false ]]; then
+    # Enable pkgstats.
+    systemctl -q start "pkgstats.timer"
+  fi
 }
 
 # Applies udev rules.
