@@ -136,7 +136,7 @@ function launch_qemu() {
   # Use the OVMF binary as the bios file.
   qemu_opts+=" -bios /usr/share/ovmf/x64/OVMF.fd"
   # Add a virtual filesystem for a directory shared with the host.
-  qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Library/Virtualization/Share},\
+  qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Terrace/Virtualization/Share},\
 mount_tag=share,security_model=none"
 
   # USB Options
@@ -223,13 +223,13 @@ function qemu_reeves() {
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
   if [[ $ACTION = "run" || $ACTION = "install" ]]; then
-    local image="$HOME"/Library/Virtualization/"$IMAGE_NAME".img
+    local image="$HOME"/Terrace/Virtualization/"$IMAGE_NAME".img
 
     if [[ ! -f "$image" ]]; then
       # Make the file array empty if there aren't matches.
       shopt -s nullglob
       # Make an array of QEMU images.
-      local -ra IMAGES=("$HOME"/Library/Virtualization/*.img)
+      local -ra IMAGES=("$HOME"/Terrace/Virtualization/*.img)
 
       image=$(zenity --list \
         --width 1000 \

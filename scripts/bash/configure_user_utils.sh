@@ -52,10 +52,10 @@ function link_directories() {
   declare -rA LINKED_PATHS=(
     # Storage
 
-    # Link downloads from the library to home directory.
-    ["$INSTALL_HOME/Library/Downloads"]="$INSTALL_HOME/Downloads"
-    # Link music from the library to home directory.
-    ["$INSTALL_HOME/Library/Music"]="$INSTALL_HOME/Music"
+    # Link downloads from the terrace to home directory.
+    ["$INSTALL_HOME/Terrace/Downloads"]="$INSTALL_HOME/Downloads"
+    # Link music from the terrace to home directory.
+    ["$INSTALL_HOME/Terrace/Music"]="$INSTALL_HOME/Music"
 
     # Shell
 

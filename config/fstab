@@ -19,10 +19,6 @@ PARTUUID=14ef1c12-bb79-4ed7-358b-97b9321b97ed /home/kyle/Terrace  ntfs  defaults
 # See [2].
 PARTUUID=1cde3ab9-c31e-47de-8c32-5172d1846b35 /home/kyle/Fountain ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount  0 2
 
-# Storage partition on the HDD.
-# See [2].
-PARTUUID=c4c30dc0-e0cd-4a66-a04a-5238b01c7824 /home/kyle/Library  ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount  0 2
-
 # Swap Devices
 
 # Swap partition on the SSD.
