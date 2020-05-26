@@ -134,7 +134,7 @@ function launch_qemu() {
   # Use a drive ISO as a CD-ROM image, if specified. This is meant for an image with virtio drivers.
   qemu_opts+=${DRIVER_IMG+" -drive file=$DRIVER_IMG,index=2,media=cdrom"}
   # Use the OVMF binary as the bios file.
-  qemu_opts+=" -bios /usr/share/ovmf/x64/OVMF.fd"
+  qemu_opts+=" -bios /usr/share/edk2-ovmf/x64/OVMF.fd"
   # Add a virtual filesystem for a directory shared with the host.
   qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Terrace/Virtualization/Share},\
 mount_tag=share,security_model=none"
