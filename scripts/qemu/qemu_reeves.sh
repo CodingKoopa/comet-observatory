@@ -264,5 +264,7 @@ function qemu_reeves() {
   elif [[ "$ACTION" = "uefi" ]]; then
     info "Booting into Tianocore UEFI."
     launch_qemu none "$VIDEO_DRIVER" "$VIEWER"
+  else
+    print_help
   fi
 }
