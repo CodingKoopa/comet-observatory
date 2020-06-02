@@ -48,7 +48,6 @@ function print_header() {
 #   - The user that is being installed for, and owns the Comet Observatory.
 function export_constants() {
   INSTALL_HOME=$(eval echo "~$INSTALL_USER")
-  readonly INSTALL_HOME
   export INSTALL_HOME
 
   export CO="$INSTALL_HOME/Documents/Projects/Bash/comet-observatory"
