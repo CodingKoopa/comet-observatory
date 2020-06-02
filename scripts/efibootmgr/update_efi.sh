@@ -149,13 +149,20 @@ $CMDLINE_STR $CMDLINE_SILENT_STR"
     esac
   }
 
-  local -r VMLINUZ_TKG_PATH=$(find /boot -mindepth 1 -maxdepth 1 -type f \
-    -regex '/boot/vmlinuz-linux[0-9]+-tkg.*' -print -quit)
   # Assign a vmlinux suffix to the different kernels.
-  local -rA KERNELS=(
-    ["Vanilla"]=""
-    ["TkG"]="${VMLINUZ_TKG_PATH#/boot/vmlinuz-linux}"
+  local -A kernel_suffixes=(
+    ["Vanilla $(pacman -Q linux | cut -d" " -f2 | cut -d. -f1-2)"]=""
   )
+  # Iterate over the TkG kernel initramfs images, in order from oldest to most recent.
+  # shellcheck disable=2044
+  for TKG_VMLINUZ_PATH in $(find /boot -mindepth 1 -maxdepth 1 -type f \
+    -regex '/boot/vmlinuz-linux[0-9]+-tkg.*' | sort -n); do
+    tkg_version=$(echo "$TKG_VMLINUZ_PATH" | grep -oh "[0-9].")
+    current_tkg_name="TkG $(echo "$tkg_version" | cut -c 1).$(echo "$tkg_version" | cut -c 2-)"
+    kernel_suffixes[$current_tkg_name]=${TKG_VMLINUZ_PATH#/boot/vmlinuz-linux}
+  done
+  # Make note of the latest TkG kernel name.
+  local -r latest_tkg_name=$current_tkg_name
 
   local -ra CONFIGURATIONS=(
     "Debug"
@@ -166,18 +173,18 @@ $CMDLINE_STR $CMDLINE_SILENT_STR"
   )
 
   info "Scanning existing boot entries."
-  for KERNEL in "${!KERNELS[@]}"; do
+  for KERNEL in "${!kernel_suffixes[@]}"; do
     for CONFIGURATION in "${CONFIGURATIONS[@]}"; do
       remove_entry_if_existing "Arch Linux ($KERNEL) ($CONFIGURATION)"
     done
   done
 
   info "Adding new boot entries."
-  for KERNEL in "${!KERNELS[@]}"; do
-    add_entry_decide_configuration "Arch Linux ($KERNEL)" "${KERNELS[${KERNEL}]}"
+  for KERNEL in "${!kernel_suffixes[@]}"; do
+    add_entry_decide_configuration "Arch Linux ($KERNEL)" "${kernel_suffixes[${KERNEL}]}"
   done
 
-  local -r DEFAULT_ENTRY="Arch Linux (TkG) (Normal)"
+  local -r DEFAULT_ENTRY="Arch Linux ($latest_tkg_name) (Normal)"
   local -r DEFAULT_ENTRY_NUM=$(find_bootnum "$DEFAULT_ENTRY")
   if [[ -n $DEFAULT_ENTRY_NUM ]]; then
     info "Setting $DEFAULT_ENTRY as default entry."
