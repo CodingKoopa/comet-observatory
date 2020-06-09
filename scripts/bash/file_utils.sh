@@ -78,12 +78,12 @@ function safe_ln() {
 
     # Handle conflicts with preexisting files or directories.
     if [[ -f "$link_name" ]] || [[ -d "$link_name" ]]; then
-      local -r COMMON_STR="Path $link_name exists"
+      local -r common_str="Path $link_name exists"
       if [[ -L "$link_name" ]]; then
-        info "$COMMON_STR, is a link. Overwriting."
+        info "$common_str, is a link. Overwriting."
       else
         local -r link_name_old="$link_name.old"
-        info ", isn't a link. Moving to $link_name_old."
+        info "$common_str, isn't a link. Moving to $link_name_old."
         if [[ $DRY_RUN = false ]]; then
           mv "$link_name" "$link_name_old"
         fi
