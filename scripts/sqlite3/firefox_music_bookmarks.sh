@@ -4,12 +4,7 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=scripts/bash/common.sh
-source "$CO"/scripts/bash/common.sh
-# shellcheck source=scripts/bash/config.template.sh
-source "$CO"/scripts/bash/config.sh
-
-declare -r FIREFOX_PLACES_DATABASE="$FIREFOX_USER_DIRECTORY"/places.sqlite
+declare -r FIREFOX_PLACES_DATABASE="$HOME"/.mozilla/firefox/default/places.sqlite
 
 # Gets the ID of a Firefox folder.
 # Arguments:
@@ -34,6 +29,12 @@ function get_firefox_folder_id() {
 function get_bookmark_urls() {
   local -r folder_name=$1
 
+  if [[ ! -f $FIREFOX_PLACES_DATABASE ]]; then
+    echo "Firefox bookmark database \"$FIREFOX_PLACES_DATABASE\" not found. Please symlink your \
+Firefox profile to \"$(dirname "$FIREFOX_PLACES_DATABASE")\" if necessary."
+    return 1
+  fi
+
   local -r music_id=$(get_firefox_folder_id "$folder_name")
   # Get a list of the URL IDs in the music folder.
   local -r url_ids=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT fk FROM 'moz_bookmarks' WHERE parent=$music_id")
@@ -56,6 +57,12 @@ function get_bookmark_urls() {
 function remove_firefox_bookmark() {
   local -r folder=$1
   local -r url=$2
+
+  if [[ ! -f $FIREFOX_PLACES_DATABASE ]]; then
+    echo "Firefox bookmark database \"$FIREFOX_PLACES_DATABASE\" not found. Please symlink your \
+Firefox profile to \"$(dirname "$FIREFOX_PLACES_DATABASE")\" if necessary."
+    return 1
+  fi
 
   info "Removing bookmark \"$URL\"."
   local -r url_id=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT id FROM 'moz_places' WHERE url='$url'")

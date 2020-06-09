@@ -6,14 +6,20 @@
 
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
-# shellcheck source=scripts/bash/config.template.sh
-source "$CO"/scripts/bash/config.sh
+
+declare -r MUSIC_DIRECTORY="$HOME"/Music
 
 # Fixes youtube-dl default filenames.
 # Outputs:
 #   - Fixing progress.
 function fix_music_file_names() {
   info "Checking music file names for Youtube video IDs."
+
+  if [[ ! -d "$MUSIC_DIRECTORY" ]]; then
+    error "Music directory \"$MUSIC_DIRECTORY\" not found."
+    return 1
+  fi
+
   # TODO: soundcloud downloads
   find "$MUSIC_DIRECTORY" -type f -name '*.mp3' -o -name '*.wav' | while read -r FILE_PATH; do
     local -r file_name=$(basename "$FILE_PATH")

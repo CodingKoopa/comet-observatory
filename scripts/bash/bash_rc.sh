@@ -25,6 +25,19 @@ function export-env() {
   set +o allexport
 }
 
+# Downloads an MP4.
+# Arguments:
+#   - The URL.
+#   - The name of the video.
+function d() {
+  local -r MP4="$HOME"/Videos/MP4s/"$2".mp4
+  if [ -f "$MP4" ]; then
+    echo "already exists lol"
+  else
+    youtube-dl "$1" -f mp4 -o "$MP4"
+  fi
+}
+
 alias lss='/usr/bin/ls --color=auto'
 # Replace ls with LSDeluxe.
 alias ls='lsd'
@@ -58,6 +71,9 @@ also feel that to live is to suffer."
   "The biggest distinguishing feature of humans is how rich and varied their emotions are. These \
 emotions are the reason they thrive and also the reason they fight."
   "You should realize that you're only able to survive thanks to the help of others."
+  # The Great Gatsby
+  "It is invariably saddening to look through new eyes at things upon which you have ex-pended \
+your own powers of adjustment."
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 

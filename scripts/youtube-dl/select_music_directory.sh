@@ -6,8 +6,8 @@
 
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
-# shellcheck source=scripts/bash/config.template.sh
-source "$CO"/scripts/bash/config.sh
+
+declare -r MUSIC_DIRECTORY="$HOME"/Music
 
 # Makes sure a field isn't empty
 # Arguments:
@@ -29,11 +29,8 @@ function validate_input() {
 # Outputs:
 #   - Selection progress.
 function select_music_directory() {
-  if [[ -z "$MUSIC_DIRECTORY" ]]; then
-    echo "\"MUSIC_DIRECTORY\" variable not set."
-    return 1
-  elif [[ ! -d "$MUSIC_DIRECTORY" ]]; then
-    echo "Music directory \"$MUSIC_DIRECTORY\" not found."
+  if [[ ! -d "$MUSIC_DIRECTORY" ]]; then
+    error "Music directory \"$MUSIC_DIRECTORY\" not found."
     return 1
   fi
 

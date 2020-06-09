@@ -74,8 +74,6 @@ function link_directories() {
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
     # Link X Compose file from CO to home directory.
     ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
-    # Link CO configuration from documents to CO.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Dotfiles Configuration.sh"]="$CO/scripts/bash/config.sh"
     # Link TKG configuration from CO to user configuration.
     ["$CO/config/tkg.cfg"]="$INSTALL_HOME/.config/frogminer/linux57-tkg.cfg"
 
