@@ -16,23 +16,6 @@ source "$CO"/scripts/bash/configure_system_utils.sh
 # shellcheck source=scripts/bash/configure_user_utils.sh
 source "$CO"/scripts/bash/configure_user_utils.sh
 
-# Prints a header.
-# Arguments:
-#   - The name of the script.
-# Outputs:
-#   - The Luma ASCII art, and repository info.
-function print_header() {
-  local -r script=$1
-
-  # The comet observatory variable has not yet been checked.
-  if [[ $DEBUG != true && -d $CO ]]; then
-    cat "$CO/data/luma.txt" || true
-  fi
-  info "Comet Observatory System $script Script"
-  info "https://gitlab.com/CodingKoopa/comet-observatory"
-  debug "Running in debug mode."
-}
-
 # Exports certain constant variables.
 # Globals Exported:
 #   - INSTALL_HOME: Location of the home directory of the current install user.
