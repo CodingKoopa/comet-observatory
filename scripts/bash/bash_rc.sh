@@ -74,6 +74,12 @@ emotions are the reason they thrive and also the reason they fight."
   # The Great Gatsby
   "It is invariably saddening to look through new eyes at things upon which you have ex-pended \
 your own powers of adjustment."
+  "Its vanished trees, the trees that had made way for Gatsby’s house, had once pandered in \
+whispers to the last and greatest of all human dreams."
+  "For a transitory enchanted moment man must have held his breath in the presence of this \
+continent, compelled into an aesthetic contemplation he neither understood nor desired, face to \
+face for the last time in history with something commensurate to his capacity for wonder."
+  "So we beat on, boats against the current, borne back ceaselessly into the past."
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
