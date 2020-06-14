@@ -13,11 +13,4 @@ export CO=/home/kyle/Documents/Projects/Bash/comet-observatory
 
 # shellcheck source=scripts/efibootmgr/update_efi.sh
 source "$CO"/scripts/efibootmgr/update_efi.sh
-
-set -e
-declare WINDOWS_ENTRY_NUM
-WINDOWS_ENTRY_NUM="$(find_bootnum "Windows Boot Manager")"
-if [[ -n $WINDOWS_ENTRY_NUM ]]; then
-  echo "Setting Windows Boot Manager as the next boot."
-  efibootmgr -q -n "$WINDOWS_ENTRY_NUM"
-fi
+win_boot

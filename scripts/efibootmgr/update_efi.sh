@@ -192,3 +192,16 @@ $CMDLINE_STR $CMDLINE_SILENT_STR"
     efibootmgr -q -o "$default_entry_num"
   fi
 }
+
+# Sets the UEFI next boot parameter to that of the Windows Boot Manager, and reboots.
+function win_boot() {
+  info "Rebooting into Windows."
+  local -r WINDOWS_ENTRY_NAME="Windows Boot Manager"
+  local -r windows_entry_num="$(find_bootnum "$WINDOWS_ENTRY_NAME")"
+  if [[ -n $windows_entry_num ]]; then
+    efibootmgr -q -n "$windows_entry_num"
+    systemctl reboot
+  else
+    error "Boot entry \"$WINDOWS_ENTRY_NAME\" not found."
+  fi
+}
