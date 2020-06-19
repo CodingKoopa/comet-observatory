@@ -356,8 +356,6 @@ okteta
 
 # modprobed-db, for storing a list of kernel modules used.
 modprobed-db
-# Etcher, for flashing drives.
-etcher-bin
 # xmousepasteblock, for preventing accidental mouse button press pastes.
 xmousepasteblock-git
 # Antimicro, for remapping inputs.
