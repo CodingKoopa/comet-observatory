@@ -91,6 +91,8 @@ xorg-xinit
 plasma-desktop
 # Plasma Addons, for improving Plasma Shell.
 kdeplasma-addons
+# khtokeys, for custom keyboard shortcuts.
+khotkeys
 # Plasma Browser Integration, for integrating Firefox with Plasma.
 plasma-browser-integration
 # KDE GTK config, for customizing GTK applications.
