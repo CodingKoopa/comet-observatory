@@ -45,6 +45,7 @@ function create_directories() {
 # Globals Read:
 #   - DRY_RUN: See setup().
 #   - INSTALL_HOME: See export_constants().
+#   - INSTALL_USER: See setup_system().
 #   - CO: See export_constants().
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
 #   - SYNCED_GTK3_DIR: See export_constants().
@@ -213,7 +214,7 @@ function link_directories() {
 #   - Copy feedback.
 function configure_user_units() {
   for service in "$CO"/config/systemd-user-units/*.service; do
-    safe_cp "$service" "$INSTALL_HOME"/.config/systemd/user/"$(basename "$service")"
+    safe_cp "$service" "$INSTALL_HOME"/.config/systemd/user/"$(basename "$service")" "$INSTALL_USER":"$INSTALL_USER" 600
   done
 }
 

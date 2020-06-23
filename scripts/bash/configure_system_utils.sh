@@ -97,7 +97,7 @@ function enable_system_units() {
 #   - Copy feedback.
 function configure_udev_rules() {
   for rule in "$CO"/config/udev/*.rules; do
-    safe_cp "$rule" /etc/udev/rules.d/"$(basename "$rule")"
+    safe_cp "$rule" /etc/udev/rules.d/"$(basename "$rule")" root:root 600
   done
 }
 
