@@ -166,6 +166,8 @@ function link_directories() {
 
     # Gaming
 
+    # Link GameMode configuration from CO to user configuration.
+    ["$CO/config/gamemode.ini"]="$INSTALL_HOME/.config/gamemode.ini"
     # Link MultiMC data from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Data/MultiMC"]="$INSTALL_HOME/.local/share/multimc"
     # Link Citra configuration from documents to user configuration.

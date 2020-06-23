@@ -257,6 +257,9 @@ samba
 
 # Gaming
 
+# GameMode, for tuning performance.
+gamemode
+lib32-gamemode
 # Steam, for managing games.
 steam
 # Steam native runtime, for making games work.
