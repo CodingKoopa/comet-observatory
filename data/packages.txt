@@ -78,8 +78,6 @@ lsd
 neofetch
 # efibootmgr, for managing the UEFI.
 efibootmgr
-# hdparm, for managing HDDs.
-hdparm
 # KDE Partition Manager, for managing disks.
 partitionmanager
 # bluez, for the Bluetooth stack.
