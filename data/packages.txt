@@ -183,10 +183,6 @@ figlet
 lolcat
 # KeepassXC, for managing passwords.
 keepassxc
-# Kalgebra, for doing algebra.
-kalgebra
-# evtest, for testing evdev inputs.
-evtest
 # f3, for error checking drives.
 f3
 # CDEmu daemon, for emulating drives.
