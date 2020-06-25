@@ -21,9 +21,9 @@ function fix_music_file_names() {
   fi
 
   # TODO: soundcloud downloads
-  find "$MUSIC_DIRECTORY" -type f -name '*.mp3' -o -name '*.wav' | while read -r FILE_PATH; do
-    local -r file_name=$(basename "$FILE_PATH")
-    local -r file_directory=$(dirname "$FILE_PATH")
+  find "$MUSIC_DIRECTORY/" -type f -name '*.mp3' -o -name '*.wav' | while read -r file_path; do
+    local -r file_name=$(basename "$file_path")
+    local -r file_directory=$(dirname "$file_path")
     # -[-|0-9|A-Z|_|a-z]{11}\.(mp3|wav)$ is the regex used for detecting music downloaded with the
     # default youtube-dl settings, with the video ID in its name.
     # -                   The dash yotube-dl inserts to divide the video title from the video ID.
