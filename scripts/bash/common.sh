@@ -101,6 +101,12 @@ function config_str() {
   export "$variable_name"="$answer"
 }
 
+# Presents a "pause" to the user.
+function pause() {
+  read -n1 -r -p "[${CYAN}Pause${NORMAL}  ] Press enter to continue.
+"
+}
+
 # Prints a debug message.
 # Globals Read:
 #   - (Optional) DEBUG: Whether to print debug info, out of true or false. Default false.
