@@ -6,8 +6,9 @@
 
 # Color Variables
 
-NORMAL=$(tput sgr0)
-export NORMAL
+# TODO: this should be RESET
+RESET=$(tput sgr0)
+export RESET
 BOLD=$(tput bold)
 export BOLD
 WHITE=$(tput setaf 7)
@@ -31,11 +32,11 @@ export RED
 # Outputs:
 #   - The section message.
 function info_section() {
-  printf "[${WHITE}Section${NORMAL}] ${BOLD}%s${NORMAL}\n" "$*"
+  printf "[${WHITE}Section${RESET}] ${BOLD}%s${RESET}\n" "$*"
 }
 
 function info_subsect() {
-  printf "[${MAGENTA}SubSect${NORMAL}] ${MAGENTA}${BOLD}%s${NORMAL}\n" "$*"
+  printf "[${MAGENTA}SubSect${RESET}] ${MAGENTA}${BOLD}%s${RESET}\n" "$*"
 }
 
 # Prints an info message.
@@ -44,7 +45,7 @@ function info_subsect() {
 # Outputs:
 #   - The info message.
 function info() {
-  printf "[${GREEN}Info${NORMAL}   ] %s\n" "$*"
+  printf "[${GREEN}Info${RESET}   ] %s\n" "$*"
 }
 
 # Prompts for a boolean configuration value.
@@ -61,7 +62,7 @@ function config_bool() {
   local -r variable_name=$2
   local answer=$3
 
-  local message="[${CYAN}Config${NORMAL} ] $question"
+  local message="[${CYAN}Config${RESET} ] $question"
 
   if [[ -n "$answer" ]]; then
     printf "%s %s\n" "$message" "$answer"
@@ -90,7 +91,7 @@ function config_str() {
   local -r variable_name=$2
   local answer=$3
 
-  local message="[${CYAN}Config${NORMAL} ] $question"
+  local message="[${CYAN}Config${RESET} ] $question"
 
   if [[ -n "$answer" ]]; then
     printf "%s %s\n" "$message" "$answer"
@@ -103,7 +104,7 @@ function config_str() {
 
 # Presents a "pause" to the user.
 function pause() {
-  read -n1 -r -p "[${CYAN}Pause${NORMAL}  ] Press enter to continue.
+  read -n1 -r -p "[${CYAN}Pause${RESET}  ] Press enter to continue.
 "
 }
 
@@ -116,7 +117,7 @@ function pause() {
 #   - The debug message.
 function debug() {
   if [[ $DEBUG = true ]]; then
-    printf "[${BLUE}Debug${NORMAL}  ] %s\n" "$*"
+    printf "[${BLUE}Debug${RESET}  ] %s\n" "$*"
   fi
 }
 
@@ -129,7 +130,7 @@ function debug() {
 #   - The verbose message.
 function verbose() {
   if [[ $DEBUG = true || $VERBOSE = true ]]; then
-    printf "[${MAGENTA}Verbose${NORMAL}] %s\n" "$*"
+    printf "[${MAGENTA}Verbose${RESET}] %s\n" "$*"
   fi
 }
 
@@ -139,7 +140,7 @@ function verbose() {
 # Outputs:
 #   - The error message.
 function error() {
-  printf "[${RED}Error${NORMAL}  ] %s\n" "$*"
+  printf "[${RED}Error${RESET}  ] %s\n" "$*"
 }
 
 # Other Utilities
