@@ -34,6 +34,10 @@ function info_section() {
   printf "[${WHITE}Section${NORMAL}] ${BOLD}%s${NORMAL}\n" "$*"
 }
 
+function info_subsect() {
+  printf "[${MAGENTA}SubSect${NORMAL}] ${MAGENTA}${BOLD}%s${NORMAL}\n" "$*"
+}
+
 # Prints an info message.
 # Arguments:
 #   - Info to be printed.
