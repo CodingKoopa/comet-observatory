@@ -46,6 +46,9 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+alias g=git
+alias p=phoronix-test-suite
+
 # Customize the prompt.
 
 # This can't be readonly because this script can be ran more than once in the same environment.
