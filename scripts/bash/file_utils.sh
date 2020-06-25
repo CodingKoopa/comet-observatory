@@ -121,7 +121,8 @@ function safe_ln() {
 function safe_cd() {
   d=$1
   debug "$(pwd) -> $1"
-  if ! cd "$d"; then
+  # Supress the path being printed, in the case of "cd -".
+  if ! cd "$d" >/dev/null; then
     error "Unable to enter directory \"$d\"."
     exit 1
   fi
