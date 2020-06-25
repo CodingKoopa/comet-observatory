@@ -40,6 +40,8 @@
   // Use Fira
   "editor.fontFamily": "'Fira Code', 'Noto Sans Mono'",
   "editor.fontLigatures": true,
+  // Don't show recommendations for extension installs.
+  "extensions.ignoreRecommendations": true,
   // Periodically fetch remote Git repos.
   "git.autofetch": true,
   // Don't confirm before synchronizing Git repositories.
