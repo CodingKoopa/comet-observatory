@@ -191,8 +191,6 @@ sshfs
 qemu
 # virt-viewer, for viewing virtual machines.
 virt-viewer
-# Wine, for running Windows programs.
-wine-staging
 # Winetricks, for managing Wine.
 winetricks
 
