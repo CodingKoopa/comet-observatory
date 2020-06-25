@@ -116,19 +116,3 @@ function configure_udev_rules() {
     safe_cp "$rule" /etc/udev/rules.d/"$(basename "$rule")" root:root 600
   done
 }
-
-# Configures Pacman.
-# Globals Read:
-#   - DRY_RUN: See setup().
-# Outputs:
-#   - Copy feedback.
-function configure_pacman() {
-  safe_cp "$CO"/config/pacman.conf /etc/pacman.conf
-  safe_cp "$CO"/config/makepkg.conf /etc/makepkg.conf
-
-  if [[ $DRY_RUN = false ]]; then
-    info "Importing Chaotic AUR keys into pacman."
-    pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB >/dev/null
-    pacman-key --lsign-key 3056513887B78AEB >/dev/null
-  fi
-}
