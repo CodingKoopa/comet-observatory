@@ -92,7 +92,8 @@ function update() {
     subsect "Updating vkd3d."
     update_repo vkd3d-git customization.cfg
     subsect "Building TkG Proton."
-    update_repo wine-tkg-git/proton-tkg proton-tkg.cfg proton-tkg-profiles/advanced-customization.cfg
+    update_repo wine-tkg-git/proton-tkg proton-tkg.cfg \
+      proton-tkg-profiles/advanced-customization.cfg
 
     section "Building Custom Packages"
 

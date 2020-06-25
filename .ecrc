@@ -1,5 +1,7 @@
 {
   "exclude": [
+    "scripts/bash/agnoster_bash.sh"
+    "scripts/bash/configure_user_utils.sh"
     "config/gpg.conf",
     "config/pacman.conf",
     "config/httpd.conf",

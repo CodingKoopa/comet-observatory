@@ -137,7 +137,8 @@ function select_music_directory() {
       local -r category_name_valid=$(validate_input "$category_name")
       local -r parent_category_name=$(echo "$new_category_input" | cut -d'|' -f2)
       local -r parent_category_name_valid=$(validate_input "$parent_category_name")
-      debug "Category name: \"$category_name\"$category_name_valid. Parent category name: \"$parent_category_name\""
+      debug "Category name: \"$category_name\"$category_name_valid. Parent category name: \
+\"$parent_category_name\""
       if [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 1 ]]; then
         # debug "Category and parent exist."
         local -r category_path=$MUSIC_DIRECTORY$parent_category_name/$category_name

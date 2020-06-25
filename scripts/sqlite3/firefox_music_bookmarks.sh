@@ -17,8 +17,8 @@ function get_firefox_folder_id() {
   # Grab the ID of the first first music folder.
   # Disable ShellCheck error for echoing commands because here it's necessary, to return the value.
   # shellcheck disable=SC2005
-  echo "$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT id FROM 'moz_bookmarks' WHERE title='$folder_name' \
-  AND type=2 LIMIT 0,1")"
+  echo "$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT id FROM 'moz_bookmarks' \
+WHERE title='$folder_name' AND type=2 LIMIT 0,1")"
 }
 
 # Concatenates all bookmarks in the a folder of the Firefox places SQLite database.
@@ -37,7 +37,8 @@ Firefox profile to \"$(dirname "$FIREFOX_PLACES_DATABASE")\" if necessary."
 
   local -r music_id=$(get_firefox_folder_id "$folder_name")
   # Get a list of the URL IDs in the music folder.
-  local -r url_ids=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT fk FROM 'moz_bookmarks' WHERE parent=$music_id")
+  local -r url_ids=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT fk FROM 'moz_bookmarks' \
+WHERE parent=$music_id")
   local -a list=""
   for url_id in $url_ids; do
     # Lookup the URL from the current ID, and append it to the list.
@@ -65,8 +66,10 @@ Firefox profile to \"$(dirname "$FIREFOX_PLACES_DATABASE")\" if necessary."
   fi
 
   info "Removing bookmark \"$URL\"."
-  local -r url_id=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT id FROM 'moz_places' WHERE url='$url'")
+  local -r url_id=$(sqlite3 "$FIREFOX_PLACES_DATABASE" "SELECT id FROM 'moz_places' \
+WHERE url='$url'")
   local -r music_id=$(get_firefox_folder_id "$folder")
   debug "URL ID: $url_id. Music folder ID: $music_id"
-  sqlite3 "$FIREFOX_PLACES_DATABASE" "DELETE FROM 'moz_bookmarks' WHERE fk=$url_id AND parent='$music_id'"
+  sqlite3 "$FIREFOX_PLACES_DATABASE" "DELETE FROM 'moz_bookmarks' WHERE fk=$url_id AND \
+parent='$music_id'"
 }
