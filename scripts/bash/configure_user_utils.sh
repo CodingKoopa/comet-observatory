@@ -75,8 +75,6 @@ function link_directories() {
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
     # Link X Compose file from CO to home directory.
     ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
-    # Link TKG configuration from CO to user configuration.
-    ["$CO/config/tkg.cfg"]="$INSTALL_HOME/.config/frogminer/linux57-tkg.cfg"
 
     # Desktop Environment
 
@@ -197,6 +195,19 @@ function link_directories() {
     ["$CO/config/vs-code/Snippets/"]="$INSTALL_HOME/.config/Code - OSS/User/snippets"
     # Link VSCode extensions from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Data/VSCode/Extensions/"]="$INSTALL_HOME/.vscode-oss/extensions"
+
+    # Frogging Family
+
+    # Link TKG Kernel configuration from CO to user configuration.
+    ["$CO/config/tkg/linux57-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/linux57-tkg.cfg"
+    # Link TKG Nvidia configuration from CO to user configuration.
+    ["$CO/config/tkg/nvidia-all.cfg"]="$INSTALL_HOME/.config/frogminer/nvidia-all.cfg"
+    # Link TKG DXVK configuration from CO to user configuration.
+    ["$CO/config/tkg/updxvk.cfg"]="$INSTALL_HOME/.config/frogminer/updxvk.cfg"
+    # Link TKG vkd3d configuration from CO to user configuration.
+    ["$CO/config/tkg/vkd3d-git.cfg"]="$INSTALL_HOME/.config/frogminer/vkd3d-git.cfg"
+    # Link TKG Wine configuration from CO to user configuration.
+    ["$CO/config/tkg/proton-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/proton-tkg.cfg"
   )
 
   for target in "${!linked_paths[@]}"; do
