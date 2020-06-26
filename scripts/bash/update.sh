@@ -34,6 +34,9 @@ packages.
 }
 
 # Updates the system.
+# Globals Read:
+#   - AUR_DIR: The directory where the repositories are located.
+#   - KERNEL_VER: The two digit TkG kernel version.
 # Arguments:
 #   - One or more flags dictating the action to be taken. See print_help().
 # Outputs:
