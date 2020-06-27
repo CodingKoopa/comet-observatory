@@ -9,9 +9,12 @@ source "$CO"/scripts/bash/common.sh
 
 declare -r MUSIC_DIRECTORY=$HOME/Music
 
-# Makes sure a field isn't empty
+# Tests whether a field is valid.
 # Arguments:
-#  - The input string.
+#   - The input string.
+# Outputs:
+#   - 0 if the string is invalid.
+#   - 1 if the string is valid.
 function validate_input() {
   local -r INPUT=$1
   # If the string is empty/unset, or just consists of a space.
@@ -25,7 +28,7 @@ function validate_input() {
 # Selects a music directory using Zenity. Scans category directories in the $MUSIC_DIRECTORY
 # directory, and also subcategories.
 # Arguments:
-#  - The title of the song.
+#   - The title of the song.
 # Outputs:
 #   - Selection progress.
 function select_music_directory() {
