@@ -131,11 +131,6 @@ function select_music_directory() {
     fi
   done
 
-  if [[ -z "$category_path" ]]; then
-    echo "Category path not set."
-    return 3
-  fi
-
   if $new_category; then
     while true; do
       # shellcheck disable=2155
@@ -175,6 +170,10 @@ function select_music_directory() {
     mkdir "$category_path"
   fi
 
+  if [[ -z "$category_path" ]]; then
+    echo "Category path not set."
+    return 3
+  fi
   if [[ ! -d "$category_path" ]]; then
     echo "Category path not found."
     return 3
