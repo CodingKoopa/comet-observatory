@@ -85,26 +85,31 @@ function select_music_directory() {
   done
   local new_category=false
   while true; do
-    local -r category_input=$(zenity --width 1000 --height 500 \
+    category_input=$(zenity --width 1000 --height 500 \
       --list --radiolist \
       --title "Select a Category" \
       --text "Select a category from the list below for the song \"$song_title\"." \
       --column "" --column "Category Name" --column "Parent Category Name" \
       --print-column 2,3 \
       TRUE "Make a new category" " " "${args[@]}")
-    local -r category_name=$(echo "$category_input" | cut -d'|' -f1)
-    local -r category_name_valid=$(validate_input "$category_name")
-    local -r parent_category_name=$(echo "$category_input" | cut -d'|' -f2)
-    local -r parent_category_name_valid=$(validate_input "$parent_category_name")
+    local category_input
+    category_name=$(echo "$category_input" | cut -d'|' -f1)
+    local category_name
+    category_name_valid=$(validate_input "$category_name")
+    local category_name_valid
+    parent_category_name=$(echo "$category_input" | cut -d'|' -f2)
+    local parent_category_name
+    parent_category_name_valid=$(validate_input "$parent_category_name")
+    local parent_category_name_valid
     if [[ "$category_name" = "Make a new category" ]]; then
       new_category=true
       break
     # If there's a category without a parent.
     elif [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 1 ]]; then
-      local -r category_path=$MUSIC_DIRECTORY$parent_category_name/$category_name
+      local category_path=$MUSIC_DIRECTORY$parent_category_name/$category_name
       break
     elif [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 0 ]]; then
-      local -r category_path=$MUSIC_DIRECTORY$category_name
+      local category_path=$MUSIC_DIRECTORY$category_name
       break
     # If, nothing was checked, or cancel was clicked.
     else
@@ -123,21 +128,26 @@ function select_music_directory() {
 
   if $new_category; then
     while true; do
-      local -ra new_category_input=$(zenity --width 1000 --height 500 \
+      new_category_input=$(zenity --width 1000 --height 500 \
         --forms \
         --title "Add a Category" \
         --text "Enter information for the category to put \"$song_title\" in.". \
         --add-entry "Category Name" \
         --add-entry "Parent Category (Optional)")
-      local -r category_name=$(echo "$new_category_input" | cut -d'|' -f1)
-      local -r category_name_valid=$(validate_input "$category_name")
-      local -r parent_category_name=$(echo "$new_category_input" | cut -d'|' -f2)
-      local -r parent_category_name_valid=$(validate_input "$parent_category_name")
+      local -a new_category_input
+      category_name=$(echo "$new_category_input" | cut -d'|' -f1)
+      local category_name
+      category_name_valid=$(validate_input "$category_name")
+      local category_name_valid
+      parent_category_name=$(echo "$new_category_input" | cut -d'|' -f2)
+      local parent_category_name
+      parent_category_name_valid=$(validate_input "$parent_category_name")
+      local parent_category_name_valid
       if [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 1 ]]; then
-        local -r category_path=$MUSIC_DIRECTORY$parent_category_name/$category_name
+        local category_path=$MUSIC_DIRECTORY$parent_category_name/$category_name
         break
       elif [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 0 ]]; then
-        local -r category_path=$MUSIC_DIRECTORY$category_name
+        local category_path=$MUSIC_DIRECTORY$category_name
         break
       else
         # Prompt for exit.
