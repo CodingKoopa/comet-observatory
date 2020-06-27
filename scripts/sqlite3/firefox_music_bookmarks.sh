@@ -26,6 +26,9 @@ WHERE title='$folder_name' AND type=2 LIMIT 0,1")"
 #   - The name of the folder.
 # Outputs:
 #   - The list of bookmark URLs in the folder, delimited with spaces.
+# Returns:
+#   - 0 if successful.
+#   - 1 if an error occurred.
 function get_bookmark_urls() {
   local -r folder_name=$1
 

@@ -12,14 +12,17 @@ source "$CO"/scripts/bash/common.sh
 #   - The path to the MP3 file.
 # Outputs:
 #   - Error message if arguments are invalid.
+# Returns:
+#   - 0 if successful.
+#   - 1 if an error occurred.
 function tag_mp3() {
   local -r mp3=$1
 
   if [[ -z "$mp3" ]]; then
-    error "First argument (MP3 file path) not passed."
+    echo "First argument (MP3 file path) not passed."
     return 1
   elif [[ ! -f "$mp3" ]]; then
-    error "MP3 file \"$mp3\" not found."
+    echo "MP3 file \"$mp3\" not found."
     return 1
   fi
 
@@ -50,4 +53,5 @@ function tag_mp3() {
     eyeD3 -Qt "$title_input" "$mp3"
     rename "$TITLE" "$title_input" "$mp3"
   fi
+  return 0
 }

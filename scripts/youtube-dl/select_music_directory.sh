@@ -30,12 +30,17 @@ function validate_input() {
 # Arguments:
 #   - The title of the song.
 # Outputs:
-#   - Selection progress.
+#   - Selection progress, or an error if one occurred.
+# Returns:
+#   - 0 if successful.
+#   - 1 if the music directory wasn't found.
+#   - 2 if the user canceled.
+#   - 3 if an error occured while processing the directory.
 function select_music_directory() {
   local -r song_title=$(sanitize_zenity "$1")
 
   if [[ ! -d "$MUSIC_DIRECTORY" ]]; then
-    error "Music directory \"$MUSIC_DIRECTORY\" not found."
+    echo "Music directory \"$MUSIC_DIRECTORY\" not found."
     return 1
   fi
 
@@ -126,6 +131,11 @@ function select_music_directory() {
     fi
   done
 
+  if [[ -z "$category_path" ]]; then
+    echo "Category path not set."
+    return 3
+  fi
+
   if $new_category; then
     while true; do
       new_category_input=$(zenity --width 1000 --height 500 \
@@ -164,14 +174,10 @@ function select_music_directory() {
     mkdir "$category_path"
   fi
 
-  if [[ -z "$category_path" ]]; then
-    echo "Category path not set."
-    return 1
-  fi
-  debug "Category path: \"$category_path\"."
   if [[ ! -d "$category_path" ]]; then
     echo "Category path not found."
-    return 1
+    return 3
   fi
   echo "$category_path"
+  return 0
 }
