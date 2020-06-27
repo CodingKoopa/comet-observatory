@@ -6,7 +6,6 @@
 
 # Color Variables
 
-# TODO: this should be RESET
 RESET=$(tput sgr0)
 export RESET
 BOLD=$(tput bold)
