@@ -167,6 +167,7 @@ function select_music_directory() {
           continue
         # If the user does want to exit.
         else
+          echo "Dialog exited."
           return 1
         fi
       fi
