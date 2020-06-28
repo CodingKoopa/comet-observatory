@@ -20,9 +20,18 @@ source "$CO"/scripts/eyed3/tag_mp3.sh
 #   - 0 if successful.
 #   - 1 if an error occurred at any point.
 function download_music() {
+  verbose "Closing Firefox to unlock the bookmark database."
+  if pkill firefox; then
+    # If there was an existing Firefox process, give it a second to close.
+    sleep 1
+  fi
+
   info "Downloading music from Firefox music bookmark folder."
   if local -r urls=$(get_bookmark_urls "Listening List"); then
     for url in $urls; do
+      verbose "Opening \"$url\"."
+      firefox -P Alternate "$url" &
+
       verbose "Getting info about \"$url\" and selecting music directory."
       if ! download_dir=$(select_music_directory "$(youtube-dl --get-title "$url")"); then
         error "Music directory selection failed: $download_dir"
