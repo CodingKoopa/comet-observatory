@@ -59,7 +59,9 @@ function download_music() {
           error "An error occurred while cropping/trimming the file: $trim_err"
         fi
 
-        tag_mp3 "$file_path"
+        if ! tag_err=$(tag_mp3 "$file_path"); then
+          error "An error occurred while tagging the file: $tag_err"
+        fi
       fi
 
       verbose "Removing bookmark."

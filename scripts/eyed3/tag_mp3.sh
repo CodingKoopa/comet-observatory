@@ -29,7 +29,7 @@ function tag_mp3() {
   local -r title=$(basename -s .mp3 "$mp3")
   local -r window_title="Enter Metedata for $title"
   # Copy the parent directory name, for convenience, as it often coincides with the artists.
-  printf "%s" "$(basename "$(dirname "$mp3")")" | xclip -selection clipboard
+  printf "%s" "$(basename "$(dirname "$mp3")")" | xsel -i -b
 
   local -r METADATA_INPUT=$(zenity --width 1000 --height 500 \
     --forms \
