@@ -91,7 +91,7 @@ function select_music_directory() {
   local new_category=false
   while true; do
     local -a category_input
-    category_input="$(zenity --width 1000 --height 500 \
+    category_input="$(zenity --width 1500 --height 1200 \
       --list --radiolist \
       --title "Select a Category" \
       --text "Select a category from the list below for the song \"$song_title\"." \
@@ -135,7 +135,7 @@ function select_music_directory() {
     while true; do
       # shellcheck disable=2155
       local -a new_category_input
-      new_category_input=$(zenity --width 1000 --height 500 \
+      new_category_input=$(zenity --width 1500 --height 1000 \
         --forms \
         --title "Add a Category" \
         --text "Enter information for the category to put \"$song_title\" in.". \
