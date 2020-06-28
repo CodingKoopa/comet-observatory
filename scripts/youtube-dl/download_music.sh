@@ -38,24 +38,33 @@ function download_music() {
         return 1
       fi
 
-      verbose "Downloading to \"$download_dir\"."
-      local -r output_str="$download_dir/%(title)s.%(ext)s"
-      if ! youtube-dl -q -o "$output_str" -x --audio-format mp3 --embed-thumbnail "$url"; then
-        error "An error occured while downloading the file."
-        return 1
-      fi
+      if [[ $download_dir != "SKIP" ]]; then
+        verbose "Downloading to \"$download_dir\"."
+        local output_str="$download_dir/%(title)s.%(ext)s"
+        if ! youtube-dl -q -o "$output_str" -x --audio-format mp3 --embed-thumbnail "$url"; then
+          error "An error occured while downloading the file."
+          return 1
+        fi
 
-      # Force MP3 here because otherwise it might return video formats, for YouTube videos.
-      local -r file_path=$(youtube-dl -o "$download_dir/%(title)s.mp3" --get-filename "$url")
-      verbose "Tagging metadata."
-      if ! tag_err=$(tag_mp3 "$file_path"); then
-        error "An error occurred while tagging the file: $tag_err"
-        return 1
+        # Force MP3 here because otherwise it might return video formats, for YouTube videos.
+        local file_path
+        file_path=$(youtube-dl -o "$download_dir/%(title)s.mp3" --get-filename "$url")
+        verbose "Cropping + trimming."
+        if [[ $url == *"soundcloud"* ]]; then
+          local crop=false
+        else
+          local crop=true
+        fi
+        if ! trim_err=$(trim "$file_path" "$crop"); then
+          error "An error occurred while cropping/trimming the file: $trim_err"
+        fi
+
+        tag_mp3 "$file_path"
       fi
 
       verbose "Removing bookmark."
-      if ! rem_err="$(remove_firefox_bookmark "$url")"; then
-        error "An error occurred while tagging the file: $rem_err."
+      if ! rem_err="$(remove_firefox_bookmark "Listening List" "$url")"; then
+        error "An error occurred while removing the bookmark: $rem_err."
         return 1
       fi
     done

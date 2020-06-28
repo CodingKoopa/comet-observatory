@@ -97,7 +97,7 @@ function select_music_directory() {
       --text "Select a category from the list below for the song \"$song_title\"." \
       --column "" --column "Category Name" --column "Parent Category Name" \
       --print-column 2,3 \
-      TRUE "Make a new category" " " "${args[@]}")"
+      TRUE "Make a new category" " " FALSE "Skip this song" " " "${args[@]}")"
     local category_name
     category_name=$(echo "$category_input" | cut -d'|' -f1)
     local category_name_valid
@@ -108,6 +108,9 @@ function select_music_directory() {
     parent_category_name_valid=$(validate_input "$parent_category_name")
     if [[ "$category_name" = "Make a new category" ]]; then
       new_category=true
+      break
+    elif [[ "$category_name" = "Skip this song" ]]; then
+      skip=true
       break
     # If there's a category without a parent.
     elif [[ $category_name_valid -eq 1 ]] && [[ $parent_category_name_valid -eq 1 ]]; then
@@ -169,6 +172,9 @@ function select_music_directory() {
       fi
     done
     mkdir "$category_path"
+  elif $skip; then
+    echo "SKIP"
+    return 0
   fi
 
   if [[ -z "$category_path" ]]; then
