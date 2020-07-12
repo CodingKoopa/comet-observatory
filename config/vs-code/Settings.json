@@ -38,7 +38,7 @@
   "editor.autoClosingQuotes": "never",
   "editor.autoClosingBrackets": "never",
   // Use Fira
-  "editor.fontFamily": "'Fira Code', 'Noto Sans Mono'",
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
   "editor.fontLigatures": true,
   // Don't show recommendations for extension installs.
   "extensions.ignoreRecommendations": true,
@@ -53,7 +53,7 @@
   // Don't ignore whitespace when viewing diffs, because they will sneak by otherwise.
   "diffEditor.ignoreTrimWhitespace": false,
   // Set the console font.
-  "debug.console.fontFamily": "Noto Mono",
+  "debug.console.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
   // Open the explorer after debugging.
   "debug.openExplorerOnEnd": true,
   "macros": {
