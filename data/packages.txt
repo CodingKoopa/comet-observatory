@@ -239,8 +239,6 @@ deluge
 discord
 # HexChat, for messaging.
 hexchat
-# Samba, for Wine.
-samba
 
 # Gaming
 
