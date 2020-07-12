@@ -80,6 +80,10 @@ npm
 
 # Runtimes, Virtualization
 
+# Wine Mono, for .NET support in Wine.
+wine-mono
+# Wine Gecko, for browser support in Wine.
+wine-gecko
 # Winetricks, for managing Wine.
 winetricks
 # QEMU, for virtualization.
