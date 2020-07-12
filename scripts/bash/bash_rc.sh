@@ -54,8 +54,8 @@ alias p=phoronix-test-suite
 # This can't be readonly because this script can be ran more than once in the same environment.
 declare -a QUOTES=(
   # Neon Genesis Evangelion.
-  "Understanding 100% of everything is impossible. That’s why we spend all our lives trying to \
-understand the thinking of others. That’s what makes life so interesting."
+  #   "Understanding 100% of everything is impossible. That’s why we spend all our lives trying to \
+  # understand the thinking of others. That’s what makes life so interesting."
   "Sometimes you need a little wishful thinking just to keep on living."
   "Part of growing up means finding a way to interact with others while distancing pain."
   "Never underestimate the ability of the human animal to adapt to its environment."
@@ -63,26 +63,33 @@ understand the thinking of others. That’s what makes life so interesting."
 It's all literally a matter of perspective."
   "Your truth can be changed simply by the way you accept it. That's how fragile the truth for a \
 human is."
-  "Anywhere can be paradise, as long as you have the will to live. After all, you are alive, so \
-you will always have the chance to be happy. As long as the Sun, the Moon, and the Earth exist, \
-everything will be alright."
+  "Anywhere can be paradise, as long as you have the will to live."
   "Humans constantly feel pain in their hearts. Because the heart is so sensitive to pain, humans \
 also feel that to live is to suffer."
   "I'm so fucked up."
-  "Kimochi warui."
+  # "Kimochi warui."
   # Mob Psycho 100
   "The biggest distinguishing feature of humans is how rich and varied their emotions are. These \
 emotions are the reason they thrive and also the reason they fight."
   "You should realize that you're only able to survive thanks to the help of others."
   # The Great Gatsby
-  "It is invariably saddening to look through new eyes at things upon which you have ex-pended \
+  "It is invariably saddening to look through new eyes at things upon which you have expended \
 your own powers of adjustment."
-  "Its vanished trees, the trees that had made way for Gatsby’s house, had once pandered in \
-whispers to the last and greatest of all human dreams."
-  "For a transitory enchanted moment man must have held his breath in the presence of this \
-continent, compelled into an aesthetic contemplation he neither understood nor desired, face to \
-face for the last time in history with something commensurate to his capacity for wonder."
-  "So we beat on, boats against the current, borne back ceaselessly into the past."
+  # Duvet - Bôa
+  "I am falling
+I am fading
+I have lost it all
+Help me to breathe"
+  "I am hurting
+I have lost it all
+I am losing
+Help me to breathe"
+  # I'm With You - Avril Lavigne
+  "It's a damn cold night
+Trying to figure out this life
+Won't you take me by the hand?"
+  "I don't know who you are
+But I, I'm with you"
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
