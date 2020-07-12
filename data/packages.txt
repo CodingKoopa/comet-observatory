@@ -1,37 +1,93 @@
 # Hardware
 
-# UEFI shell, for UEFI.
-edk2-shell
 # AMD Microcode, for CPU patches.
 amd-ucode
 # Linux kernel, for doing stuff.
 linux
 # Linux kernel headers, for compiling kernel modules.
 linux-headers
-# VDPAU backend for VA-API, for more GPU support.
+# modprobed-db, for storing a list of kernel modules used for smaller TkG kernel builds.
+modprobed-db
+# VDPAU backend for VA-API, for more GPU video decoding support.
 libva-vdpau-driver
-# xinput, for enhancing tablet support.
-xorg-xinput
-# xboxdrv, for controller support.
-xboxdrv
 # PulseAudio, for audio support.
 pulseaudio
-# PulseAudio ALSA, for ALSA support.
+# PulseAudio ALSA, for ALSA support in PA.
 pulseaudio-alsa
-# Ext2/3/4 utilities, for Ext4 support.
-ntfs-3g
-# NTFS utilities, for NTFS support.
+# Ext2/3/4 filesystem utilities, for Ext4 support.
 e2fsprogs
-# exfat-utils, for exFAT support.
-exfat-utils
-# mtools, for better FAT32 support.
-mtools
+# NTFS filesystem utilities, for NTFS support.
+ntfs-3g
+# DOS filesystem utilities, for FAT32 support.
+dosfstols
+# SSHFS, for remote filesystem support. This is used by KDE Connect.
+sshfs
+# ncdu, for managing disk usage.
+ncdu
+# f3, for error checking filesystems.
+f3
+# xboxdrv, for ninja360. TODO: make an AUR package for that, and get this out of here!
+xboxdrv
+# Nintendo Switch udev rules, for not requiring root for access.
+nx-udev
+# bluez, for the Bluetooth stack.
+bluez
+# CUPS, for printing support.
+cups
 # Canon Pixma MX920 series drivers, for printer support.
 canon-pixma-mx920-complete
+# GfxTablet, for using an Android tablet as a drawing tablet.
+gfxtablet-git
+
+# Disc Drive Emulation (Disabled)
+
 # VHBA module, for disk drive support.
 # vhba-module-dkms
+# CDEmu daemon, for emulating drives.
+# cdemu-daemon
+# KDE CDEmu manager, for emulating drives.
+# kde-cdemu-manager-kf5
 
-# System Services
+# Hardware Management
+
+# Plasma PulseAudio, for managing audio, integrating with Plasma.
+plasma-pa
+# KDE Partition Manager, for managing filesystems.
+partitionmanager
+# Plasma NetworkManager, for managing network connections.
+plasma-nm
+# Antimicro, for remapping inputs.
+antimicro
+# Nintendo Switch USB loader, for managing game and NAND backups.
+ns-usbloader
+# print-manager, for managing printers.
+print-manager
+# Bluedevil, for managing bluetooth.
+bluedevil
+
+# Package Management
+
+# pikaur, for managing AUR packages.
+pikaur
+# Pacman contributed scripts, for paccache, for cleaning the package cache.
+pacman-contrib
+# Reflector, for updating pacman mirrors.
+reflector
+# pkgstats, for submitting package statistics.
+pkgstats
+# npm, for managing Node.JS packages.
+npm
+
+# Runtimes, Virtualization
+
+# Winetricks, for managing Wine.
+winetricks
+# QEMU, for virtualization.
+qemu
+# virt-viewer, for viewing virtual machines.
+virt-viewer
+
+# Service Hosting
 
 # Docker, for hosting containerized services.
 docker
@@ -39,113 +95,98 @@ docker
 docker-compose
 # Apache, for hosting HTTP services.
 apache
-# php-apache, for adding PHP support to Apache.
-php-apache
-# CUPS, for managing printer services.
-cups
 
-# Package Management
+# CLI Utilities
 
-# Pacman scripts, for cleaning the package cache.
-pacman-contrib
-# Reflector, for updating pacman mirros.
-reflector
-# pkgstats, for contributing to package statistics.
-pkgstats
-# PIP, for managing Python packages.
-python-pip
-# PIP, for managing Python 2 packages.
-python2-pip
-# npm, for managing Node.JS packages.
-npm
-
-# System Tools
-
-# LSDeluxe, for listing directories with style.
-lsd
 # neofetch, for obtaining system info.
 neofetch
-# efibootmgr, for managing the UEFI.
-efibootmgr
-# KDE Partition Manager, for managing disks.
-partitionmanager
-# bluez, for the Bluetooth stack.
-bluez
+# LSDeluxe, for listing directories.
+lsd
+# nano, for editing text.
+nano
+# figlet, for making ASCII figures.
+figlet
+# lolcat, for making rainbow text.
+lolcat
 
 # Desktop Environment
 
 # xinit, for logging in.
 xorg-xinit
+# xmousepasteblock, for preventing accidental mouse button press pastes with Xorg.
+xmousepasteblock-git
+# xsel, for clipboard support for tag_mp3.sh.
+xsel
+# xkill, for forcibly killing programs.
+xorg-xkill
 # Plasma Desktop, for Plasma Shell.
 plasma-desktop
 # Plasma Addons, for improving Plasma Shell.
 kdeplasma-addons
-# khtokeys, for custom keyboard shortcuts.
+# khotkeys, for custom keyboard shortcuts.
 khotkeys
-# Plasma Browser Integration, for integrating Firefox with Plasma.
-plasma-browser-integration
 # KDE GTK config, for customizing GTK applications.
 kde-gtk-config
+# XDG Desktop Portal, for better desktop integration.
+xdg-desktop-portal
+# XDG KDE Desktop Portal, for better desktop integration (KDE file dialogs in Firefox.).
+xdg-desktop-portal-kde
+# Plasma Browser Integration, for integrating browsers with Plasma.
+plasma-browser-integration
+# KDEConnect, for integrating the desktop with Android.
+kdeconnect
+# RSIBreak, for taking breaks.
+rsibreak
+
+# Graphical Resources
+
+# Noto fonts, for most applications.
+noto-fonts
+# Liberation fonts, for websites that ask for it.
+ttf-liberation
+# Microsoft fonts, for making spicy impact font memes.
+ttf-ms-fonts
+# Chinese/Japanese/Korean Noto fonts, for foreign text.
+noto-fonts-cjk
+# Emoji Noto fonts, for emoji.
+noto-fonts-emoji
+# Extra Noto fonts, for monospaced text.
+noto-fonts-extra
+# Fira Code font patched with additional symbols, for terminals and code editors.
+nerd-fonts-fira-code
 # Breeze GTK theme, for GTK applications to look nice.
 breeze-gtk
 # GNOME icon theme, for when applications ask about it.
 gnome-icon-theme
 # GNOME themes, for when applications ask about it (this seems to provide Adwaita).
 gnome-themes-extra
-# RSIBreak, for taking breaks.
-rsibreak
-# Plasma PulseAudio, for managing audio, integrating with Plasma.
-plasma-pa
-# PulseAudio Volume Control, for managing audio, with more features.
-pavucontrol
-# Bluedevil, for managing bluetooth.
-bluedevil
-# Plasma NetworkManager, for managing internet.
-plasma-nm
-# print-manager, for managing printer.
-print-manager
-# XDG Desktop Portal, for better desktop integration.
-xdg-desktop-portal
-# XDG KDE Desktop Portal, for better desktop integration (KDE file dialogs in Firefox.).
-xdg-desktop-portal-kde
 
-# File Managers
+# Desktop Utilities
 
 # Dolphin, for managing files.
 dolphin
-# kdegraphics-thumbnailers, for Dolphin image/PDF thumbnails.
+# kdegraphics-thumbnailers, for image/PDF thumbnail support in Dolphin.
 kdegraphics-thumbnailers
-# ffmpegthumbs, for Dolphin video thumbnails.
+# ffmpegthumbs, for video thumbnail support in Dolphin.
 ffmpegthumbs
+# MEGASync, for managing files with MEGA.
+megasync
 # Ark, for managing archives.
 ark
-# p7zip, for managing archives.
+# p7zip, for ZIP and 7z support in Ark.
 p7zip
-# unrar, for managing archives.
+# unrar, for RAR support in Ark.
 unrar
-# ncdu, for cleaning large files.
-ncdu
-
-# Resources
-
-# Noto fonts, for most applications.
-noto-fonts
-# Liberation fonts, for websites.
-ttf-liberation
-# Chinese/Japanese/Korean Noto fonts, for foreign text in applications.
-noto-fonts-cjk
-# Emoji Noto fonts, for emoji in applications.
-noto-fonts-emoji
-# Extra Noto fontss, for monospaced text.
-noto-fonts-extra
-# Fira Code font, for programming.
-ttf-fira-code
+# Flameshot, for taking screenshots.
+flameshot
+# Konsole, for using the terminal.
+konsole
 
 # Authentication (See /docs/Auth.md)
 
 # KWallet, for storing passwords.
 kwallet
-# KWalletManager, for managing passwords.
+# KWalletManager, for managing system passwords.
 kwalletmanager
 # kwalletcli, for using KWallet for GPG key passwords.
 kwalletcli
@@ -153,45 +194,8 @@ kwalletcli
 ksshaskpass
 # KGpg, for managing GnuPG keys.
 kgpg
-
-# Other Tools
-
-# xdotool, for automation.
-xdotool
-# xsel, for clipboard support for tag_mp3.sh.
-xsel
-# xkill, for forcibly killing programs.
-xorg-xkill
-# Flameshot, for taking screenshots.
-flameshot
-# Konsole, for using the terminal.
-konsole
-# nano, for editing text.
-nano
-# figlet, for making ASCII figures.
-figlet
-# lolcat, for making rainbow text.
-lolcat
-# KeepassXC, for managing passwords.
+# KeepassXC, for managing all passwords.
 keepassxc
-# f3, for error checking drives.
-f3
-# CDEmu daemon, for emulating drives.
-# cdemu-daemon
-# KDE CDEmu manager, for emulating drives.
-# kde-cdemu-manager-kf5
-# KDEConnect, for integrating with Android.
-kdeconnect
-# OpenSSH, for connecting to other computers.
-openssh
-# SSHFS, for connecting to remote filesystems, particularly via KDEConenct.
-sshfs
-# QEMU, for virtualization.
-qemu
-# virt-viewer, for viewing virtual machines.
-virt-viewer
-# Winetricks, for managing Wine.
-winetricks
 
 # Media
 
@@ -205,20 +209,11 @@ graphicsmagick
 python-eyed3
 # Clementine, for playing audio.
 clementine
-# Audacity, for recording and editing audio.
-audacity
-# youtube-dl, for downloading video and audio.
+# youtube-dl, for downloading media.
 youtube-dl
-# Vapoursynth, for MPV post processing effects with SVP
-vapoursynth
-# OBS Studio, for recording video and audio.
-obs-studio
-# guvcview, for recording video and audio.
-guvcview
-# Blender, for editing 3D models.
-blender
-# GStreamer base plugins, for decoding media. Wine looks for the 32 bit version.
+# GStreamer base plugins, for decoding media.
 gst-plugins-base
+# 32-bit GStreamer base plugins, for Wine.
 lib32-gst-plugins-base-libs
 # GStreamer Libav plugin, for decoding media.
 gst-libav
@@ -226,169 +221,96 @@ gst-libav
 gst-plugins-good
 # GStreamer good plugins with licensing issues, for decoding media.
 gst-plugins-ugly
-# GStreamer VA-API support, for decoding media.
+# GStreamer VA-API support, for GPU video decoding support.
 gstreamer-vaapi
+# mpv Git, for playing media. Building this from Git is necessary to have a build with
+# Vapoursynth support enabled.
+mpv-git
+# Vapoursynth, for MPV post processing effects with SVP.
+vapoursynth
+# SVP, for processing smooth video.
+svp
+# OBS Studio, for recording media.
+obs-studio
+# Blender, for editing 3D models.
+blender
 
 # Internet
 
 # Firefox, for browsing the web.
 firefox
-# Deluge, for downloading.
-deluge
+# Google Chrome, for browsing the internet.
+google-chrome
 # Discord, for messaging.
 discord
 # HexChat, for messaging.
 hexchat
+# OpenSSH, for connecting to other computers.
+openssh
+# Deluge, for downloading files from other computers.
+deluge
 
 # Gaming
 
-# GameMode, for tuning performance.
+# GameMode, for improving performance.
 gamemode
+# GameMode 32-bit.
 lib32-gamemode
 # Steam, for managing games.
 steam
-# Steam native runtime, for making games work.
-steam-native-runtime
-# Lutris, for managing games.
-lutris
 # Minecraft Launcher, for launching Minecraft.
 minecraft-launcher
 # MultiMC5, for launching Minecraft but not suck at it.
 multimc5
-# MGBA, for playing GBA games.
-mgba-qt
-# DeSmuMe, for playing DS games.
-desmume
-# Dolphin, for playing Wii and Gamecube games.
-dolphin-emu
+# Lucas' Simpsons Hit & Run Mod Launcher, for playing mods.
+lucas-simpsons-hit-and-run-mod-launcher
 # xdelta3, for patching games.
 xdelta3
+# mGBA, for playing GBA games.
+mgba-qt
+# melonds, for playing DS games.
+melonds-git
+# Dolphin, for playing Wii and Gamecube games.
+dolphin-emu
+# Citra, for playing 3DS games.
+citra-canary-git
+# yuzu, for playing Switch games.
+yuzu-mainline-git
 
-# Programming (Tools, Compilers/Interpreters, Linters, Build Systems)
+# Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
-# Visual Studio Code, for writing code.
+# Visual Studio Code, for editing code.
 code
+# Android Studio, for developing Android applications.
+android-studio
 # Git, for version control.
 git
-# Subversion, for version control.
-subversion
 # GDB, for debugging code.
 gdb
 # ccache, for increasing build times.
 ccache
-# PHP, for PHP software
-php
 # namcap, for PKGBUILD linting.
 namcap
-# Cmake, for building.
+# ShellCheck, for Bash linting. This is the statically compiled version without the Haskell
+# dependencies.
+shellcheck-bin
+# Cmake, for building projects.
 cmake
-# Ninja, for building.
+# Ninja, for building projects.
 ninja
-# Gradle, for building.
+# Gradle, for building projects.
 gradle
-# Gulp.js, for some Node.js build systems.
+# Gulp.js, for building websites.
 gulp
 # Hugo, for building websites.
 hugo
 # Doxygen, for building documentation.
 doxygen
 
-# Libraries
+# Modding
 
-# SDL2 32-bit, for OpenLoco.
-# lib32-sdl2
-# SDL2 mixer 32-bit, for OpenLoco.
-# lib32-sdl2_mixer
-# yaml-cpp 32-bit, for OpenLoco.
-# lib32-yaml-cpp
-# Bullet, for physics.
-# bullet
-
-# Hacking
-
-# Okteta, for editing hex.
+# Okteta, for editing data.
 okteta
-
-# Disabled (May or may not be needed)
-# TODO: Test these, by seeing whether they are needed on a new installation.
-
-# lib32-gtk2
-# lib32-gtk3
-# lib32-libappindicator-gtk3
-# lib32-libcanberra
-# lib32-libcanberra-pulse
-# lib32-libpulse
-# lib32-libva
-# lib32-libvdpau
-# lib32-openal
-# lib32-vulkan-icd-loader
-# libappindicator-gtk3
-# python2-notify
-# alsa-utils
-# lib32-curl
-# arm-none-eabi-gcc
-
-# AUR
-
-# Hardware
-
-# modprobed-db, for storing a list of kernel modules used.
-modprobed-db
-# xmousepasteblock, for preventing accidental mouse button press pastes.
-xmousepasteblock-git
-# Antimicro, for remapping inputs.
-antimicro
-# Nintendo Switch udev rules, for not requiring root for access.
-nx-udev
-# Nintendo Switch USB loader, for installing game backups.
-ns-usbloader
-# GfxTablet, for using an Android tablet as a drawing tablet.
-gfxtablet-git
-
-# Package Management
-
-# pikaur, for managing AUR packages.
-pikaur
-
-# File Managers
-
-# MEGASync, for managing files with MEGA.
-megasync
-
-# Resources
-
-# Microsoft fonts, for making spicy impact font memes.
-ttf-ms-fonts
-
-# Media
-
-# mpv Git, for playing video and audio with Vapoursynth support.
-mpv-git
-
-# Internet
-# Google Chrome, for browsing the internet.
-google-chrome
-
-# Gaming
-
-# Citra, for playing 3DS games.
-citra-canary-git
-# yuzu, for playing Switch games.
-yuzu-mainline-git
-# Lucas' Simpsons Hit & Run Mod Launcher, for playing mods.
-lucas-simpsons-hit-and-run-mod-launcher
-
-# Programming
-
-# Statically linked ShellCheck, for Bash linting.
-shellcheck-bin
-# JDK 12 w/ OpenJ9, for developing Java applications.
-jdk12-openj9-bin
-# Android Studio, for developing Android applications.
-android-studio
-
-# Hacking
-
 # 3dstool, for managing 3DS ROMs.
 3dstool
 # ctrtool, for managing 3DS ROMs.
