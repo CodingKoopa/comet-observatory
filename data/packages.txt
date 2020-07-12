@@ -1,8 +1,7 @@
 # Hardware
 
 # UEFI shell, for UEFI.
-# TODO: Reenable this, when its build is fixed.
-# uefi-shell-git
+edk2-shell
 # AMD Microcode, for CPU patches.
 amd-ucode
 # Linux kernel, for doing stuff.
