@@ -156,25 +156,33 @@ function launch_qemu() {
 
   # Display Options
   # For QEMU GTK, enable the respective UI.
+  # OpenGL support does not seem to work properly here.
   qemu_opts+=${QEMUGTK+" -display gtk"}
-  # For QEMU SDL, enable the respective UI. Enable OGL for virtio, unfortunately this seems to be
-  # the only display it works with.
+  # For QEMU SDL, enable the respective UI.
+  # For virgl, enable OpenGL.
   qemu_opts+=${QEMUSDL+" -display sdl"${VIRTIO+",gl=on"}}
   # For Spice, enable the respective UI.
-  # Research shows that I have no idea how one would go about changing the app here. There doesn't
-  # seem to be a SPICE mime type, and xdg-open just beelines for remote-viewer. perl-file-mimeinfo
-  # has no idea what it's even looking at.
+  # I have no idea how one would go about changing the app here. There doesn't seem to be a SPICE
+  # mime type, and xdg-open just beelines for remote-viewer. perl-file-mimeinfo has no idea what
+  # it's even looking at.
+  # OpenGL support does not seem to work properly here.
   qemu_opts+=${SPICE+" -display spice-app"}
   # For standard, enable the standard video driver.
   qemu_opts+=${STD+" -vga std"}
-  # For QXL, disable the VGA card because we will have a separate QXL device.
-  qemu_opts+=${QXL+" -vga none"}
+  # For certain QXL configurations, disable the VGA card because we will have a separate QXL device.
+  # This and "-vga qxl" are mutually exclusive!
+  # qemu_opts+=${QXL+" -vga none"}
+  # For QXL, enable the qxl video driver.
+  # This and "-device qxl-vga" are mutually exclusive!
+  qemu_opts+=${QXL+" -vga qxl"}
   # For Virtio, enable the virtio video driver.
   qemu_opts+=${VIRTIO+" -vga none"}
-  # Enable SPICE, using a Unix socket, without authentication. To make full use of this, Debian
-  # packages "spice-vdagent xserver-xorg-video-qxl" should be installed. See:
+  # Enable SPICE, using a Unix socket, without authentication. Specifying a Unix socket path is not
+  # necessary, because we are using the Spice applicationas the display. To make full use of SPICE,
+  # Debian packages "spice-vdagent xserver-xorg-video-qxl" should be installed. See:
   # https://wiki.archlinux.org/index.php/QEMU#SPICE_support_on_the_guest
-  qemu_opts+=${SPICE+" -spice unix,disable-ticketing"}
+  # For virgl, enable OpenGL.
+  qemu_opts+=${SPICE+" -spice unix,disable-ticketing${VIRTIO+",gl=on"}"}
 
   # i386 Target Options
 
