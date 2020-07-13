@@ -147,9 +147,10 @@ function launch_qemu() {
     # Use the OVMF binary as the bios file, for UEFI based images.
     qemu_opts+=" -bios /usr/share/edk2-ovmf/x64/OVMF.fd"
   fi
-  # Add a virtual filesystem for a directory shared with the host.
-  qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share},\
-mount_tag=share,security_model=none"
+  # Add a virtual filesystem share.
+  # This and the smb share are mutually exclusive!
+  # qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share},\
+  # mount_tag=share,security_model=none"
 
   # USB Options
 
@@ -178,6 +179,11 @@ mount_tag=share,security_model=none"
   # i386 Target Options
 
   # Network Options
+  # Create a NIC card, for use with the SMB network share.
+  qemu_opts+=" -net nic"
+  # Add an SMB share.
+  # This and the virtfs share are mutually exclusive!
+  qemu_opts+=" -net user,smb=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share}"
 
   # Character Device Options
   # Add a Spice VM Channel character device, for cut/paste support, that spice-vdagent can access.
