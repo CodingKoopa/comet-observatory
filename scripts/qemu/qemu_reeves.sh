@@ -135,10 +135,9 @@ function launch_qemu() {
   qemu_opts+=" -name $(basename "$main_img").$VIDEO_DRIVER_STR.$VIEWER_STR"
 
   # Block Device Options
-
   if [[ $main_img != "none" ]]; then
-    # Use the disk image as vda, through virtio.
-    qemu_opts+=" -drive file=$main_img,if=virtio,index=0,media=disk"
+    # Use the disk image as vda, through virtio. Use native Linux AIO, and disable the cache.
+    qemu_opts+=" -drive file=$main_img,if=virtio,index=0,media=disk,aio=native,cache=none"
   fi
   # Use an installer ISO as a CD-ROM image, if specified.
   qemu_opts+=${installer_img+" -drive file=$installer_img,index=1,media=cdrom"}
