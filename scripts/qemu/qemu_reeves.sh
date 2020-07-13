@@ -113,7 +113,7 @@ function launch_qemu() {
   qemu_opts+=",hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time"
   # Use multiple CPU cores.
   qemu_opts+=" -smp 4"
-  # Allow the VM more RAM.
+  # Use 16GB of RAM.
   qemu_opts+=" -m 16G"
   if [[ $main_img == *"temple"* ]]; then
     # For TempleOS, add a basic PC speaker.
@@ -122,8 +122,12 @@ function launch_qemu() {
     # Add Intel HD Audio.
     qemu_opts+=" -soundhw hda"
   fi
-  # Workaround: max_outputs is required to avoid a low-resolution issue with QXL video.
-  qemu_opts+=${QXL+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
+  # Workaround: max_outputs is required to avoid a low-resolution issue with QXL video. This is also
+  # necessary to support multiple heads of decent resolution. In order to apply this configuration,
+  # we add a QXL paravirtual graphics card here.
+  # This and "-vga qxl" are mutually exclusive!
+  # This is dependent on "-vga none"!
+  # qemu_opts+=${QXL+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
   # For Virtio graphics, add Virtio graphics card, for performance. Doing this from here seems to
   # work better
   qemu_opts+=${VIRTIO+" -device virtio-vga"}
@@ -144,7 +148,8 @@ function launch_qemu() {
   # Use a drive ISO as a CD-ROM image, if specified. This is meant for an image with virtio drivers.
   qemu_opts+=${driver_img+" -drive file=$driver_img,index=2,media=cdrom"}
   if [[ $main_img != *"bios"* ]]; then
-    # Use the OVMF binary as the bios file, for UEFI based images.
+    # For images that use UEFI (the default, for images without "bios" in them), use the OVMF binary
+    # as the bios file.
     qemu_opts+=" -bios /usr/share/edk2-ovmf/x64/OVMF.fd"
   fi
   # Add a virtual filesystem share.
@@ -221,7 +226,7 @@ function launch_qemu() {
 # Arguments:
 #   - (Optional) Name of the image to launch. Defaults to user selection.
 #   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "qxl".
-#   - (Optional) Viewer to use, out of "spice", "qemu-stl", and "qemu-gtk". Default "spice".
+#   - (Optional) Viewer to use, out of "spice", "qemu-sdl", and "qemu-gtk". Default "spice".
 # Outputs:
 #   Output of QEMU.
 function qemu_reeves() {
