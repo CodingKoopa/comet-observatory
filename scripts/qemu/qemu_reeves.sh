@@ -105,8 +105,8 @@ function launch_qemu() {
   else
     qemu_opts+=" -cpu host"
   fi
-  # Allow the VM 8GB of RAM.
-  qemu_opts+=" -m 8G"
+  # Allow the VM more RAM.
+  qemu_opts+=" -m 16G"
   # Add Intel HD Audio.
   qemu_opts+=" -soundhw hda"
   # For QXL, add QXL paravirtual graphics card, for performance. Doing this from here allows us to
