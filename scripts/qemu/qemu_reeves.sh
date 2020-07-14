@@ -32,11 +32,6 @@ Launches QEMU with an image. Please see the source of this script for possible o
 function launch_qemu() {
   # Use arguments.
   local -r main_img=$1
-  if [[ $main_img = *"Win*" || $main_img = *"w10"* ]]; then
-    local -r windows=true
-  else
-    local -r windows=false
-  fi
   local -r qemu_video_driver=$2
   local -r qemu_viewer=$3
   if [[ -n $4 ]]; then
@@ -45,44 +40,38 @@ function launch_qemu() {
   if [[ -n $4 ]]; then
     local -r driver_img=$5
   fi
-
-  # Define constants.
-  local -r QEMU_EXE="qemu-system-x86_64"
-
-  # Define options.
-  local -a qemu_opts
   case ${qemu_video_driver,,} in
   *qxl*)
     info "Using QXL video driver."
-    local -r QXL=true
-    local -r VIDEO_DRIVER_STR=QXL
+    local -r video_driver_qxl=true
+    local -r video_driver_str=QXL
     ;;
   *virtio*)
     info "Using Virtio video driver."
-    local -r VIRTIO=true
-    local -r VIDEO_DRIVER_STR=Virtio
+    local -r video_driver_virtio=true
+    local -r video_driver_str=Virtio
     ;;
   *)
     info "Using standard video driver."
-    local -r STD=true
-    local -r VIDEO_DRIVER_STR=Standard
+    local -r video_driver_std=true
+    local -r video_driver_str=Standard
     ;;
   esac
   case ${qemu_viewer,,} in
   *spice*)
     info "Using SPICE viewer."
-    local -r SPICE=true
-    local -r VIEWER_STR=SPICE
+    local -r viewer_spice=true
+    local -r viewer_str=SPICE
     ;;
   *qemu-sdl)
     info "Using QEMU SDL viewer."
-    local -r QEMUSDL=true
-    local -r VIEWER_STR=QEMU-SDL
+    local -r viewer_qemu_sdl=true
+    local -r viewer_str=QEMU-SDL
     ;;
   *)
     info "Using QEMU GTK viewer."
-    local -r QEMUGTK=true
-    local -r VIEWER_STR=QEMU-GTK
+    local -r viewer_qemu_gtk=true
+    local -r viewer_str=QEMU-GTK
     ;;
   esac
   if [[ -n $installer_img ]]; then
@@ -91,6 +80,12 @@ function launch_qemu() {
   if [[ -n $driver_img ]]; then
     info "Using driver image \"$driver_img\"."
   fi
+
+  # Define constants.
+  local -r qemu_exe="qemu-system-x86_64"
+
+  # Define options.
+  local -a qemu_opts
 
   # Standard Options
   # Emulate a PC with KVM acceleration. KVM is the best hypervisor currently, requiring the least
@@ -112,6 +107,7 @@ function launch_qemu() {
   fi
   # Enable Hyper-V enlightenments. More info:
   # https://blog.wikichoon.com/2014/07/enabling-hyper-v-enlightenments-with-kvm.html
+  # This is dependent on "-cpu"!
   qemu_opts+=",hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time"
   # Use multiple CPU cores.
   qemu_opts+=" -smp 4"
@@ -129,16 +125,17 @@ function launch_qemu() {
   # we add a QXL paravirtual graphics card here.
   # This and "-vga qxl" are mutually exclusive!
   # This is dependent on "-vga none"!
-  # qemu_opts+=${QXL+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
+  # qemu_opts+=${video_driver_qxl+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
   # For Virtio graphics, add Virtio graphics card, for performance. Doing this from here seems to
-  # work better
-  qemu_opts+=${VIRTIO+" -device virtio-vga"}
+  # work better.
+  # This and "-vga virtio" are mutually exclusive!
+  qemu_opts+=${video_driver_virtio+" -device virtio-vga"}
   # Add a virtio serial port PCI device, to integrate with SPICE.
-  qemu_opts+=${SPICE+" -device virtio-serial-pci"}
+  qemu_opts+=${viewer_spice+" -device virtio-serial-pci"}
   # Add a virtio serial port input device, that the guest spice-vdagent can access.
-  qemu_opts+=${SPICE+" -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"}
+  qemu_opts+=${viewer_spice+" -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"}
   # Set the name of the VM.
-  qemu_opts+=" -name $(basename "$main_img" .img).$VIDEO_DRIVER_STR.$VIEWER_STR"
+  qemu_opts+=" -name $(basename "$main_img" .img).$video_driver_str.$viewer_str"
 
   # Block Device Options
   if [[ $main_img != "none" ]]; then
@@ -164,32 +161,33 @@ function launch_qemu() {
   # Display Options
   # For QEMU GTK, enable the respective UI.
   # OpenGL support does not seem to work properly here.
-  qemu_opts+=${QEMUGTK+" -display gtk"}
+  qemu_opts+=${viewer_qemu_gtk+" -display gtk"}
   # For QEMU SDL, enable the respective UI.
   # For virgl, enable OpenGL.
-  qemu_opts+=${QEMUSDL+" -display sdl"${VIRTIO+",gl=on"}}
+  qemu_opts+=${viewer_qemu_sdl+" -display sdl"${video_driver_virtio+",gl=on"}}
   # For Spice, enable the respective UI.
   # I have no idea how one would go about changing the app here. There doesn't seem to be a SPICE
   # mime type, and xdg-open just beelines for remote-viewer. perl-file-mimeinfo has no idea what
   # it's even looking at.
   # OpenGL support does not seem to work properly here.
-  qemu_opts+=${SPICE+" -display spice-app"}
+  qemu_opts+=${viewer_spice+" -display spice-app"}
   # For standard, enable the standard video driver.
-  qemu_opts+=${STD+" -vga std"}
+  qemu_opts+=${video_driver_std+" -vga std"}
   # For certain QXL configurations, disable the VGA card because we will have a separate QXL device.
   # This and "-vga qxl" are mutually exclusive!
-  # qemu_opts+=${QXL+" -vga none"}
+  # qemu_opts+=${video_driver_qxl+" -vga none"}
   # For QXL, enable the qxl video driver.
   # This and "-device qxl-vga" are mutually exclusive!
-  qemu_opts+=${QXL+" -vga qxl"}
-  # For Virtio, enable the virtio video driver.
-  qemu_opts+=${VIRTIO+" -vga none"}
+  qemu_opts+=${video_driver_qxl+" -vga qxl"}
+  # For virgl, enable the virtio video driver.
+  # This and "-device virtio-vga" are mutually exclusive!
+  # qemu_opts+=${video_driver_virtio+" -vga virtio"}
   # Enable SPICE, using a Unix socket, without authentication. Specifying a Unix socket path is not
   # necessary, because we are using the Spice applicationas the display. To make full use of SPICE,
   # Debian packages "spice-vdagent xserver-xorg-video-qxl" should be installed. See:
   # https://wiki.archlinux.org/index.php/QEMU#SPICE_support_on_the_guest
   # For virgl, enable OpenGL.
-  qemu_opts+=${SPICE+" -spice unix,disable-ticketing${VIRTIO+",gl=on"}"}
+  qemu_opts+=${viewer_spice+" -spice unix,disable-ticketing${video_driver_virtio+",gl=on"}"}
 
   # i386 Target Options
 
@@ -202,7 +200,7 @@ function launch_qemu() {
 
   # Character Device Options
   # Add a Spice VM Channel character device, for cut/paste support, that spice-vdagent can access.
-  qemu_opts+=${SPICE+" -chardev spicevmc,id=spicechannel0,name=vdagent"}
+  qemu_opts+=${viewer_spice+" -chardev spicevmc,id=spicechannel0,name=vdagent"}
 
   # Bluetooth Options
 
@@ -221,7 +219,7 @@ function launch_qemu() {
   info "QEMU Reeves starting up with options \"$qemu_opts\"."
   # Start the new system.
   # shellcheck disable=SC2086
-  "$QEMU_EXE" $qemu_opts
+  "$qemu_exe" $qemu_opts
 }
 
 # Calls launch-qemu(), prompting the user with a dialog to select a QEMU image if needed.
@@ -232,10 +230,10 @@ function launch_qemu() {
 # Outputs:
 #   Output of QEMU.
 function qemu_reeves() {
-  local -r ACTION=${1-run}
-  local -r IMAGE_NAME=$2
-  local -r VIDEO_DRIVER=${3-qxl}
-  local -r VIEWER=${4-spice}
+  local -r action=${1-run}
+  local -r image_name=$2
+  local -r video_driver=${3-qxl}
+  local -r viewer=${4-spice}
   local -r INSTALLER_IMAGE=$5
   local -r DRIVER_IMAGE=$6
 
@@ -253,8 +251,9 @@ function qemu_reeves() {
   info "QEMU Reeves Starting"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
-  if [[ $ACTION = "run" || $ACTION = "install" ]]; then
-    local image=$HOME/Terrace/Documents/Virtualization/$IMAGE_NAME.img
+  if [[ $action = "run" || $action = "install" ]]; then
+    # Strip the extension if present, to allow this to be used with or without that.
+    local image=$HOME/Terrace/Documents/Virtualization/${image_name%.*}.img
 
     if [[ ! -f "$image" ]]; then
       # Make the file array empty if there aren't matches.
@@ -271,7 +270,7 @@ function qemu_reeves() {
     fi
     if [[ -n "$image" ]]; then
       if [[ -f "$image" ]]; then
-        if [[ $ACTION = "install" ]]; then
+        if [[ $action = "install" ]]; then
           if [[ ! -f "$INSTALLER_IMAGE" ]]; then
             zenity --error \
               --width 1000 \
@@ -280,21 +279,21 @@ function qemu_reeves() {
               --text="You must provide an installer image to be mounted."
             return 1
           else
-            launch_qemu "$image" "$VIDEO_DRIVER" "$VIEWER" "$INSTALLER_IMAGE" "$DRIVER_IMAGE"
+            launch_qemu "$image" "$video_driver" "$viewer" "$INSTALLER_IMAGE" "$DRIVER_IMAGE"
           fi
         else
-          launch_qemu "$image" "$VIDEO_DRIVER" "$VIEWER"
+          launch_qemu "$image" "$video_driver" "$viewer"
         fi
       else
         zenity --error --text "Image not found."
       fi
     fi
-  elif [[ $ACTION = "create" ]]; then
+  elif [[ $action = "create" ]]; then
     info "Creating a blank image."
     qemu-img create -f qcow2 blank-image.img 30G
-  elif [[ "$ACTION" = "uefi" ]]; then
+  elif [[ "$action" = "uefi" ]]; then
     info "Booting into Tianocore UEFI."
-    launch_qemu none "$VIDEO_DRIVER" "$VIEWER"
+    launch_qemu none "$video_driver" "$viewer"
   else
     print_help
   fi
