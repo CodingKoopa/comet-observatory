@@ -7,6 +7,8 @@
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
 
+shopt -s nocasematch
+
 declare -r PROGRAM_NAME=${0##*/}
 
 # Prints the usage message for this script.
@@ -24,8 +26,8 @@ Launches QEMU with an image. Please see the source of this script for possible o
 # Launches a QEMU image with the best options.
 # Arguments:
 #   - The name of the image to launch.
-#   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "qxl".
-#   - (Optional) Viewer to use, out of "spice", "qemu-stl", and "qemu-gtk". Default "spice".
+#   - (Optional) Video driver to use, out of "qxl", "virtio", and "std". Default "std".
+#   - (Optional) Viewer to use, out of "spice", "qemu-std", and "qemu-gtk". Default "qemu-gtk".
 #   - (Optional) An image to mount to the CD drive.
 function launch_qemu() {
   # Use arguments.
