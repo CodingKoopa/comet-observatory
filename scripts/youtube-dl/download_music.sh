@@ -41,6 +41,8 @@ function download_music() {
         error "Music directory selection failed: $download_dir"
         return 1
       fi
+      # Remove any trailing slashes.
+      download_dir=${download_dir%/}
 
       if [[ $download_dir != "SKIP" ]]; then
         verbose "Downloading to \"$download_dir\"."
