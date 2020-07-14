@@ -70,7 +70,18 @@ The [UEFI updater](bin/update-efi) updates the [UEFI](https://uefi.org/) boot en
 [`win-boot`](bin/win-boot) sets the UEFI next boot to the Windows Boot Manager.
 
 ### Music Downloader
-These scripts are currently undergoing changes.
+[`download-music`](bin/download-music) parses the Firefox sqlite database using `sqlite3`, collecting the URLs from the *Listening List* bookmark folder. For each URL, it:
+- Gets the name of the song using `youtube-dl`.
+- Opens the song in Firefox.
+  - As having Firefox open locks the database, this is done in an alternate profile.
+- Asks for a directory to download it to.
+  - The given music directory is scanned, and potential directories are presented with Zenity. Options for creating new directories are also given.
+- Downloads the song with `youtube-dl`.
+- Optionally trims the audio if there is long silence/noise in the beginning or end.
+- Crops the thumbnail to a square if the song is coming from YouTube.
+- Tags the song with appropriate metadata, prompted for.
+- Deletes the bookmark entry.
+This is targeted towards YouTube and Soundcloud the most, outputting MP3s.
 
 ### Network Tablet Start Script
 The [network tablet start](bin/start-network-tablet) script is used to start [GfxTablet](https://rfc2822.github.io/GfxTablet/) and map the tablet input.
