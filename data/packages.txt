@@ -19,7 +19,7 @@ e2fsprogs
 # NTFS filesystem utilities, for NTFS support.
 ntfs-3g
 # DOS filesystem utilities, for FAT32 support.
-dosfstols
+dosfstools
 # SSHFS, for remote filesystem support. This is used by KDE Connect.
 sshfs
 # ncdu, for managing disk usage.
