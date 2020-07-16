@@ -55,6 +55,13 @@ function update_repo() {
 
   safe_cd "$AUR_DIR"/"$repo"
 
+  # This is the easiest, least destructive way of preventing:
+  #
+  # error: cannot pull with rebase: You have unstaged changes.
+  # error: please commit or stash them.
+  verbose "Stashing any local changes."
+  git stash
+
   verbose "Pulling changes."
   git pull -q origin master
 
