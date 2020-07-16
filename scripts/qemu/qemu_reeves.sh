@@ -126,8 +126,7 @@ function launch_qemu() {
   # This and "-vga qxl" are mutually exclusive!
   # This is dependent on "-vga none"!
   qemu_opts+=${video_driver_qxl+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
-  # qemu_opts+=${video_driver_qxl+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
-  # For Virtio graphics, add Virtio graphics card, for performance. Doing this from here seems to
+  # For virgil graphics, add a virtio graphics card, for performance. Doing this from here seems to
   # work better.
   # This and "-vga virtio" are mutually exclusive!
   qemu_opts+=${video_driver_virgil+" -device virtio-vga"}
