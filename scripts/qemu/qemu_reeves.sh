@@ -125,6 +125,7 @@ function launch_qemu() {
   # we add a QXL paravirtual graphics card here.
   # This and "-vga qxl" are mutually exclusive!
   # This is dependent on "-vga none"!
+  qemu_opts+=${video_driver_qxl+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
   # qemu_opts+=${video_driver_qxl+" -device qxl-vga,max_outputs=1,vgamem_mb=64"}
   # For Virtio graphics, add Virtio graphics card, for performance. Doing this from here seems to
   # work better.
@@ -175,10 +176,10 @@ function launch_qemu() {
   qemu_opts+=${video_driver_std+" -vga std"}
   # For certain QXL configurations, disable the VGA card because we will have a separate QXL device.
   # This and "-vga qxl" are mutually exclusive!
-  # qemu_opts+=${video_driver_qxl+" -vga none"}
+  qemu_opts+=${video_driver_qxl+" -vga none"}
   # For QXL, enable the qxl video driver.
   # This and "-device qxl-vga" are mutually exclusive!
-  qemu_opts+=${video_driver_qxl+" -vga qxl"}
+  # qemu_opts+=${video_driver_qxl+" -vga qxl"}
   # For virgl, enable the virtio video driver.
   # This and "-device virtio-vga" are mutually exclusive!
   # qemu_opts+=${video_driver_virgil+" -vga virtio"}
