@@ -93,9 +93,9 @@ function launch_qemu() {
   qemu_opts+="-machine pc,accel=kvm"
   if [[ $main_img =~ win || $main_img =~ w10 ]]; then
     # Workaround: For Windows, core2duo is sometimes needed to avoid a BSOD on boot.
-    # qemu_opts+=" -cpu core2duo"
+    qemu_opts+=" -cpu core2duo"
     # This and the above workaround are mutually exclusive!
-    qemu_opts+=" -cpu host"
+    # qemu_opts+=" -cpu host"
   else
     # Pass through CPU attributes so that specific optimizations can be applied. An issue with this
     # is that it results in the following warning being printed:
