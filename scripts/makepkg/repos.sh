@@ -67,7 +67,7 @@ function update_repo() {
 
   if [[ "$repo" != "community-patches" ]]; then
     info "Showing $repo_base changes:"
-    git log --stat "@{1}.." -- . || true
+    git --no-pager log --stat "@{1}.." -- . || true
 
     # Strip dxvk-tools of its suffix.
     local -r com_patch_repo_dir=$COM_PATCH_DIR/${repo_base%-tools}
@@ -75,7 +75,7 @@ function update_repo() {
       info "Showing $repo_base community patch changes:"
       safe_cd "$com_patch_repo_dir"
       # Allow failure in case the repo was just cloned.
-      git log --stat "@{1}.." -- . || true
+      git --no-pager log --stat "@{1}.." -- . || true
       safe_cd -
     fi
   fi
