@@ -120,7 +120,7 @@ function update() {
       --ignore nvidia-dev-settings-tkg,nvidia-dev-egl-wayland-tkg \
       --ignore opencl-nvidia-dev-tkg,lib32-opencl-nvidia-dev-tkg \
       --ignore mingw-w64-binutils --ignore mingw-w64-binutils \
-      --ignore vkd3d-tkg-git
+      --ignore proton-tkg-git --ignore vkd3d-tkg-git
   fi
   if [[ $run_fstrim = true ]]; then
     fstrim --fstab --verbose
