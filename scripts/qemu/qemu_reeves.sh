@@ -175,7 +175,7 @@ name=com.redhat.spice.0"}
   # mime type, and xdg-open just beelines for remote-viewer. perl-file-mimeinfo has no idea what
   # it's even looking at.
   # OpenGL support does not seem to work properly here.
-  # qemu_opts+=${viewer_spice+" -display spice-app"}
+  qemu_opts+=${viewer_spice+" -display spice-app"}
   # For standard, enable the standard video driver.
   qemu_opts+=${video_driver_std+" -vga std"}
   # For certain QXL configurations, disable the VGA card because we will have a separate QXL device.
@@ -215,7 +215,7 @@ name=com.redhat.spice.0"}
 
   # Debug/Expert Options
   # Daemonize QEMU, to manually run the SPICE client.
-  qemu_opts+=" -daemonize"
+  # qemu_opts+=" -daemonize"
 
   # Generic Object Creation Options
 
@@ -226,10 +226,10 @@ name=com.redhat.spice.0"}
   # shellcheck disable=SC2086
   "$qemu_exe" $qemu_opts
 
-  if [[ -n $viewer_spice ]]; then
-    # Start spicy manually.
-    spicy --uri="spice+unix:///tmp/vm_spice.socket" --spice-shared-dir="$HOME" -f
-  fi
+  # if [[ -n $viewer_spice ]]; then
+  #   # Start spicy manually.
+  #   spicy --uri="spice+unix:///tmp/vm_spice.socket" --spice-shared-dir="$HOME" -f
+  # fi
 }
 
 # Calls launch-qemu(), prompting the user with a dialog to select a QEMU image if needed.
