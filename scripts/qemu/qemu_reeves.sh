@@ -201,7 +201,8 @@ name=com.redhat.spice.0"}
   qemu_opts+=" -nic user"
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
-  qemu_opts+=" -nic user,smb=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share}"
+  # This is dependent on "-nic"!
+  # qemu_opts+=",smb=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share}"
 
   # Character Device Options
   # Add a spicevmc channel for vdagent.
