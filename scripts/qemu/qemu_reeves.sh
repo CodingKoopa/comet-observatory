@@ -197,6 +197,8 @@ name=com.redhat.spice.0"}
   # i386 Target Options
 
   # Network Options
+  # Add a user mode host network backend, and its accompanying NIC hardware.
+  qemu_opts+=" -nic user"
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
   qemu_opts+=" -nic user,smb=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share}"
@@ -216,6 +218,8 @@ name=com.redhat.spice.0"}
   # Debug/Expert Options
   # Daemonize QEMU, to manually run the SPICE client.
   # qemu_opts+=" -daemonize"
+  # Don't create default devices, so that there aren't extreneous CD and floppy drive.
+  qemu_opts+=" -nodefaults"
 
   # Generic Object Creation Options
 
