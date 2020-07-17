@@ -131,10 +131,6 @@ kdeplasma-addons
 khotkeys
 # KDE GTK config, for customizing GTK applications.
 kde-gtk-config
-# XDG Desktop Portal, for better desktop integration.
-xdg-desktop-portal
-# XDG KDE Desktop Portal, for better desktop integration (KDE file dialogs in Firefox.).
-xdg-desktop-portal-kde
 # Plasma Browser Integration, for integrating browsers with Plasma.
 plasma-browser-integration
 # KDEConnect, for integrating the desktop with Android.
@@ -241,8 +237,8 @@ blender
 
 # Internet
 
-# Firefox, for browsing the web.
-firefox
+# Firefox, for browsing the web. Version with OpenSUSE patches for KDE integration.
+firefox-kde-opensuse-bin
 # Google Chrome, for browsing the internet.
 google-chrome
 # Discord, for messaging.
