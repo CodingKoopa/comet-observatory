@@ -305,7 +305,7 @@ function qemu_reeves() {
     fi
   elif [[ $action = "create" ]]; then
     info "Creating a blank image."
-    qemu-img create -f qcow2 blank-image.img 30G
+    qemu-img create -f qcow2 blank-image.img 10G
   elif [[ "$action" = "uefi" ]]; then
     info "Booting into Tianocore UEFI."
     launch_qemu none "$video_driver" "$viewer"
