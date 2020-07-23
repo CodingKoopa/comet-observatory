@@ -108,7 +108,7 @@ function select_music_directory() {
     if [[ "$category_name" == "Make a new category" ]]; then
       new_category=true
       break
-    elif [[ "$category_name" == "Skip this song" ]]; then
+    elif [[ "$category_name" == "Remove this song" ]]; then
       skip=true
       break
     # If there's a category without a parent.
