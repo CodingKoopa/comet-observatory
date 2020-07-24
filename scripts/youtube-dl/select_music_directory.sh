@@ -96,7 +96,7 @@ function select_music_directory() {
       --text "Select a category from the list below for the song(s) \"$song_title\"." \
       --column "" --column "Category Name" --column "Parent Category Name" \
       --print-column 2,3 \
-      TRUE "Make a new category" " " FALSE "Skip this song" " " "${args[@]}")"
+      TRUE "Make a new category" " " FALSE "Remove this song" " " "${args[@]}")"
     local category_name
     category_name=$(echo "$category_input" | cut -d'|' -f1)
     local category_name_valid
