@@ -37,7 +37,7 @@ function launch_qemu() {
   if [[ -n $4 ]]; then
     local -r installer_img=$4
   fi
-  if [[ -n $4 ]]; then
+  if [[ -n $5 ]]; then
     local -r driver_img=$5
   fi
   case ${qemu_video_driver,,} in
