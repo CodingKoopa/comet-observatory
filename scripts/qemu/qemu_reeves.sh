@@ -259,8 +259,8 @@ function qemu_reeves() {
   local -r image_name=$2
   local -r video_driver=${3-qxl}
   local -r viewer=${4-spice}
-  local -r INSTALLER_IMAGE=$5
-  local -r DRIVER_IMAGE=$6
+  local -r _installer_img=$5
+  local -r _driver_img=$6
 
   while getopts "h" opt; do
     case $opt in
@@ -296,7 +296,7 @@ function qemu_reeves() {
     if [[ -n "$image" ]]; then
       if [[ -f "$image" ]]; then
         if [[ $action = "install" ]]; then
-          if [[ ! -f "$INSTALLER_IMAGE" ]]; then
+          if [[ ! -f "$_installer_img" ]]; then
             zenity --error \
               --width 1000 \
               --height 400 \
@@ -304,7 +304,7 @@ function qemu_reeves() {
               --text="You must provide an installer image to be mounted."
             return 1
           else
-            launch_qemu "$image" "$video_driver" "$viewer" "$INSTALLER_IMAGE" "$DRIVER_IMAGE"
+            launch_qemu "$image" "$video_driver" "$viewer" "$_installer_img" "$_driver_img"
           fi
         else
           launch_qemu "$image" "$video_driver" "$viewer"
