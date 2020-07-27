@@ -25,6 +25,11 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
+  // Add custom file associations.
+  "files.associations": {
+    "*.in": "python",
+    "*.tpcs": "python"
+  },
   // Wrap words at the viewport limit.
   "editor.wordWrap": "on",
   // Display a vertical ruler at 100 characters.
