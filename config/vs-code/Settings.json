@@ -69,6 +69,8 @@
       "workbench.action.terminal.toggleTerminal"
     ]
   },
+  // Turn off JavaScript suggestions. See: https://github.com/microsoft/vscode/issues/47299.
+  "javascript.suggestionActions.enabled": false,
   // Format when saving.
   "editor.formatOnSave": true,
   "csscomb.formatOnSave": true,
