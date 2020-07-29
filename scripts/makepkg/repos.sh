@@ -75,16 +75,19 @@ function update_repo() {
       info "Showing $repo_base community patch changes:"
       safe_cd "$com_patch_repo_dir"
       # Allow failure in case the repo was just cloned.
-      git --no-pager log --stat "@{1}.." -- . || true
+      # Store this in a variable so we can tell later, if there has been community patch changes.
+      community_patch_changes=$(git --no-pager -c color.ui=always log --stat "@{1}.." -- .) || true
+      echo "$community_patch_changes"
       safe_cd -
     fi
   fi
 
   if [[ ${#diff_files[@]} -ne 0 ]]; then
-    # Only view the configuration and configuration diff if there has been a change to it. In the
-    # case of nvidia-all, one may want to update the version, but new versions do not necessarily
-    # cause version diffs, so force it.
-    if [[ -n $(git diff "@{1}.." "${diff_files[@]}") || $repo = "nvidia-all" ]]; then
+    # Only view the configuration and configuration diff if there has been a change to it, or if
+    # there has been a change to the community patches. In the case of nvidia-all, one may want to
+    # update the version, but new versions do not necessarily cause version diffs, so force it.
+    if [[ -n $(git diff "@{1}.." "${diff_files[@]}") || -n "$community_patch_changes" || \
+    $repo = "nvidia-all" ]]; then
       local cfg_name=$repo_base
       if [[ $repo == "dxvk-tools" ]]; then
         cfg_name="updxvk"
