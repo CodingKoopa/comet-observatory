@@ -209,8 +209,8 @@ ${video_driver_virgil+",gl=on"}"}
   # i386 Target Options
 
   # Network Options
-  # Add a user mode host network backend, and its accompanying NIC hardware.
-  qemu_opts+=" -nic user"
+  # Add a user mode host network backend, and its accompanying virtio NIC hardware.
+  qemu_opts+=" -nic user,model=virtio-net-pci"
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
   # This is dependent on "-nic"!
