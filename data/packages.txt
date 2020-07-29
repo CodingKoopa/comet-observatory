@@ -77,6 +77,8 @@ reflector
 pkgstats
 # npm, for managing Node.JS packages.
 npm
+# npm-check-updates, for upgrading packages.
+# npm-check-updates
 
 # Runtimes, Virtualization
 
