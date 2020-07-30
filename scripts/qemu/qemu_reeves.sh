@@ -247,7 +247,8 @@ ${video_driver_virgil+",gl=on"}"}
 
   if [[ -n $viewer_spice ]]; then
     # Start spicy manually.
-    spicy --uri="spice+unix:///tmp/vm_spice.socket" --spice-shared-dir="$HOME" -f
+    # Start virt-viewer manually.
+    # remote-viewer spice+unix:///tmp/vm_spice.socket
   fi
 }
 
