@@ -74,6 +74,8 @@ function launch_qemu() {
     local -r viewer_str=QEMU-GTK
     ;;
   esac
+  local -r vm_name=$(basename "$main_img" .img).$video_driver_str.$viewer_str
+  local -r vm_socket_addr=/tmp/$vm_name.socket
   if [[ -n $installer_img ]]; then
     info "Using installer image \"$installer_img\"."
   fi
@@ -144,7 +146,7 @@ name=com.redhat.spice.0"}
   qemu_opts+=${viewer_spice+" -device virtserialport,chardev=webdavport,\
 name=org.spice-space.webdav.0"}
   # Set the name of the VM.
-  qemu_opts+=" -name $(basename "$main_img" .img).$video_driver_str.$viewer_str"
+  qemu_opts+=" -name $vm_name"
 
   # Block Device Options
   if [[ $main_img != "none" ]]; then
@@ -203,7 +205,7 @@ name=org.spice-space.webdav.0"}
   # Debian packages "spice-vdagent xserver-xorg-video-qxl" should be installed. See:
   # https://wiki.archlinux.org/index.php/QEMU#SPICE_support_on_the_guest
   # For virgl, enable OpenGL.
-  qemu_opts+=${viewer_spice+" -spice unix,addr=/tmp/vm_spice.socket,disable-ticketing\
+  qemu_opts+=${viewer_spice+" -spice unix,addr=$vm_socket_addr,disable-ticketing\
 ${video_driver_virgil+",gl=on"}"}
 
   # i386 Target Options
@@ -247,8 +249,9 @@ ${video_driver_virgil+",gl=on"}"}
 
   if [[ -n $viewer_spice ]]; then
     # Start spicy manually.
+    spicy --uri="spice+unix://$vm_socket_addr" --spice-shared-dir="$HOME" -f
     # Start virt-viewer manually.
-    # remote-viewer spice+unix:///tmp/vm_spice.socket
+    # remote-viewer "spice+unix://$vm_socket_addr"
   fi
 }
 
