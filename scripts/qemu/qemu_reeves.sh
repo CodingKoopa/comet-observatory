@@ -171,8 +171,7 @@ name=org.spice-space.webdav.0"}
   fi
   # Add a virtual filesystem share.
   # This and the smb share are mutually exclusive!
-  # qemu_opts+=" -virtfs local,path=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share},\
-  # mount_tag=share,security_model=none"
+  # qemu_opts+=" -virtfs local,path=$HOME,mount_tag=share,security_model=none"
 
   # USB Options
 
@@ -216,7 +215,7 @@ ${video_driver_virgil+",gl=on"}"}
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
   # This is dependent on "-nic"!
-  # qemu_opts+=",smb=${QR_SHARE-/home/kyle/Terrace/Documents/Virtualization/Share}"
+  # qemu_opts+=",smb=$HOME"
 
   # Character Device Options
   # Add a spicevmc channel for vdagent.
