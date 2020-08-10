@@ -42,7 +42,7 @@
   // Never autoclose quotes or brackets, because they get in the way more than they help.
   "editor.autoClosingQuotes": "never",
   "editor.autoClosingBrackets": "never",
-  // Use Fira
+  // Use the Fira Code font.
   "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
   "editor.fontLigatures": true,
   // Don't show recommendations for extension installs.
