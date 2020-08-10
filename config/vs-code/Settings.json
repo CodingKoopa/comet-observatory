@@ -117,7 +117,7 @@
   "python.linting.flake8Enabled": true,
   // Default to the C++17 standard when formatting.
   "C_Cpp.default.cppStandard": "c++17",
-  // Default to the C11 standardn when formatting.
+  // Default to the C11 standard when formatting.
   "C_Cpp.default.cStandard": "c11",
   // Default to the LLVM coding style when formatting.
   "C_Cpp.clang_format_fallbackStyle": "LLVM",
