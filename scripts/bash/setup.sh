@@ -13,6 +13,8 @@ source "$CO"/scripts/bash/common.sh
 source "$CO"/scripts/bash/file_utils.sh
 # shellcheck source=scripts/bash/configure_system_utils.sh
 source "$CO"/scripts/bash/configure_system_utils.sh
+# shellcheck source=scripts/bash/update.sh
+source "$CO"/scripts/bash/update.sh
 # shellcheck source=scripts/bash/configure_user_utils.sh
 source "$CO"/scripts/bash/configure_user_utils.sh
 
@@ -95,7 +97,7 @@ function setup_system() {
 
   info "Syncing packages."
   if [[ $DRY_RUN = false ]]; then
-    pacman -Syu "${PACMAN_ARGS[@]}"
+    pacman -Syu "${PACMAN_ARGS[@]}" "${PACKAGE_IGNORE_ARGS[@]}"
   fi
 
   info "Installing packages."
