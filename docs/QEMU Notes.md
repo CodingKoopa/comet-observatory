@@ -63,3 +63,18 @@ The following NEW packages will be installed:
 Need to get 38.9 MB of archives.
 After this operation, 155 MB of additional disk space will be used.
 ```
+
+## Using Windows XP in 2020
+There are some adversities to using Windows XP in 2020, but it is totally doable, and [there is a community behind it](https://xpforever.miraheze.org/). These are the loose steps I used for setting up my VM:
+- Obtain a Windows XP VM installation disc, preferably SP3.
+- Install the virtual system, [with virtio drivers](https://wiki.archlinux.org/index.php/QEMU#Preparing_a_Windows_guest) if you are using a virtio disk.
+- Wait, and allow the VM to download Windows Updates. I don't know of any better way to monitor this, but when it happens, there will be a Windows Update icon in the tray.
+  - No internet configuration within the guest should be necessary. You can configure an always-on broadband connection, but this doesn't seem to actually change anything.
+- Download and install all Windows Updates from Internet Explorer (Tools > Windows Update).
+  - [This](https://blog.dhampir.no/content/installing-windows-live-essentials-on-windows-xp-error-oncatalogresult-0x80190194) workaround is necessary to install the Windows Live update.
+- [Mount the Windows XP disk to the host](https://wiki.archlinux.org/index.php/QEMU#Mounting_a_partition_from_a_qcow2_image).
+- Copy the installer for an [XP compatible installer](https://xpforever.miraheze.org/wiki/Internet_Access) to the guest disk.
+  - I use Mypal, and it works well.
+- Install spice-guest-tools and the Spice WebDAV daemon from [here](https://www.spice-space.org/download.html).
+- Install [BitKinex](http://www.bitkinex.com/) to the host. This allows it to use the WebDAV share exposed by SPICE. This is necessary because [webdav does not seem to work on Windows XP](https://lists.freedesktop.org/archives/spice-devel/2020-July/051780.html).
+  - Note that the new versions of spice-webdavd do not work on Windows XP. See that mailing list archive for more info on that.
