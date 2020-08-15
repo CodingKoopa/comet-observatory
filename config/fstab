@@ -19,6 +19,11 @@ PARTUUID=f8580bac-b38a-d949-8248-dd244234bdda /home/kyle/Terrace  ntfs  defaults
 # See [2].
 PARTUUID=1cde3ab9-c31e-47de-8c32-5172d1846b35 /home/kyle/Fountain ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount  0 2
 
+# tmpfs Devices
+
+# tmpfs with increased RAM. With 32GB of RAM, 16GB is the default tmpfs size. This is no longer enough to compile the Linux kernel.
+tmpfs                                         /tmp                tmpfs rw,nodev,nosuid,size=17G                                                        0 0
+
 # Swap Devices
 
 # Swap partition on the SSD.
