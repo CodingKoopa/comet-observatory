@@ -4,8 +4,6 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-# shellcheck source=scripts/bash/common.sh
-source "$CO"/scripts/bash/common.sh
 # shellcheck source=scripts/makepkg/repos.sh
 source "$CO"/scripts/makepkg/repos.sh
 
