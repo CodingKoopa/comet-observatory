@@ -57,5 +57,3 @@ function tkgmatrix() {
     done
   done
 }
-
-tkgmatrix
