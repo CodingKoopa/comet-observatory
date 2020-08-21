@@ -196,6 +196,9 @@ $CMDLINE_STR $*"
     efibootmgr -q -O
     efibootmgr -q -o "$default_entry_num"
   fi
+
+  info "Boot entries:"
+  efibootmgr -v | tr -d "."
 }
 
 # Sets the UEFI next boot parameter to that of the Windows Boot Manager, and reboots.
