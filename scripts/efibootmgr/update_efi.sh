@@ -143,7 +143,7 @@ $CMDLINE_STR $CMDLINE_SILENT_STR"
     *)
       info "Updating $1 normal UEFI boot entry ($vmlinuz_path)."
       add_entry "$1 (Normal)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
-        $CMDLINE_STR"
+$CMDLINE_STR"
       ;;
     esac
   }
