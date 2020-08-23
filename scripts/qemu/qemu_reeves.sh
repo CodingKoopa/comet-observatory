@@ -9,20 +9,6 @@ source "$CO"/scripts/bash/common.sh
 
 shopt -s nocasematch
 
-declare -r PROGRAM_NAME=${0##*/}
-
-# Prints the usage message for this script.
-print_help() {
-  # Keep the help string in its own variable because a single quote in a heredoc messes up syntax
-  # highlighting.
-  HELP_STRING="
-Usage: $PROGRAM_NAME [-h] { run | install | create | uefi } [ image [ video-driver [ viewer [
-install-image [ driver-image ]]]]]
-Launches QEMU with an image. Please see the source of this script for possible options."
-  echo "$HELP_STRING"
-  exit 0
-}
-
 # Launches a QEMU image with the best options.
 # Arguments:
 #   - The name of the image to launch.
@@ -280,7 +266,10 @@ function qemu_reeves() {
   while getopts "h" opt; do
     case $opt in
     h)
-      print_help
+      echo "Usage: ${0##*/} [-h] { run | install | create | uefi } [ image [ video-driver [ viewer [
+install-image [ driver-image ]]]]]
+Launches QEMU with an image. Please see the source of this script for possible options."
+      exit 0
       ;;
     *)
       break
