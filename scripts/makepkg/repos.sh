@@ -123,7 +123,7 @@ function update_repo() {
 #   - makepkg output.
 function build_repo() {
   local -r repo=$1
-  local -r install=${2+true}
+  local -r install=${2-true}
   install_arg=""
   if [[ $install = true ]]; then
     install_arg="i"
