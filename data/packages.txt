@@ -8,7 +8,7 @@ linux
 linux-headers
 # modprobed-db, for storing a list of kernel modules used for smaller TkG kernel builds.
 modprobed-db
-# VDPAU backend for VA-API, for more GPU video decoding support.
+# VDPAU backend for VA-API, for VA-API support.
 libva-vdpau-driver
 # PulseAudio, for audio support.
 pulseaudio
