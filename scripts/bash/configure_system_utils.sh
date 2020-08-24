@@ -20,8 +20,9 @@ function configure_pacman() {
 
   if [[ $DRY_RUN = false ]]; then
     info "Importing Chaotic AUR keys into pacman."
-    pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB >/dev/null
-    pacman-key --lsign-key 3056513887B78AEB >/dev/null
+    sudo pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net -r 3056513887B78AEB 8A9E14A07010F7E3 >/dev/null
+    sudo pacman-key --lsign-key 3056513887B78AEB >/dev/null
+    sudo pacman-key --lsign-key 8A9E14A07010F7E3 >/dev/null
   fi
 }
 
