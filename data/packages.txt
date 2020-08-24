@@ -131,6 +131,10 @@ plasma-desktop
 kdeplasma-addons
 # khotkeys, for custom keyboard shortcuts.
 khotkeys
+# xdg-desktop-portal, for interfacing with containment frameworks.
+xdg-desktop-portal
+# xdg-desktop-portal-kde, a Qt/KF5 backend for xdg-desktop-portal.
+xdg-desktop-portal-kde
 # KDE GTK config, for customizing GTK applications.
 kde-gtk-config
 # Plasma Browser Integration, for integrating browsers with Plasma.
@@ -239,8 +243,8 @@ blender
 
 # Internet
 
-# Firefox, for browsing the web. Version with OpenSUSE patches for KDE integration.
-firefox-kde-opensuse-bin
+# Firefox, for browsing the web.
+firefox
 # Google Chrome, for browsing the internet.
 google-chrome
 # Discord, for messaging.
