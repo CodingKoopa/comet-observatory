@@ -95,10 +95,6 @@ function update() {
     update_repo linux-tkg/linux"$KERNEL_VER"-tkg customization.cfg
     subsect "Updating Nvidia drivers."
     update_repo nvidia-all customization.cfg
-    subsect "Updating DXVK."
-    update_repo dxvk-tools updxvk.cfg
-    subsect "Updating vkd3d."
-    update_repo vkd3d-git customization.cfg
     subsect "Building TkG Proton."
     update_repo wine-tkg-git/proton-tkg proton-tkg.cfg \
       proton-tkg-profiles/advanced-customization.cfg
@@ -109,10 +105,6 @@ function update() {
     build_repo linux-tkg/linux"$KERNEL_VER"-tkg
     subsect "Building Nvidia drivers."
     build_repo nvidia-all
-    subsect "Building DXVK."
-    build_dxvk
-    subsect "Building vkd3d."
-    build_repo vkd3d-git
     subsect "Building TkG Proton."
     build_repo wine-tkg-git/proton-tkg
   fi

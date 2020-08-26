@@ -16,7 +16,6 @@ declare -A REPOS=(
   ["community-patches"]="https://github.com/Frogging-Family/community-patches.git"
   ["linux-tkg/linux$KERNEL_VER-tkg"]="https://github.com/Frogging-Family/linux-tkg.git"
   ["nvidia-all"]="https://github.com/Frogging-Family/nvidia-all.git"
-  ["dxvk-tools"]="https://github.com/Frogging-Family/dxvk-tools.git"
   ["wine-tkg-git/proton-tkg"]="https://github.com/Frogging-Family/wine-tkg-git.git"
 )
 

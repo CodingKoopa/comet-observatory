@@ -202,8 +202,6 @@ function link_directories() {
     ["$CO/config/tkg/linux$KERNEL_VER-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/linux$KERNEL_VER-tkg.cfg"
     # Link TKG Nvidia configuration from CO to user configuration.
     ["$CO/config/tkg/nvidia-all.cfg"]="$INSTALL_HOME/.config/frogminer/nvidia-all.cfg"
-    # Link TKG DXVK configuration from CO to user configuration.
-    ["$CO/config/tkg/updxvk.cfg"]="$INSTALL_HOME/.config/frogminer/updxvk.cfg"
     # Link TKG Wine configuration from CO to user configuration.
     ["$CO/config/tkg/proton-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/proton-tkg.cfg"
   )
