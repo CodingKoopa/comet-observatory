@@ -285,23 +285,19 @@ yuzu-mainline-git
 
 # Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
+# Git, for version control.
+git
 # Visual Studio Code, for editing code.
 code
 # Eclipse IDE for Java Developers, for developing Java applications.
 # eclipse-java
 # Android Studio, for developing Android applications, and for adb.
 android-studio
-# Git, for version control.
-git
-# GDB, for debugging code.
-gdb
-# ccache, for increasing build times.
-ccache
-# namcap, for PKGBUILD linting.
-namcap
 # ShellCheck, for Bash linting. This is the statically compiled version without the Haskell
 # dependencies.
 shellcheck-bin
+# namcap, for PKGBUILD linting.
+namcap
 # Cmake, for building projects.
 cmake
 # Ninja, for building projects.
@@ -312,8 +308,12 @@ gradle
 gulp
 # Hugo, for building websites.
 hugo
+# ccache, for compiling code faster.
+ccache
+# GDB, for debugging code.
+gdb
 # Doxygen, for building documentation.
-doxygen
+# doxygen
 # TeX Live core, for building LaTeX documents.
 # texlive-core
 # TeX Live LaTeX extras.
