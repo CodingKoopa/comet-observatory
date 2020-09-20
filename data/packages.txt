@@ -114,6 +114,8 @@ apache
 neofetch
 # LSDeluxe, for listing directories.
 lsd
+# tree, for listing directories.
+tree
 # nano, for editing text.
 nano
 # figlet, for making ASCII figures.
