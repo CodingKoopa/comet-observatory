@@ -38,6 +38,26 @@ function d() {
   fi
 }
 
+# Strips leading "v" from all Git tags.
+# Outputs:
+#   - Git output, and tag status.
+function retag() {
+  local -a tags
+  echo retag
+  tags=$(git tag -l)
+  while IFS= read -r tag; do
+    if [[ $tag =~ ^v.+$ ]]; then
+      message=$(git tag -l -n1 --format='%(contents)' "$tag" | head -n1)
+      echo "Fixing $tag ($message)"
+      local tag_new=${tag#v}
+      git tag -f "$tag_new" "$tag"^{} -m "$message" &&
+        git tag -d "$tag" &&
+        git push origin :refs/tags/"$tag" &&
+        git push --tags
+    fi
+  done <<<"$tags"
+}
+
 alias lss='/usr/bin/ls --color=auto'
 # Replace ls with LSDeluxe.
 alias ls='lsd'
