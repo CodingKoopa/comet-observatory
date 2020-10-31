@@ -102,9 +102,9 @@ virt-viewer
 # Service Hosting
 
 # Docker, for hosting containerized services.
-docker
+# docker
 # Docker Compose, for controlling Docker.
-docker-compose
+# docker-compose
 # Apache, for hosting HTTP services.
 apache
 
@@ -302,7 +302,7 @@ code
 # OpenJDK JDK docs, for writing Java applications.
 # openjdk-docs
 # Android Studio, for developing Android applications, and for adb.
-android-studio
+# android-studio
 # ShellCheck, for Bash linting. This is the statically compiled version without the Haskell
 # dependencies.
 shellcheck-bin
