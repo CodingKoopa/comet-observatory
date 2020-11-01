@@ -189,8 +189,8 @@ ark
 p7zip
 # unrar, for RAR support in Ark.
 unrar
-# Flameshot, for taking screenshots.
-flameshot
+# Spectacle, for taking screenshots.
+spectacle
 # Konsole, for using the terminal.
 konsole
 
