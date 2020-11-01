@@ -121,8 +121,9 @@
   "C_Cpp.default.cppStandard": "c++17",
   // Default to the C11 standard when formatting.
   "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.clang_format_style": "file",
   // Default to the LLVM coding style when formatting.
-  "C_Cpp.clang_format_fallbackStyle": "LLVM",
+  "C_Cpp.clang_format_fallbackStyle": "none",
   // Set the JDK home.
   "java.home": "/home/kyle/wpilib/2020/jdk/",
   // Configure Cmake on open. Before setting this, SSH should be setup in a way that this won't
