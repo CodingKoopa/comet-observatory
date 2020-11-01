@@ -61,19 +61,6 @@
   "debug.console.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
   // Open the explorer after debugging.
   "debug.openExplorerOnEnd": true,
-  "macros": {
-    // Add a macro for forcefully stopping the current debugging session and starting a new one.
-    "powerRun": [
-      "macros.stopDebuggingAndKillTerminal",
-      "workbench.action.debug.start"
-    ],
-    // Add a macro for stopping debugging, and closing the open terminal.
-    "stopDebuggingAndKillTerminal": [
-      "workbench.action.debug.stop",
-      "workbench.action.terminal.kill",
-      "workbench.action.terminal.toggleTerminal"
-    ]
-  },
   // Turn off JavaScript suggestions. See: https://github.com/microsoft/vscode/issues/47299.
   "javascript.suggestionActions.enabled": false,
   // Disable the Python start page.
