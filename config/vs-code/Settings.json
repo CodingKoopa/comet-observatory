@@ -95,6 +95,11 @@
     "**/*.in",
     "**/*.tpcs"
   ],
+  // Add the Java++ formatting profile.
+  "java.format.settings.profile": "Java++",
+  "java.format.settings.url": "/home/kyle/Terrace/Documents/Projects/Bash/comet-observatory/config/javaplusplus.xml",
+  // Organize imports.
+  "java.saveActions.organizeImports": true,
   // Contribute dictionary additions to the system.
   "spellright.addToSystemDictionary": true,
   // Use English for spell checking.
