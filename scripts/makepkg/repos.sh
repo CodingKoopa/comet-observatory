@@ -11,6 +11,7 @@ source "$CO"/scripts/bash/file_utils.sh
 
 declare AUR_DIR=$HOME/Documents/AUR
 declare COM_PATCH_DIR=$AUR_DIR/community-patches
+# Keep in sync with pacman.conf!
 declare KERNEL_VER=58
 declare -A REPOS=(
   ["community-patches"]="https://github.com/Frogging-Family/community-patches.git"
