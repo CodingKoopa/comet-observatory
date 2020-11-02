@@ -1,4 +1,7 @@
 {
+  ////
+  /// Editor
+  ////
   // Disable all telemetry.
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
@@ -47,30 +50,28 @@
   "editor.fontLigatures": true,
   // Don't show recommendations for extension installs.
   "extensions.ignoreRecommendations": true,
-  // Periodically fetch remote Git repos.
-  "git.autofetch": true,
-  // Don't confirm before synchronizing Git repositories.
-  "git.confirmSync": false,
-  // Allow force pushing.
-  "git.allowForcePush": true,
-  // Don't confirm force pushes.
-  "git.confirmForcePush": false,
-  // Don't ignore whitespace when viewing diffs, because they will sneak by otherwise.
-  "diffEditor.ignoreTrimWhitespace": false,
-  // Set the console font.
-  "debug.console.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
-  // Open the explorer after debugging.
-  "debug.openExplorerOnEnd": true,
-  // Turn off JavaScript suggestions. See: https://github.com/microsoft/vscode/issues/47299.
-  "javascript.suggestionActions.enabled": false,
-  // Disable the Python start page.
-  "python.showStartPage": false,
   // Format when saving.
   "editor.formatOnSave": true,
   "csscomb.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  ////
+  /// Language Support
+  ////
+  ///   YAML
+  // When formatting YAML, allow a max of 100 characters per line.
+  "yaml.format.printWidth": 100,
+  ///   Bash
+  // Allow ShellCheck to follow sources.
+  "shellcheck.customArgs": [
+    "-x"
+  ],
+  // Make ShellCheck use the project root as the working directory.
+  "shellcheck.useWorkspaceRootAsCwd": true,
+  ///   Python
+  // Disable the Python start page.
+  "python.showStartPage": false,
   // Enable linting with flake8.
   "python.linting.flake8Enabled": true,
   // Disable linting with pylint.
@@ -82,39 +83,60 @@
     "**/*.in",
     "**/*.tpcs"
   ],
+  ///   JavaScript
+  // Turn off JavaScript suggestions. See: https://github.com/microsoft/vscode/issues/47299.
+  "javascript.suggestionActions.enabled": false,
+  // Disable builtin JS formatting since ESLint fixing is enabled.
+  "javascript.format.enable": false,
+  ///   C++
+  // Default to the C++17 standard when formatting.
+  "C_Cpp.default.cppStandard": "c++17",
+  // Default to the C11 standard when formatting.
+  "C_Cpp.default.cStandard": "c11",
+  // Use the .clang-format file as the default style.
+  "C_Cpp.clang_format_style": "file",
+  // Don't use any fallback style.
+  "C_Cpp.clang_format_fallbackStyle": "none",
+  ///   Java
   // Add the Java++ formatting profile.
   "java.format.settings.profile": "Java++",
   "java.format.settings.url": "/home/kyle/Terrace/Documents/Projects/Bash/comet-observatory/config/javaplusplus.xml",
   // Organize imports.
   "java.saveActions.organizeImports": true,
+  ///   Docker
   // Use vscode-docker to lint Dockerfiles, because shell-format makes mistakes.
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  // When formatting YAML, allow a max of 100 characters per line.
-  "yaml.format.printWidth": 100,
-  // Allow ShellCheck to follow sources.
-  "shellcheck.customArgs": [
-    "-x"
-  ],
-  // Make ShellCheck use the project root as the working directory.
-  "shellcheck.useWorkspaceRootAsCwd": true,
-  // Disable builtin JS formatting since ESLint fixing is enabled.
-  "javascript.format.enable": false,
-  // Default to the C++17 standard when formatting.
-  "C_Cpp.default.cppStandard": "c++17",
-  // Default to the C11 standard when formatting.
-  "C_Cpp.default.cStandard": "c11",
-  "C_Cpp.clang_format_style": "file",
-  // Default to the LLVM coding style when formatting.
-  "C_Cpp.clang_format_fallbackStyle": "none",
+  ///   LaTeX
+  // For LaTeX viewing, use a VSCode tab.
+  "latex-workshop.view.pdf.viewer": "tab",
+  ////
+  /// Tool Support
+  ////
+  ///   Git
+  // Periodically fetch remote Git repos.
+  "git.autofetch": true,
+  // Don't confirm before synchronizing Git repositories.
+  "git.confirmSync": false,
+  // Allow force pushing.
+  "git.allowForcePush": true,
+  // Don't confirm force pushes.
+  "git.confirmForcePush": false,
+  // Don't ignore whitespace when viewing diffs, because they will sneak by otherwise.
+  "diffEditor.ignoreTrimWhitespace": false,
+  ///   Terminal
+  // Set the console font.
+  "debug.console.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
+  // Open the explorer after debugging.
+  "debug.openExplorerOnEnd": true,
+  ///   CMake
   // Configure Cmake on open. Before setting this, SSH should be setup in a way that this won't
   // annoyingly prompt for a password when opening a project.
   "cmake.configureOnOpen": true,
   // Build in the "Build" directory for consistency with upper camel case projects.
   "cmake.buildDirectory": "${workspaceRoot}/Build",
-  // For LaTeX viewing, use a VSCode tab.
-  "latex-workshop.view.pdf.viewer": "tab",
+  ///   WPILib
   // Use the default WPILib simluation extension.
   "wpilib.selectDefaultSimulateExtension": true
 }
