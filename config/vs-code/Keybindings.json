@@ -10,12 +10,12 @@
   },
   {
     "key": "ctrl+tab",
-    "command": "-workbench.action.quickOpenNavigateNextInEditorPicker",
-    "when": "inEditorsPicker && inQuickOpen"
+    "command": "-workbench.action.quickOpenNavigateNextInEditorPicker"
   },
   {
     "key": "ctrl+shift+tab",
-    "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup"
+    "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup",
+    "when": "inEditorsPicker && inQuickOpen"
   },
   {
     "key": "ctrl+shift+tab",
