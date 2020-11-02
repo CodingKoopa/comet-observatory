@@ -30,7 +30,10 @@ function download_music() {
   if local -r urls=$(get_bookmark_urls "Listening List"); then
     for url in $urls; do
       local title
-      title=$(youtube-dl --get-title "$url")
+      if ! title=$(youtube-dl --get-title "$url"); then
+        error "Music directory selection failed: $title"
+        return 1
+      fi
       info "Downloading \"$title\"".
 
       verbose "Opening \"$url\"."
