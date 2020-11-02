@@ -37,7 +37,7 @@ function download_music() {
       info "Downloading \"$title\"".
 
       verbose "Opening \"$url\"."
-      firefox -P Alternate "$url" &
+      firefox -P Alternate "$url" &>/dev/null &
 
       verbose "Getting info about \"$url\" and selecting music directory."
       if ! download_dir=$(select_music_directory "$title"); then
