@@ -82,6 +82,8 @@ function link_directories() {
 
     # Link user directory configuration from CO to user configuration.
     ["$CO/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
+    # Link PulseAudio startup script from CO to user configuration.
+    ["$CO/config/default.pa"]="$INSTALL_HOME/.config/pulse/default.pa"
     # Link GTK 3.0 configuration from documents to user configuration.
     ["$SYNCED_GTK3_DIR"]="$INSTALL_HOME/.config/gtk-3.0"
     # Link GTK 3.0 configuration from documents to user configuration.
