@@ -39,20 +39,24 @@
     "key": "ctrl+shift+tab",
     "command": "workbench.action.previousEditor"
   },
-  // Disable recent file picker bindings.
+  // Remap run without debugging.
   {
-    "key": "ctrl+r",
-    "command": "-workbench.action.openRecent"
-  },
-  // Remap debug mode restart bindings to be consistent with the new debug binding.
-  {
-    "key": "ctrl+shift+f5",
-    "command": "-workbench.action.debug.restart",
-    "when": "inDebugMode"
+    "key": "ctrl+f5",
+    "command": "-workbench.action.debug.run",
   },
   {
-    "key": "ctrl+shift+r",
-    "command": "workbench.action.debug.restart",
+    "key": "shift+f5",
+    "command": "workbench.action.debug.run",
+    "when": "debuggersAvailable && !inCMakeProject"
+  },
+  // Remap stop debugging.
+  {
+    "key": "shift+f5",
+    "command": "-workbench.action.debug.stop",
+  },
+  {
+    "key": "ctrl+f5",
+    "command": "workbench.action.debug.stop",
     "when": "inDebugMode"
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,22 +109,15 @@
     "command": "cmake.build",
     "when": "cmake:enableFullFeatureSet && inCMakeProject"
   },
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// Macros
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  // Remap debug mode start binding.
+  // Remap CMake debug binding.
+  {
+    "key": "ctrl+f5",
+    "command": "-cmake.debugTarget"
+  },
   {
     "key": "f5",
-    "command": "-workbench.action.debug.start",
-  },
-  {
-    "key": "ctrl+r",
-    "command": "macros.powerRun"
-  },
-  // Remap debug mode exit bindings.
-  {
-    "key": "shift+f5",
-    "command": "-workbench.action.debug.stop"
+    "command": "cmake.debugTarget",
+    "when": "cmake:enableFullFeatureSet && inCMakeProject && !cmake:hideDebugCommand && !inDebugMode"
   },
   {
     "key": "escape escape",
