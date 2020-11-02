@@ -36,7 +36,6 @@ packages.
 # Updates the system.
 # Globals Read:
 #   - AUR_DIR: The directory where the repositories are located.
-#   - KERNEL_VER: The two digit TkG kernel version.
 # Arguments:
 #   - One or more flags dictating the action to be taken. See print_help().
 # Outputs:
@@ -86,8 +85,8 @@ function update() {
     check_repos
     subsect "Updating community patches."
     update_repo community-patches
-    subsect "Updating TkG Linux kernel $KERNEL_VER source."
-    update_repo linux-tkg/linux"$KERNEL_VER"-tkg customization.cfg
+    subsect "Updating TkG Linux kernel source."
+    update_repo linux-tkg customization.cfg
     subsect "Updating Nvidia drivers."
     update_repo nvidia-all customization.cfg
     subsect "Building TkG Proton."
@@ -96,8 +95,8 @@ function update() {
 
     section "Building Custom Packages"
 
-    subsect "Building TKG Linux kernel $KERNEL_VER."
-    build_repo linux-tkg/linux"$KERNEL_VER"-tkg
+    subsect "Building TKG Linux kernel."
+    build_repo linux-tkg
     subsect "Building Nvidia drivers."
     build_repo nvidia-all
     subsect "Building TkG Proton."

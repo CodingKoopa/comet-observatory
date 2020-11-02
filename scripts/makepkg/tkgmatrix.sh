@@ -300,7 +300,7 @@ _custom_pkgbase=linux-tkgmatrix
 $upper
 # Set the lower mutation.
 $lower" >"$tkgmatrix_cfg_file"
-              PKGDEST=$(realpath "$build_dir") build_repo linux-tkg/linux"$KERNEL_VER"-tkg false
+              PKGDEST=$(realpath "$build_dir") build_repo linux-tkg false
               if [[ $is_baseline -eq 0 ]]; then
                 # We are already in the directory for the upper tier, so all the link needs is the
                 # lower tier directory name, in order to resolve.
