@@ -143,5 +143,10 @@ load-module module-filter-apply
 
 ####################################################################################################
 
+# Make sure that the profile for HDMI 2 is used. When locking the screen, PA seems to like to go
+# back to HDMI 1 without this.
+# (Commented out because this doesn't seem to work.)
+#set-card-profile 1 output:hdmi-stereo-extra1
+
 # Setup a new sink which monitors the HDMI output.
 load-module module-remap-sink sink_name=secondary master=alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
