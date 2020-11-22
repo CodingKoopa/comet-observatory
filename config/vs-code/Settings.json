@@ -103,6 +103,8 @@
   "java.format.settings.url": "/home/kyle/Terrace/Documents/Projects/Bash/comet-observatory/config/javaplusplus.xml",
   // Organize imports.
   "java.saveActions.organizeImports": true,
+  // Refactor when renaming from file explorer.
+  "java.refactor.renameFromFileExplorer": "autoApply",
   ///   Docker
   // Use vscode-docker to lint Dockerfiles, because shell-format makes mistakes.
   "[dockerfile]": {
