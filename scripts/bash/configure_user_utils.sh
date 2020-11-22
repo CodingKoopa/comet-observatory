@@ -50,7 +50,6 @@ function create_directories() {
 #   - INSTALL_USER: See setup_system().
 #   - CO: See export_constants().
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
-#   - SYNCED_GTK3_DIR: See export_constants().
 # Outputs:
 #   - Link feedback.
 function link_directories() {
@@ -84,8 +83,6 @@ function link_directories() {
     ["$CO/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
     # Link PulseAudio startup script from CO to user configuration.
     ["$CO/config/default.pa"]="$INSTALL_HOME/.config/pulse/default.pa"
-    # Link GTK 3.0 configuration from documents to user configuration.
-    ["$SYNCED_GTK3_DIR"]="$INSTALL_HOME/.config/gtk-3.0"
     # Link GTK 3.0 configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/GTK 2.0.ini"]="$INSTALL_HOME/.gtkrc-2.0"
     # Link KDE global configuration from documents to user configuration, including standard
