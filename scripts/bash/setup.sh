@@ -133,6 +133,9 @@ function setup_system() {
   # System Services
   section "Setting Up System Services"
 
+  info "Configuring sudo."
+  configure_sudo
+
   info "Configuring system systemd services."
   configure_system_units
 

@@ -50,6 +50,16 @@ function create_swap() {
   fi
 }
 
+# Configures sudo.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Copy feedback.
+function configure_sudo() {
+  safe_cp "$CO"/config/sudo.conf /etc/sudo.conf
+  safe_cp "$CO"/config/sudoers /etc/sudoers
+}
+
 # Configures systemwide systemd units.
 # Globals Read:
 #   - DRY_RUN: See setup().
