@@ -92,7 +92,7 @@ function enable_system_units() {
     # Enable bluetooth.
     "bluetooth.service"
     # Enable CUPS.
-    "org.cups.cupsd.service"
+    "cups.service"
     # Enable the NetworkManager daemon.
     "NetworkManager.service"
   )
