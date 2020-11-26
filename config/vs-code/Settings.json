@@ -13,8 +13,8 @@
   "window.titleBarStyle": "custom",
   // If there aren't previous windows to open, create a new file.
   "workbench.startupEditor": "newUntitledFile",
-  // Use the Solarized Dark theme.
-  "workbench.colorTheme": "Solarized Dark",
+  // Use the Default Light+ theme.
+  "workbench.colorTheme": "Default Light+",
   // Indent the workbench tree more.
   "workbench.tree.indent": 20,
   // Don't scroll to files when they are opened.
