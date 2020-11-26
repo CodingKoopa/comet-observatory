@@ -77,6 +77,11 @@ function update() {
   # Ask for the sudo password now so that the rest of the process can proceed without it.
   sudo echo >/dev/null
 
+  function handle_pacnew() {
+    # Handle any pacnew/pacsave files issues.
+    sudo -E DIFFPROG="sudo code -d" pacdiff
+  }
+
   if [[ $update_custom = true ]]; then
     section "Updating Custom Package Sources"
 
@@ -101,12 +106,18 @@ function update() {
     build_repo nvidia-all
     subsect "Building TkG Proton."
     build_repo wine-tkg-git/proton-tkg
+
+    subsect "Handling configuration conflicts."
+    handle_pacnew
   fi
   if [[ $update_prebuilt = true ]]; then
     section "Updating Prebuilt Packages"
 
     subsect "Syncing official and Chaotic AUR packages."
     pikaur -Syu --noconfirm "${PACKAGE_IGNORE_ARGS[@]}"
+
+    subsect "Handling configuration conflicts."
+    handle_pacnew
   fi
   if [[ $run_fstrim = true ]]; then
     section "Running fstrim"
