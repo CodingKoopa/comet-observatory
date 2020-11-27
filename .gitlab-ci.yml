@@ -22,7 +22,6 @@ analysis:shfmt:
   #       - scripts/**/*.sh
   #       - bin/*
   script:
-    - shfmt --version
     # Check that all Bash code has proper formatting.
     - shfmt -d .
 
