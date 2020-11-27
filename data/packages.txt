@@ -353,8 +353,8 @@ gdb
 # Okteta, for editing data.
 okteta
 # 3dstool, for managing 3DS ROMs.
-3dstool
+# 3dstool
 # ctrtool, for managing 3DS ROMs.
-ctrtool-git
+# ctrtool-git
 # firmtool, for managine 3DS firmware.
-firmtool-git
+# firmtool-git
