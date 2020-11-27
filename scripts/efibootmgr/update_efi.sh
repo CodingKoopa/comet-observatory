@@ -142,15 +142,15 @@ $fallback_kernel_initrd_str $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR 
       add_entry "$kernel (Rescue)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR $*"
       ;;
-    *silent*)
-      info "Updating $kernel silent UEFI boot entry ($vmlinuz_path)."
-      add_entry "$kernel (Silent)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
-$CMDLINE_STR $CMDLINE_SILENT_STR $*"
-      ;;
-    *)
+    *normal*)
       info "Updating $kernel normal UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Normal)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $*"
+      ;;
+    *)
+      info "Updating $kernel silent UEFI boot entry ($vmlinuz_path)."
+      add_entry "$kernel (Silent)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
+$CMDLINE_STR $CMDLINE_SILENT_STR $*"
       ;;
     esac
   }
