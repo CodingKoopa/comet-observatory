@@ -131,7 +131,7 @@ echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -F 0.01
 
 # Don't use Agnoster for login shells, because VTYs lack ligature font support by default.
 if [[ $- == *i* ]]; then
-  shellcheck source=scripts/bash/agnoster_bash.sh
+  # shellcheck source=scripts/bash/agnoster_bash.sh
   # (temp. line to silence shellcheck)
   source /dev/null
   # source "$CO"/scripts/bash/agnoster_bash.sh
