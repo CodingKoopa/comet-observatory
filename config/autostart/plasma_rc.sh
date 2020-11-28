@@ -1,1 +1,1 @@
-../../scripts/plasma/plasma_rc.sh
+../../bin/with-de-launch
