@@ -79,7 +79,6 @@ function configure_system_units() {
 
   safe_cp "$CO"/config/httpd.conf /etc/httpd/conf/httpd.conf
   safe_cp "$CO"/config/journald.conf /etc/systemd/journald.conf
-  safe_cp "$CO"/config/geoclue.conf /etc/geoclue/geoclue.conf
 }
 
 # Enables systemwide systemd units.
