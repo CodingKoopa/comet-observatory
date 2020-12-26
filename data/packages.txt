@@ -14,6 +14,11 @@ libva-vdpau-driver
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
 pulseaudio-alsa
+# PipeWire stuff:
+#pipewire
+#pipewire-pulse
+#pipewire-jack
+#pipewire-jack-dropin
 # Ext2/3/4 filesystem utilities, for Ext4 support.
 e2fsprogs
 # NTFS filesystem utilities, for NTFS support.
