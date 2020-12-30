@@ -63,6 +63,8 @@ function link_directories() {
     ["$TERRACE_VIDEOS_DIR"]="$INSTALL_HOME/Videos"
     # Link music from the terrace to home directory.
     ["$TERRACE_MUSIC_DIR"]="$INSTALL_HOME/Music"
+    # Wine prints an error if we don't have a Desktop directory.
+    ["$INSTALL_HOME/Documents"]="$INSTALL_HOME/Desktop"
 
     # Shell
 
