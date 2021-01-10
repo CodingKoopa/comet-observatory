@@ -48,6 +48,7 @@ function download_music() {
       download_dir=${download_dir%/}
 
       local is_album=false
+      # TODO: Improve this detection - see if we are working with a playlist (multiple lines).
       if [[ $download_dir =~ ^.+Music\ Artists/.+/.+$ ]]; then
         info "This looks like an album, won't ask about trimming."
         is_album=true
