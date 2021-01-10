@@ -19,6 +19,7 @@ pulseaudio-alsa
 #pipewire-pulse
 #pipewire-jack
 #pipewire-jack-dropin
+#qjackctl
 # Ext2/3/4 filesystem utilities, for Ext4 support.
 e2fsprogs
 # NTFS filesystem utilities, for NTFS support.
