@@ -114,6 +114,7 @@ function pause() {
 }
 
 # Prints an error message.
+# TODO: Use stderr.
 # Arguments:
 #   - Error to be printed.
 # Outputs:
