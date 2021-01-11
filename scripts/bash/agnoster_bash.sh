@@ -101,8 +101,8 @@ fg_color() {
   darkerblue) echo '38;5;27' ;;
   purple) echo '38;5;99' ;;
   # Color Set 2:
-  transblue) echo '38;5;45' ;;
-  transpink) echo '38;5;218' ;;
+  transblue) echo '38;2;85;205;252' ;;
+  transpink) echo '38;2;247;168;184' ;;
   transwhite) echo '38;5;254' ;;
   esac
 }
