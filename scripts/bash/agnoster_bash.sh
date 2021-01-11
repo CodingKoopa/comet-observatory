@@ -195,6 +195,20 @@ prompt_end() {
 ### Prompt components
 # Each component will draw itself, and hide itself if no information needs to be shown
 
+# Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+=("$(ansi_single "$(fg_color red)")✘")
+  [[ $UID -eq 0 ]] && symbols+=("$(ansi_single "$(fg_color yellow)")⚡")
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+=("$(ansi_single "$(fg_color cyan)")⚙")
+
+  [[ -n "${symbols[*]}" ]] && prompt_segment transwhite white "${symbols[@]} "
+}
+
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   local user
@@ -229,20 +243,6 @@ prompt_git() {
 # Dir: current working directory
 prompt_dir() {
   prompt_segment transpink black '\w'
-}
-
-# Status:
-# - was there an error
-# - am I root
-# - are there background jobs?
-prompt_status() {
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+=("$(ansi_single "$(fg_color red)")✘")
-  [[ $UID -eq 0 ]] && symbols+=("$(ansi_single "$(fg_color yellow)")⚡")
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+=("$(ansi_single "$(fg_color cyan)")⚙")
-
-  [[ -n "${symbols[*]}" ]] && prompt_segment black default "${symbols[@]}"
 }
 
 #############################################
