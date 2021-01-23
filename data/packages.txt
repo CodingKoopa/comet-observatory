@@ -269,8 +269,8 @@ firefox
 google-chrome
 # Discord with native Electron, for messaging.
 discord_arch_electron
-# HexChat, for messaging.
-hexchat
+# Konversation, for messaging.
+konversation
 # OpenSSH, for connecting to other computers.
 openssh
 # Deluge, for downloading files from other computers.
