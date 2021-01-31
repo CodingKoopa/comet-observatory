@@ -92,6 +92,11 @@ alias play='DISPLAY= mpv --really-quiet -vo caca'
 
 # Customize the prompt.
 
+# Enable case insensitive matching.
+bind "set completion-ignore-case on"
+# Immediately show all options if there is ambiguity.
+bind "set show-all-if-ambiguous on"
+
 # This can't be readonly because this script can be ran more than once in the same environment.
 declare -a QUOTES=(
   # Neon Genesis Evangelion.
