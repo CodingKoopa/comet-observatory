@@ -150,8 +150,6 @@ function link_directories() {
     ["$CO/config/vs-code/Settings.json"]="$INSTALL_HOME/.config/Code - OSS/User/settings.json"
     # Link VSCode snippets from documents to user configuration.
     ["$CO/config/vs-code/Snippets/"]="$INSTALL_HOME/.config/Code - OSS/User/snippets"
-    # Link VSCode extensions from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/ProgramData/VSCode/Extensions/"]="$INSTALL_HOME/.vscode-oss/extensions"
 
     # Frogging Family
 
