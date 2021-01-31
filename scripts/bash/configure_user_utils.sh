@@ -119,11 +119,6 @@ function link_directories() {
     # Link Blender files from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/Program Configurations/Blender"]="$INSTALL_HOME/.config/blender"
 
-    # Internet
-
-    # Link HexChat files from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/Program Configurations/HexChat"]="$INSTALL_HOME/.config/hexchat"
-
     # Gaming
 
     # Link GameMode configuration from CO to user configuration.
