@@ -97,6 +97,8 @@ function link_directories() {
 
     # Tools
 
+    # Link nano configuration from CO to user configuration.
+    ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
     # Link top configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
     # Link Git configuration from documents to user configuration.
