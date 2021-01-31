@@ -99,9 +99,6 @@ function update_efi() {
     "zswap.enabled=1 nowatchdog workqueue.power_efficient=0 libahci.ignore_sss=1"
     # Enable DRM modesetting, for functionality.
     "nvidia-drm.modeset=1"
-    # Enable reallocating PCI bridge resources if allocations done by the UEFI are too small. This
-    # should fix the issue where the NVMe SSD will sometimes not be mounted.
-    "pci=realloc"
   )
   local -r CMDLINE_STR="${CMDLINE_ARRAY[*]}"
   # Set the kernel logging level to errors, set the initrd systemd logging level to errors, supress
