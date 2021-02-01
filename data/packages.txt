@@ -14,8 +14,8 @@ libva-vdpau-driver
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
 pulseaudio-alsa
-# PulseAudio Bluetooth modules with LDAC support.
-pulseaudio-modules-bt
+# PulseAudio Bluetooth modules.
+pulseaudio-bluetooth
 # libldac, for PA LDAC encoding support.
 libldac
 # PipeWire stuff:
