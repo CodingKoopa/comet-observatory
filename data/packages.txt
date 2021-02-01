@@ -311,6 +311,8 @@ yuzu-mainline-git
 
 # Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
+# base-devel packages, for development.
+base-devel
 # Git, for version control.
 git
 # Visual Studio Code, for editing code.
