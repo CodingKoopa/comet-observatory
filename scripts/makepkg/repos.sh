@@ -62,19 +62,34 @@ function update_repo() {
   verbose "Pulling changes."
   git pull -q origin master
 
+  # We don't want to review changes while updating the community patches itself, but when updating
+  # the other repos for which it is a peripheral of.
   if [[ "$repo" != "community-patches" ]]; then
     info "Showing $repo_base changes:"
     git --no-pager log --stat "@{1}.." -- . || true
 
-    # Strip dxvk-tools of its suffix.
-    local -r com_patch_repo_dir=$COM_PATCH_DIR/${repo_base%-tools}
+    local com_patch_repo_dir=$COM_PATCH_DIR/$repo_base
+    # Adjust for linux-tkg.
+    if [[ $repo_base = linux-tkg ]]; then
+      # Source the linux-tkg configuration to get the target kernel version, $_version.
+      source "$HOME"/.config/frogminer/linux-tkg.cfg
+      # Adjust the community patch dir to look for this kernel version. Strip the '.'(s).
+      com_patch_repo_dir=${com_patch_repo_dir//$repo_base/linux"${_version//./}"-tkg}
+    # Adjust for dxvk-tools.
+    elif [[ $repo_base = dxvk-tools ]]; then
+      # Strip the "-tools".
+      com_patch_repo_dir=${com_patch_repo_dir//$repo_base/repo_base%-tools}
+    fi
+
     if [[ -d $com_patch_repo_dir ]]; then
       info "Showing $repo_base community patch changes:"
       safe_cd "$com_patch_repo_dir"
       # Allow failure in case the repo was just cloned.
-      # Store this in a variable so we can tell later, if there has been community patch changes.
+      # Store this in a variable so we can tell later, if there have been community patch changes.
       community_patch_changes=$(git --no-pager -c color.ui=always log --stat "@{1}.." -- .) || true
-      echo "$community_patch_changes"
+      if [[ -n $community_patch_changes ]]; then
+        echo "$community_patch_changes"
+      fi
       safe_cd -
     fi
   fi
