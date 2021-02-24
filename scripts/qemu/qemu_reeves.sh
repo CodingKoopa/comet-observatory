@@ -282,13 +282,13 @@ Launches QEMU with an image. Please see the source of this script for possible o
 
   if [[ $action = "run" || $action = "install" ]]; then
     # Strip the extension if present, to allow this to be used with or without that.
-    local image=$HOME/Terrace/Documents/Virtualization/${image_name%.*}.img
+    local image=$HOME/Virtualization/${image_name%.*}.img
 
     if [[ ! -f "$image" ]]; then
       # Make the file array empty if there aren't matches.
       shopt -s nullglob
       # Make an array of QEMU images.
-      local -ra IMAGES=("$HOME"/Terrace/Documents/Virtualization/*.img)
+      local -ra IMAGES=("$HOME"/Virtualization/*.img)
 
       image=$(zenity --list \
         --width 1000 \
