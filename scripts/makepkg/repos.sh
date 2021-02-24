@@ -95,6 +95,8 @@ function update_repo() {
         echo "$community_patch_changes"
       fi
       safe_cd -
+    else
+      community_patch_changes=""
     fi
   fi
 
