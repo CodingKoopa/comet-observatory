@@ -116,7 +116,7 @@ function update_repo() {
         code "$config_file"
       fi
       info "Viewing config changes."
-      git difftool -y "@{1}.." "${diff_files[@]}"
+      git difftool -y "@{1}.." "${diff_files[@]}" &
     fi
   fi
 
