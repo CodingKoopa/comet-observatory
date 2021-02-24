@@ -162,8 +162,10 @@ $CMDLINE_STR $CMDLINE_SILENT_STR $*"
   # Iterate over the TkG kernel initramfs images, in order from oldest to most recent.
   # shellcheck disable=2044
   for tkg_vmlinux_path in $(find /boot -mindepth 1 -maxdepth 1 -type f \
-    -regex '/boot/vmlinuz-linux\([0-9]+-tkg\|-tkgmatrix\).*' | sort -n); do
-    tkg_version=$(echo "$tkg_vmlinux_path" | grep -oh "[0-9]." || echo "Matrix")
+    -regex '/boot/vmlinuz-linux\([0-9]+-tkg\|-tkgmatrix\).*' -printf "%T@\t%p\n" |
+    sort -n |
+    cut -f 2); do
+    tkg_version=$(echo "$tkg_vmlinux_path" | grep -oh "[0-9]\+" || echo "Matrix")
     current_tkg_name="TkG $(echo "$tkg_version" | cut -c 1).$(echo "$tkg_version" | cut -c 2-)"
     kernel_suffixes[$current_tkg_name]=${tkg_vmlinux_path#/boot/vmlinuz-linux}
   done
