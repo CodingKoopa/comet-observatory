@@ -101,7 +101,7 @@ function setup_system() {
 
   info "Syncing packages."
   if [[ $DRY_RUN = false ]]; then
-    pacman -Syu "${PACMAN_ARGS[@]}" "${PACKAGE_IGNORE_ARGS[@]}"
+    pacman -Syu "${PACMAN_ARGS[@]}"
   fi
 
   info "Installing packages."
