@@ -207,6 +207,8 @@ unrar
 spectacle
 # Konsole, for using the terminal.
 konsole
+# Plasma System Monitor, for monitoring the system.
+plasma-systemmonitor
 
 # Authentication (See /docs/Auth.md)
 
