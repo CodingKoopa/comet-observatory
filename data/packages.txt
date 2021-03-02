@@ -319,6 +319,8 @@ base-devel
 git
 # Visual Studio Code, for editing code.
 code
+# VSCode Marketplace Hook
+code-marketplace
 # Eclipse common files.
 # eclipse-common
 # Eclipse IDE for Java Developers, for developing Java applications.
