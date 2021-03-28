@@ -92,6 +92,8 @@ function link_directories() {
     ["$SYNCED_DOCUMENTS_DIR/LinuxAutostartPrograms"]="$INSTALL_HOME/.config/autostart"
     # Link autostart scripts from CO to user configuration.
     ["$CO/config/autostart/"]="$INSTALL_HOME/.config/autostart-scripts"
+    # Link hotkeys from CO to user configuration.
+    ["$CO/config/khotkeys.ini"]="$INSTALL_HOME/.config/khotkeysrc"
 
     # File Managers
 
