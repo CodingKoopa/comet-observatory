@@ -136,6 +136,8 @@ Trying to figure out this life
 Won't you take me by the hand?"
   "I don't know who you are
 But I, I'm with you"
+  # “Do not go gentle into that good night” by Dylan Thomas
+  "Rage, rage against the dying of the light."
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -iF 0.01
 
