@@ -1,9 +1,37 @@
 [
+  // Unmap word wrap toggle.
+  // {
+  //   "key": "alt+z",
+  //   "command": "-editor.action.toggleWordWrap"
+  // },
+  // Map terminal kill.
+  // {
+  //   "key": "alt+z",
+  //   "command": "workbench.action.terminal.kill"
+  // },
+  // {
+  //   "key": "alt+z",
+  //   "command": "workbench.action.terminal.toggleTerminal"
+  // },
+  // {
+  //   "key": "ctrl+`",
+  //   "command": "-workbench.action.terminal.toggleTerminal"
+  // },
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /// Workbench
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  // Disable editor picker bindings because opening tabs by how recently they were used can be
-  // considered to be undesired behavior.
+  // Remap reload window binding, because we don't use developer mode.
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.reloadWindow"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "workbench.action.reloadWindow",
+    "when": "!isInDiffEditor"
+  },
+  // Disable editor picker bindings, because opening tabs by how recently they were used is
+  // unexpected
   {
     "key": "ctrl+tab",
     "command": "-workbench.action.openNextRecentlyUsedEditorInGroup"
@@ -14,13 +42,11 @@
   },
   {
     "key": "ctrl+shift+tab",
-    "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup",
-    "when": "inEditorsPicker && inQuickOpen"
+    "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup"
   },
   {
     "key": "ctrl+shift+tab",
-    "command": "-workbench.action.quickOpenNavigatePreviousInEditorPicker",
-    "when": "inEditorsPicker && inQuickOpen"
+    "command": "-workbench.action.quickOpenNavigatePreviousInEditorPicker"
   },
   // Remap editor switching bindings to be consistent with tab switching on the rest of the system.
   {
@@ -39,26 +65,46 @@
     "key": "ctrl+shift+tab",
     "command": "workbench.action.previousEditor"
   },
+  // Map run build task binding.
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.tasks.runTask"
+  },
+  // Map set default build task binding.
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.tasks.configureDefaultBuildTask"
+  },
+  // Remap run build task binding.
+  {
+    "key": "ctrl+shift+b",
+    "command": "-workbench.action.tasks.build"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.tasks.build",
+    "when": "!inCMakeProject && !isWPILibProject"
+  },
   // Remap run without debugging.
   {
     "key": "ctrl+f5",
     "command": "-workbench.action.debug.run",
   },
   {
-    "key": "shift+f5",
+    "key": "f5",
     "command": "workbench.action.debug.run",
-    "when": "debuggersAvailable && !inCMakeProject"
+    "when": "debuggersAvailable && !inDebugMode && !inCMakeProject && !isWPILibProject"
   },
   // Remap stop debugging.
-  {
-    "key": "shift+f5",
-    "command": "-workbench.action.debug.stop",
-  },
-  {
-    "key": "ctrl+f5",
-    "command": "workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
+  // {
+  //   "key": "shift+f5",
+  //   "command": "-workbench.action.debug.stop",
+  // },
+  // {
+  //   "key": "ctrl+f5",
+  //   "command": "workbench.action.debug.stop",
+  //   "when": "inDebugMode"
+  // },
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /// Git
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,26 +121,19 @@
   // Map revert binding.
   {
     "key": "ctrl+shift+r",
-    "command": "git.revertSelectedRanges"
+    "command": "git.revertSelectedRanges",
+    "when": "isInDiffEditor"
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /// CMake Tools
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  // Disable task build binding.
-  {
-    "key": "ctrl+shift+b",
-    "command": "-workbench.action.tasks.build"
-  },
   // Remap CMake configure binding.
   {
-    "key": "shift+f7",
-    "command": "-cmake.buildWithTarget"
-  },
-  {
     "key": "ctrl+shift+b",
-    "command": "cmake.outline.configure"
+    "command": "cmake.configure",
+    "when": "inCMakeProject"
   },
-  // Disable sidebar visibility binding.
+  // Unmap sidebar visibility binding.
   {
     "key": "ctrl+b",
     "command": "-workbench.action.toggleSidebarVisibility"
@@ -107,16 +146,62 @@
   {
     "key": "ctrl+b",
     "command": "cmake.build",
-    "when": "cmake:enableFullFeatureSet && inCMakeProject"
+    "when": "inCMakeProject"
   },
-  // Remap CMake debug binding.
+  // Map CMake set build target binding.
+  {
+    "key": "ctrl+alt+b",
+    "command": "cmake.setDefaultTarget",
+    "when": "inCMakeProject"
+  },
+  // Remap CMake start without debugging binding.
+  {
+    "key": "shift+f5",
+    "command": "-cmake.launchTarget",
+  },
+  {
+    "key": "f5",
+    "command": "cmake.launchTarget",
+    "when": "inCMakeProject && !inDebugMode"
+  },
+  // Remap CMake start with debugging binding.
   {
     "key": "ctrl+f5",
     "command": "-cmake.debugTarget"
   },
   {
-    "key": "f5",
+    "key": "shift+f5",
     "command": "cmake.debugTarget",
-    "when": "cmake:enableFullFeatureSet && inCMakeProject && !cmake:hideDebugCommand && !inDebugMode"
+    "when": "inCMakeProject && !inDebugMode"
+  },
+  // Map CMake set launch target binding.
+  {
+    "key": "alt+f5",
+    "command": "cmake.selectLaunchTarget",
+    "when": "inCMakeProject && !inDebugMode"
+  },
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /// Java
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  // Map Java hot code replace binding.
+  // {
+  //   "key": "f5",
+  //   "command": "java.debug.hotCodeReplace",
+  //   "when": "java:serverMode != null && inDebugMode"
+  // }
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /// WPILib
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  // Map build robot code binding.
+  {
+    "key": "ctrl+b",
+    "command": "wpilibcore.buildCode",
+    "when": "isWPILibProject"
+  },
+  // Map simulate robot code binding.
+  {
+    "key": "f5",
+    "command": "wpilibcore.simulateCode",
+    "when": "isWPILibProject && !inDebugMode"
   }
 ]
