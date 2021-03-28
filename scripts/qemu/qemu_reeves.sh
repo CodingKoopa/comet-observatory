@@ -110,7 +110,7 @@ function launch_qemu() {
     qemu_opts+=" -soundhw ac97"
   else
     # Add Intel HD Audio.
-    qemu_opts+=" -soundhw hda"
+    qemu_opts+=" -device intel-hda -device hda-duplex"
   fi
   # Workaround: max_outputs is required to avoid a low-resolution issue with QXL video. This is also
   # necessary to support multiple heads of decent resolution. In order to apply this configuration,
