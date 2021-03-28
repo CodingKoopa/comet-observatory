@@ -151,6 +151,8 @@ plasma-desktop
 kdeplasma-addons
 # khotkeys, for custom keyboard shortcuts.
 khotkeys
+# fcitx5 input method, for inputting characters.
+fcitx5-im
 # xdg-desktop-portal, for interfacing with containment frameworks.
 xdg-desktop-portal
 # xdg-desktop-portal-kde, a Qt/KF5 backend for xdg-desktop-portal.
