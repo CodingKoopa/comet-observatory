@@ -290,6 +290,10 @@ deluge
 gamemode
 # GameMode 32-bit.
 lib32-gamemode
+# MangoHUD
+mangohud
+lib32-mangohud
+lib32-libxnvctrl
 # Steam, for managing games.
 steam
 # protontricks, for managing Proton prefixes.
