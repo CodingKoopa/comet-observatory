@@ -92,11 +92,6 @@ alias play='DISPLAY= mpv --really-quiet -vo caca'
 
 # Customize the prompt.
 
-# Enable case insensitive matching.
-bind "set completion-ignore-case on"
-# Immediately show all options if there is ambiguity.
-bind "set show-all-if-ambiguous on"
-
 # This can't be readonly because this script can be ran more than once in the same environment.
 declare -a QUOTES=(
   # Neon Genesis Evangelion.
@@ -141,8 +136,15 @@ But I, I'm with you"
 )
 echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -iF 0.01
 
-# Don't use Agnoster for login shells, because VTYs lack ligature font support by default.
 if [[ $- == *i* ]]; then
+  # Don't use Agnoster for login shells, because TTYs lack ligature font support by default.
   # shellcheck source=scripts/bash/agnoster_bash.sh
   source "$CO"/scripts/bash/agnoster_bash.sh
+
+  # The bind command also seems to be broken in the TTY.
+
+  # Enable case insensitive matching.
+  bind "set completion-ignore-case on"
+  # Immediately show all options if there is ambiguity.
+  bind "set show-all-if-ambiguous on"
 fi
