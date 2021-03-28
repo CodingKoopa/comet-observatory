@@ -72,8 +72,6 @@
   ///   Python
   // Disable the Python start page.
   "python.showStartPage": false,
-  // Enable linting with flake8.
-  "python.linting.flake8Enabled": true,
   // Disable linting with pylint.
   "python.linting.pylintEnabled": false,
   // We only want Python syntax highlighting, don't lint these as Python files.
