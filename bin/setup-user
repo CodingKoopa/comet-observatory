@@ -9,4 +9,4 @@ export CO=/home/kyle/Documents/Projects/Bash/comet-observatory
 # shellcheck source=scripts/bash/setup.sh
 source "$CO"/scripts/bash/setup.sh
 time setup_user "$@"
-echo "Don't forget about the setup script. Have a wonderful day!"
+echo "Don't forget about the system setup script. Have a wonderful day!"
