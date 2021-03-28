@@ -116,7 +116,7 @@ function update() {
     section "Updating Prebuilt Packages"
 
     subsect "Syncing official and Chaotic AUR packages."
-    pikaur -Syu --noconfirm
+    pikaur -Syu
 
     subsect "Handling configuration conflicts."
     handle_pacnew
