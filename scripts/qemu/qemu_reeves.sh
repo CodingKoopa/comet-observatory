@@ -99,7 +99,7 @@ function launch_qemu() {
   # This is dependent on "-cpu"!
   qemu_opts+=",hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time"
   # Use multiple CPU cores.
-  qemu_opts+=" -smp 4"
+  qemu_opts+=" -smp $(nproc)"
   # Use 16GB of RAM.
   qemu_opts+=" -m 16G"
   if [[ $main_img == *"temple"* ]]; then
