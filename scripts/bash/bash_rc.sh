@@ -61,13 +61,20 @@ function retag() {
 function wnea() {
   echo who needs eclipse anyways
 
+  # https://askubuntu.com/a/1010708
+  shopt -s globstar
+
   # build.
   javac -d Build Source/**/*.java || return 1
 
   # run.
-  local -r main_class_file=$(grep "public static void main" . -rl | head -1)
-  local -r main_class=$(basename "$main_class_file" | cut -d. -f1)
-  java -cp Build "apcs/$main_class"
+  if [[ -n $1 ]]; then
+    local -r main_class=$1
+  else
+    local -r main_class_file=$(grep "public static void main" . -rl | head -1)
+    local -r main_class=apcs/$(basename "$main_class_file" | cut -d. -f1)
+  fi
+  java -cp Build "$main_class"
 }
 
 function testpulse() {
