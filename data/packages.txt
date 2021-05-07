@@ -281,8 +281,8 @@ discord_arch_electron
 konversation
 # OpenSSH, for connecting to other computers.
 openssh
-# Deluge, for downloading files from other computers.
-deluge
+# Transmission (Qt interface), for downloading files from other computers.
+transmission-qt
 
 # Gaming
 
