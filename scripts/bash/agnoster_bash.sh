@@ -212,9 +212,7 @@ prompt_status() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   local user
-  # TODO: go back to whoami when ready
-  user=lucy
-  # user=$(whoami)
+  user=$(whoami)
 
   prompt_segment transblue white "$user@\h"
 }
