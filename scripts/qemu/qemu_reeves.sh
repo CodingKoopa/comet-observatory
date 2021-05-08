@@ -199,6 +199,8 @@ ${video_driver_virgil+",gl=on"}"}
   # Network Options
   # Add a user mode host network backend, and its accompanying virtio NIC hardware.
   qemu_opts+=" -nic user,model=virtio-net-pci"
+  # Experimental version with a TAP device:
+  # qemu_opts+=" -device virtio-net,netdev=network0 -netdev tap,id=network0,ifname=tap0,script=no,downscript=no"
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
   # This is dependent on "-nic"!
