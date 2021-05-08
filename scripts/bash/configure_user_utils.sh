@@ -68,8 +68,6 @@ function link_directories() {
 
     # Shell
 
-    # Link PAM environemnt from CO to home directory.
-    ["$CO/config/pam-environment.env"]="$INSTALL_HOME/.pam_environment"
     # Link Bash profile from CO to home directory.
     ["$CO/scripts/bash/bash_profile.sh"]="$INSTALL_HOME/.bash_profile"
     # Link Bash RC file from CO to home directory.
