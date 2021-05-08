@@ -100,7 +100,7 @@
   ///   Java
   // Add the Java++ formatting profile.
   "java.format.settings.profile": "Java++",
-  "java.format.settings.url": "/home/kyle/Terrace/Documents/Projects/Bash/comet-observatory/config/javaplusplus.xml",
+  "java.format.settings.url": "/home/koopa/Terrace/Documents/Projects/Bash/comet-observatory/config/javaplusplus.xml",
   // Organize imports.
   "java.saveActions.organizeImports": true,
   // Refactor when renaming from file explorer.
