@@ -27,7 +27,6 @@ Family packages. Also handles some routine maintenance tasks.
   -c    Update custom packages. This pulls the latest Git repos, reviews changes, and builds the
 packages.
   -p    Update prebuilt packages. This essentially runs pacman -Syu for official and AUR packages.
-  -f    Run fstrim.
 "
   echo "$HELP_STRING"
   exit 0
@@ -43,12 +42,10 @@ packages.
 function update() {
   local update_prebuilt=false
   local update_custom=false
-  local run_fstrim=false
 
   if [[ $# -eq 0 ]]; then
     update_prebuilt=true
     update_custom=true
-    run_fstrim=true
   else
     while getopts "hpcfa" opt; do
       case $opt in
@@ -58,16 +55,12 @@ function update() {
       a)
         update_prebuilt=true
         update_custom=true
-        run_fstrim=true
         ;;
       c)
         update_custom=true
         ;;
       p)
         update_prebuilt=true
-        ;;
-      f)
-        run_fstrim=true
         ;;
       *)
         print_help
@@ -120,9 +113,5 @@ function update() {
 
     subsect "Handling configuration conflicts."
     handle_pacnew
-  fi
-  if [[ $run_fstrim = true ]]; then
-    section "Running fstrim"
-    fstrim --fstab --verbose
   fi
 }
