@@ -270,7 +270,7 @@ linux-fake-background-webcam-opt-git
 # Internet
 
 # aria2, for downloading files.
-aria2
+# aria2
 # Firefox, for browsing the web.
 firefox
 # Google Chrome, for browsing the internet.
