@@ -77,6 +77,15 @@ function update() {
     sudo -E DIFFPROG="sudo code -d" pacdiff
   }
 
+  if [[ $update_prebuilt = true ]]; then
+    section "Updating Prebuilt Packages"
+
+    subsect "Syncing official and Chaotic AUR packages."
+    pikaur -Syu
+
+    subsect "Handling configuration conflicts."
+    handle_pacnew
+  fi
   if [[ $update_custom = true ]]; then
     section "Updating Custom Package Sources"
 
@@ -101,15 +110,6 @@ function update() {
     build_repo nvidia-all
     subsect "Building TkG Proton."
     build_repo wine-tkg-git/proton-tkg
-
-    subsect "Handling configuration conflicts."
-    handle_pacnew
-  fi
-  if [[ $update_prebuilt = true ]]; then
-    section "Updating Prebuilt Packages"
-
-    subsect "Syncing official and Chaotic AUR packages."
-    pikaur -Syu
 
     subsect "Handling configuration conflicts."
     handle_pacnew
