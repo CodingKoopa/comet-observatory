@@ -95,10 +95,6 @@ pacman-contrib
 reflector
 # pkgstats, for submitting package statistics.
 pkgstats
-# npm, for managing Node.JS packages.
-npm
-# npm-check-updates, for upgrading packages.
-# npm-check-updates
 
 # Runtimes, Virtualization
 
@@ -352,6 +348,10 @@ cmake
 ninja
 # Gradle, for building projects.
 gradle
+# npm, for managing Node.JS packages.
+# npm
+# npm-check-updates, for upgrading packages.
+# npm-check-updates
 # Gulp.js, for building websites.
 gulp
 # Hugo, for building websites.
