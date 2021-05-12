@@ -1,3 +1,7 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+# <file system> <dir> <type> <options> <dump> <pass>
+
 # Block Devices
 
 # [All] Don't update access times, for performance, and don't interpret character or block special devices, for security.
