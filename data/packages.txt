@@ -108,8 +108,8 @@ winetricks
 jre-openjdk
 # QEMU, for virtualization.
 qemu
-# virt-viewer, for viewing virtual machines.
-virt-viewer
+# spicy, for viewing virtual machines.
+spice-gtk
 
 # Service Hosting
 
