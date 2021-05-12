@@ -13,7 +13,7 @@
 PARTUUID=81d503fe-2596-40c8-9c55-2b7103111d7c /boot               vfat  defaults,noatime,nodev,noexec                                                                 0 2
 
 # Linux root partition on the SSD.
-PARTUUID=91fb9373-d9b2-4e6d-a376-0388afe85bf0 /                   ext4  defaults,noatime,nodev                                                                        0 1
+PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3 /                   ext4  defaults,noatime,nodev                                                                        0 1
 
 # Shared document partition on another SSD.
 # See [2].

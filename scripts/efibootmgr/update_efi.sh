@@ -83,7 +83,7 @@ function update_efi() {
   info "Comet Observatory UEFI Boot Entry Updater Script"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
-  local -r ROOT="PARTUUID=91fb9373-d9b2-4e6d-a376-0388afe85bf0"
+  local -r ROOT="PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3"
   local -r MICROCODE="amd-ucode.img"
 
   # Set the initial ramdisk to the microcode, for functionality. This is set separately because it
