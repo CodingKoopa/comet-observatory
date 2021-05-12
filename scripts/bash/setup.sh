@@ -42,6 +42,8 @@ function export_constants() {
 
   export SYNCED_DOCUMENTS_DIR=$INSTALL_HOME/Documents
   export TERRACE_DOWNLOADS_DIR=$INSTALL_HOME/Terrace/Downloads
+  export TERRACE_DOCUMENTS_DIR=$INSTALL_HOME/Terrace/Documents
+  export TERRACE_PICTURES_DIR=$INSTALL_HOME/Terrace/Pictures
   export TERRACE_VIDEOS_DIR=$INSTALL_HOME/Terrace/Videos
   export TERRACE_MUSIC_DIR=$INSTALL_HOME/Terrace/Music
   export ABS_DIR=$INSTALL_HOME/Documents/ABS
