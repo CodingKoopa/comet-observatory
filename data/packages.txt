@@ -53,7 +53,7 @@ cups
 # Canon Pixma TR7500 series drivers, for printer support.
 canon-pixma-lt7500-complete
 # GfxTablet, for using an Android tablet as a drawing tablet.
-gfxtablet-git
+# gfxtablet-git
 
 # Disc Drive Emulation
 
