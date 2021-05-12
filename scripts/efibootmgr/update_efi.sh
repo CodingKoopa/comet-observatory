@@ -63,7 +63,7 @@ function add_entry() {
   # It's necessary to delete the existing entry and replace it, because efibootmgr doesn't support
   # editing an existing entry: https://github.com/rhboot/efibootmgr/issues/49.
   remove_entry_if_existing "$label"
-  efibootmgr -q -c --label "$label" -l "$loader" -u "$cmdline"
+  efibootmgr -q -c -d /dev/nvme0n1 -p 3 --label "$label" -l "$loader" -u "$cmdline"
 }
 
 # Updates Arch Linux UEFI boot entries.
