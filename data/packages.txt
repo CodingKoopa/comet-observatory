@@ -337,7 +337,7 @@ code-marketplace
 # dependencies.
 shellcheck-bin
 # namcap, for PKGBUILD linting.
-namcap
+# namcap
 # GCC 7, for Cuda and cuDNN.
 # gcc7
 # GCC 7 libraries, for GCC 7.
@@ -345,17 +345,17 @@ namcap
 # Cmake, for building projects.
 cmake
 # Ninja, for building projects.
-ninja
+# ninja
 # Gradle, for building projects.
-gradle
+# gradle
 # npm, for managing Node.JS packages.
 # npm
 # npm-check-updates, for upgrading packages.
 # npm-check-updates
 # Gulp.js, for building websites.
-gulp
+# gulp
 # Hugo, for building websites.
-hugo
+# hugo
 # OpenJDK JDK, for compiling Java applications.
 # jdk-openjdk
 # ccache, for compiling code faster.
