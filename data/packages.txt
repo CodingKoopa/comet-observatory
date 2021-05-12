@@ -292,7 +292,9 @@ gamemode
 lib32-gamemode
 # MangoHUD
 mangohud
+# MangoHUD 32-bit library.
 lib32-mangohud
+# libxnvctrl, for MangoHUD.
 lib32-libxnvctrl
 # Steam, for managing games.
 steam
