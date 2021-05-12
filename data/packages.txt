@@ -327,7 +327,7 @@ base-devel
 git
 # Visual Studio Code, for editing code.
 code
-# VSCode Marketplace Hook
+# VSCode Marketplace Hook, for having extensions.
 code-marketplace
 # Eclipse common files.
 # eclipse-common
