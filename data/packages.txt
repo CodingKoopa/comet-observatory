@@ -263,7 +263,7 @@ svp
 # OBS Studio, for recording media.
 obs-studio
 # Linux-Fake-Background-Webcam
-#linux-fake-background-webcam-opt-git
+linux-fake-background-webcam-opt-git
 # Blender, for editing 3D models.
 # blender
 
