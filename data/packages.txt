@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Hardware
 
 # AMD Microcode, for CPU patches.
