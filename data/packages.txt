@@ -19,11 +19,11 @@ pulseaudio-bluetooth
 # libldac, for PA LDAC encoding support.
 libldac
 # PipeWire stuff:
-#pipewire
-#pipewire-pulse
-#pipewire-jack
-#pipewire-jack-dropin
-#qjackctl
+# pipewire
+# pipewire-pulse
+# pipewire-jack
+# pipewire-jack-dropin
+# qjackctl
 # Ext2/3/4 filesystem utilities, for Ext4 support.
 e2fsprogs
 # NTFS filesystem utilities, for NTFS support.
