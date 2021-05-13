@@ -9,7 +9,7 @@ Target = nvidia-dkms-tkg
 Target = nvidia-dev-dkms-tkg
 
 [Action]
-Description = Creating initial ramdisk.
+Description = Creating initial ramdisk...
 Exec = /usr/bin/mkinitcpio -P
 When = PostTransaction
 Depends = mkinitcpio
