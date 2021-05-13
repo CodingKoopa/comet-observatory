@@ -68,8 +68,8 @@ canon-pixma-lt7500-complete
 
 # Hardware Management
 
-# Plasma PulseAudio, for managing audio, integrating with Plasma.
-plasma-pa
+# pavucontrol, for managing audio. This is more flexible than plasma-pa.
+pavucontrol
 # KDE Partition Manager, for managing filesystems.
 partitionmanager
 # Plasma NetworkManager, for managing network connections.
