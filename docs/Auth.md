@@ -1,4 +1,6 @@
 # Authentication Setup
+**Caveat: The GPG part of this is currently disabled because pinentry-kwallet is a huge pain and is hard to troubleshoot.**
+
 This document details how the Comet Observatory is configured in such a way that both GPG and SSH use KWallet for authentication.
 - ssh-agent is started on systemd user startup.
   - The socket of this service is pointed to by $SSH_AUTH_SOCK at login.

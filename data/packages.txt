@@ -218,8 +218,8 @@ plasma-systemmonitor
 kwallet
 # KWalletManager, for managing system passwords.
 kwalletmanager
-# kwalletcli, for using KWallet for GPG key passwords.
-kwalletcli
+# kwalletcli, for using KWallet for GPG key passwords. Currently not in use.
+# kwalletcli
 # Ksshaskpass, for Using KWallet for SSH key passwords.
 ksshaskpass
 # KGpg, for managing GnuPG keys.
