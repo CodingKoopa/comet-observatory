@@ -17,6 +17,8 @@ source "$CO"/scripts/bash/configure_system_utils.sh
 source "$CO"/scripts/bash/update.sh
 # shellcheck source=scripts/bash/configure_user_utils.sh
 source "$CO"/scripts/bash/configure_user_utils.sh
+# shellcheck source=scripts/code/extensions.sh
+source "$CO"/scripts/code/extensions.sh
 
 # Exports certain constant variables.
 # Globals Exported:
@@ -235,6 +237,9 @@ function setup_user() {
 
   section "Setting Up Pikaur"
   install_pikaur
+
+  info "Setting Up VSCode"
+  install_vscode_extensions
 
   info "Setup complete!"
 }
