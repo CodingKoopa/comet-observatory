@@ -5,6 +5,7 @@ This document details how the Comet Observatory is configured in such a way that
 - ssh-agent is started on systemd user startup.
   - The socket of this service is pointed to by $SSH_AUTH_SOCK at login.
 - `ksshaskpass` is registered as the SSH askpass program before Plasma launch.
+- During Plasma launch, the KWallet is automatically unlocked.
 - SSH identities are added to `ssh-agent`:
 ```
 KWallet Passwords -> ssh-add -> ksshaskpass
