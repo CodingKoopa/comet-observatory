@@ -100,14 +100,14 @@ function enable_system_units() {
     else
       if [[ $DRY_RUN = false ]]; then
         info "Enabling systemd unit $unit."
-        systemctl -q enable --now "$unit"
+        systemctl -q enable --now "$unit" || true
       fi
     fi
   done
   # pkgstats doesn't seem to like being enabled.
   if [[ $DRY_RUN = false ]]; then
     # Enable pkgstats.
-    systemctl -q start "pkgstats.timer"
+    systemctl -q start "pkgstats.timer" || true
   fi
 }
 

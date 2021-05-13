@@ -209,7 +209,8 @@ function enable_user_units() {
     else
       if [[ $DRY_RUN = false ]]; then
         info "Enabling systemd unit $unit"
-        systemctl --user -q enable "$unit"
+        # Allow to fail in case we're in a chroot.
+        systemctl --user -q enable "$unit" || true
       fi
     fi
   done
