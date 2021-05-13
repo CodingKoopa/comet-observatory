@@ -224,7 +224,7 @@ function setup_user() {
   info "Enabling user systemd services."
   enable_user_units
 
-  # User Services
+  # User Programs
   section "Setting Up User Programs"
 
   info "Silencing login message."
@@ -235,7 +235,7 @@ function setup_user() {
   info "Configuring GPG."
   configure_gpg
 
-  section "Setting Up Pikaur"
+  info "Setting Up Pikaur"
   install_pikaur
 
   info "Setting Up VSCode"
