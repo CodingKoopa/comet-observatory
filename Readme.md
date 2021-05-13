@@ -20,7 +20,8 @@ Although functional on my own system, this repository isn't intended to be used 
 - All scripts are GPL 3.0 licensed.
 
 ## Documentation
-Some subsystems of the Comet Observatory have their own write-ups:
+Some parts of the Comet Observatory have their own write-ups:
+- [System Installation](docs/Install.md), how the system setup scripts are used.
 - [Initialization](docs/Init.md), how environment variables are set once the user logs in, and in what order.
 - [Authentication Setup](docs/Auth.md), how `gpg-agent` and `ssh-agent` are configured to be integrated with KWallet.
 - [System Load](docs/System Load.md), how the KDE Plasma system load widget is configured to monitor system status.
