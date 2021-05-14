@@ -389,7 +389,7 @@ output_folder=$(realpath "$bench_dir")" >"$mangohud_cfg"
     info "How to test mutations:
   - For sysctl parameters, run \"sudo sysctl kernel.\$parameter=\$value\".
   - For kernel parameters, run \"sudo update-efi normal \$parameter=\$value\"
-  - For cfg parameters, run \"pikaur -U \$build && sudo update-efi normal\"."
+  - For cfg parameters, run \"pacman -U \$build && sudo update-efi normal\"."
   fi
 
   section "Uninitializing"
