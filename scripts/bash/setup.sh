@@ -17,6 +17,8 @@ source "$CO"/scripts/bash/configure_system_utils.sh
 source "$CO"/scripts/bash/update.sh
 # shellcheck source=scripts/bash/configure_user_utils.sh
 source "$CO"/scripts/bash/configure_user_utils.sh
+# shellcheck source=scripts/makepkg/repos.sh
+source "$CO"/scripts/makepkg/repos.sh
 # shellcheck source=scripts/code/extensions.sh
 source "$CO"/scripts/code/extensions.sh
 
@@ -98,10 +100,16 @@ function setup_system() {
   # We reference the Chaotic-AUR mirrorlist in our pacman.conf, so we have to install the mirrorlist
   # package first, so that parsing pacman.conf doesn't result in an error.
   info "Configuring Chaotic-AUR"
-  sudo -u "$INSTALL_USER" pikaur -S "${PACMAN_ARGS[@]}" chaotic-keyring chaotic-mirrorlist
+  if [[ $DRY_RUN = false ]]; then
+    install_from_repo chaotic-keyring https://github.com/chaotic-aur/pkgbuild-chaotic-keyring
+    install_from_repo chaotic-mirrorlist https://github.com/chaotic-aur/pkgbuild-chaotic-mirrorlist
+  fi
 
   info "Configuring pacman."
   configure_pacman
+
+  info "Installing pikaur."
+  install_from_aur pikaur
 
   info "Syncing packages."
   if [[ $DRY_RUN = false ]]; then
