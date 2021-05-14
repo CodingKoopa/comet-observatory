@@ -33,8 +33,12 @@ $ find $HOME -name "*.old" -print
 $ find $HOME -name "*.old" -delete
 ```
 10. Run setup-system as `root`. The same caveat about the dbus applies here too.
-11. Boot into new system, and fix whatever stupid things you missed.
-12. Enable NetworkManager so that setup can be ran again (remember that systemd services couldn't be activated before).
+11. If applicable, add boot entries for this new installation to NVRAM:
+```
+# update-efi
+```
+12. Boot into new system, and fix whatever stupid things you missed.
+13. Enable NetworkManager so that setup can be ran again (remember that systemd services couldn't be activated before).
 ```
 # systemctl enable --now NetworkManager.service
 ```
