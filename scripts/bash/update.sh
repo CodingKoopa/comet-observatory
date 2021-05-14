@@ -80,8 +80,11 @@ function update() {
   if [[ $update_prebuilt = true ]]; then
     section "Updating Prebuilt Packages"
 
-    subsect "Syncing official and Chaotic AUR packages."
-    pikaur -Syu
+    subsect "Syncing official packages."
+    sudo powerpill -Syu
+
+    subsect "Syncing AUR packages."
+    pikaur -Sua
 
     subsect "Handling configuration conflicts."
     handle_pacnew
