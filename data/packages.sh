@@ -224,8 +224,6 @@ kwalletmanager
 # kwalletcli
 # Ksshaskpass, for Using KWallet for SSH key passwords.
 ksshaskpass
-# KGpg, for managing GnuPG keys.
-kgpg
 # KeepassXC, for managing all passwords.
 keepassxc
 
