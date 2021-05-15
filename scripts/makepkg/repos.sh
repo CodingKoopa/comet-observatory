@@ -47,7 +47,7 @@ function install_from_aur() {
 function install_from_repo() {
   local -r package=$1
   local -r url=$2
-  if pacman -Qi "$package" &>/dev/null; then
+  if ! pacman -Qi "$package" &>/dev/null; then
     info "Installing build dependencies."
     if [[ $DRY_RUN = false ]]; then
       sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git >/dev/null
