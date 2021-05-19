@@ -301,7 +301,7 @@ lib32-libxnvctrl
 # Steam, for managing games.
 steam
 # protontricks, for managing Proton prefixes.
-protontricks-git
+# protontricks-git
 # Minecraft Launcher, for launching Minecraft.
 minecraft-launcher
 # MultiMC5, for launching Minecraft but not suck at it.
