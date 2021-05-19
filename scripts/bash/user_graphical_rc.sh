@@ -16,3 +16,6 @@ export GTK_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 # Use the fcitx input method for XIM.
 export XMODIFIERS=@im=fcitx
+
+# Use the Menu key as a compose key. Configuring this through KDE doesn't seem to be working.
+setxkbmap -option compose:menu
