@@ -10,19 +10,23 @@
 
 # UEFI System Partition (ESP) on the SSD.
 # See [1].
-PARTUUID=81d503fe-2596-40c8-9c55-2b7103111d7c /boot               vfat  defaults,noatime,nodev,noexec                                                                 0 2
+PARTUUID=81d503fe-2596-40c8-9c55-2b7103111d7c /boot                 vfat  defaults,noatime,nodev,noexec                                                   0 2
 
 # Linux root partition on the SSD.
-PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3 /                   ext4  defaults,noatime,nodev                                                                        0 1
+PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3 /                     ext4  defaults,noatime,nodev                                                          0 1
+
+# Shared document partition on the SSD.
+# See [2].
+PARTUUID=e589b4e0-70e4-49cb-86e7-21ed13c6914a /home/koopa/Fountain  ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount  0 2
 
 # Shared document partition on another SSD.
 # See [2].
-PARTUUID=f8580bac-b38a-d949-8248-dd244234bdda /home/koopa/Terrace ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount,windows_names  0 2
+PARTUUID=f8580bac-b38a-d949-8248-dd244234bdda /home/koopa/Terrace   ntfs  defaults,noatime,nodev,umask=0022,uid=1000,gid=1000,noauto,x-systemd.automount  0 2
 
 # tmpfs Devices
 
 # tmpfs with increased RAM. With 32GB of RAM, 16GB is the default tmpfs size. This is no longer enough to compile the Linux kernel.
-tmpfs                                         /tmp                tmpfs rw,nodev,nosuid,size=17G                                                                      0 0
+tmpfs                                         /tmp                  tmpfs rw,nodev,nosuid,size=17G                                                        0 0
 
 # Swap Devices
 
