@@ -36,6 +36,8 @@ dosfstools
 # nvme-cli
 # SSHFS, for remote filesystem support. This is used by KDE Connect.
 sshfs
+# scrcpy, for phone mirroring.
+scrcpy
 # ncdu, for managing disk usage.
 ncdu
 # Plasma Disks, for montoring drive health.
