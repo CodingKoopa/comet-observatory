@@ -18,7 +18,6 @@ function configure_pacman() {
   safe_cp "$CO"/config/pacman.conf /etc/pacman.conf
   safe_cp "$CO"/config/makepkg.conf /etc/makepkg.conf
   safe_cp "$CO"/config/reflector.conf /etc/xdg/reflector/reflector.conf
-  safe_cp "$CO"/config/powerpill.json /etc/powerpill/powerpill.json
 }
 
 # Creates a swap file. See: https://wiki.archlinux.org/index.php/Swap#Manually

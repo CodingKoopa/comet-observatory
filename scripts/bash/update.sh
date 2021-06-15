@@ -81,7 +81,7 @@ function update() {
     section "Updating Prebuilt Packages"
 
     subsect "Syncing official packages."
-    sudo powerpill -Syu
+    sudo pacman -Syu
 
     subsect "Syncing AUR packages."
     pikaur -Sua
