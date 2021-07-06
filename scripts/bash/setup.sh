@@ -120,7 +120,7 @@ function setup_system() {
   if [[ $DRY_RUN = false ]]; then
     # Initially run pikaur as the user, to utilize the pikaur cache in their home directory.
     grep -v "^#" "$CO"/data/packages.sh |
-      sudo -u "$INSTALL_USER" xargs pikaur -S "${PACMAN_ARGS[@]}"
+      sudo -u "$INSTALL_USER" xargs pikaur -S "${PACMAN_ARGS[@]}" --confirm
   fi
 
   # Kernel & Hardware
