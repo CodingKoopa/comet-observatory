@@ -4,6 +4,8 @@
 
 # Desktop Environment
 
+# Set the desktop session variable, in case we aren't starting X at login but rather manually.
+export DESKTOP_SESSION=plasma
 # Set the desktop environment variable for xdg-open integration.
 export DE=kde
 # Use the XDG portal for GTK applications.
