@@ -70,6 +70,8 @@ canon-pixma-lt7500-complete
 
 # Hardware Management
 
+# plasma-pa, for volume slider.
+plasma-pa
 # pavucontrol, for managing audio. This is more flexible than plasma-pa.
 pavucontrol
 # KDE Partition Manager, for managing filesystems.
