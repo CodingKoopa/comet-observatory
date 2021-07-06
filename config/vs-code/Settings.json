@@ -64,6 +64,8 @@
   ///   YAML
   // When formatting YAML, allow a max of 100 characters per line.
   "yaml.format.printWidth": 100,
+  // Disable extension telemetry.
+  "redhat.telemetry.enabled": false,
   ///   Bash
   // Allow ShellCheck to follow sources.
   "shellcheck.customArgs": [
