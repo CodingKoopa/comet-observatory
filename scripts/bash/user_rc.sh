@@ -26,6 +26,8 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 # Runtimes
 
+# Enable Docker BuildKit
+export DOCKER_BUILDKIT=1
 # Disable .NET Core Telemetry.
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # Enable Wine esync.
