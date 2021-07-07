@@ -44,3 +44,4 @@ $ find $HOME -name "*.old" -delete
 ```
 13. Setup an internet connection with NetworkManager in your hopefully now pretty-much functioning desktop environment.
 14. Re-run both setups to finish off what couldn't be done before.
+15. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
