@@ -258,10 +258,6 @@ gstreamer-vaapi
 # mpv Git, for playing media. Building this from Git is necessary to have a build with Vapoursynth
 # support enabled.
 aur/mpv-git
-# Vapoursynth, for MPV post processing effects with SVP.
-vapoursynth
-# SVP, for processing smooth video.
-svp
 # OBS Studio, for recording media.
 obs-studio
 # Linux-Fake-Background-Webcam
