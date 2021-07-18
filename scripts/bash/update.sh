@@ -84,7 +84,7 @@ function update() {
     sudo pacman -Syu
 
     subsect "Syncing AUR packages."
-    pikaur -Sua
+    pikaur -Sua --devel --needed
 
     subsect "Handling configuration conflicts."
     handle_pacnew
