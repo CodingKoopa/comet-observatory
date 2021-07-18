@@ -42,12 +42,13 @@ packages.
 function update() {
   local update_prebuilt=false
   local update_custom=false
+  local remove_orphans=false
 
   if [[ $# -eq 0 ]]; then
     update_prebuilt=true
     update_custom=true
   else
-    while getopts "hpcfa" opt; do
+    while getopts "hacpo" opt; do
       case $opt in
       h)
         print_help
@@ -61,6 +62,9 @@ function update() {
         ;;
       p)
         update_prebuilt=true
+        ;;
+      o)
+        remove_orphans=true
         ;;
       *)
         print_help
@@ -77,6 +81,9 @@ function update() {
     sudo -E DIFFPROG="sudo code -d" pacdiff
   }
 
+  if [[ $remove_orphans = true ]]; then
+    pikaur -Qtdq | pikaur -Rns -
+  fi
   if [[ $update_prebuilt = true ]]; then
     section "Updating Prebuilt Packages"
 
