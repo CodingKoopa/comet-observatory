@@ -108,6 +108,8 @@
   // Refactor when renaming from file explorer.
   "java.refactor.renameFromFileExplorer": "autoApply",
   ///   Docker
+  // Don't show the Docker startup page.
+  "docker.showStartPage": false,
   // Use vscode-docker to lint Dockerfiles, because shell-format makes mistakes.
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
