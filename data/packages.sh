@@ -255,9 +255,8 @@ gst-plugins-good
 gst-plugins-ugly
 # GStreamer VA-API support, for GPU video decoding support.
 gstreamer-vaapi
-# mpv Git, for playing media. Building this from Git is necessary to have a build with Vapoursynth
-# support enabled.
-aur/mpv-git
+# mpv Git, for playing media.
+mpv
 # OBS Studio, for recording media.
 obs-studio
 # Linux-Fake-Background-Webcam
