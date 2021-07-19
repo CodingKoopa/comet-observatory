@@ -1,3 +1,9 @@
+// Disable about:config warning.
+user_pref("browser.aboutConfig.showWarning", false);
+
+// Disable form autofill.
+user_pref("signon.autofillForms", false);
+
 // Disable silly calculator feature.
 user_pref("browser.urlbar.suggest.calculator", false);
 
@@ -9,6 +15,9 @@ user_pref("full-screen-api.warning.timeout", 0);
 
 // Store the cache in RAM.
 user_pref("browser.cache.disk.parent_directory", "/run/user/1000/firefox");
+
+// Set the correct frame rate.
+user_pref("layout.frame_rate", 144);
 
 // Configure smooth scroll.
 user_pref("general.smoothScroll.lines.durationMaxMS", 125);
