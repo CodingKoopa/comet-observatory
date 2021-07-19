@@ -114,6 +114,8 @@ winetricks
 jre-openjdk
 # QEMU, for virtualization.
 qemu
+# UEFI firmware for QEMU.
+edk2-ovmf
 # spicy, for viewing virtual machines.
 spice-gtk
 
