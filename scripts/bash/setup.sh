@@ -101,6 +101,10 @@ function setup_system() {
   # package first, so that parsing pacman.conf doesn't result in an error.
   info "Configuring Chaotic-AUR"
   if [[ $DRY_RUN = false ]]; then
+    if ! pacman-key --list-sigs | grep 3056513887B78AEB &>/dev/null; then
+      pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+      pacman-key --lsign-key 3056513887B78AEB
+    fi
     install_from_repo chaotic-keyring https://github.com/chaotic-aur/pkgbuild-chaotic-keyring
     install_from_repo chaotic-mirrorlist https://github.com/chaotic-aur/pkgbuild-chaotic-mirrorlist
   fi
