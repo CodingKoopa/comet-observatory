@@ -34,10 +34,3 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export WINEESYNC=1
 # Enable Wine fsync.
 export WINEFSYNC=1
-
-# Graphics Drivers (May be applicable even without X running)
-
-# Override the driver for VA-API.
-export LIBVA_DRIVER_NAME=vdpau
-# Override the driver for VDPAU.
-export VDPAU_DRIVER=nvidia
