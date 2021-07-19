@@ -191,7 +191,7 @@ name=org.spice-space.webdav.0"}
   # Debian packages "spice-vdagent xserver-xorg-video-qxl" should be installed. See:
   # https://wiki.archlinux.org/index.php/QEMU#SPICE_support_on_the_guest
   # For virgl, enable OpenGL.
-  qemu_opts+=${viewer_spice+" -spice unix,addr=$vm_socket_addr,disable-ticketing\
+  qemu_opts+=${viewer_spice+" -spice unix=on,addr=$vm_socket_addr,disable-ticketing=on\
 ${video_driver_virgil+",gl=on"}"}
 
   # i386 Target Options
