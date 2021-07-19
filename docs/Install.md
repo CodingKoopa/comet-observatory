@@ -4,7 +4,7 @@ This document loosely describes the process of installing a system with comet-ob
 1. Follow the [Installation guide](https://wiki.archlinux.org/title/Installation_guide) to install Arch Linux, ending off in a chroot in the base system.
 2. Install the dependencies needed for the comet-observatory setup:
 ```
-# pacman -S git sudo lolcat lsd ntfs-3g pacman-contrib
+# pacman -S git sudo lolcat lsd ntfs-3g pacman-contrib expac
 # pacman -S --asdep pinentry
 ```
 3. Create the install user, inputting `$USER`:

@@ -17,7 +17,7 @@ source "$CO"/scripts/makepkg/repos.sh
 function print_help() {
   # Keep the help string in its own variable because a single quote in a heredoc messes up syntax
   # highlighting.
-  HELP_STRING="
+  HELP_STRING="\
 Usage: update [-hpc]
 Updates the system, including official prebuilt packages, AUR packages, and, and custom Frogging
 Family packages. Also handles some routine maintenance tasks.
@@ -27,7 +27,9 @@ Family packages. Also handles some routine maintenance tasks.
   -c    Update custom packages. This pulls the latest Git repos, reviews changes, and builds the
 packages.
   -p    Update prebuilt packages. This essentially runs pacman -Syu for official and AUR packages.
-"
+  -e    Check for extraneous packages. They won't necessarily be removed.
+  -o    Remove orphan packages. Not included with -a because, generally, we will be keeping build
+dependencies installed, which are considered orphaned packages."
   echo "$HELP_STRING"
   exit 0
 }
@@ -40,38 +42,43 @@ packages.
 # Outputs:
 #   - Update progress.
 function update() {
-  local update_prebuilt=false
+  local check_missing=false
+  local check_extra=false
   local update_custom=false
+  local update_prebuilt=false
   local remove_orphans=false
 
   if [[ $# -eq 0 ]]; then
-    update_prebuilt=true
-    update_custom=true
-  else
-    while getopts "hacpo" opt; do
-      case $opt in
-      h)
-        print_help
-        ;;
-      a)
-        update_prebuilt=true
-        update_custom=true
-        ;;
-      c)
-        update_custom=true
-        ;;
-      p)
-        update_prebuilt=true
-        ;;
-      o)
-        remove_orphans=true
-        ;;
-      *)
-        print_help
-        ;;
-      esac
-    done
+    set -- -a
   fi
+  while getopts "hacpeo" opt; do
+    case $opt in
+    h)
+      print_help
+      ;;
+    a)
+      check_missing=true
+      check_extra=true
+      update_prebuilt=true
+      update_custom=true
+      ;;
+    c)
+      update_custom=true
+      ;;
+    p)
+      update_prebuilt=true
+      ;;
+    e)
+      check_extra=true
+      ;;
+    o)
+      remove_orphans=true
+      ;;
+    *)
+      print_help
+      ;;
+    esac
+  done
 
   # Ask for the sudo password now so that the rest of the process can proceed without it.
   sudo echo >/dev/null
@@ -82,7 +89,29 @@ function update() {
   }
 
   if [[ $remove_orphans = true ]]; then
+    section "Removing Orphan Packages"
+
     pikaur -Qtdq | pikaur -Rns -
+  fi
+  if [[ $check_missing = true ]]; then
+    section "Checking for Missing Packages"
+
+    diff=$(comm -13 <(get_installed_package_list) <(get_co_package_list))
+    if [[ -n $diff ]]; then
+      info "These packages are on the CO list, but aren't installed on the system:"
+      echo "$diff"
+      info "Considering installing them or updating the list."
+    fi
+  fi
+  if [[ $check_extra = true ]]; then
+    section "Checking for Extraneous Packages"
+
+    diff=$(comm -23 <(get_installed_package_list) <(get_co_package_list))
+    if [[ -n $diff ]]; then
+      info "These packages are explicitly installed on the system, but aren't on the CO list:"
+      echo "$diff"
+      info "Considering uninstalling them or adding them to the list."
+    fi
   fi
   if [[ $update_prebuilt = true ]]; then
     section "Updating Prebuilt Packages"
