@@ -92,8 +92,6 @@ function link_directories() {
 
     # KDE Accessories
 
-    # Link autostart programs from documents to user configuration.
-    ["$SYNCED_DOCUMENTS_DIR/LinuxAutostartPrograms"]="$INSTALL_HOME/.config/autostart"
     # Link autostart scripts from CO to user configuration.
     ["$CO/config/autostart/"]="$INSTALL_HOME/.config/autostart-scripts"
     # Link hotkeys from CO to user configuration.
