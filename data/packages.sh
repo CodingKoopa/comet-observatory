@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# Base system.
+base
+
 # Hardware
 
 # AMD Microcode, for CPU patches.
 amd-ucode
+# Firmware files.
+linux-firmware
+# efibootmgr, for managing UEFI entries.
+efibootmgr
 # Linux kernel, for doing stuff.
 linux
 # Linux kernel headers, for compiling kernel modules.
@@ -160,8 +167,11 @@ plasma-desktop
 kdeplasma-addons
 # khotkeys, for custom keyboard shortcuts.
 khotkeys
-# fcitx5 input method, for inputting characters.
-fcitx5-im
+# fcitx5 input method, for inputting characters. This is the "fcitx5-im" group, expanded.
+fcitx5
+fcitx5-configtool
+fcitx5-gtk
+fcitx5-qt
 # xdg-desktop-portal, for interfacing with containment frameworks.
 xdg-desktop-portal
 # xdg-desktop-portal-kde, a Qt/KF5 backend for xdg-desktop-portal.
@@ -207,7 +217,7 @@ kdegraphics-thumbnailers
 # ffmpegthumbs, for video thumbnail support in Dolphin.
 ffmpegthumbs
 # MEGASync, for managing files with MEGA.
-megasync-bin
+megasync
 # Ark, for managing archives.
 ark
 # p7zip, for ZIP and 7z support in Ark.
@@ -262,8 +272,11 @@ gst-plugins-ugly
 gstreamer-vaapi
 # mpv Git, for playing media.
 mpv
+mpv-mpris
 # OBS Studio, for recording media.
 obs-studio
+# Kdenlive, for editing media.
+kdenlive
 # Linux-Fake-Background-Webcam
 # linux-fake-background-webcam-opt-git
 # Blender, for editing 3D models.
@@ -342,6 +355,8 @@ code-marketplace
 # ShellCheck, for Bash linting. This is the statically compiled version without the Haskell
 # dependencies.
 shellcheck-bin
+# shfmt, for Bash formatting.
+shfmt
 # namcap, for PKGBUILD linting.
 # namcap
 # GCC 7, for Cuda and cuDNN.
