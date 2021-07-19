@@ -99,6 +99,9 @@ chaotic-mirrorlist
 pacman-contrib
 # Reflector, for updating pacman mirrors.
 reflector
+# powerpill, for parallel package downloading.
+powerpill
+
 # pkgstats, for submitting package statistics.
 pkgstats
 
