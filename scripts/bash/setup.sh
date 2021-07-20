@@ -247,9 +247,6 @@ function setup_user() {
   info "Configuring GPG."
   configure_gpg
 
-  info "Setting Up Pikaur"
-  install_pikaur
-
   info "Setting Up VSCode"
   install_vscode_extensions
 
