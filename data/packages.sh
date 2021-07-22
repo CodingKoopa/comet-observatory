@@ -252,8 +252,8 @@ keepassxc
 gwenview
 # GIMP, for editing images.
 gimp
-# GraphicsMagick, for editing images.
-graphicsmagick
+# ImageMagick, for editing images.
+imagemagick
 # eyed3, for tagging audio.
 python-eyed3
 # Clementine, for playing audio.
