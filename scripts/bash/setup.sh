@@ -170,6 +170,9 @@ function setup_system() {
   # Apply the GTK configuration to root, to make applications like Gparted look nice.
   safe_ln "$INSTALL_HOME/.config/gtk-3.0" /root/.config/gtk-3.0
 
+  info "Configuring ImageMagick."
+  safe_cp "$CO"/config/imagemagick-policy.xml /etc/ImageMagick-7/policy.xml
+
   info "Setup complete!"
 }
 
