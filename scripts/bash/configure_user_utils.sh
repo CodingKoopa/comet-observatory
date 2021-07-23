@@ -19,7 +19,7 @@ source "$CO"/scripts/makepkg/repos.sh
 function create_directories() {
   declare -ra new_paths=(
     "$TERRACE_DOWNLOADS_DIR"
-    "$TERRACE_DOCUMENTS_DIR"
+    "$FOUNTAIN_DOCUMENTS_DIR"
     "$TERRACE_PICTURES_DIR"
     "$TERRACE_VIDEOS_DIR"
     "$TERRACE_MUSIC_DIR"
@@ -62,7 +62,7 @@ function link_directories() {
     # Link downloads from the terrace to home directory.
     ["$TERRACE_DOWNLOADS_DIR"]="$INSTALL_HOME/Downloads"
     # Link documents from the terrace to home directory.
-    ["$TERRACE_DOCUMENTS_DIR"]="$INSTALL_HOME/Documents"
+    ["$FOUNTAIN_DOCUMENTS_DIR"]="$INSTALL_HOME/Documents"
     # Link pictures from the terrace to home directory.
     ["$TERRACE_PICTURES_DIR"]="$INSTALL_HOME/Pictures"
     # Link videos from the terrace to home directory.
