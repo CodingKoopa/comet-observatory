@@ -116,6 +116,8 @@ function link_directories() {
 
     # Media
 
+    # Link Chrome flags from CO to user configuration.
+    ["$CO/config/chrome-flags.conf"]="$INSTALL_HOME/.config/chrome-flags.conf"
     # Link mpv configuration from CO to user configuration.
     ["$CO/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
     # Link OBS Studio configuration from documents to user configuration.
