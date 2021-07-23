@@ -142,15 +142,15 @@ $fallback_kernel_initrd_str $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR 
       add_entry "$kernel (Rescue)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR $*"
       ;;
-    *normal*)
-      info "Updating $kernel normal UEFI boot entry ($vmlinuz_path)."
-      add_entry "$kernel (Normal)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
-$CMDLINE_STR $*"
-      ;;
-    *)
+    *silent*)
       info "Updating $kernel silent UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Silent)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_SILENT_STR $*"
+      ;;
+    *)
+      info "Updating $kernel normal UEFI boot entry ($vmlinuz_path)."
+      add_entry "$kernel (Normal)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
+$CMDLINE_STR $*"
       ;;
     esac
   }
@@ -192,7 +192,7 @@ $CMDLINE_STR $CMDLINE_SILENT_STR $*"
     add_entry_decide_configuration "Arch Linux ($kernel)" "${kernel_suffixes[${kernel}]}" "$@"
   done
 
-  local -r default_entry="Arch Linux ($latest_tkg_name) (Silent)"
+  local -r default_entry="Arch Linux ($latest_tkg_name) (Normal)"
   local -r default_entry_num=$(find_bootnum "$default_entry")
   if [[ -n $default_entry_num ]]; then
     info "Setting $default_entry as default entry."
