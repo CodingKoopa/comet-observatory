@@ -97,8 +97,6 @@ function link_directories() {
     # Link hotkeys from CO to user configuration.
     ["$CO/config/khotkeys.ini"]="$INSTALL_HOME/.config/khotkeysrc"
 
-    # File Managers
-
     # Tools
 
     # Link nano configuration from CO to user configuration.
