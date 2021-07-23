@@ -17,8 +17,6 @@ linux
 linux-headers
 # modprobed-db, for storing a list of kernel modules used for smaller TkG kernel builds.
 modprobed-db
-# VDPAU backend for VA-API, for VA-API support.
-libva-vdpau-driver
 # PulseAudio, for audio support.
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
@@ -260,18 +258,6 @@ python-eyed3
 clementine
 # youtube-dl, for downloading media.
 youtube-dl
-# GStreamer base plugins, for decoding media.
-gst-plugins-base
-# 32-bit GStreamer base plugins, for Wine.
-lib32-gst-plugins-base-libs
-# GStreamer Libav plugin, for decoding media.
-gst-libav
-# GStreamer good plugins, for decoding media.
-gst-plugins-good
-# GStreamer good plugins with licensing issues, for decoding media.
-gst-plugins-ugly
-# GStreamer VA-API support, for GPU video decoding support.
-gstreamer-vaapi
 # mpv Git, for playing media.
 mpv
 mpv-mpris
