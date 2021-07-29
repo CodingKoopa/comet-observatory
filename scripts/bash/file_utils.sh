@@ -57,13 +57,11 @@ safe_cp() {
 # Arguments:
 #   - The target file path.
 #   - The link file path.
-#   - The owner to set the link file to (optional).
 # Outputs:
 #   - Link feedback.
 function safe_ln() {
   local -r target=$1
   local -r link_name=${2%/}
-  local -r owner=$3
 
   if [[ -L "$link_name" ]] && cmp "$target" "$link_name" >/dev/null 2>&1; then
     verbose "$link_name is already updated."
@@ -109,13 +107,6 @@ function safe_ln() {
     if [[ $DRY_RUN = false ]]; then
       debug "Executing ln -sf \"$target\" \"$link_name\""
       ln -sf "$target" "$link_name"
-    fi
-
-    if [[ -n $owner ]]; then
-      info "Setting owner of $link_name to $owner."
-      if [[ $DRY_RUN = false ]]; then
-        chown "$owner" "$link_name"
-      fi
     fi
   fi
 }
