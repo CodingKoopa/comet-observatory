@@ -16,7 +16,8 @@ readonly replacement=$3
 doc_full=$(realpath "$doc")
 
 work=$(mktemp -d)
-
+# shellcheck disable=SC2064
+trap "rm -rf \"$work\"" ERR
 cd "$work"
 
 readonly extension=${doc_full##*.}
@@ -40,5 +41,4 @@ sed -i "s/$pattern/$replacement/gI" $text_f
 zip -q "$doc_full" "$text_f"
 
 cd - >/dev/null
-
 rm -rf "$work"
