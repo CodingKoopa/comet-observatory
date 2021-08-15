@@ -205,7 +205,7 @@ ${video_driver_virgil+",gl=on"}"}
   # Add an SMB share.
   # This and the virtfs share are mutually exclusive!
   # This is dependent on "-nic"!
-  # qemu_opts+=",smb=$HOME"
+  qemu_opts+=",smb=$HOME"
 
   # Character Device Options
   # Add a spicevmc channel for vdagent.
@@ -238,7 +238,7 @@ ${video_driver_virgil+",gl=on"}"}
 
   if [[ -n $viewer_spice ]]; then
     # Start spicy manually.
-    spicy --uri="spice+unix://$vm_socket_addr" --spice-shared-dir="$HOME" -f
+    spicy --uri="spice+unix://$vm_socket_addr" -f
     # Start virt-viewer manually.
     # remote-viewer "spice+unix://$vm_socket_addr"
   fi
