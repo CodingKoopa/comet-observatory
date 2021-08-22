@@ -9,9 +9,12 @@ This document loosely describes the process of installing a system with comet-ob
 ```
 3. Create the install user, inputting `$USER`:
 ```
-# useradd -m -G wheel -s /usr/bin/bash $USER
+# useradd -m -G wheel -s /usr/bin/bash "$USER"
 ```
-4. Setup sudo to allow the `wheel` group to execute commands.
+4. Set the password of the new user.
+``
+passwd "$USER"
+5. Setup sudo to allow the `wheel` group to execute commands.
 ```
 # EDITOR=nano visudo
 ```
@@ -43,5 +46,6 @@ $ find $HOME -name "*.old" -delete
 # systemctl enable --now NetworkManager.service
 ```
 13. Setup an internet connection with NetworkManager in your hopefully now pretty-much functioning desktop environment.
-14. Re-run both setups to finish off what couldn't be done before.
-15. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
+14. Setup a Kwallet without GPG.
+15. Re-run both setups to finish off what couldn't be done before.
+16. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
