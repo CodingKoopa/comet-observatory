@@ -95,6 +95,9 @@ function check_repos() {
 #   - Any files *within the repo* to show the differences of, since the last pull.
 # Outputs:
 #   - New commits and files changed.
+# Returns:
+#   - 0 if there were changes pulled.
+#   - 1 if the repo was already up-to-date.
 function update_repo() {
   local -r repo=$1
   # Use basename to strip the repo of any prefixes, such as "linux-tkg".
@@ -110,6 +113,15 @@ function update_repo() {
   # error: please commit or stash them.
   verbose "Stashing any local changes."
   git stash >/dev/null
+
+  verbose "Fetching from remote."
+  git fetch
+
+  verbose "Checking for changes."
+  # If the commit at HEAD is the same as that of the tip of upstream.
+  if [[ $(git rev-parse HEAD) == $(git rev-parse origin/master) ]]; then
+    return 1
+  fi
 
   verbose "Pulling changes."
   git pull -q origin master
@@ -179,6 +191,8 @@ function update_repo() {
   fi
 
   safe_cd -
+
+  return 0
 }
 
 # Builds a repository, using makepkg. Previously built packages and logs are cleared first.

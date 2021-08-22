@@ -46,13 +46,14 @@ function update() {
   local check_missing=false
   local check_extra=false
   local update_custom=false
+  local force_custom=false
   local update_prebuilt=false
   local remove_orphans=false
 
   if [[ $# -eq 0 ]]; then
     set -- -a
   fi
-  while getopts "hacpeo" opt; do
+  while getopts "hacfpeo" opt; do
     case $opt in
     h)
       print_help
