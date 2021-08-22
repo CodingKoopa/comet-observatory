@@ -234,7 +234,7 @@ ${video_driver_virgil+",gl=on"}"}
   info "QEMU Reeves starting up with options \"$qemu_opts\"."
   # Start the new system.
   # shellcheck disable=SC2086
-  "$qemu_exe" $qemu_opts
+  gamemoderun "$qemu_exe" $qemu_opts
 
   if [[ -n $viewer_spice ]]; then
     # Start spicy manually.
