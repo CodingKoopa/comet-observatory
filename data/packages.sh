@@ -106,8 +106,6 @@ chaotic-mirrorlist
 pacman-contrib
 # Reflector, for updating pacman mirrors.
 reflector
-# powerpill, for parallel package downloading.
-powerpill
 
 # pkgstats, for submitting package statistics.
 pkgstats
@@ -272,8 +270,6 @@ kdenlive
 
 # Internet
 
-# aria2, for downloading files.
-# aria2
 # Firefox, for browsing the web.
 firefox
 # Google Chrome, for browsing the internet.
