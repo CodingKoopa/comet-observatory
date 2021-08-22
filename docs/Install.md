@@ -12,9 +12,10 @@ This document loosely describes the process of installing a system with comet-ob
 # useradd -m -G wheel -s /usr/bin/bash "$USER"
 ```
 4. Set the password of the new user.
-``
+```sh
 passwd "$USER"
-5. Setup sudo to allow the `wheel` group to execute commands.
+```
+1. Setup sudo to allow the `wheel` group to execute commands.
 ```
 # EDITOR=nano visudo
 ```
