@@ -84,6 +84,18 @@ function testpulse() {
   systemctl --user start pulseaudio.{socket,service}
 }
 
+function killwine() {
+  local -r processes=$(ps -ef |
+    grep -E -i '((wine|processid|\.exe)|pressure-vessel-adverb|reaper)' | awk '{print $2}')
+  for process in $processes; do
+    kill -9 "$process"
+  done
+}
+
+function cleandocker() {
+  docker buildx prune -a -f && docker system prune -a -f --volumes
+}
+
 alias lss='/usr/bin/ls --color=auto'
 # Replace ls with LSDeluxe.
 alias ls='lsd'
