@@ -27,7 +27,6 @@ source "$CO"/scripts/code/extensions.sh
 #   - INSTALL_HOME: Location of the home directory of the current install user.
 #   - CO: Location of this Comet Observatory repository.
 #   - SYNCED_DOCUMENTS_DIR: Location of the synced documents directory of the current install user.
-#   - ABS_DIR: Location of the Arch Build System directory.
 #   - AUR_DIR: Location of the Arch User Repository directory.
 #   - GPG_DIR: Location of the GnuPG home directory of the current install user.
 #   - SSH_DIR: Location of the SSH home directory of the current install user.
@@ -50,7 +49,6 @@ function export_constants() {
   export TERRACE_PICTURES_DIR=$INSTALL_HOME/Terrace/Pictures
   export TERRACE_VIDEOS_DIR=$INSTALL_HOME/Terrace/Videos
   export TERRACE_MUSIC_DIR=$INSTALL_HOME/Terrace/Music
-  export ABS_DIR=$INSTALL_HOME/Documents/ABS
   export AUR_DIR=$INSTALL_HOME/Documents/AUR
   export GPG_DIR=$INSTALL_HOME/.gnupg
   export SSH_DIR=$INSTALL_HOME/.ssh

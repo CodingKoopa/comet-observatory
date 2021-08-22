@@ -23,7 +23,6 @@ function create_directories() {
     "$TERRACE_PICTURES_DIR"
     "$TERRACE_VIDEOS_DIR"
     "$TERRACE_MUSIC_DIR"
-    "$ABS_DIR"
     "$AUR_DIR"
     "$GPG_DIR"
   )
