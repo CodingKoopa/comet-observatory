@@ -84,7 +84,7 @@ partitionmanager
 # Plasma NetworkManager, for managing network connections.
 plasma-nm
 # Nintendo Switch USB loader, for managing game and NAND backups.
-ns-usbloader
+# ns-usbloader
 # print-manager, for managing printers.
 print-manager
 # system-config-printer, for automatically detecting printer drivers.
