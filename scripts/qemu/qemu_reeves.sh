@@ -123,7 +123,7 @@ function launch_qemu() {
   # This and "-vga virtio" are mutually exclusive!
   qemu_opts+=${video_driver_virgil+" -device virtio-vga"}
   # For SPICE, add a virtio serial device.
-  qemu_opts+=${viewer_spice+" -device virtio-serial"}
+  qemu_opts+=${viewer_spice+" -device virtio-serial-pci"}
   # For SPICE, add a virtio serial port input device, for vdagent. This is used to propagate changes
   # in the monitor configuration, and clipboard.
   # This is dependent on the vdagentchannel "-chardev"!
