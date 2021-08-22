@@ -4,7 +4,7 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-set -e
+set -eo pipefail
 
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
