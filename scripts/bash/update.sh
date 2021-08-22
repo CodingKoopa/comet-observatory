@@ -26,6 +26,7 @@ Family packages. Also handles some routine maintenance tasks.
   -a    Do everything. This is the default behavior.
   -c    Update custom packages. This pulls the latest Git repos, reviews changes, and builds the
 packages.
+  -f    Force update all custom packages even if the repo is up to date. Implies -c. Not done by -a.
   -p    Update prebuilt packages. This essentially runs pacman -Syu for official and AUR packages.
   -e    Check for extraneous packages. They won't necessarily be removed.
   -o    Remove orphan packages. Not included with -a because, generally, we will be keeping build
@@ -64,6 +65,10 @@ function update() {
       ;;
     c)
       update_custom=true
+      ;;
+    f)
+      update_custom=true
+      force_custom=true
       ;;
     p)
       update_prebuilt=true
@@ -132,23 +137,36 @@ function update() {
     subsect "Checking repository directories."
     check_repos
     subsect "Updating community patches."
-    update_repo community-patches
+    update_repo community-patches || true
     subsect "Updating TkG Linux kernel source."
-    update_repo linux-tkg customization.cfg
+    update_repo linux-tkg customization.cfg && update_linux_tkg=true || update_linux_tkg=false
     subsect "Updating Nvidia drivers."
-    update_repo nvidia-all customization.cfg
+    update_repo nvidia-all customization.cfg && update_nvidia_all=true || update_nvidia_all=false
     subsect "Updating TkG Proton."
     update_repo wine-tkg-git/proton-tkg proton-tkg.cfg \
-      proton-tkg-profiles/advanced-customization.cfg
+      proton-tkg-profiles/advanced-customization.cfg && update_proton_tkg=true ||
+      update_proton_tkg=false
 
     section "Building Custom Packages"
 
-    subsect "Building TKG Linux kernel."
-    build_repo linux-tkg
+    subsect "Building TkG Linux kernel."
+    if [[ $force_custom = true || $update_linux_tkg = true ]]; then
+      build_repo linux-tkg
+    else
+      info "Already up to date."
+    fi
     subsect "Building Nvidia drivers."
-    build_repo nvidia-all
+    if [[ $force_custom = true || $update_nvidia_all = true ]]; then
+      build_repo nvidia-all
+    else
+      info "Already up to date."
+    fi
     subsect "Building TkG Proton."
-    build_repo wine-tkg-git/proton-tkg
+    if [[ $force_custom = true || $update_proton_tkg = true ]]; then
+      build_repo wine-tkg-git/proton-tkg
+    else
+      info "Already up to date."
+    fi
 
     subsect "Handling configuration conflicts."
     handle_pacnew
