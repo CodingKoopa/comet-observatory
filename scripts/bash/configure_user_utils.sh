@@ -14,6 +14,7 @@ source "$CO"/scripts/makepkg/repos.sh
 # Creates new directories, and sets them up with proper permissions if necessary.
 # Globals Read:
 #   - DRY_RUN: See setup().
+#   - INSTALL_USER: See setup_system().
 # Outputs:
 #   - Installation progress.
 function create_directories() {
@@ -25,6 +26,7 @@ function create_directories() {
     "$TERRACE_MUSIC_DIR"
     "$AUR_DIR"
     "$GPG_DIR"
+    "$INSTALL_HOME/.cache/pikaur/pkg/"
   )
 
   for target in "${new_paths[@]}"; do
