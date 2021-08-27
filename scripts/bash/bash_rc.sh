@@ -85,6 +85,7 @@ function testpulse() {
 }
 
 function killwine() {
+  # shellcheck disable=SC2009
   local -r processes=$(ps -ef |
     grep -E -i '((wine|processid|\.exe)|pressure-vessel-adverb|reaper)' | awk '{print $2}')
   for process in $processes; do
