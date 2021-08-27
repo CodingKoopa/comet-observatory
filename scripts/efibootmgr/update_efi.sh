@@ -63,7 +63,15 @@ function add_entry() {
   # It's necessary to delete the existing entry and replace it, because efibootmgr doesn't support
   # editing an existing entry: https://github.com/rhboot/efibootmgr/issues/49.
   remove_entry_if_existing "$label"
-  efibootmgr -q -c -d /dev/nvme0n1 -p 3 --label "$label" -l "$loader" -u "$cmdline"
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    local -r device=/dev/nvme0n1
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    local -r device=/dev/sda
+  else
+    error "Host unknown, I don't know which disk to use."
+    exit 1
+  fi
+  efibootmgr -q -c -d $device -p 3 --label "$label" -l "$loader" -u "$cmdline"
 }
 
 # Updates Arch Linux UEFI boot entries.
@@ -83,7 +91,14 @@ function update_efi() {
   info "Comet Observatory UEFI Boot Entry Updater Script"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
-  local -r ROOT="PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3"
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    local -r ROOT="PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3"
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    local -r ROOT="PARTUUID=90dd0890-79d3-4f66-b1f4-67f8fb2345c2"
+  else
+    error "Host unknown, I don't know which disk to use."
+    exit 1
+  fi
   local -r MICROCODE="amd-ucode.img"
 
   # Set the initial ramdisk to the microcode, for functionality. This is set separately because it

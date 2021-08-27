@@ -9,7 +9,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-export CO=/home/koopa/Documents/Projects/Bash/comet-observatory
+source /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
 
 # shellcheck source=scripts/efibootmgr/update_efi.sh
 source "$CO"/scripts/efibootmgr/update_efi.sh

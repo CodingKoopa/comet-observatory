@@ -2,7 +2,8 @@
 
 This document loosely describes the process of installing a system with comet-observatory. It's certainly not meant to be *used* as much as it is a reminder of what to do, for myself.
 1. Follow the [Installation guide](https://wiki.archlinux.org/title/Installation_guide) to install Arch Linux, ending off in a chroot in the base system.
-2. Install the dependencies needed for the comet-observatory setup:
+2. Create the necessary directories on the drives, if not present (see `setup.sh`).
+3. Install the dependencies needed for the comet-observatory setup:
 ```
 # pacman -S git sudo lolcat lsd ntfs-3g pacman-contrib expac
 # pacman -S --asdep pinentry

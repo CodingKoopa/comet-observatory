@@ -4,7 +4,8 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-export CO=$HOME/Documents/Projects/Bash/comet-observatory
+source /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
+
 # shellcheck source=scripts/bash/user_rc.sh
 source "$CO"/scripts/bash/user_rc.sh
 
