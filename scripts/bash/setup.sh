@@ -144,7 +144,7 @@ function setup_system() {
   safe_cp "$CO"/config/modprobe.conf /etc/modprobe.d/modprobe.conf
 
   info "Configuring filesystems."
-  safe_cp "$CO"/config/fstab /etc/fstab
+  configure_fstab
 
   info "Creating swap memory."
   create_swap 8

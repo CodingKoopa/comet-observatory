@@ -49,6 +49,8 @@ function remove_entry_if_existing() {
 }
 
 # Adds a UEFI boot entry. Empty parameters are handled like unset.
+# Globals Read:
+#   - CO_HOST: See co_rc.sh.
 # Arguments:
 #   - The label of the boot entry.
 #   - The loader for the boot entry.
@@ -75,6 +77,8 @@ function add_entry() {
 }
 
 # Updates Arch Linux UEFI boot entries.
+# Globals Read:
+#   - CO_HOST: See co_rc.sh.
 # Arguments:
 #   - The type of entries to generate, out of "normal", "silent", "debug", "rescue", and
 # "fallback-rescue".
