@@ -19,11 +19,6 @@ source "$CO"/scripts/makepkg/repos.sh
 #   - Installation progress.
 function create_directories() {
   declare -ra new_paths=(
-    "$TERRACE_DOWNLOADS_DIR"
-    "$FOUNTAIN_DOCUMENTS_DIR"
-    "$TERRACE_PICTURES_DIR"
-    "$TERRACE_VIDEOS_DIR"
-    "$TERRACE_MUSIC_DIR"
     "$AUR_DIR"
     "$GPG_DIR"
     "$INSTALL_HOME/.cache/pikaur/pkg/"

@@ -4,7 +4,8 @@
 # Licensed under GPLv3.
 # Refer to License.txt file included.
 
-export CO=/home/koopa/Documents/Projects/Bash/comet-observatory
+# We might be in an environment where the CO variables haven't yet been set up.
+source /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
 
 # shellcheck source=scripts/bash/setup.sh
 source "$CO"/scripts/bash/setup.sh

@@ -43,6 +43,23 @@ function create_swap() {
   fi
 }
 
+# Configures the filesystem table.
+# Globals Read:
+#   - DRY_RUN: See setup().
+#   - CO_HOST: See co_rc.sh.
+# Outputs:
+#   - Copy feedback.
+function configure_fstab() {
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    safe_cp "$CO"/config/fstab.desktop /etc/fstab
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    safe_cp "$CO"/config/fstab.p500 /etc/fstab
+  else
+    error "Host unknown, I don't know which fstab to use."
+    exit 1
+  fi
+}
+
 # Configures sudo.
 # Globals Read:
 #   - DRY_RUN: See setup().

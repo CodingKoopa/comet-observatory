@@ -13,8 +13,6 @@ export SSH_ASKPASS=/usr/bin/ksshaskpass
 
 # Paths
 
-# Set the path to the Comet Observatory.
-export CO=$HOME/Documents/Projects/Bash/comet-observatory
 # Set the PATH to prefer ccache binaries, prefer user binaries, and include CO binaries.
 export PATH=/usr/lib/ccache/bin/:$HOME/.local/bin/:$PATH:$CO/bin
 
