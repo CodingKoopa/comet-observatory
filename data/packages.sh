@@ -15,6 +15,8 @@ efibootmgr
 linux
 # Linux kernel headers, for compiling kernel modules.
 linux-headers
+# mkinitcpio numlock hook, for turning on numlock.
+mkinitcpio-numlock
 # PulseAudio, for audio support.
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
