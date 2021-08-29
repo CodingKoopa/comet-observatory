@@ -12,3 +12,13 @@ xset s off
 # Add identities to ssh-agent. Since user-rc has configured ksshaskpass as the SSH
 # agent, the passwords for these identities will be sourced from KWallet. See gnupg.md.
 ssh-add -q ~/.ssh/id_rsa ~/.ssh/aur ~/.ssh/do ~/.ssh/or </dev/null
+
+# Use the Menu key as a compose key. Configuring this through KDE doesn't seem to be working.
+setxkbmap -option compose:menu
+
+sleep 3
+
+# Unlock KeepassXC.
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc \
+  org.keepassxc.MainWindow.openDatabase string:"$HOME/Documents/Passwords & 2FA/Passwords.kdbx" \
+  string:"$(kwallet-query -r Passwords.kbdx -f KeepassXC kdewallet)"
