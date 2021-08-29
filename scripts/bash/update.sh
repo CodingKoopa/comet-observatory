@@ -62,7 +62,6 @@ function update() {
       check_missing=true
       check_extra=true
       update_prebuilt=true
-      update_custom=true
       ;;
     c)
       update_custom=true

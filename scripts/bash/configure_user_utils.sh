@@ -196,8 +196,6 @@ function enable_user_units() {
   local -ra units=(
     # Enable the SSH agent.
     "ssh-agent.service"
-    # Enable the modprobed-db service.
-    "modprobed-db.service"
   )
 
   for unit in "${units[@]}"; do

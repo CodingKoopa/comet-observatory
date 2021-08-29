@@ -15,8 +15,6 @@ efibootmgr
 linux
 # Linux kernel headers, for compiling kernel modules.
 linux-headers
-# modprobed-db, for storing a list of kernel modules used for smaller TkG kernel builds.
-modprobed-db
 # PulseAudio, for audio support.
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
