@@ -13,7 +13,7 @@ source "$CO"/scripts/bash/common.sh
 # Arguments:
 #   - The name of the boot entry to find.
 # Outputs:
-#   The bootnums of the found boot entries, or nothing if none is found.
+#   The bootnum of the found boot entries, or nothing if none is found.
 function find_bootnum() {
   # Escapes a string for usage in a sed pattern. Sed expression copied from
   # https://stackoverflow.com/a/2705678.
@@ -30,7 +30,7 @@ function find_bootnum() {
     fi
   }
 
-  efibootmgr | sed -n 's/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/\1/p'
+  efibootmgr | sed -n '{0,/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/s//\1/p}'
 }
 
 # Removes a boot entry if it exists.
@@ -218,6 +218,8 @@ function win_boot() {
   info "Rebooting into Windows."
   local -r WINDOWS_ENTRY_NAME="Windows Boot Manager"
   local -r windows_entry_num="$(find_bootnum "$WINDOWS_ENTRY_NAME")"
+  echo $windows_entry_num
+  return 0
   if [[ -n $windows_entry_num ]]; then
     efibootmgr -q -n "$windows_entry_num"
     systemctl reboot
