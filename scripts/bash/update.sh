@@ -122,7 +122,7 @@ function update() {
     section "Updating Prebuilt Packages"
 
     subsect "Syncing official packages."
-    pikaur -Syu
+    pikaur -Syuo
 
     subsect "Syncing AUR packages."
     pikaur -Sua --devel --needed
