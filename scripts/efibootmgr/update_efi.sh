@@ -111,7 +111,7 @@ function update_efi() {
   # Set the initial ramdisk to the microcode, for functionality. This is set separately because it
   # has to come before the kernel initrd.
   local -r MICROCODE_INITRD_STR="initrd=\\$MICROCODE"
-  local -ra CMDLINE_ARRAY=(
+  local -a CMDLINE_ARRAY=(
     # Enable r/w on the file system, for functionality.
     "rw"
     # Set the root filesystem, for functionality.
