@@ -132,7 +132,7 @@ systemd.log_level=debug systemd.log_target=kmsg printk.devkmsg=on"
   # Enable rescue mode, for emergencies.
   local -ra CMDLINE_RESCUE_STR="rescue"
 
-  # Decides what configuration to use, and adds a UEFI boot entry acoordingly using add-entry().
+  # Decides what configuration to use, and adds a UEFI boot entry acoordingly using add_entry().
   # Arguments:
   #   - The name of the kernel.
   #   - The vmlinux suffix, if applicable.
