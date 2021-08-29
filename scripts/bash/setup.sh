@@ -170,6 +170,11 @@ function setup_system() {
   info "Configuring ImageMagick."
   safe_cp "$CO"/config/imagemagick-policy.xml /etc/ImageMagick-7/policy.xml
 
+  info "Installing EFI boot entries."
+  if [[ $DRY_RUN = false ]]; then
+    update-efi
+  fi
+
   info "Setup complete!"
 }
 
