@@ -19,7 +19,6 @@ source "$CO"/scripts/makepkg/repos.sh
 #   - Installation progress.
 function create_directories() {
   declare -ra new_paths=(
-    "$AUR_DIR"
     "$GPG_DIR"
     "$INSTALL_HOME/.cache/pikaur/pkg/"
   )
