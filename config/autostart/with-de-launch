@@ -16,6 +16,11 @@ ssh-add -q ~/.ssh/id_rsa ~/.ssh/aur ~/.ssh/do ~/.ssh/or </dev/null
 # Use the Menu key as a compose key. Configuring this through KDE doesn't seem to be working.
 setxkbmap -option compose:menu
 
+keepassxc &
+megasync &
+steam-runtime -silent &
+discord --start-minimized &
+
 sleep 3
 
 # Unlock KeepassXC.
