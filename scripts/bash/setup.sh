@@ -180,7 +180,6 @@ function setup_system() {
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
 #   - ABS_DIR: See export_constants().
-#   - AUR_DIR: See export_constants().
 #   - GPG_DIR: See export_constants().
 #   - SSH_DIR: See export_constants().
 # Globals Exported:
