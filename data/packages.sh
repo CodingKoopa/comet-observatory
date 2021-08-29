@@ -53,8 +53,6 @@ xboxdrv
 nx-udev
 # bluez, for the Bluetooth stack.
 bluez
-# Firmware for the BCM20702A1 bluetooth device.
-bcm20702a1-firmware
 # CUPS, for printing support.
 cups
 # Canon Pixma TR7500 series drivers, for printer support.
