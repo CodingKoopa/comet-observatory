@@ -26,7 +26,7 @@ passwd "$USER"
 ```
 6. Make a clone of the repo, if one doesn't already exist on the desired drive:
 ```
-$ git clone https://gitlab.com/CodingKoopa/comet-observatory.git
+$ git clone https://gitlab.com:<personal_access_token>@gitlab.com/CodingKoopa/comet-observatory.git
 ```
 7. Run setup-user as `$USER`. Anything that needs the dbus, such as the activation of systemd services, will not work right now since we're still in the chroot.
 8. See what `.old` files there are, from the user setup:
