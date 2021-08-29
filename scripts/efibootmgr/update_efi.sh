@@ -119,6 +119,10 @@ function update_efi() {
     # Enable DRM modesetting, for functionality.
     "nvidia-drm.modeset=1"
   )
+  if [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    # Use the ACPI video.ko driver, because the vendor driver causes the brightness to be stuck.
+    CMDLINE_ARRAY+=("acpi_backlight=video")
+  fi
   local -r CMDLINE_STR="${CMDLINE_ARRAY[*]}"
   # Set the kernel logging level to errors, set the initrd systemd logging level to errors, supress
   # successful systemd initramfs messages, and hide the cursor, for less verbosity.
