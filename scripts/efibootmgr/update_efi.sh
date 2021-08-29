@@ -105,6 +105,8 @@ function update_efi() {
   fi
   local -r MICROCODE="amd-ucode.img"
 
+  # See: https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
+
   # Set the initial ramdisk to the microcode, for functionality. This is set separately because it
   # has to come before the kernel initrd.
   local -r MICROCODE_INITRD_STR="initrd=\\$MICROCODE"
