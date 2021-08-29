@@ -58,6 +58,7 @@ function export_constants() {
 # Globals Read:
 #   - INSTALL_HOME: See export_constants().
 #   - CO: See export_constants().
+#   - CO_HOST: See co_rc.sh.
 #   - PACMAN_ARGS: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
 # Globals Exported:

@@ -231,8 +231,26 @@ function get_installed_package_list() {
 }
 
 # Gets the list of packages specified in this repo. Empty lines and comments are stripped out.
+# Globals Read:
+#   - CO: See export_constants().
+#   - CO_HOST: See co_rc.sh.
 # Outputs:
 #   - The list of packages.
 function get_co_package_list() {
-  grep "^[a-z|A-Z]" "$CO"/data/packages.sh | sort
+  function parse() {
+    grep "^[a-z|A-Z]" "$CO"/data/"$1"
+  }
+
+  local packages
+  packages=$(parse packages.sh)
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    packages+="
+$(parse packages.desktop.sh)"
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    packages+="
+$(parse packages.p500.sh)"
+  fi
+  packages=$(echo "$packages" | sort)
+
+  echo "$packages"
 }

@@ -5,8 +5,6 @@ base
 
 # Hardware
 
-# AMD Microcode, for CPU patches.
-amd-ucode
 # Firmware files.
 linux-firmware
 # efibootmgr, for managing UEFI entries.
@@ -23,8 +21,6 @@ pulseaudio
 pulseaudio-alsa
 # PulseAudio Bluetooth modules.
 pulseaudio-bluetooth
-# libldac, for PA LDAC encoding support.
-libldac
 # PipeWire stuff:
 # pipewire
 # pipewire-pulse
@@ -37,8 +33,6 @@ e2fsprogs
 ntfs-3g
 # DOS filesystem utilities, for FAT32 support.
 dosfstools
-# nvme-cli, for managing NVMe devices.
-# nvme-cli
 # SSHFS, for remote filesystem support. This is used by KDE Connect.
 sshfs
 # scrcpy, for phone mirroring.
@@ -49,15 +43,13 @@ ncdu
 plasma-disks
 # f3, for error checking filesystems.
 #f3
-# xboxdrv, for ninja360. TODO: make an AUR package for that, and get this out of here!
-xboxdrv
 # Nintendo Switch udev rules, for not requiring root for access.
 nx-udev
 # bluez, for the Bluetooth stack.
 bluez
 # CUPS, for printing support.
 cups
-# Canon Pixma TR7500 series drivers, for printer support.
+# Canon Pixma TR7500 series drivers, for home printer support.
 canon-pixma-lt7500-complete
 # GfxTablet, for using an Android tablet as a drawing tablet.
 # gfxtablet-git
@@ -104,11 +96,8 @@ chaotic-mirrorlist
 pacman-contrib
 # Reflector, for updating pacman mirrors.
 reflector
-
 # pkgstats, for submitting package statistics.
 pkgstats
-
-# Runtimes, Virtualization
 
 # Wine Mono, for .NET support in Wine.
 wine-mono
@@ -118,12 +107,6 @@ wine-gecko
 winetricks
 # OpenJDK JRE, for running Java applications.
 jre-openjdk
-# QEMU, for virtualization.
-qemu
-# UEFI firmware for QEMU.
-edk2-ovmf
-# spicy, for viewing virtual machines.
-spice-gtk
 
 # Service Hosting
 
@@ -286,12 +269,6 @@ transmission-qt
 gamemode
 # GameMode 32-bit.
 lib32-gamemode
-# MangoHUD
-mangohud
-# MangoHUD 32-bit library.
-lib32-mangohud
-# libxnvctrl, for MangoHUD.
-lib32-libxnvctrl
 # Steam, for managing games.
 steam
 # protontricks, for managing Proton prefixes.
@@ -300,20 +277,6 @@ steam
 minecraft-launcher
 # MultiMC5, for launching Minecraft but not suck at it.
 multimc5
-# Lucas' Simpsons Hit & Run Mod Launcher, for playing mods.
-lucas-simpsons-hit-and-run-mod-launcher
-# xdelta3, for patching games.
-# xdelta3
-# mGBA, for playing GBA games.
-mgba-qt
-# melonds, for playing DS games.
-melonds
-# Dolphin, for playing Wii and Gamecube games.
-dolphin-emu
-# Citra, for playing 3DS games.
-citra-canary-git
-# yuzu, for playing Switch games.
-yuzu-mainline-git
 
 # Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
