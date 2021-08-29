@@ -224,8 +224,6 @@ function win_boot() {
   info "Rebooting into Windows."
   local -r WINDOWS_ENTRY_NAME="Windows Boot Manager"
   local -r windows_entry_num="$(find_bootnum "$WINDOWS_ENTRY_NAME")"
-  echo $windows_entry_num
-  return 0
   if [[ -n $windows_entry_num ]]; then
     efibootmgr -q -n "$windows_entry_num"
     systemctl reboot
