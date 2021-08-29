@@ -97,13 +97,14 @@ function update_efi() {
 
   if [[ $CO_HOST = "DESKTOP" ]]; then
     local -r ROOT="PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3"
+    local -r MICROCODE="amd-ucode.img"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r ROOT="PARTUUID=90dd0890-79d3-4f66-b1f4-67f8fb2345c2"
+    local -r MICROCODE="intel-ucode.img"
   else
     error "Host unknown, I don't know which disk to use."
     exit 1
   fi
-  local -r MICROCODE="amd-ucode.img"
 
   # See: https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
 
