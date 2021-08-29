@@ -88,8 +88,10 @@ function configure_system_units() {
   done
 
   safe_cp "$CO"/config/journald.conf /etc/systemd/journald.conf
-  safe_cp "$CO"/config/pulse-daemon.conf /etc/pulse/daemon.conf
-  safe_cp "$CO"/config/httpd.conf /etc/httpd/conf/httpd.conf
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    safe_cp "$CO"/config/pulse-daemon.conf /etc/pulse/daemon.conf
+    safe_cp "$CO"/config/httpd.conf /etc/httpd/conf/httpd.conf
+  fi
 }
 
 # Enables systemwide systemd units.

@@ -83,8 +83,6 @@ function link_directories() {
 
     # Link user directory configuration from CO to user configuration.
     ["$CO/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
-    # Link PulseAudio startup script from CO to user configuration.
-    ["$CO/config/default.pa"]="$INSTALL_HOME/.config/pulse/default.pa"
 
     # KDE Accessories
 
@@ -170,6 +168,11 @@ function link_directories() {
     fi
     safe_ln "$target" "${linked_paths[${target}]}"
   done
+
+  # Link PulseAudio startup script from CO to user configuration.
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    safe_ln "$CO/config/default.pa" "$INSTALL_HOME/.config/pulse/default.pa"
+  fi
 }
 
 # Configures user systemd units.
