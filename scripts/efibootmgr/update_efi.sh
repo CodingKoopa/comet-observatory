@@ -67,13 +67,15 @@ function add_entry() {
   remove_entry_if_existing "$label"
   if [[ $CO_HOST = "DESKTOP" ]]; then
     local -r device=/dev/nvme0n1
+    local -r part=3
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r device=/dev/sda
+    local -r part=1
   else
     error "Host unknown, I don't know which disk to use."
     exit 1
   fi
-  efibootmgr -q -c -d $device -p 3 --label "$label" -l "$loader" -u "$cmdline"
+  efibootmgr -q -c -d $device -p $part --label "$label" -l "$loader" -u "$cmdline"
 }
 
 # Updates Arch Linux UEFI boot entries.
