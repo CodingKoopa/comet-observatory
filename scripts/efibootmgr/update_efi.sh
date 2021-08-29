@@ -178,18 +178,6 @@ $CMDLINE_STR $*"
   local -A kernel_suffixes=(
     ["Vanilla $(pacman -Q linux | cut -d" " -f2 | cut -d. -f1-2)"]=""
   )
-  # Iterate over the TkG kernel initramfs images, in order from oldest to most recent.
-  # shellcheck disable=2044
-  for tkg_vmlinux_path in $(find /boot -mindepth 1 -maxdepth 1 -type f \
-    -regex '/boot/vmlinuz-linux\([0-9]+-tkg\|-tkgmatrix\).*' -printf "%T@\t%p\n" |
-    sort -n |
-    cut -f 2); do
-    tkg_version=$(echo "$tkg_vmlinux_path" | grep -oh "[0-9]\+" || echo "Matrix")
-    current_tkg_name="TkG $(echo "$tkg_version" | cut -c 1).$(echo "$tkg_version" | cut -c 2-)"
-    kernel_suffixes[$current_tkg_name]=${tkg_vmlinux_path#/boot/vmlinuz-linux}
-  done
-  # Make note of the latest TkG kernel name.
-  local -r latest_tkg_name=$current_tkg_name
 
   local -ra CONFIGURATIONS=(
     "Debug"
@@ -211,7 +199,7 @@ $CMDLINE_STR $*"
     add_entry_decide_configuration "Arch Linux ($kernel)" "${kernel_suffixes[${kernel}]}" "$@"
   done
 
-  local -r default_entry="Arch Linux ($latest_tkg_name) (Normal)"
+  local -r default_entry="Arch Linux ($kernel) (Normal)"
   local -r default_entry_num=$(find_bootnum "$default_entry")
   if [[ -n $default_entry_num ]]; then
     info "Setting $default_entry as default entry."

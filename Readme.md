@@ -64,7 +64,7 @@ Updating custom packages:
 ![QEMU Reeves Windows 10 Screenshot](docs/qemu-reeves-win.png)
 
 ### UEFI Updater
-The [UEFI updater](bin/update-efi) updates the [UEFI](https://uefi.org/) boot entries for a system using [EFISTUB](https://wiki.archlinux.org/index.php/EFISTUB) booting. It adds an entry for the vanilla kernel, and [Tk-Glitch's kernel](https://github.com/Tk-Glitch/PKGBUILDS). The [kernel parameters](https://wiki.archlinux.org/index.php/kernel_parameters) used depend on the preset used, defaulting to a [silent boot](https://wiki.archlinux.org/index.php/Silent_boot) configuration. Presets can be specified via a parameter to the script: `silent` (default), `debug`, `rescue-fallback`, and `rescue`. Finally, it sets the TkG kernel as the default.
+The [UEFI updater](bin/update-efi) updates the [UEFI](https://uefi.org/) boot entries for a system using [EFISTUB](https://wiki.archlinux.org/index.php/EFISTUB) booting. It only adds an entry for the vanilla kernel. The [kernel parameters](https://wiki.archlinux.org/index.php/kernel_parameters) used depend on the preset used, defaulting to a [silent boot](https://wiki.archlinux.org/index.php/Silent_boot) configuration. Presets can be specified via a parameter to the script: `silent` (default), `debug`, `rescue-fallback`, and `rescue`.
 
 ![UEFI Updater Screenshot](docs/update-efi.png)
 
