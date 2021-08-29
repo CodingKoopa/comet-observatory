@@ -154,8 +154,6 @@ lolcat
 # xinit, for logging in.
 xorg-xinit
 xorg-server
-# xmousepasteblock, for preventing accidental mouse button press pastes with Xorg.
-xmousepasteblock-git
 # xsel, for clipboard support for tag_mp3.sh.
 xsel
 # Plasma Desktop, for Plasma Shell.
