@@ -127,7 +127,8 @@ function update() {
     pikaur -Sua --devel
 
     subsect "Handling configuration conflicts."
-    handle_pacnew
+    # Handle any pacnew/pacsave files issues.
+    sudo -E DIFFPROG="sudo code -d" pacdiff
   fi
   if [[ $update_tkg = true ]]; then
     section "Updating TkG Package Sources"
