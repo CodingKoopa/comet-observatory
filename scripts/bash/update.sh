@@ -24,9 +24,9 @@ Family packages. Also handles some routine maintenance tasks.
 
   -h    Show this help message and exit.
   -a    Do everything. This is the default behavior.
-  -c    Update custom packages. This pulls the latest Git repos, reviews changes, and builds the
-packages.
-  -f    Force update all custom packages even if the repo is up to date. Implies -c. Not done by -a.
+  -s    Review and update suckless packages.
+  -f    Force update all custom packages even if the repo is up to date. Not done by -a.
+  -t    Review and update TkG packages.
   -p    Update prebuilt packages. This essentially runs pacman -Syu for official and AUR packages.
   -e    Check for extraneous packages. They won't necessarily be removed.
   -o    Remove orphan packages. Not included with -a because, generally, we will be keeping build
@@ -45,7 +45,7 @@ dependencies installed, which are considered orphaned packages."
 function update() {
   local check_missing=false
   local check_extra=false
-  local update_custom=false
+  local update_tkg=false
   local force_custom=false
   local update_prebuilt=false
   local remove_orphans=false
@@ -53,7 +53,7 @@ function update() {
   if [[ $# -eq 0 ]]; then
     set -- -a
   fi
-  while getopts "hacfpeo" opt; do
+  while getopts "hatfpeo" opt; do
     case $opt in
     h)
       print_help
@@ -63,11 +63,10 @@ function update() {
       check_extra=true
       update_prebuilt=true
       ;;
-    c)
-      update_custom=true
+    t)
+      update_tkg=true
       ;;
     f)
-      update_custom=true
       force_custom=true
       ;;
     p)
@@ -130,8 +129,8 @@ function update() {
     subsect "Handling configuration conflicts."
     handle_pacnew
   fi
-  if [[ $update_custom = true ]]; then
-    section "Updating Custom Package Sources"
+  if [[ $update_tkg = true ]]; then
+    section "Updating TkG Package Sources"
 
     safe_cd "$AUR_DIR"
     subsect "Checking repository directories."
@@ -147,7 +146,7 @@ function update() {
       proton-tkg-profiles/advanced-customization.cfg && update_proton_tkg=true ||
       update_proton_tkg=false
 
-    section "Building Custom Packages"
+    section "Building TkG Packages"
 
     subsect "Building TkG Linux kernel."
     if [[ $force_custom = true || $update_linux_tkg = true ]]; then
