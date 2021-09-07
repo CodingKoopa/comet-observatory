@@ -19,8 +19,8 @@ function print_help() {
   # highlighting.
   HELP_STRING="\
 Usage: update [-hpc]
-Updates the system, including official prebuilt packages, AUR packages, and, and custom Frogging
-Family packages. Also handles some routine maintenance tasks.
+Updates the system, including official prebuilt packages, AUR packages, and, locally patched
+custom built packages. Also handles some routine maintenance tasks.
 
   -h    Show this help message and exit.
   -a    Do everything. This is the default behavior.
