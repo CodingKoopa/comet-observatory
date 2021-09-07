@@ -122,11 +122,11 @@ function update() {
     check_repos
     subsect "Updating community patches."
     update_repo community-patches || true
-    subsect "Updating TkG Linux kernel source."
+    subsect "Updating linux-tkg source."
     update_repo linux-tkg customization.cfg && update_linux_tkg=true || update_linux_tkg=false
-    subsect "Updating Nvidia drivers."
+    subsect "Updating nvidia-all."
     update_repo nvidia-all customization.cfg && update_nvidia_all=true || update_nvidia_all=false
-    subsect "Updating TkG Proton."
+    subsect "Updating proton-tkg."
     update_repo wine-tkg-git/proton-tkg proton-tkg.cfg \
       proton-tkg-profiles/advanced-customization.cfg && update_proton_tkg=true ||
       update_proton_tkg=false
