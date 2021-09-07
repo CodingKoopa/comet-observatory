@@ -118,6 +118,7 @@ function update() {
     section "Updating TkG Package Sources"
 
     safe_cd "$AUR_DIR"
+
     subsect "Checking repository directories."
     check_repos
     subsect "Updating community patches."
@@ -151,6 +152,8 @@ function update() {
     else
       info "Already up to date."
     fi
+
+    safe_cd -
   fi
   if [[ $remove_orphans = true ]]; then
     section "Removing Orphan Packages"
