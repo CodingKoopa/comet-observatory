@@ -167,8 +167,5 @@ function update() {
     else
       info "Already up to date."
     fi
-
-    subsect "Handling configuration conflicts."
-    handle_pacnew
   fi
 }
