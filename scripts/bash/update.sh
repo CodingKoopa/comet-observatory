@@ -46,6 +46,7 @@ custom built packages.
 #   - One or more flags dictating the action to be taken. See print_help().
 # Outputs:
 #   - Update progress.
+# TODO: only set AUR_DIR in once place
 function update() {
   local update_prebuilt=false
   local update_tkg=false
