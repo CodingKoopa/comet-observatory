@@ -163,7 +163,7 @@ function update() {
     if [[ -n $diff ]]; then
       info "These packages are on the CO list, but aren't installed on the system:"
       echo "$diff"
-      info "Considering installing them or updating the list."
+      info "Consider installing them or updating the list."
     fi
   fi
   if [[ $check_extra = true ]]; then
@@ -173,7 +173,7 @@ function update() {
     if [[ -n $diff ]]; then
       info "These packages are explicitly installed on the system, but aren't on the CO list:"
       echo "$diff"
-      info "Considering uninstalling them or adding them to the list."
+      info "Consider uninstalling them or adding them to the list."
     fi
   fi
 }
