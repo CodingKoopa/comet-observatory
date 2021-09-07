@@ -53,7 +53,7 @@ function update() {
   if [[ $# -eq 0 ]]; then
     set -- -a
   fi
-  while getopts "hatfpeo" opt; do
+  while getopts "$OPTIONS" opt; do
     case $opt in
     h)
       print_help
