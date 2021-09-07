@@ -124,7 +124,7 @@ function update() {
     pikaur -Syuo
 
     subsect "Syncing AUR packages."
-    pikaur -Sua --devel --needed
+    pikaur -Sua --devel
 
     subsect "Handling configuration conflicts."
     handle_pacnew
