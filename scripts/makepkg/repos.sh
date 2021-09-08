@@ -111,7 +111,7 @@ function update_repo() {
   #
   # error: cannot pull with rebase: You have unstaged changes.
   # error: please commit or stash them.
-  verbose "Stashing any local changes."
+  verbose "Stashing unstaged changes."
   git stash >/dev/null
 
   verbose "Fetching from remote."
