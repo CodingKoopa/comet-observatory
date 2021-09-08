@@ -7,7 +7,7 @@ This document details how the user portion of the booting process works, particu
 - The Bash profile runs the [user RC script](/scripts/bash/user_rc.sh) which sets environmental variables used by all user programs.
 - If the conditions are right, the Bash profile runs X.
   - X runs the [X RC script](/scripts/x/x_rc.sh).
-  - The X RC script runs the [user graphical RC script](/scripts/bash/user_graphical_rc.sh)
+  - The X RC script runs the [user graphical RC script](/scripts/bash/user_graphical_rc.sh).
   - The X RC script starts KDE Plasma.
 - If the conditions aren't right, then we opt to treat this as a normal terminal, and run the [Bash RC file](/scripts/bash/bash_rc.sh).
 
