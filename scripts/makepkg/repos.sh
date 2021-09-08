@@ -124,7 +124,7 @@ function update_repo() {
   fi
 
   verbose "Pulling changes."
-  git pull -q origin master
+  git pull -q --rebase origin master
 
   # We don't want to review changes while updating the community patches itself, but when updating
   # the other repos for which it is a peripheral of.
