@@ -100,7 +100,7 @@ function check_repos() {
 #   - 1 if the repo was already up-to-date.
 function update_repo() {
   local -r repo=$1
-  # Use basename to strip the repo of any prefixes, such as "linux-tkg".
+  # Use basename to strip the repo of any prefixes, such as "wine-tkg-git".
   local -r repo_base=$(basename "$repo")
   shift
   local -r diff_files=("$@")
