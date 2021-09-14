@@ -86,7 +86,7 @@ function link_directories() {
     # KDE Accessories
 
     # Link autostart scripts from CO to user configuration.
-    ["$CO/config/autostart/"]="$INSTALL_HOME/.config/autostart-scripts"
+    ["$CO/config/autostart-plasma/"]="$INSTALL_HOME/.config/autostart-scripts"
     # Link hotkeys from CO to user configuration.
     ["$CO/config/khotkeys.ini"]="$INSTALL_HOME/.config/khotkeysrc"
 
