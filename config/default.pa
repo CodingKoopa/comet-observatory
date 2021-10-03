@@ -6,7 +6,6 @@
 # Use the "HDMI 2" (really, we want it because it's DisplayPort 1) profile for output.
 set-card-profile alsa_card.pci-0000_09_00.1 output:hdmi-stereo-extra1
 
-
 # Unload the module-suspend-on-idle module if it's loaded. After being suspended, DP audio output seems to be distorted.
 .nofail
 unload-module module-suspend-on-idle
