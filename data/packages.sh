@@ -276,7 +276,7 @@ steam
 # Minecraft Launcher, for launching Minecraft.
 minecraft-launcher
 # MultiMC5, for launching Minecraft but not suck at it.
-multimc5
+multimc5-bin
 
 # Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
