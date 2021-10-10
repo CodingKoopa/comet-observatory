@@ -26,6 +26,11 @@ edk2-ovmf
 # spicy, for viewing virtual machines.
 spice-gtk
 
+# Media
+
+# Kdenlive, for editing media.
+kdenlive
+
 # Gaming
 
 # MangoHUD
