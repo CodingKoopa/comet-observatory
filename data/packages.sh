@@ -241,8 +241,6 @@ mpv
 mpv-mpris
 # OBS Studio, for recording media.
 obs-studio
-# Kdenlive, for editing media.
-kdenlive
 # Linux-Fake-Background-Webcam
 # linux-fake-background-webcam-opt-git
 # Blender, for editing 3D models.
