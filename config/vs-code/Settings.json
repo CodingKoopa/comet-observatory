@@ -115,6 +115,8 @@
   ///   LaTeX
   // For LaTeX viewing, use a VSCode tab.
   "latex-workshop.view.pdf.viewer": "tab",
+  // Enable ChkTeX linting.
+  "latex-workshop.chktex.enabled": true,
   ////
   /// Tool Support
   ////
