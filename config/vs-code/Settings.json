@@ -9,6 +9,8 @@
   "window.zoomLevel": -1,
   // Restore all windows.
   "window.restoreWindows": "all",
+  // Fix keyboard inputs (esp. remapping Caps Lock to Ctrl) on Linux.
+  "keyboard.dispatch": "keyCode",
   // Insert a final newline by default.
   "files.insertFinalNewline": true,
   // If there aren't previous windows to open, create a new file.
