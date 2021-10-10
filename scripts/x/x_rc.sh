@@ -16,5 +16,7 @@ fi
 # shellcheck source=scripts/bash/user_graphical_rc.sh
 source "$CO"/scripts/bash/user_graphical_rc.sh
 
-# Start KDE Plasma.
-exec startplasma-x11
+if [[ $CO_HOST = "DESKTOP" ]]; then
+  # Configure Xorg automatically.
+  nvidia-settings --load-config-only
+fi
