@@ -1,4 +1,4 @@
-## Disillusionment with the Linux Desktop Environment
+## About the Linux Desktop Environment
 
 ### A retrospective
 
