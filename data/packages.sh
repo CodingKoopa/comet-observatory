@@ -252,8 +252,8 @@ obs-studio
 firefox
 # Google Chrome, for browsing the internet.
 google-chrome
-# Discord with native Electron, for messaging.
-discord_arch_electron
+# Discord, for messaging.
+discord
 # Konversation, for messaging.
 konversation
 # OpenSSH, for connecting to other computers.
