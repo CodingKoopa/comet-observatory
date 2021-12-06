@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync files using rsync regularly
+Documentation=https://gitlab.com/CodingKoopa/comet-observatory
+
+[Timer]
+OnStartupSec=30min
+OnUnitInactiveSec=30min
+
+[Install]
+WantedBy=timers.target

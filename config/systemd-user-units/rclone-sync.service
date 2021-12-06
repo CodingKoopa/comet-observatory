@@ -1,0 +1,14 @@
+[Unit]
+Description=Sync files using rsync
+Documentation=https://gitlab.com/CodingKoopa/comet-observatory
+# This service strictly requires an active network connection.
+BindsTo=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/koopa/Documents/Projects/Bash/comet-observatory/bin/cosync
+
+[Install]
+# Start this service on startup.
+WantedBy=default.target
