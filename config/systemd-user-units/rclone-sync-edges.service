@@ -1,0 +1,17 @@
+[Unit]
+Description=Sync files using rsync (startup/shutdown)
+Documentation=https://gitlab.com/CodingKoopa/comet-observatory
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Execute a sync on startup.
+ExecStart=/home/koopa/Documents/Projects/Bash/comet-observatory/bin/cosync
+# Have the service hang around after the startup sync.
+RemainAfterExit=true
+# Sync again on shutdown.
+ExecStop=/home/koopa/Documents/Projects/Bash/comet-observatory/bin/cosync
+
+[Install]
+WantedBy=default.target
