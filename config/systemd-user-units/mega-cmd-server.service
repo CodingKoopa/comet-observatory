@@ -1,0 +1,13 @@
+[Unit]
+Description=MEGAcmd background server, serving webdav
+Documentation=https://gitlab.com/CodingKoopa/comet-observatory
+# TODO: Require mount, network
+
+[Service]
+Type=exec
+ExecStart=mega-cmd-server
+# Wait until the background server is definitely up.
+ExecStartPost=/bin/sh -c 'sleep 5 && mega-webdav /'
+
+[Install]
+WantedBy=default.target
