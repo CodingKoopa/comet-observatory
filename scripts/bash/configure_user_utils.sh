@@ -180,10 +180,13 @@ function link_directories() {
 # Outputs:
 #   - Copy feedback.
 function configure_user_units() {
-  for service in "$CO"/config/systemd-user-units/*.service; do
+  for service in "$CO"/config/systemd-user-units/*.{service,timer}; do
     safe_cp "$service" "$INSTALL_HOME"/.config/systemd/user/"$(basename "$service")" \
       "$INSTALL_USER":"$INSTALL_USER" 600
   done
+  # Link the system network-online target to the user systemd instance, for the rclone services.
+  safe_ln /usr/lib/systemd/system/network-online.target \
+    "$INSTALL_HOME"/.config/systemd/user/network-online.target
 }
 
 # Enables user systemd units.
@@ -195,6 +198,7 @@ function enable_user_units() {
   local -ra units=(
     # Enable the SSH agent.
     "ssh-agent.service"
+    "rclone-sync-edges.service"
   )
 
   for unit in "${units[@]}"; do
@@ -209,6 +213,20 @@ function enable_user_units() {
     fi
   done
 }
+
+# Sets up rclone, including autocompletion within Bash.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Rclone feedback.
+function configure_rclone() {
+  if [[ $DRY_RUN = false ]]; then
+    local -r COMPLETE_DIR="$INSTALL_HOME"/.local/share/bash-completion/completions
+    mkdir -p "$COMPLETE_DIR"
+    rclone genautocomplete bash "$COMPLETE_DIR"/rclone
+  fi
+}
+
 
 # Imports data into GPG. To export these files, run:
 #     gpg --export-secret-keys "<you@gmail.com>" > "Private Key.key"

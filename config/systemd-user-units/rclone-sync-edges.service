@@ -1,6 +1,7 @@
 [Unit]
 Description=Sync files using rsync (startup/shutdown)
 Documentation=https://gitlab.com/CodingKoopa/comet-observatory
+# TODO: Require mega
 Requires=network-online.target
 After=network-online.target
 
