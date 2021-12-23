@@ -121,6 +121,8 @@
   "latex-workshop.view.pdf.viewer": "tab",
   // Enable ChkTeX linting.
   "latex-workshop.chktex.enabled": true,
+  // Disable autobuild.
+  "latex-workshop.latex.autoBuild.run": "never",
   ///   MIPS
   // Disable snippets to be less obtrusive.
   "[mips]": {
