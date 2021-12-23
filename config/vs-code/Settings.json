@@ -121,6 +121,11 @@
   "latex-workshop.view.pdf.viewer": "tab",
   // Enable ChkTeX linting.
   "latex-workshop.chktex.enabled": true,
+  ///   MIPS
+  // Disable snippets to be less obtrusive.
+  "[mips]": {
+    "editor.snippetSuggestions": "none"
+  },
   ////
   /// Tool Support
   ////
