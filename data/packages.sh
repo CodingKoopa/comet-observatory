@@ -194,8 +194,6 @@ dolphin
 kdegraphics-thumbnailers
 # ffmpegthumbs, for video thumbnail support in Dolphin.
 ffmpegthumbs
-# MEGASync, for managing files with MEGA.
-megasync
 # Ark, for managing archives.
 ark
 # p7zip, for ZIP and 7z support in Ark.
