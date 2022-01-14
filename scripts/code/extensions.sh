@@ -19,8 +19,6 @@ function install_vscode_extensions() {
     mikestead.dotenv
     mrmlnc.vscode-csscomb
     ms-python.python
-    ms-python.vscode-pylance
-    ms-toolsai.jupyter
     ms-vscode.cmake-tools
     ms-vscode.cpptools
     redhat.java
