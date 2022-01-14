@@ -109,7 +109,6 @@ function enable_system_units() {
     # Enable reflector.
     "reflector.timer"
     # Enable bluetooth.
-    # TODO: Don't do this on P500.
     "bluetooth.service"
     # Enable CUPS.
     "cups.service"
