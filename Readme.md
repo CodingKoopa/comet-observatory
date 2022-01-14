@@ -33,11 +33,11 @@ Some parts of the Comet Observatory have their own write-ups:
 ### Setup Scripts (Installation Scripts)
 The setup scripts ([system](bin/setup-system), [user](bin/setup-user)) are a couple of utilities that installs the packages and configurations that comprise my Arch installation. It can be ran after [installing the base system](https://wiki.archlinux.org/index.php/Installation_guide) and cloning this repository:
 
-![Initial setup screenshot](docs/setup-initial.jpg)
+![Initial setup screenshot](docs/img/setup-initial.jpg)
 
 It can also be used to apply configuration changes to an existing configuration:
 
-![Existing setup screenshot](docs/setup-existing.png)
+![Existing setup screenshot](docs/img/setup-existing.png)
 
 The scripts feature:
 - Separation of user and root. The responsibilities of `setup-user` include installing configurations that only apply to, and should be owned by the user, configuring user [systemd](https://www.freedesktop.org/wiki/Software/systemd/) services, and building and installing the [AUR helper](https://wiki.archlinux.org/index.php/AUR_helpers) (an exception in which privledge escalation is used: installing the AUR helper package). The responsibilities of `setup-system` include installing system-wide configurations, configuring system systemd services, and installing packages using the AUR helper installed by `setup-user`.
@@ -52,21 +52,21 @@ setup-user n y
 [`update`](bin/update) is a script which handles updating the system and a selection of routine maintenence tasks. It can update the system and AUR packages, build the latest [Frogging-Family](https://github.com/Frogging-Family) packages.
 
 Updating prebuilt and AUR packages:
-![update -p](docs/update_p.png)
+![update -p](docs/img/update_p.png)
 
 Updating custom packages:
-![update -c](docs/update_c.png)
+![update -c](docs/img/update_c.png)
 
 ### QEMU Reeves
 [QEMU Reeves](bin/qemu-reeves) is a launcher for [QEMU](https://www.qemu.org/), tuned for Debian 10 and Windows 10. It supports switching between images, video drivers and interfaces, and directly invokes QEMU. It also has modes for creating disk images, and running installers. The only part of the `libvirt` stack used is the Remote Viewer, for when SPICE is used.
 
-![QEMU Reeves Debian 10 Screenshot](docs/qemu-reeves-deb.png)
-![QEMU Reeves Windows 10 Screenshot](docs/qemu-reeves-win.png)
+![QEMU Reeves Debian 10 Screenshot](docs/img/qemu-reeves-deb.png)
+![QEMU Reeves Windows 10 Screenshot](docs/img/qemu-reeves-win.png)
 
 ### UEFI Updater
 The [UEFI updater](bin/update-efi) updates the [UEFI](https://uefi.org/) boot entries for a system using [EFISTUB](https://wiki.archlinux.org/index.php/EFISTUB) booting. It only adds an entry for the vanilla kernel. The [kernel parameters](https://wiki.archlinux.org/index.php/kernel_parameters) used depend on the preset used, defaulting to a [silent boot](https://wiki.archlinux.org/index.php/Silent_boot) configuration. Presets can be specified via a parameter to the script: `silent` (default), `debug`, `rescue-fallback`, and `rescue`.
 
-![UEFI Updater Screenshot](docs/update-efi.png)
+![UEFI Updater Screenshot](docs/img/update-efi.png)
 
 ### Windows Reboot
 [`win-boot`](bin/win-boot) sets the UEFI next boot to the Windows Boot Manager.
