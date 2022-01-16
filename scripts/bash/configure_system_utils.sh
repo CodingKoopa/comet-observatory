@@ -154,7 +154,7 @@ function configure_sudo() {
 function add_group() {
   local -r group=$1
 
-  if [ "$(getent group "$group" 2>/dev/null)" ]; then
+  if grep "^$group:" /etc/group ; then
     verbose "\"$group\" group already exists."
   else
     info "Adding new \"$group\" group."
