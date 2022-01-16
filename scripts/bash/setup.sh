@@ -184,7 +184,7 @@ function setup_system() {
   configure_sudo
 
   info "Configuring Docker group."
-  configure_docker_group
+  add_group docker
 
   info "Setup complete!"
 }
