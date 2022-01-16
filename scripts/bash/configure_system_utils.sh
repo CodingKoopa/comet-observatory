@@ -143,3 +143,19 @@ function configure_sudo() {
   safe_cp "$CO"/config/sudo.conf /etc/sudo.conf
   safe_cp "$CO"/config/sudoers /etc/sudoers
 }
+
+# Creates the group that is used by Docker.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Creation feedback.
+function configure_docker_group() {
+  if [ "$(getent group docker 2>/dev/null)" ]; then
+    verbose "\"docker\" group already exists."
+  else
+    info "Adding new \"docker\" group."
+    if [[ $DRY_RUN = false ]]; then
+      groupadd docker
+    fi
+  fi
+}
