@@ -145,15 +145,19 @@ function configure_sudo() {
 }
 
 # Creates the group that is used by Docker.
+# Arguments:
+#   - The name of the group.
 # Globals Read:
 #   - DRY_RUN: See setup().
 # Outputs:
 #   - Creation feedback.
-function configure_docker_group() {
-  if [ "$(getent group docker 2>/dev/null)" ]; then
-    verbose "\"docker\" group already exists."
+function add_group() {
+  local -r group=$1
+
+  if [ "$(getent group "$group" 2>/dev/null)" ]; then
+    verbose "\"$group\" group already exists."
   else
-    info "Adding new \"docker\" group."
+    info "Adding new \"$group\" group."
     if [[ $DRY_RUN = false ]]; then
       groupadd docker
     fi
