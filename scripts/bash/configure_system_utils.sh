@@ -159,7 +159,7 @@ function add_group() {
   else
     info "Adding new \"$group\" group."
     if [[ $DRY_RUN = false ]]; then
-      groupadd docker
+      groupadd "$group"
     fi
   fi
 }
