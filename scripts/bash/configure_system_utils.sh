@@ -60,16 +60,6 @@ function configure_fstab() {
   fi
 }
 
-# Configures sudo.
-# Globals Read:
-#   - DRY_RUN: See setup().
-# Outputs:
-#   - Copy feedback.
-function configure_sudo() {
-  safe_cp "$CO"/config/sudo.conf /etc/sudo.conf
-  safe_cp "$CO"/config/sudoers /etc/sudoers
-}
-
 # Configures systemwide systemd units.
 # Globals Read:
 #   - DRY_RUN: See setup().
@@ -142,4 +132,14 @@ function configure_udev_rules() {
   for rule in "$CO"/config/udev/*.rules; do
     safe_cp "$rule" /etc/udev/rules.d/"$(basename "$rule")" root:root 600
   done
+}
+
+# Configures sudo.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Copy feedback.
+function configure_sudo() {
+  safe_cp "$CO"/config/sudo.conf /etc/sudo.conf
+  safe_cp "$CO"/config/sudoers /etc/sudoers
 }

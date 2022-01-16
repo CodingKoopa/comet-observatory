@@ -151,9 +151,6 @@ function setup_system() {
   # System Services
   section "Setting Up System Services"
 
-  info "Configuring sudo."
-  configure_sudo
-
   info "Configuring system systemd services."
   configure_system_units
 
@@ -177,6 +174,14 @@ function setup_system() {
   if [[ $DRY_RUN = false ]]; then
     update-efi
   fi
+
+  # User Management
+  section "Setting Up Users"
+
+  # We do not create the main user here; that is done prior to invoking this script.
+
+  info "Configuring sudo."
+  configure_sudo
 
   info "Setup complete!"
 }
