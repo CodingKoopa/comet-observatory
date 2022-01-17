@@ -186,6 +186,9 @@ function setup_system() {
   info "Configuring Docker group."
   add_group docker
 
+  info "Adding user to Docker group."
+  add_user_group docker "$INSTALL_USER"
+
   info "Setup complete!"
 }
 
