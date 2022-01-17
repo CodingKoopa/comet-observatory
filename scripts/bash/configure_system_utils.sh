@@ -158,8 +158,30 @@ function add_group() {
     verbose "\"$group\" group already exists."
   else
     info "Adding new \"$group\" group."
-    if [[ $DRY_RUN = false ]]; then
-      groupadd "$group"
-    fi
+    [[ $DRY_RUN = false ]] && groupadd "$group"
   fi
+}
+
+# Adds a user to a group.
+# Arguments (modeled after that of `usermod`):
+#   - The name of the group.
+#   - The name of the user.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Modification feedback.
+function add_user_group() {
+  local -r group=$1
+  local -r user=$2
+
+  if ! grep "^$user:" /etc/passwd >/dev/null; then
+    error "User \"$user\" doesn't exist."
+    return 1
+  fi
+  if ! grep "^$group:" /etc/group >/dev/null; then
+    error "Group \"$group\" doesn't exist."
+    return 1
+  fi
+
+  [[ $DRY_RUN = false ]] && usermod -aG "$group" "$user"
 }
