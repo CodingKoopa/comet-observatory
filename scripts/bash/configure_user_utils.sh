@@ -19,7 +19,7 @@ source "$CO"/scripts/makepkg/repos.sh
 #   - Installation progress.
 function create_directories() {
   declare -ra new_paths=(
-    "$GPG_DIR"
+    "$GNUPGHOME"
     "$INSTALL_HOME/.cache/pikaur/pkg/"
   )
 
@@ -31,11 +31,11 @@ function create_directories() {
       fi
     fi
   done
-  if [[ $(stat -c "%a" "$GPG_DIR") != "700" ]]; then
+  if [[ $(stat -c "%a" "$GNUPGHOME") != "700" ]]; then
     info "Setting GnuPG directory permissions to 700."
     if [[ $DRY_RUN = false ]]; then
       # The GPG home directory needs special permissions.
-      chmod 700 -R "$GPG_DIR"
+      chmod 700 -R "$GNUPGHOME"
     fi
   fi
 }

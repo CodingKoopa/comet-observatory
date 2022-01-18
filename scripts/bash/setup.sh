@@ -27,7 +27,8 @@ source "$CO"/scripts/code/extensions.sh
 #   - INSTALL_HOME: Location of the home directory of the current install user.
 #   - CO: Location of this Comet Observatory repository.
 #   - SYNCED_DOCUMENTS_DIR: Location of the synced documents directory of the current install user.
-#   - GPG_DIR: Location of the GnuPG home directory of the current install user.
+#   - GNUPGHOME: Location of the GnuPG home directory of the current install user. Keep this in sync
+# with user_rc.sh.
 #   - SSH_DIR: Location of the SSH home directory of the current install user.
 #   - PACMAN_ARGS: List of Pacman arguments useful for scripts.
 # Arguments:
@@ -48,7 +49,7 @@ function export_constants() {
   export TERRACE_PICTURES_DIR=$INSTALL_HOME/Terrace/Pictures
   export TERRACE_VIDEOS_DIR=$INSTALL_HOME/Terrace/Videos
   export TERRACE_MUSIC_DIR=$INSTALL_HOME/Terrace/Music
-  export GPG_DIR=$INSTALL_HOME/.gnupg
+  export GNUPGHOME=$INSTALL_HOME/.local/share/gnupg
   export SSH_DIR=$INSTALL_HOME/.ssh
 
   export PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
@@ -200,7 +201,7 @@ function setup_system() {
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
 #   - ABS_DIR: See export_constants().
-#   - GPG_DIR: See export_constants().
+#   - GNUPGHOME: See export_constants().
 #   - SSH_DIR: See export_constants().
 # Globals Exported:
 #   - DRY_RUN: See setup().

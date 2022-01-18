@@ -15,6 +15,8 @@ export SSH_ASKPASS=/usr/bin/ksshaskpass
 
 # Set the PATH to prefer ccache binaries, prefer user binaries, and include CO binaries.
 export PATH=/usr/lib/ccache/bin/:$HOME/.local/bin/:$PATH:$CO/bin
+# Set the path to the GnuPG home directory. Keep this in sync with export_constants().
+export GNUPGHOME=$HOME/.local/share/gnupg
 
 # Authentication
 
