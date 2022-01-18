@@ -47,8 +47,8 @@ $ find $HOME -name "*.old" -delete
 ```
 # systemctl enable --now NetworkManager.service
 ```
-13. Setup an internet connection with NetworkManager in your hopefully now pretty-much functioning desktop environment.
-14. Setup a Kwallet without GPG, and add an entry for `KeepassXC/Passwords.kbdx`.
-15. Re-run both setups to finish off what couldn't be done before.
-16. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
-17. If desired, setup a shared Bluetooth link key with the Windows installation.
+14. Setup an internet connection with NetworkManager in your hopefully now pretty-much functioning desktop environment.
+15. Setup a Kwallet without GPG, and add an entry for `KeepassXC/Passwords.kbdx`.
+16. Re-run both setups to finish off what couldn't be done before.
+17. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
+18. If desired, setup a shared Bluetooth link key with the Windows installation.
