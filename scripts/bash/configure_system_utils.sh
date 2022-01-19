@@ -56,7 +56,7 @@ function configure_initrd() {
     safe_cp "$CO"/config/mkinitcpio.p500.conf /etc/mkinitcpio.conf
   else
     error "Host unknown, I don't know which configuration to use."
-    exit 1
+    return 1
   fi
 }
 
@@ -73,7 +73,7 @@ function configure_fstab() {
     safe_cp "$CO"/config/fstab.p500 /etc/fstab
   else
     error "Host unknown, I don't know which fstab to use."
-    exit 1
+    return 1
   fi
 }
 
