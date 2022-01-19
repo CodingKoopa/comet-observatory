@@ -43,6 +43,23 @@ function create_swap() {
   fi
 }
 
+# Configures the initial ramdisk.
+# Globals Read:
+#   - DRY_RUN: See setup().
+#   - CO_HOST: See co_rc.sh.
+# Outputs:
+#   - Copy feedback.
+function configure_initrd() {
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    safe_cp "$CO"/config/mkinitcpio.desktop.conf /etc/mkinitcpio.conf
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    safe_cp "$CO"/config/mkinitcpio.p500.conf /etc/mkinitcpio.conf
+  else
+    error "Host unknown, I don't know which configuration to use."
+    exit 1
+  fi
+}
+
 # Configures the filesystem table.
 # Globals Read:
 #   - DRY_RUN: See setup().

@@ -129,7 +129,7 @@ function setup_system() {
   section "Setting Up Kernel & Hardware"
 
   info "Configuring initial ramdisk."
-  safe_cp "$CO"/config/mkinitcpio.conf /etc/mkinitcpio.conf
+  configure_initrd
 
   info "Making initial ramdisks."
   if [[ $DRY_RUN = false ]]; then
