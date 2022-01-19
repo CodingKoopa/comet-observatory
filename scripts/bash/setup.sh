@@ -162,7 +162,7 @@ function setup_system() {
   configure_udev_rules
 
   info "Configuring Xorg."
-  safe_cp "$CO"/config/xorg-keyboard.conf /etc/X11/xorg.conf.d/10-keyboard.conf
+  configure_xorg
 
   info "Configuring root GTK."
   # Apply the GTK configuration to root, to make applications like Gparted look nice.
