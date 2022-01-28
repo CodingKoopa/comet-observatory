@@ -10,3 +10,5 @@ lib32-mesa
 # Vulkan driver for Intel graphics.
 vulkan-intel
 lib32-vulkan-intel
+# VA-API support for older Intel graphics.
+libva-intel-driver
