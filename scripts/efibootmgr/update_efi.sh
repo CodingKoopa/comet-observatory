@@ -156,27 +156,27 @@ systemd.log_level=debug systemd.log_target=kmsg printk.devkmsg=on"
 
     case $type in
     *debug*)
-      info "Updating $kernel debug UEFI boot entry ($vmlinuz_path)."
+      info "Adding $kernel debug UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Debug)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_DEBUG_STR $*"
       ;;
     *rescue-fallback*)
-      info "Updating $kernel fallback rescue UEFI boot entry ($vmlinuz_path)."
+      info "Adding $kernel fallback rescue UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Fallback Rescue)" "$vmlinuz_path" "$MICROCODE_INITRD_STR \
 $fallback_kernel_initrd_str $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR $*"
       ;;
     *rescue*)
-      info "Updating $kernel rescue UEFI boot entry ($vmlinuz_path)."
+      info "Adding $kernel rescue UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Rescue)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_DEBUG_STR $CMDLINE_RESCUE_STR $*"
       ;;
     *silent*)
-      info "Updating $kernel silent UEFI boot entry ($vmlinuz_path)."
+      info "Adding $kernel silent UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Silent)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $CMDLINE_SILENT_STR $*"
       ;;
     *)
-      info "Updating $kernel normal UEFI boot entry ($vmlinuz_path)."
+      info "Adding $kernel normal UEFI boot entry ($vmlinuz_path)."
       add_entry "$kernel (Normal)" "$vmlinuz_path" "$MICROCODE_INITRD_STR $kernel_initrd_str \
 $CMDLINE_STR $*"
       ;;
