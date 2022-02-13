@@ -38,6 +38,7 @@ user_pref("mousewheel.system_scroll_override_on_root_content.vertical.factor", 1
 user_pref("toolkit.scrollbox.horizontalScrollDistance", 6);
 user_pref("toolkit.scrollbox.verticalScrollDistance", 2);
 
+// Enable VA-API decoding.
 user_pref("media.ffmpeg.vaapi.enabled", true);
 // Force enable WebRender. On the P500 it wasn't enabled by default.
 user_pref("gfx.webrender.all", true);
