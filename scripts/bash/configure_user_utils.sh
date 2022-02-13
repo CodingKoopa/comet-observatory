@@ -215,7 +215,7 @@ function enable_user_units() {
 }
 
 # Imports data into GPG. To export these files, run:
-#     gpg --export-secret-keys "<you@gmail.com>" > "Private Key.key"
+#     gpg --output "Private Key.key" --export-secret-keys "<you@gmail.com>"
 #     gpg --export-ownertrust > "Owner Trust.txt"
 # Globals Read:
 #   - DRY_RUN: See setup().
