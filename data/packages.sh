@@ -114,11 +114,11 @@ jre-openjdk
 # Service Hosting
 
 # Docker, for hosting containerized services.
-# docker
+docker
 # Docker Compose, for controlling Docker.
-# docker-compose
+docker-compose
 # Apache, for hosting HTTP services.
-# apache
+apache
 
 # CLI Utilities
 
