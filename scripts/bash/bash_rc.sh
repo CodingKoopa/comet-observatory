@@ -128,51 +128,51 @@ alias play='DISPLAY= mpv --really-quiet -vo caca'
 
 # Customize the prompt.
 
-# This can't be readonly because this script can be ran more than once in the same environment.
-declare -a QUOTES=(
-  # Neon Genesis Evangelion.
-  #   "Understanding 100% of everything is impossible. That’s why we spend all our lives trying to
-  # understand the thinking of others. That’s what makes life so interesting."
-  "Sometimes you need a little wishful thinking just to keep on living."
-  "Part of growing up means finding a way to interact with others while distancing pain."
-  "Never underestimate the ability of the human animal to adapt to its environment."
-  "Any new position from which you view your reality will change your perception of its nature. \
+if [[ $- == *i* ]]; then
+  # This can't be readonly because this script can be ran more than once in the same environment.
+  declare -a QUOTES=(
+    # Neon Genesis Evangelion.
+    "Understanding 100% of everything is impossible. That’s why we spend all our lives trying to \
+understand the thinking of others. That’s what makes life so interesting."
+    "Sometimes you need a little wishful thinking just to keep on living."
+    "Part of growing up means finding a way to interact with others while distancing pain."
+    "Never underestimate the ability of the human animal to adapt to its environment."
+    "Any new position from which you view your reality will change your perception of its nature. \
 It's all literally a matter of perspective."
-  "Your truth can be changed simply by the way you accept it. That's how fragile the truth for a \
+    "Your truth can be changed simply by the way you accept it. That's how fragile the truth for a \
 human is."
-  "Anywhere can be paradise, as long as you have the will to live."
-  "Humans constantly feel pain in their hearts. Because the heart is so sensitive to pain, humans \
+    "Anywhere can be paradise, as long as you have the will to live."
+    "Humans constantly feel pain in their hearts. Because the heart is so sensitive to pain, humans \
 also feel that to live is to suffer."
-  "I'm so fucked up."
-  # "Kimochi warui."
-  # Mob Psycho 100
-  "The biggest distinguishing feature of humans is how rich and varied their emotions are. These \
+    "I'm so fucked up."
+    # "Kimochi warui."
+    # Mob Psycho 100
+    "The biggest distinguishing feature of humans is how rich and varied their emotions are. These \
 emotions are the reason they thrive and also the reason they fight."
-  "You should realize that you're only able to survive thanks to the help of others."
-  # The Great Gatsby
-  "It is invariably saddening to look through new eyes at things upon which you have expended \
+    "You should realize that you're only able to survive thanks to the help of others."
+    # The Great Gatsby
+    "It is invariably saddening to look through new eyes at things upon which you have expended \
 your own powers of adjustment."
-  # Duvet - Bôa
-  "I am falling
+    # Duvet - Bôa
+    "I am falling
 I am fading
 I have lost it all
 Help me to breathe"
-  "I am hurting
+    "I am hurting
 I have lost it all
 I am losing
 Help me to breathe"
-  # I'm With You - Avril Lavigne
-  "It's a damn cold night
+    # I'm With You - Avril Lavigne
+    "It's a damn cold night
 Trying to figure out this life
 Won't you take me by the hand?"
-  "I don't know who you are
+    "I don't know who you are
 But I, I'm with you"
-  # “Do not go gentle into that good night” by Dylan Thomas
-  "Rage, rage against the dying of the light."
-)
-echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -iF 0.01
+    # “Do not go gentle into that good night” by Dylan Thomas
+    "Rage, rage against the dying of the light."
+  )
+  echo "${QUOTES[$RANDOM % ${#QUOTES[@]}]}" | lolcat -iF 0.01
 
-if [[ $- == *i* ]]; then
   # Don't use Agnoster for login shells, because TTYs lack ligature font support by default.
   # shellcheck source=scripts/bash/agnoster_bash.sh
   source "$CO"/scripts/bash/agnoster_bash.sh
