@@ -222,6 +222,7 @@ function enable_user_units() {
 function configure_gpg() {
   if [[ $DRY_RUN = false && $SYNCED_DOCUMENTS = true ]]; then
     info "Importing GnuPG data from the private documents."
+    # Use loopback pinentry because our normal pinentry may not be set up right now.
     gpg -q --pinentry-mode loopback \
       --import "$SYNCED_DOCUMENTS_DIR/Passwords & 2FA/GnuPG/Private Key.key"
     gpg -q --pinentry-mode loopback \
