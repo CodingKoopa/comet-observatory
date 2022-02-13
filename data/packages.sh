@@ -50,6 +50,8 @@ plasma-disks
 nx-udev
 # bluez, for the Bluetooth stack.
 bluez
+# bluez utilities, for interacting with the Bluetooth stack.
+bluez-utils
 # CUPS, for printing support.
 cups
 # Canon Pixma TR7500 series drivers, for home printer support.
