@@ -77,6 +77,23 @@ function wnea() {
   java -cp Build "$main_class"
 }
 
+function ej() {
+  prog=$1
+  shift
+  while true; do
+#    nano "$prog".java
+    printf "Compiling:\n\n"
+    j "$prog" "$@"
+    read -rp "..."
+  done
+}
+
+function j() {
+  prog=$1
+  shift
+  javac "$prog".java && java "$prog" "$@"
+}
+
 function testpulse() {
   systemctl --user stop pulseaudio.{socket,service}
   pulseaudio -vvv
