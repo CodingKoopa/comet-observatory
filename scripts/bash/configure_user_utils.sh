@@ -214,20 +214,6 @@ function enable_user_units() {
   done
 }
 
-# Sets up rclone, including autocompletion within Bash.
-# Globals Read:
-#   - DRY_RUN: See setup().
-# Outputs:
-#   - Rclone feedback.
-function configure_rclone() {
-  if [[ $DRY_RUN = false ]]; then
-    local -r COMPLETE_DIR="$INSTALL_HOME"/.local/share/bash-completion/completions
-    mkdir -p "$COMPLETE_DIR"
-    rclone genautocomplete bash "$COMPLETE_DIR"/rclone
-  fi
-}
-
-
 # Imports data into GPG. To export these files, run:
 #     gpg --export-secret-keys "<you@gmail.com>" > "Private Key.key"
 #     gpg --export-ownertrust > "Owner Trust.txt"

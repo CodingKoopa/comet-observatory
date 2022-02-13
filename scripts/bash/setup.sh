@@ -266,9 +266,6 @@ function setup_user() {
   info "Configuring GPG."
   configure_gpg
 
-  info "Configuring rclone."
-  configure_rclone
-
   info "Setting Up VSCode"
   install_vscode_extensions
 
