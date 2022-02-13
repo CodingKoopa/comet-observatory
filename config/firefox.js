@@ -39,3 +39,5 @@ user_pref("toolkit.scrollbox.horizontalScrollDistance", 6);
 user_pref("toolkit.scrollbox.verticalScrollDistance", 2);
 
 user_pref("media.ffmpeg.vaapi.enabled", true);
+// Force enable WebRender. On the P500 it wasn't enabled by default.
+user_pref("gfx.webrender.all", true);
