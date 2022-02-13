@@ -15,6 +15,9 @@ linux
 linux-headers
 # mkinitcpio numlock hook, for turning on numlock.
 mkinitcpio-numlock
+# Vulkan ICD loader, for initializing Vulkan.
+vulkan-icd-loader
+lib32-vulkan-icd-loader
 # PulseAudio, for audio support.
 pulseaudio
 # PulseAudio ALSA, for ALSA support in PA.
