@@ -52,21 +52,6 @@ function create_directories() {
 function link_directories() {
   # The structure here (although will be random at runtime) is parallel to that of the package list.
   declare -rA linked_paths=(
-    # Storage
-
-    # Link downloads from the terrace to home directory.
-    ["$TERRACE_DOWNLOADS_DIR"]="$INSTALL_HOME/Downloads"
-    # Link documents from the terrace to home directory.
-    ["$FOUNTAIN_DOCUMENTS_DIR"]="$INSTALL_HOME/Documents"
-    # Link pictures from the terrace to home directory.
-    ["$TERRACE_PICTURES_DIR"]="$INSTALL_HOME/Pictures"
-    # Link videos from the terrace to home directory.
-    ["$TERRACE_VIDEOS_DIR"]="$INSTALL_HOME/Videos"
-    # Link music from the terrace to home directory.
-    ["$TERRACE_MUSIC_DIR"]="$INSTALL_HOME/Music"
-    # Wine prints an error if we don't have a Desktop directory.
-    ["$INSTALL_HOME/Documents"]="$INSTALL_HOME/Desktop"
-
     # Shell
 
     # Link Bash profile from CO to home directory.
@@ -158,6 +143,23 @@ function link_directories() {
     # Link TKG Wine configuration from CO to user configuration.
     # ["$CO/config/tkg/proton-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/proton-tkg.cfg"
   )
+
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    # Link downloads from the terrace to home directory.
+    linked_paths["$TERRACE_DOWNLOADS_DIR"]+="$INSTALL_HOME/Downloads"
+    # Link documents from the terrace to home directory.
+    linked_paths["$FOUNTAIN_DOCUMENTS_DIR"]+="$INSTALL_HOME/Documents"
+    # Link pictures from the terrace to home directory.
+    linked_paths["$TERRACE_PICTURES_DIR"]+="$INSTALL_HOME/Pictures"
+    # Link videos from the terrace to home directory.
+    linked_paths["$TERRACE_VIDEOS_DIR"]+="$INSTALL_HOME/Videos"
+    # Link music from the terrace to home directory.
+    linked_paths["$TERRACE_MUSIC_DIR"]+="$INSTALL_HOME/Music"
+    # Wine prints an error if we don't have a Desktop directory.
+    linked_paths["$INSTALL_HOME/Documents"]+="$INSTALL_HOME/Desktop"
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    true
+  fi
 
   for target in "${!linked_paths[@]}"; do
     if [[ $SYNCED_DOCUMENTS = false ]]; then
