@@ -54,84 +54,54 @@ function link_directories() {
   declare -rA linked_paths=(
     # Shell
 
-    # Link Bash profile from CO to home directory.
     ["$CO/scripts/bash/bash_profile.sh"]="$INSTALL_HOME/.bash_profile"
-    # Link Bash RC file from CO to home directory.
     ["$CO/scripts/bash/bash_rc.sh"]="$INSTALL_HOME/.bashrc"
-    # Link X RC file from CO to home directory.
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
-    # Link X Compose file from CO to home directory.
     ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
 
     # Desktop Environment
 
-    # Link user directory configuration from CO to user configuration.
     ["$CO/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
 
     # KDE Accessories
 
-    # Link autostart scripts from CO to user configuration.
     ["$CO/config/autostart-plasma/"]="$INSTALL_HOME/.config/autostart-scripts"
-    # Link hotkeys from CO to user configuration.
     ["$CO/config/khotkeys.ini"]="$INSTALL_HOME/.config/khotkeysrc"
 
     # Tools
 
-    # Link nano configuration from CO to user configuration.
     ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
-    # Link top configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
-    # Link Git configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
-    # Link GPG configuration file from CO to home directory.
     ["$CO/config/gpg.conf"]="$INSTALL_HOME/.gnupg/gpg.conf"
-    # Link GPG configuration file from CO to home directory.
     ["$CO/config/gpg-agent.conf"]="$INSTALL_HOME/.gnupg/gpg-agent.conf"
-    # Link Pikaur configuration file from CO to home directory.
     ["$CO/config/pikaur.conf"]="$INSTALL_HOME/.config/pikaur.conf"
-    # Link KeePassX configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
 
     # Media
 
-    # Link Chrome flags from CO to user configuration.
     ["$CO/config/chrome-flags.conf"]="$INSTALL_HOME/.config/chrome-flags.conf"
-    # Link mpv configuration from CO to user configuration.
     ["$CO/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
-    # Link OBS Studio configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
-    # Link Blender files from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Blender"]="$INSTALL_HOME/.config/blender"
 
     # Gaming
 
-    # Link GameMode configuration from CO to user configuration.
     ["$CO/config/gamemode.ini"]="$INSTALL_HOME/.config/gamemode.ini"
-    # Link Citra configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Citra"]="$INSTALL_HOME/.config/citra-emu"
-    # Link Citra data from documents to user data.
     ["$SYNCED_DOCUMENTS_DIR/ProgramData/Citra"]="$INSTALL_HOME/.local/share/citra-emu"
-    # Link Dolphin configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Dolphin"]="$INSTALL_HOME/.config/dolphin-emu"
-    # Link Dolphin data from documents to user data.
     ["$SYNCED_DOCUMENTS_DIR/ProgramData/Dolphin"]="$INSTALL_HOME/.local/share/dolphin-emu"
-    # Link Yuzu configuration from documents to user configuration.
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Yuzu"]="$INSTALL_HOME/.config/yuzu"
-    # Link Yuzu data from documents to user data.
     ["$SYNCED_DOCUMENTS_DIR/ProgramData/Yuzu"]="$INSTALL_HOME/.local/share/yuzu"
-    # Link Lucas' Simpsons Hit & Run Mod Launcher data from documents to user data.
     ["$SYNCED_DOCUMENTS_DIR/ProgramData/Lucas' Simpsons Hit & Run Mod Launcher"]="$INSTALL_HOME/Documents/My Games/Lucas' Simpsons Hit & Run Mod Launcher"
-    # Link The Simpsons: Hit & Run data from Fountain to user data.
     # TODO: Restore this when we have another game drive.
     # ["$INSTALL_HOME/Fountain/Games/PC/IndependentWindows/The Simpsons Hit & Run/"]="$INSTALL_HOME/.local/share/the-simpsons-hit-and-run"
 
     # Programming
 
-    # Link VSCode keybindings from CO to user configuration.
     ["$CO/config/vs-code/Keybindings.json"]="$INSTALL_HOME/.config/Code - OSS/User/keybindings.json"
-    # Link VSCode settings from documents to user configuration.
     ["$CO/config/vs-code/Settings.json"]="$INSTALL_HOME/.config/Code - OSS/User/settings.json"
-    # Link VSCode snippets from documents to user configuration.
     ["$CO/config/vs-code/Snippets/"]="$INSTALL_HOME/.config/Code - OSS/User/snippets"
 
     # Frogging Family
@@ -145,17 +115,11 @@ function link_directories() {
   )
 
   if [[ $CO_HOST = "DESKTOP" ]]; then
-    # Link downloads from the terrace to home directory.
     linked_paths["$TERRACE_DOWNLOADS_DIR"]+="$INSTALL_HOME/Downloads"
-    # Link documents from the terrace to home directory.
     linked_paths["$FOUNTAIN_DOCUMENTS_DIR"]+="$INSTALL_HOME/Documents"
-    # Link pictures from the terrace to home directory.
     linked_paths["$TERRACE_PICTURES_DIR"]+="$INSTALL_HOME/Pictures"
-    # Link videos from the terrace to home directory.
     linked_paths["$TERRACE_VIDEOS_DIR"]+="$INSTALL_HOME/Videos"
-    # Link music from the terrace to home directory.
     linked_paths["$TERRACE_MUSIC_DIR"]+="$INSTALL_HOME/Music"
-    # Wine prints an error if we don't have a Desktop directory.
     linked_paths["$INSTALL_HOME/Documents"]+="$INSTALL_HOME/Desktop"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     true
