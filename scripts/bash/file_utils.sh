@@ -93,15 +93,15 @@ function safe_ln() {
     else
       local -r link_name_parent_directory=$(dirname "$link_name")
       if [[ ! -d $link_name_parent_directory ]]; then
-      info "Making link name parent directory $link_name_parent_directory."
-      if [[ -L "$link_name_parent_directory" ]]; then
-        info "Parent directory $link_name_parent_directory is a link, overwriting."
+        info "Making link name parent directory $link_name_parent_directory."
+        if [[ -L "$link_name_parent_directory" ]]; then
+          info "Parent directory $link_name_parent_directory is a link, overwriting."
           if [[ $DRY_RUN = false ]]; then
-        rm "$link_name_parent_directory"
-      fi
+            rm "$link_name_parent_directory"
+          fi
         fi
-      if [[ $DRY_RUN = false ]]; then
-        mkdir -p "$link_name_parent_directory"
+        if [[ $DRY_RUN = false ]]; then
+          mkdir -p "$link_name_parent_directory"
         fi
       fi
     fi
