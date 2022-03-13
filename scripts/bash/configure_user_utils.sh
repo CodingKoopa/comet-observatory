@@ -59,10 +59,6 @@ function link_directories() {
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
     ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
 
-    # Desktop Environment
-
-    ["$CO/config/user-dirs.dirs"]="$INSTALL_HOME/.config/user-dirs.dirs"
-
     # KDE Accessories
 
     ["$CO/config/autostart-plasma/"]="$INSTALL_HOME/.config/autostart-scripts"
