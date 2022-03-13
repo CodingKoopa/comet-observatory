@@ -50,7 +50,7 @@ function export_constants() {
 # Sets up the system components of the system.
 # Globals Read:
 #   - INSTALL_HOME: See export_constants().
-#   - CO: See export_constants().
+#   - CO: See co_rc.sh.
 #   - CO_HOST: See co_rc.sh.
 #   - PACMAN_ARGS: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
@@ -189,7 +189,7 @@ function setup_system() {
 # root.
 # Globals Read:
 #   - INSTALL_HOME: See export_constants().
-#   - CO: See export_constants().
+#   - CO: See co_rc.sh.
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
 #   - ABS_DIR: See export_constants().

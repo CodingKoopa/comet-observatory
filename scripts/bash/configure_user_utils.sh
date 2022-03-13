@@ -45,7 +45,7 @@ function create_directories() {
 #   - DRY_RUN: See setup().
 #   - INSTALL_HOME: See export_constants().
 #   - INSTALL_USER: See setup_system().
-#   - CO: See export_constants().
+#   - CO: See co_rc.sh.
 #   - SYNCED_DOCUMENTS_DIR: See export_constants().
 # Outputs:
 #   - Link feedback.
