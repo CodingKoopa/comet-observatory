@@ -27,8 +27,7 @@ custom built packages.
   -h    Show this help message and exit.
   -a    Do everything. This is the default behavior.
   -p    Review and update prebuilt packages.
-  -f    Force update all custom packages even if the repo is up to date. Implies -s and -t. Not
-  included by -a.
+  -f    Force update all custom packages even if repo is up to date. Implies -s. Not included by -a.
   -s    Review and update custom suckless packages.
   -o    Remove orphan packages. Not included by -a because, generally, we will be keeping build
   dependencies installed, which are considered orphaned packages.
