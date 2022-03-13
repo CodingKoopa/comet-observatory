@@ -142,8 +142,8 @@ It's all literally a matter of perspective."
     "Your truth can be changed simply by the way you accept it. That's how fragile the truth for a \
 human is."
     "Anywhere can be paradise, as long as you have the will to live."
-    "Humans constantly feel pain in their hearts. Because the heart is so sensitive to pain, humans \
-also feel that to live is to suffer."
+    "Humans constantly feel pain in their hearts. Because the heart is so sensitive to pain, \
+humans also feel that to live is to suffer."
     "I'm so fucked up."
     # "Kimochi warui."
     # Mob Psycho 100
