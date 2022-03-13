@@ -92,6 +92,7 @@ function safe_ln() {
     # Handle conflcits with nonexistent link name parent directories.
     else
       local -r link_name_parent_directory=$(dirname "$link_name")
+      if [[ ! -d $link_name_parent_directory ]]; then
       info "Making link name parent directory $link_name_parent_directory."
       if [[ -L "$link_name_parent_directory" ]]; then
         info "Parent directory $link_name_parent_directory is a link, overwriting."
@@ -99,6 +100,7 @@ function safe_ln() {
       fi
       if [[ $DRY_RUN = false ]]; then
         mkdir -p "$link_name_parent_directory"
+        fi
       fi
     fi
 
