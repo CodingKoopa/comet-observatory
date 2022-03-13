@@ -81,7 +81,6 @@ function ej() {
   prog=$1
   shift
   while true; do
-#    nano "$prog".java
     printf "Compiling:\n\n"
     j "$prog" "$@"
     read -rp "..."
