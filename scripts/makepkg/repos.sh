@@ -39,7 +39,7 @@ function install_from_repo() {
       sudo pacman -S "${PACMAN_ARGS[@]}" base-devel git >/dev/null
     fi
 
-    info "Installing $1."
+    info "Installing $package."
     if [[ $DRY_RUN = false ]]; then
       local -r package_build_dir="$AUR_DIR/$package"
       # Make sure there's no pikaur dir becuase, if there is, Git will throw a fit.
