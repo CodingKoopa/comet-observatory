@@ -19,4 +19,8 @@ source "$CO"/scripts/bash/user_graphical_rc.sh
 if [[ $CO_HOST = "DESKTOP" ]]; then
   # Configure Xorg automatically.
   nvidia-settings --load-config-only
+  # Disable Energy Star features.
+  xset -dpms
+  # Disable screen blanking.
+  xset s off
 fi
