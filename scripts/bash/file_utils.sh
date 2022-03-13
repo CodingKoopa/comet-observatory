@@ -96,8 +96,10 @@ function safe_ln() {
       info "Making link name parent directory $link_name_parent_directory."
       if [[ -L "$link_name_parent_directory" ]]; then
         info "Parent directory $link_name_parent_directory is a link, overwriting."
+          if [[ $DRY_RUN = false ]]; then
         rm "$link_name_parent_directory"
       fi
+        fi
       if [[ $DRY_RUN = false ]]; then
         mkdir -p "$link_name_parent_directory"
         fi
