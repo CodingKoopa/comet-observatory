@@ -13,8 +13,6 @@ source "$CO"/scripts/bash/common.sh
 source "$CO"/scripts/bash/file_utils.sh
 # shellcheck source=scripts/bash/configure_system_utils.sh
 source "$CO"/scripts/bash/configure_system_utils.sh
-# shellcheck source=scripts/bash/update.sh
-source "$CO"/scripts/bash/update.sh
 # shellcheck source=scripts/bash/configure_user_utils.sh
 source "$CO"/scripts/bash/configure_user_utils.sh
 # shellcheck source=scripts/makepkg/repos.sh
