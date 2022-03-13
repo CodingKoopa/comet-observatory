@@ -29,7 +29,6 @@ custom built packages.
   -p    Review and update prebuilt packages.
   -f    Force update all custom packages even if the repo is up to date. Implies -s and -t. Not
   included by -a.
-  -t    Review and update custom TkG packages. Not included by -a.
   -s    Review and update custom suckless packages.
   -o    Remove orphan packages. Not included by -a because, generally, we will be keeping build
   dependencies installed, which are considered orphaned packages.
@@ -49,7 +48,6 @@ custom built packages.
 # TODO: only set AUR_DIR in once place
 function update() {
   local update_prebuilt=false
-  local update_tkg=false
   local update_suckless=false
   local force_custom=false
   local check_missing=false
@@ -74,11 +72,7 @@ function update() {
       ;;
     f)
       force_custom=true
-      update_tkg=true
       update_suckless=true
-      ;;
-    t)
-      update_tkg=true
       ;;
     s)
       update_suckless=true
@@ -113,47 +107,6 @@ function update() {
     subsect "Handling configuration conflicts."
     # Handle any pacnew/pacsave files issues.
     sudo -E DIFFPROG="sudo code -d" pacdiff
-  fi
-  if [[ $update_tkg = true ]]; then
-    section "Updating TkG Package Sources"
-
-    safe_cd "$AUR_DIR"
-
-    subsect "Checking repository directories."
-    check_repos
-    subsect "Updating community patches."
-    update_repo community-patches || true
-    subsect "Updating linux-tkg source."
-    update_repo linux-tkg customization.cfg && update_linux_tkg=true || update_linux_tkg=false
-    subsect "Updating nvidia-all."
-    update_repo nvidia-all customization.cfg && update_nvidia_all=true || update_nvidia_all=false
-    subsect "Updating proton-tkg."
-    update_repo wine-tkg-git/proton-tkg proton-tkg.cfg \
-      proton-tkg-profiles/advanced-customization.cfg && update_proton_tkg=true ||
-      update_proton_tkg=false
-
-    section "Building TkG Packages"
-
-    subsect "Building TkG Linux kernel."
-    if [[ $force_custom = true || $update_linux_tkg = true ]]; then
-      build_repo linux-tkg
-    else
-      info "Already up to date."
-    fi
-    subsect "Building Nvidia drivers."
-    if [[ $force_custom = true || $update_nvidia_all = true ]]; then
-      build_repo nvidia-all
-    else
-      info "Already up to date."
-    fi
-    subsect "Building TkG Proton."
-    if [[ $force_custom = true || $update_proton_tkg = true ]]; then
-      build_repo wine-tkg-git/proton-tkg
-    else
-      info "Already up to date."
-    fi
-
-    safe_cd -
   fi
   if [[ $remove_orphans = true ]]; then
     section "Removing Orphan Packages"
