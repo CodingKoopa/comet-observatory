@@ -5,7 +5,7 @@ This document loosely describes the process of installing a system with comet-ob
 2. Create the necessary directories on the drives, if not present (see `setup.sh`).
 3. Install the dependencies needed for the comet-observatory setup:
 ```
-# pacman -S git sudo lolcat lsd ntfs-3g pacman-contrib expac
+# pacman -S base-devel git sudo lolcat lsd ntfs-3g pacman-contrib expac
 # pacman -S --asdep pinentry
 ```
 3. Create the install user, inputting `$USER`:
