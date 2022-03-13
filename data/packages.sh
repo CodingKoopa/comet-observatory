@@ -124,6 +124,8 @@ apache
 
 # CLI Utilities
 
+# bash-completion, for programs to provide auto-completion within Bash.
+bash-completion
 # neofetch, for obtaining system info.
 neofetch
 # LSDeluxe, for listing directories.
