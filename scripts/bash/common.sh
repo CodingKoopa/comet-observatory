@@ -232,7 +232,7 @@ function get_installed_package_list() {
 
 # Gets the list of packages specified in this repo. Empty lines and comments are stripped out.
 # Globals Read:
-#   - CO: See export_constants().
+#   - CO: See co_rc.sh.
 #   - CO_HOST: See co_rc.sh.
 # Outputs:
 #   - The list of packages.
