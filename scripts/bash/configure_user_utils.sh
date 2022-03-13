@@ -59,11 +59,6 @@ function link_directories() {
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
     ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.XCompose"
 
-    # KDE Accessories
-
-    ["$CO/config/autostart-plasma/"]="$INSTALL_HOME/.config/autostart-scripts"
-    ["$CO/config/khotkeys.ini"]="$INSTALL_HOME/.config/khotkeysrc"
-
     # Tools
 
     ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
