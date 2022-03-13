@@ -120,7 +120,7 @@ function pause() {
 # Outputs:
 #   - The error message.
 function error() {
-  printf "[${RED}Error${RESET}  ] %s\n" "$*"
+  printf "[${RED}Error${RESET}  ] %s\n" "$*" >&2
 }
 
 # Prints a verbose message.
