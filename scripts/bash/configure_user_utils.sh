@@ -91,15 +91,6 @@ function link_directories() {
 
     ["$CO/config/vs-code/keybindings.json"]="$INSTALL_HOME/.config/Code - OSS/User/keybindings.json"
     ["$CO/config/vs-code/settings.json"]="$INSTALL_HOME/.config/Code - OSS/User/settings.json"
-
-    # Frogging Family
-
-    # Link TKG Kernel configuration from CO to user configuration.
-    # ["$CO/config/tkg/linux-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/linux-tkg.cfg"
-    # Link TKG Nvidia configuration from CO to user configuration.
-    # ["$CO/config/tkg/nvidia-all.cfg"]="$INSTALL_HOME/.config/frogminer/nvidia-all.cfg"
-    # Link TKG Wine configuration from CO to user configuration.
-    # ["$CO/config/tkg/proton-tkg.cfg"]="$INSTALL_HOME/.config/frogminer/proton-tkg.cfg"
   )
 
   if [[ $CO_HOST = "DESKTOP" ]]; then

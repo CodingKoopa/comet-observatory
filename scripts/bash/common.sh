@@ -227,7 +227,7 @@ function get_installed_package_list() {
   ) <({
     pacman -Qqg base-devel
     expac -l '\n' '%E' base
-  } | sort) | grep -v "tkg"
+  } | sort)
 }
 
 # Gets the list of packages specified in this repo. Empty lines and comments are stripped out.

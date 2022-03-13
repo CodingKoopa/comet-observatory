@@ -49,7 +49,7 @@ setup-user n y
 - Log levels. Although these are supported throughout the Comet Observatory, they are particularly relevant here. Enabling more logging can be done by setting `DEBUG` or `VERBOSE` to true. These two options are two different levels; however, contrary to traditional logging systems, setting `DEBUG` does not automatically set `VERBOSE`, and vice versa.
 
 ### Update Script
-[`update`](bin/update) is a script which handles updating the system and a selection of routine maintenence tasks. It can update the system and AUR packages, build the latest [Frogging-Family](https://github.com/Frogging-Family) packages.
+[`update`](bin/update) is a script which handles updating the system and a selection of routine maintenence tasks.
 
 Updating prebuilt and AUR packages:
 ![update -p](docs/img/update_p.png)
