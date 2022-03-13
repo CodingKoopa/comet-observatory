@@ -131,10 +131,6 @@ function setup_system() {
   info "Configuring kernel attributes."
   safe_cp "$CO"/config/sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
-  info "Configuring kernel modules."
-  # This is not to be confused with the legacy "/etc/modprobe.conf".
-  safe_cp "$CO"/config/modprobe.conf /etc/modprobe.d/modprobe.conf
-
   info "Configuring filesystems."
   configure_fstab
 
