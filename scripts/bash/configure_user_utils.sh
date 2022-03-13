@@ -100,6 +100,7 @@ function link_directories() {
     linked_paths["$TERRACE_VIDEOS_DIR"]+="$INSTALL_HOME/Videos"
     linked_paths["$TERRACE_MUSIC_DIR"]+="$INSTALL_HOME/Music"
     linked_paths["$INSTALL_HOME/Documents"]+="$INSTALL_HOME/Desktop"
+    linked_paths["$CO/config/default.pa"]+="$INSTALL_HOME/.config/pulse/default.pa"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     true
   fi
@@ -112,11 +113,6 @@ function link_directories() {
     fi
     safe_ln "$target" "${linked_paths[${target}]}"
   done
-
-  # Link PulseAudio startup script from CO to user configuration.
-  if [[ $CO_HOST = "DESKTOP" ]]; then
-    safe_ln "$CO/config/default.pa" "$INSTALL_HOME/.config/pulse/default.pa"
-  fi
 }
 
 # Configures user systemd units.
