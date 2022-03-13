@@ -93,7 +93,6 @@ function link_directories() {
 
     ["$CO/config/vs-code/keybindings.json"]="$INSTALL_HOME/.config/Code - OSS/User/keybindings.json"
     ["$CO/config/vs-code/settings.json"]="$INSTALL_HOME/.config/Code - OSS/User/settings.json"
-    ["$CO/config/vs-code/snippets/"]="$INSTALL_HOME/.config/Code - OSS/User/snippets"
 
     # Frogging Family
 
