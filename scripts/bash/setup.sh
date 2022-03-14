@@ -152,10 +152,6 @@ function setup_system() {
   info "Configuring Xorg."
   configure_xorg
 
-  info "Configuring root GTK."
-  # Apply the GTK configuration to root, to make applications like Gparted look nice.
-  safe_ln "$INSTALL_HOME/.config/gtk-3.0" /root/.config/gtk-3.0
-
   info "Installing EFI boot entries."
   if [[ $DRY_RUN = false ]]; then
     update-efi
