@@ -11,7 +11,7 @@ insert_final_newline = true
 max_line_length = 100
 
 # Excluded files.
-[{scripts/bash/agnoster_bash.sh,scripts/bash/configure_user_utils.sh,config/default.pa,config/gpg.conf,config/httpd.conf,config/pacman.conf,config/vs-code/Settings.json,config/xorg.*,data/*,License.txt}]
+[{scripts/bash/agnoster_bash.sh,scripts/bash/setup_user_utils.sh,config/default.pa,config/gpg.conf,config/httpd.conf,config/pacman.conf,config/vs-code/Settings.json,config/xorg.*,data/*,License.txt}]
 indent_style = unset
 indent_size = unset
 charset = unset

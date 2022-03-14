@@ -11,10 +11,10 @@ set -e
 source "$CO"/scripts/bash/common.sh
 # shellcheck source=scripts/bash/file_utils.sh
 source "$CO"/scripts/bash/file_utils.sh
-# shellcheck source=scripts/bash/configure_system_utils.sh
-source "$CO"/scripts/bash/configure_system_utils.sh
-# shellcheck source=scripts/bash/configure_user_utils.sh
-source "$CO"/scripts/bash/configure_user_utils.sh
+# shellcheck source=scripts/bash/setup_system_utils.sh
+source "$CO"/scripts/bash/setup_system_utils.sh
+# shellcheck source=scripts/bash/setup_user_utils.sh
+source "$CO"/scripts/bash/setup_user_utils.sh
 # shellcheck source=scripts/makepkg/repos.sh
 source "$CO"/scripts/makepkg/repos.sh
 # shellcheck source=scripts/code/extensions.sh
