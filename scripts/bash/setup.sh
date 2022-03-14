@@ -152,6 +152,9 @@ function setup_system() {
   info "Configuring Xorg."
   configure_xorg
 
+  info "Setting XDG user directories."
+  cp "$CO"/config/user-dirs.root.dirs /root/.config/user-dirs.dirs
+
   info "Installing EFI boot entries."
   if [[ $DRY_RUN = false ]]; then
     update-efi
