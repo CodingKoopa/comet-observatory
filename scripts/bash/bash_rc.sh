@@ -182,4 +182,7 @@ But I, I'm with you"
   bind "set completion-ignore-case on"
   # Immediately show all options if there is ambiguity.
   bind "set show-all-if-ambiguous on"
+else
+  # If here, we're in a TTY.
+  setterm -cursor on
 fi
