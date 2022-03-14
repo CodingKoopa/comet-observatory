@@ -7,6 +7,58 @@
 # shellcheck source=scripts/bash/common.sh
 source "$CO"/scripts/bash/common.sh
 
+# Copies a file, the source depending on the form factor of the host.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Arguments:
+#   - The source location if the host is a desktop.
+#   - The source location if the host is a laptop.
+#   - The destination location.
+# Outputs:
+#   - Copy feedback, or error.
+# Returns:
+#   - 0 if successful.
+#   - 1 if the form factor isn't recognized.
+function cp_for_form_factor() {
+  local -r src_desktop=$1
+  local -r src_laptop=$2
+  local -r dest=$3
+  if [[ $CO_HOST = DESKTOP ]]; then
+    safe_cp "$src_desktop" "$dest"
+  elif [[ $CO_HOST = LAPTOP* ]]; then
+    safe_cp "$src_laptop" "$dest"
+  else
+    error "Form factor unknown, I don't know which configuration to use."
+    return 1
+  fi
+}
+
+# Copies a file, the source depending on the exact host.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Arguments:
+#   - The source location if the host is the desktop.
+#   - The source location if the host is Lenovo P500.
+#   - The destination location.
+# Outputs:
+#   - Copy feedback, or error.
+# Returns:
+#   - 0 if successful.
+#   - 1 if the host isn't recognized.
+function cp_for_host() {
+  local -r src_desktop=$1
+  local -r src_p500=$2
+  local -r dest=$3
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    safe_cp "$src_desktop" "$dest"
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    safe_cp "$src_p500" "$dest"
+  else
+    error "Host unknown, I don't know which configuration to use."
+    return 1
+  fi
+}
+
 # Copies a file, checking to see if it's already updated or not. Supports dry run.
 # Globals Read:
 #   - DRY_RUN: See setup().

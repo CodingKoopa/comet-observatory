@@ -121,7 +121,7 @@ function setup_system() {
   section "Setting Up Kernel & Hardware"
 
   info "Configuring initial ramdisk."
-  configure_initrd
+  cp_for_host "$CO"/config/mkinitcpio.{desktop,p500}.conf /etc/mkinitcpio.conf
 
   info "Making initial ramdisks."
   if [[ $DRY_RUN = false ]]; then
@@ -132,7 +132,7 @@ function setup_system() {
   safe_cp "$CO"/config/sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
   info "Configuring filesystems."
-  configure_fstab
+  cp_for_host "$CO"/config/fstab.{desktop,p500} /etc/fstab
 
   info "Creating swap memory."
   create_swap 8
