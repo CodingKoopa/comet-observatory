@@ -124,6 +124,7 @@ alias lt='ls --tree'
 alias g=git
 alias gdiff="git diff --no-index"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
+alias btc=bluetoothctl
 
 # Customize the prompt if we're not in a login shell. If we are in a login shell, we're probably
 # in a TTY that doesn't support this fancy stuff.
