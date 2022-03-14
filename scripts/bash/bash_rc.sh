@@ -125,7 +125,8 @@ alias g=git
 alias gdiff="git diff --no-index"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
 
-# Customize the prompt.
+# Customize the prompt if we're not in a login shell. If we are in a login shell, we're probably
+# in a TTY that doesn't support this fancy stuff.
 
 if [[ $1 != "l" ]]; then
   # This can't be readonly because this script can be ran more than once in the same environment.
