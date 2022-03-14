@@ -11,7 +11,7 @@ source "$CO"/scripts/bash/common.sh
 # shellcheck source=scripts/makepkg/repos.sh
 source "$CO"/scripts/makepkg/repos.sh
 
-readonly OPTIONS=hapftsome
+readonly OPTIONS=hapcfsome
 
 # Prints the usage info for this script.
 # Outputs:
@@ -27,6 +27,7 @@ custom built packages.
   -h    Show this help message and exit.
   -a    Do everything. This is the default behavior.
   -p    Review and update prebuilt packages.
+  -c    Review configuration conflicts.
   -f    Force update all custom packages even if repo is up to date. Implies -s. Not included by -a.
   -s    Review and update custom suckless packages.
   -o    Remove orphan packages. Not included by -a because, generally, we will be keeping build
@@ -48,6 +49,7 @@ custom built packages.
 function update() {
   local update_prebuilt=false
   local update_suckless=false
+  local review_config=false
   local force_custom=false
   local check_missing=false
   local check_extra=false
@@ -68,6 +70,9 @@ function update() {
       ;;
     p)
       update_prebuilt=true
+      ;;
+    c)
+      review_config=true
       ;;
     f)
       force_custom=true
@@ -102,10 +107,11 @@ function update() {
 
     subsect "Syncing AUR packages."
     pikaur -Sua --devel
-
-    subsect "Handling configuration conflicts."
+  fi
+  if [[ $review_config = true ]]; then
+    section "Handling configuration conflicts."
     # Handle any pacnew/pacsave files issues.
-    sudo -E DIFFPROG="sudo code -d" pacdiff
+    sudo -E DIFFPROG="sudo -u $(whoami) code -d" pacdiff
   fi
   if [[ $remove_orphans = true ]]; then
     section "Removing Orphan Packages"
