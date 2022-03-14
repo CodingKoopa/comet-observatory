@@ -127,7 +127,7 @@ alias play='DISPLAY= mpv --really-quiet -vo caca'
 
 # Customize the prompt.
 
-if [[ $- == *i* ]]; then
+if [[ $1 != "l" ]]; then
   # This can't be readonly because this script can be ran more than once in the same environment.
   declare -a QUOTES=(
     # Neon Genesis Evangelion.

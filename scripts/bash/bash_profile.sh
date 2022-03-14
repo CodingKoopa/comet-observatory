@@ -16,5 +16,5 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
   exec startx -- vt1 &>"$HOME"/.local/share/startx.log
 else
   # shellcheck source=scripts/bash/bash_rc.sh
-  "$CO"/scripts/bash/bash_rc.sh
+  source "$CO"/scripts/bash/bash_rc.sh l
 fi
