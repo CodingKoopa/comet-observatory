@@ -218,7 +218,7 @@ function setup_user() {
   section "Setting Up File Structure"
 
   info "Setting XDG user directories."
-  cp "$CO"/config/user-dirs.dirs "$INSTALL_HOME"/.config/user-dirs.dirs
+  safe_cp "$CO"/config/user-dirs.dirs "$INSTALL_HOME"/.config/user-dirs.dirs
 
   info "Creating new directories."
   create_directories
