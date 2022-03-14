@@ -144,6 +144,18 @@ function configure_udev_rules() {
   done
 }
 
+# Configures Xorg.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
+#   - Copy feedback.
+function configure_xorg() {
+  safe_cp "$CO"/config/xorg.conf /etc/X11/xorg.conf.d/10-common.conf
+  if [[ $CO_HOST = "LAPTOP_P500" ]]; then
+    safe_cp "$CO"/config/xorg.p500.conf /etc/X11/xorg.conf.d/10-p500.conf
+  fi
+}
+
 # Configures sudo.
 # Globals Read:
 #   - DRY_RUN: See setup().
