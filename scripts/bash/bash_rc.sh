@@ -113,14 +113,6 @@ function cleandocker() {
   docker buildx prune -a -f && docker system prune -a -f --volumes
 }
 
-alias lss='/usr/bin/ls --color=auto'
-# Replace ls with LSDeluxe.
-alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-
 alias g=git
 alias gdiff="git diff --no-index"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
