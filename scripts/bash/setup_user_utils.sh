@@ -51,7 +51,7 @@ function create_directories() {
 #   - Link feedback.
 function link_directories() {
   # The structure here (although will be random at runtime) is parallel to that of the package list.
-  declare -rA linked_paths=(
+  declare -A linked_paths=(
     # Shell
 
     ["$CO/scripts/bash/bash_profile.sh"]="$INSTALL_HOME/.bash_profile"
