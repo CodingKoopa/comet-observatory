@@ -154,7 +154,6 @@ kdeplasma-addons
 khotkeys
 # fcitx5 input method, for inputting characters. This is the "fcitx5-im" group, expanded.
 fcitx5
-fcitx5-configtool
 fcitx5-gtk
 fcitx5-qt
 # xdg-desktop-portal, for interfacing with containment frameworks.
