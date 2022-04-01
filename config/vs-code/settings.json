@@ -8,6 +8,8 @@
   "window.zoomLevel": -1,
   // Restore all windows.
   "window.restoreWindows": "all",
+  // Don't show the menu bar.
+  "window.menuBarVisibility": "toggle",
   // Fix keyboard inputs (esp. remapping Caps Lock to Ctrl) on Linux.
   "keyboard.dispatch": "keyCode",
   // Insert a final newline by default.
