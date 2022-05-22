@@ -277,8 +277,8 @@ steam
 # protontricks-git
 # Minecraft Launcher, for launching Minecraft.
 minecraft-launcher
-# MultiMC5, for launching Minecraft but not suck at it.
-multimc-bin
+# PolyMC, for launching Minecraft but not suck at it.
+polymc
 
 # Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
 
