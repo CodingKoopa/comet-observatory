@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Copyright 2022 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
+# Generates an image with the current date, for stamping PDFs with.
+
+magick -size $((220 * 2))x$((45 * 2)) canvas:none -pointsize $((41 * 2)) -draw "gravity southwest text 0,0 \'$(date +%m/%d/%Y)\'" "$HOME"/Pictures/Signing/Date.png
