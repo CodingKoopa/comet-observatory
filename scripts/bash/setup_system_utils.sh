@@ -85,6 +85,8 @@ function enable_system_units() {
     "cups.service"
     # Enable the NetworkManager daemon.
     "NetworkManager.service"
+    # Enable Docker socket, so running a docker command automatically starts dockerd.
+    "docker.socket"
   )
 
   for unit in "${units[@]}"; do
