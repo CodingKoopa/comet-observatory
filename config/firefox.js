@@ -35,7 +35,7 @@ user_pref("mousewheel.acceleration.start", 4);
 // NSS   100           reset previous             [100]
 user_pref("mousewheel.default.delta_multiplier_x", 100);
 // NSS   100           reset previous             [100]
-user_pref("mousewheel.default.delta_multiplier_y", 100);
+user_pref("mousewheel.default.delta_multiplier_y", 50);
 // NSS   100           reset previous             [100]
 user_pref("mousewheel.default.delta_multiplier_z", 100);
 // NSS  false       ignoring sys accel           [true]
