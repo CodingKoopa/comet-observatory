@@ -35,7 +35,8 @@ user_pref("mousewheel.acceleration.start", 4);
 // NSS   100           reset previous             [100]
 user_pref("mousewheel.default.delta_multiplier_x", 100);
 // NSS   100           reset previous             [100]
-user_pref("mousewheel.default.delta_multiplier_y", 50);
+// Empiraclly determined to make each "scroll" the same as Chrome.
+user_pref("mousewheel.default.delta_multiplier_y", 77);
 // NSS   100           reset previous             [100]
 user_pref("mousewheel.default.delta_multiplier_z", 100);
 // NSS  false       ignoring sys accel           [true]
@@ -61,7 +62,8 @@ user_pref("layout.css.scroll-behavior.spring-constant", "300.0");
 // NSS   100      lame pref wreks settings        [100]
 user_pref("general.smoothScroll.mouseWheel.migrationPercent", 100);
 // NSS  false        no stutering fling         [false]
-user_pref("general.smoothScroll.msdPhysics.enabled", false);
+// I like this to be true so that we stop scrolling as soon as we let go.
+user_pref("general.smoothScroll.msdPhysics.enabled", true);
 // NSS  "0.0"          reduce stutter            [0.25]
 user_pref("general.smoothScroll.currentVelocityWeighting", "0.0");
 // NSS   400           reduce stutter             [200]
