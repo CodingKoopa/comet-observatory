@@ -18,8 +18,6 @@ user_pref("layout.frame_rate", 144);
 
 // Enable VA-API decoding.
 user_pref("media.ffmpeg.vaapi.enabled", true);
-// Force enable WebRender. On the P500 it wasn't enabled by default.
-user_pref("gfx.webrender.all", true);
 
 
 ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
