@@ -50,7 +50,7 @@
   // Disable the editor minimap.
   "editor.minimap.enabled": false,
   // Use the Fira Code font.
-  "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Hack'",
+  "editor.fontFamily": "'Hack'",
   "editor.fontLigatures": true,
   // Don't show recommendations for extension installs.
   "extensions.ignoreRecommendations": true,
