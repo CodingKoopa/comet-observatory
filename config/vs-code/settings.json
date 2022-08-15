@@ -39,7 +39,6 @@
   // Wrap words at the viewport limit.
   "editor.wordWrap": "on",
   // Display a vertical ruler at 100 characters.
-  "editor.renderIndentGuides": true,
   "editor.rulers": [
     100
   ],
