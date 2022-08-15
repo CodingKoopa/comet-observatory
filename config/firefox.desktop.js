@@ -13,9 +13,6 @@ user_pref("extensions.pocket.enabled", false);
 // Disable full screen warning.
 user_pref("full-screen-api.warning.timeout", 0);
 
-// Store the cache in RAM.
-user_pref("browser.cache.disk.parent_directory", "/run/user/1000/firefox");
-
 // Set the correct frame rate.
 user_pref("layout.frame_rate", 144);
 
