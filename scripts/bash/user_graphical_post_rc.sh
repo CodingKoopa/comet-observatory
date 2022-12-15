@@ -8,5 +8,7 @@ _discord &
 workrave &
 firefox &
 google-chrome-stable &
-steam-runtime -silent &
+if [[ $CO_HOST = "DESKTOP" ]]; then
+        steam-runtime -silent &
+fi
 dunst &
