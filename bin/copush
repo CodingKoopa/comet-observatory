@@ -1,6 +1,0 @@
-#!/bin/sh
-
-echo Syncing documents...
-rclone sync /home/koopa/Documents mega-webdav:Documents \
-  --verbose --links --delete-excluded \
-  --filter-from=/home/koopa/Documents/Projects/Bash/comet-observatory/config/rclone-filter-list.ini
