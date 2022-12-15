@@ -67,7 +67,7 @@ function add_entry() {
   remove_entry_if_existing "$label"
   if [[ $CO_HOST = "DESKTOP" ]]; then
     local -r device=/dev/nvme0n1
-    local -r part=3
+    local -r part=1
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r device=/dev/sda
     local -r part=1
