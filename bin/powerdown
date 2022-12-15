@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Copyright 2022 Comet Observatory
+# Licensed under GPLv3.
+# Refer to License.txt file included.
+
+# shellcheck source=scripts/bash/co_rc.sh
+. /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
+# shellcheck source=scripts/bash/common.sh
+. "$CO"/scripts/bash/common.sh
+
+check_user true
+
+echo powersave | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+# Disable turbo boost.
+echo 1 >/sys/devices/system/cpu/intel_pstate/no_turbo
