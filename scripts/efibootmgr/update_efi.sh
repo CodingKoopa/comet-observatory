@@ -137,7 +137,7 @@ function update_efi() {
   # Print early EFI kernel messages, allocate a larger kernel message buffer, ignore the kernel
   # logging level, allocate a larger log buffer, set the systemd log level to debug, write systemd
   # logs to the kernel log buffer, and allow unlimited logging from userspace, for more verbosity.
-  local -ra CMDLINE_DEBUG_STR="earlyprintk=efi,keep log_buf_len=16M ignore_loglevel \
+  local -ra CMDLINE_DEBUG_STR="debug earlyprintk=efi,keep log_buf_len=16M ignore_loglevel \
 systemd.log_level=debug systemd.log_target=kmsg printk.devkmsg=on"
   # Enable rescue mode, for emergencies.
   local -ra CMDLINE_RESCUE_STR="rescue"
