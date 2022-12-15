@@ -27,8 +27,30 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	// Tag 1: Firefox and/or game.
+	{ "firefox",        NULL,       NULL,       1 << 0,       0,           -1 },
+	// Tag 2: Discord. Set as floating so that it can be pulled up at any time.
+	// { "discord",        NULL,       NULL,       1 << 1,       1,           1 },
+	{ "discord",        NULL,       NULL,       1 << 1,       1,           1 },
+	// Tag 3: Terminal.
+	{ "st",             NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "konsole",             NULL,       NULL,       1 << 2,       0,           -1 },
+	// Tag 4: Code editor.
+	{ "code-oss",       NULL,       NULL,       1 << 3,       0,           -1 },
+	// Tag 5: Launcher
+	{ "zoom ",       NULL,       NULL,       1 << 4,       0,           -1 },
+	// Tag 6: Event.
+	{ "Gimp",           NULL,       NULL,       1 << 5,       0,           -1 },
+	// Tag 7: Google Chrome.
+	{ "Google-chrome",  NULL,	      NULL,       1 << 6,       0,           0 },
+	// Tag 8: Password manager.
+	{ "KeePassXC",		  NULL,       NULL,       1 << 7,       0,           1 },
+	// Tag 8: Break timer.
+	// Workrave presents itself as floating.
+	{ "Workrave",		  NULL,       NULL,         1 << 7,       0,           -1 },
+
+	// Tag 6: Steam
+	{ "Steam", NULL,       NULL,         1 << 4,       1,           -1 },
 };
 
 /* layout(s) */
