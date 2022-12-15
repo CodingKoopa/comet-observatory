@@ -1,0 +1,265 @@
+From 28d2b96fc26e8f62094aeaa8f10483ab38cb7df5 Mon Sep 17 00:00:00 2001
+From: Koopa <codingkoopa@gmail.com>
+Date: Tue, 7 Sep 2021 23:37:30 -0400
+Subject: [PATCH] patch for comet-observatory
+
+- write .gitignore
+- remove license, readme, desktop file, manpage
+- use symbolic link for config.h
+- remove checksum for config.h, because we edit it at will
+- add patching support
+- add desired patches
+- disable ccache to prevent unwanted caching of config.h
+---
+ .SRCINFO    |   9 ++--
+ .gitignore  |   3 ++
+ PKGBUILD    |  26 +++++++-----
+ config.h    | 116 +---------------------------------------------------
+ dwm.desktop |   7 ----
+ dwm.install |   4 --
+ 6 files changed, 25 insertions(+), 140 deletions(-)
+ create mode 100644 .gitignore
+ mode change 100644 => 120000 config.h
+ delete mode 100644 dwm.desktop
+ delete mode 100644 dwm.install
+
+diff --git a/.SRCINFO b/.SRCINFO
+index 6e6f113..0362026 100644
+--- a/.SRCINFO
++++ b/.SRCINFO
+@@ -3,7 +3,6 @@ pkgbase = dwm
+ 	pkgver = 6.2
+ 	pkgrel = 1
+ 	url = http://dwm.suckless.org
+-	install = dwm.install
+ 	arch = i686
+ 	arch = x86_64
+ 	license = MIT
+@@ -16,9 +15,11 @@ pkgbase = dwm
+ 	options = zipman
+ 	source = http://dl.suckless.org/dwm/dwm-6.2.tar.gz
+ 	source = config.h
+-	source = dwm.desktop
++	source = https://dwm.suckless.org/patches/pertag/dwm-pertag-perseltag-6.2.diff
++	source = https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-alpha-6.2.diff
+ 	sha256sums = 97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e
+-	sha256sums = ce156c4ff6be6f664f5c1eb41e8ae8228c15d0282410be3ecdd58598bb8867d2
+-	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
++	sha256sums = SKIP
++	sha256sums = SKIP
++	sha256sums = SKIP
+
+ pkgname = dwm
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..99123ee
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,3 @@
++/dwm-*.tar.gz
++/*.diff
++/*.pkg.*
+diff --git a/PKGBUILD b/PKGBUILD
+index d124e50..9a95e1a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -11,28 +11,34 @@ arch=('i686' 'x86_64')
+ license=('MIT')
+ options=(zipman)
+ depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
+-install=dwm.install
+ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
+-	config.h
+-	dwm.desktop)
++ config.h
++ remove-manpage.diff
++ https://dwm.suckless.org/patches/cool_autostart/dwm-cool-autostart-6.2.diff
++ https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-alpha-6.2.diff
++)
+ sha256sums=('97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e'
+-            'ce156c4ff6be6f664f5c1eb41e8ae8228c15d0282410be3ecdd58598bb8867d2'
+-            'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
++            'SKIP'
++            'SKIP'
++            'SKIP'
++            'SKIP'
++)
+
+ prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+-  cp "$srcdir/config.h" config.h
++  # The Git patches don't apply unless we specify an order.
++  patch -p1 <"$srcdir"/remove-manpage.diff
++  patch -p1 <"$srcdir"/dwm-alpha-6.2.diff
++  patch -p1 <"$srcdir"/dwm-cool-autostart-6.2.diff
++  ln -sf "$srcdir/config.h" config.h
+ }
+
+ build() {
+   cd "$srcdir/$pkgname-$pkgver"
+-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
++  CCACHE_DISABLE=1 make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+ }
+
+ package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   make PREFIX=/usr DESTDIR="$pkgdir" install
+-  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+-  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+-  install -m644 -D "$srcdir/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+ }
+diff --git a/config.h b/config.h
+deleted file mode 100644
+index 1c0b587..0000000
+--- a/config.h
++++ /dev/null
+@@ -1,115 +0,0 @@
+-/* See LICENSE file for copyright and license details. */
+-
+-/* appearance */
+-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+-static const unsigned int snap      = 32;       /* snap pixel */
+-static const int showbar            = 1;        /* 0 means no bar */
+-static const int topbar             = 1;        /* 0 means bottom bar */
+-static const char *fonts[]          = { "monospace:size=10" };
+-static const char dmenufont[]       = "monospace:size=10";
+-static const char col_gray1[]       = "#222222";
+-static const char col_gray2[]       = "#444444";
+-static const char col_gray3[]       = "#bbbbbb";
+-static const char col_gray4[]       = "#eeeeee";
+-static const char col_cyan[]        = "#005577";
+-static const char *colors[][3]      = {
+-	/*               fg         bg         border   */
+-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+-};
+-
+-/* tagging */
+-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+-
+-static const Rule rules[] = {
+-	/* xprop(1):
+-	 *	WM_CLASS(STRING) = instance, class
+-	 *	WM_NAME(STRING) = title
+-	 */
+-	/* class      instance    title       tags mask     isfloating   monitor */
+-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+-};
+-
+-/* layout(s) */
+-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+-static const int nmaster     = 1;    /* number of clients in master area */
+-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+-
+-static const Layout layouts[] = {
+-	/* symbol     arrange function */
+-	{ "[]=",      tile },    /* first entry is default */
+-	{ "><>",      NULL },    /* no layout function means floating behavior */
+-	{ "[M]",      monocle },
+-};
+-
+-/* key definitions */
+-#define MODKEY Mod1Mask
+-#define TAGKEYS(KEY,TAG) \
+-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+-
+-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+-
+-/* commands */
+-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+-static const char *termcmd[]  = { "st", NULL };
+-
+-static Key keys[] = {
+-	/* modifier                     key        function        argument */
+-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+-	{ MODKEY,                       XK_Return, zoom,           {0} },
+-	{ MODKEY,                       XK_Tab,    view,           {0} },
+-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+-	TAGKEYS(                        XK_1,                      0)
+-	TAGKEYS(                        XK_2,                      1)
+-	TAGKEYS(                        XK_3,                      2)
+-	TAGKEYS(                        XK_4,                      3)
+-	TAGKEYS(                        XK_5,                      4)
+-	TAGKEYS(                        XK_6,                      5)
+-	TAGKEYS(                        XK_7,                      6)
+-	TAGKEYS(                        XK_8,                      7)
+-	TAGKEYS(                        XK_9,                      8)
+-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+-};
+-
+-/* button definitions */
+-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+-static Button buttons[] = {
+-	/* click                event mask      button          function        argument */
+-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+-	{ ClkTagBar,            0,              Button1,        view,           {0} },
+-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+-};
+-
+diff --git a/config.h b/config.h
+new file mode 120000
+index 0000000..9aad89e
+--- /dev/null
++++ b/config.h
+@@ -0,0 +1 @@
++/home/koopa/Documents/Projects/Bash/comet-observatory/config/dwm.h
+\ No newline at end of file
+diff --git a/dwm.desktop b/dwm.desktop
+deleted file mode 100644
+index b0c3354..0000000
+--- a/dwm.desktop
++++ /dev/null
+@@ -1,7 +0,0 @@
+-[Desktop Entry]
+-Encoding=UTF-8
+-Name=Dwm
+-Comment=Dynamic window manager
+-Exec=dwm
+-Icon=dwm
+-Type=XSession
+diff --git a/dwm.install b/dwm.install
+deleted file mode 100644
+index 44b50ed..0000000
+--- a/dwm.install
++++ /dev/null
+@@ -1,4 +0,0 @@
+-post_install() {
+-  echo "-- Edit config.h in dwm's PKGBUILD directory (generally /var/abs/community/dwm/)"
+-  echo "-- and rebuild package if you want to change settings."
+-}
+--
+2.33.1
+
