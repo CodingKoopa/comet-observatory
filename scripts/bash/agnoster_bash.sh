@@ -214,7 +214,7 @@ prompt_context() {
   local user
   user=$(whoami)
 
-  prompt_segment transblue white "$user@\h"
+  prompt_segment transblue black "$user@\h"
 }
 
 git_status_dirty() {
