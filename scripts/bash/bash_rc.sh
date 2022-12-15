@@ -38,6 +38,14 @@ function d() {
   fi
 }
 
+# Configures a Git repo with my IRL identity.
+# Output:
+#   - Git output.
+function git-irl() {
+  git config user.name "Lucy Loerker"
+  git config user.email "lucy.loerker@gmail.com"
+}
+
 # Strips leading "v" from all Git tags.
 # Outputs:
 #   - Git output, and tag status.
