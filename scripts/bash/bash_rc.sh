@@ -188,3 +188,6 @@ else
   # If here, we're in a TTY.
   setterm -cursor on
 fi
+
+# https://askubuntu.com/questions/70750/how-to-get-bash-to-stop-escaping-during-tab-completion
+shopt -s globstar
