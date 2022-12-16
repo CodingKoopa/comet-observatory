@@ -15,7 +15,6 @@ function install_vscode_extensions() {
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
     foxundermoon.shell-format
-    GitLab.gitlab-workflow
     mikestead.dotenv
     mrmlnc.vscode-csscomb
     ms-python.python
