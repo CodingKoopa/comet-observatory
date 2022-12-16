@@ -252,6 +252,8 @@ obs-studio
 
 # Internet
 
+# syncthing, for synchronizing files.
+syncthing
 # Firefox, for browsing the web.
 firefox
 # Google Chrome, for browsing the internet.
