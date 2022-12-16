@@ -170,3 +170,25 @@ function configure_gpg() {
       --import-ownertrust "$SYNCED_DOCUMENTS_DIR/Passwords & 2FA/GnuPG/Owner Trust.txt"
   fi
 }
+
+# Clones and builds a custom package. Similar to install_from_repo() but we keep the repo.
+# Arguments:
+#   - The name of the repository.
+# Globals Read:
+#   - DRY_RUN: See setup().
+#   - AUR_DIR: See setup().
+function install_local() {
+  local -r repo=$1
+  safe_cd "$AUR_DIR"
+  if [[ ! -d "$repo"/.git ]]; then
+    info "Cloning repo for $repo."
+    [[ $DRY_RUN = false ]] && git clone --recursive git@gitlab.com:CodingKoopa/"$1".git
+  else
+    verbose "Repo for $repo seems to already be cloned."
+  fi
+  info "Building and installing $repo."
+  safe_cd "$repo"
+  [[ $DRY_RUN = false ]] && makepkg --force --syncdeps --install --noconfirm "$repo"
+  safe_cd -
+  safe_cd -
+}
