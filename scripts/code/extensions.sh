@@ -12,6 +12,7 @@ source "$CO"/scripts/bash/common.sh
 #   - VSCode installation progress
 function install_vscode_extensions() {
   local -ra EXTENSIONS=(
+    Catppuccin.catppuccin-vsc
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
     foxundermoon.shell-format
