@@ -19,7 +19,6 @@ function install_vscode_extensions() {
     EditorConfig.EditorConfig
     exiasr.hadolint
     foxundermoon.shell-format
-    Jeff-Tian.tex-workshop
     mikestead.dotenv
     mrmlnc.vscode-csscomb
     ms-python.python
