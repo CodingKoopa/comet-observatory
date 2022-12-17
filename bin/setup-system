@@ -5,7 +5,7 @@
 # Refer to License.txt file included.
 
 # shellcheck source=scripts/bash/co_rc.sh
-source /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
+source /home/koopa/code/bash/comet-observatory/scripts/bash/co_rc.sh
 
 # shellcheck source=scripts/bash/setup.sh
 source "$CO"/scripts/bash/setup.sh
