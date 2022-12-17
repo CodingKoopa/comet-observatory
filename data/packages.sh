@@ -184,7 +184,7 @@ noto-fonts-emoji
 # Extra Noto fonts, for monospaced text.
 noto-fonts-extra
 # Fira Code font patched with additional symbols, for terminals and code editors.
-nerd-fonts-fira-code
+ttf-firacode-nerd
 # Breeze GTK theme, for GTK applications to look nice.
 breeze-gtk
 # GNOME icon theme, for when applications ask about it.
