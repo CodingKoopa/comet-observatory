@@ -39,7 +39,7 @@ function install_vscode_extensions() {
   for extension in "${EXTENSIONS[@]}"; do
     if [[ $installed_extensions != *$extension* ]]; then
       info "Installing extension $extension."
-      code --install-extension "$extension"
+      [[ $DRY_RUN = false ]] && code --install-extension "$extension"
     else
       verbose "Extension $extension is already installed."
     fi
