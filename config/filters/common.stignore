@@ -12,7 +12,13 @@
 // Windows thumbnail cache (https://en.wikipedia.org/wiki/Windows_thumbnail_cache)
 (?d)Thumbs.db
 
-// Logs
+// Logging
 
-// Any logs other than our persistent log directory.
+// Any log directories.
 (?i)log{s,}/
+// Any logs.
+*.log
+// Any crash dump directories.
+(?i)crashes/
+// Any crash dumps.
+*.dmp
