@@ -22,3 +22,8 @@
 (?i)crashes/
 // Any crash dumps.
 *.dmp
+
+// Stuff that we don't need to have on the laptop:
+
+// Windows desktop metadata.
+(?d)desktop.ini
