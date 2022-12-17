@@ -1,0 +1,18 @@
+// Temporary Files
+
+// Generic temporary file.
+*.tmp
+// Generic lock files, e.g. that of the GnuPG keyring.
+*.lock
+
+// Cache
+
+// Any cache.
+(?i)cache/
+// Windows thumbnail cache (https://en.wikipedia.org/wiki/Windows_thumbnail_cache)
+(?d)Thumbs.db
+
+// Logs
+
+// Any logs other than our persistent log directory.
+(?i)log{s,}/
