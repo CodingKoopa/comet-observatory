@@ -5,7 +5,7 @@
 
 // Common ignores
 
-//include ../code/bash/comet-observatory/config/filters/common.stignore
+#include ../code/bash/comet-observatory/config/filters/common.stignore
 
 // Stuff that doesn't make sense to transfer:
 
