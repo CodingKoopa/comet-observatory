@@ -43,7 +43,7 @@ function export_constants() {
   export TERRACE_MUSIC_DIR=$INSTALL_HOME/Terrace/Music
   export GNUPGHOME=$INSTALL_HOME/.local/share/gnupg
   export SSH_DIR=$INSTALL_HOME/.ssh
-  export AUR_DIR=$INSTALL_HOME/Documents/AUR
+  export AUR_DIR=$INSTALL_HOME/code/bash
 
   export PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
 }
