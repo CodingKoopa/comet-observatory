@@ -139,7 +139,6 @@ function enable_user_units() {
   local -ra units=(
     # Enable the SSH agent.
     "ssh-agent.service"
-    "rclone-sync-edges.service"
     "syncthing.service"
   )
 
