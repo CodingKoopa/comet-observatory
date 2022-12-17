@@ -10,7 +10,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # shellcheck source=scripts/bash/co_rc.sh
-source /home/koopa/Documents/Projects/Bash/comet-observatory/scripts/bash/co_rc.sh
+source /home/koopa/code/bash/comet-observatory/scripts/bash/co_rc.sh
 
 # shellcheck source=scripts/efibootmgr/update_efi.sh
 source "$CO"/scripts/efibootmgr/update_efi.sh
