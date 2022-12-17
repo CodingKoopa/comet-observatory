@@ -1,0 +1,24 @@
+// Exemptions from common ignores
+
+// Include our saved logs.
+!/Logs
+
+// Common ignores
+
+//include ../code/bash/comet-observatory/config/filters/common.stignore
+
+// Stuff that doesn't make sense to transfer:
+
+// OBS profiler data.
+/ProgramConfigurations/OBS Studio/profiler_data/
+// ShareX backup files.
+/ShareX/Backup/
+// Non-critical Visual Studio cache/options.
+/.vs
+
+// Stuff that we don't need to have on the laptop:
+
+// High-end game data.
+/Rockstar Games
+// Emulators.
+/Program{Configurations,Data}/{Dolphin,Citra,Yuzu}
