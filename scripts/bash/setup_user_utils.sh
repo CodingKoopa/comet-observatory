@@ -61,7 +61,6 @@ function link_directories() {
 
     # Tools
 
-    ["$CO/config/filters/documents.stignore"]="$SYNCED_DOCUMENTS_DIR/.stignore"
     ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
@@ -72,6 +71,7 @@ function link_directories() {
 
     # Media
 
+    ["$CO/config/filters/documents.stignore"]="$SYNCED_DOCUMENTS_DIR/.stignore"
     ["$CO/config/chrome-flags.conf"]="$INSTALL_HOME/.config/chrome-flags.conf"
     ["$CO/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
