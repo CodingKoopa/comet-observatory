@@ -61,6 +61,7 @@ function link_directories() {
 
     # Tools
 
+    ["$CO/config/less.conf"]="$INSTALL_HOME/.config/lesskey"
     ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
