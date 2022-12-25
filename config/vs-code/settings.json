@@ -102,7 +102,7 @@
   // Don't use any fallback style.
   "C_Cpp.clang_format_fallbackStyle": "none",
   ///   Java
-  "java.home": "/usr/lib/jvm/default",
+  "java.jdt.ls.java.home": "/usr/lib/jvm/default",
   // Organize imports.
   "java.saveActions.organizeImports": true,
   // Refactor when renaming from file explorer.
@@ -118,7 +118,7 @@
   // For LaTeX viewing, use a VSCode tab.
   "latex-workshop.view.pdf.viewer": "tab",
   // Enable ChkTeX linting.
-  "latex-workshop.chktex.enabled": true,
+  "latex-workshop.linting.chktex.enabled": true,
   ///   MIPS
   // Disable snippets to be less obtrusive.
   "[mips]": {
