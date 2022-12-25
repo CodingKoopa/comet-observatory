@@ -7,7 +7,6 @@ fcitx5 &
 _discord &
 workrave &
 firefox &
-google-chrome-stable &
 if [[ $CO_HOST = "DESKTOP" ]]; then
         steam-runtime -silent &
 fi
