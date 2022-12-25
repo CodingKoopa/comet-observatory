@@ -115,6 +115,7 @@ function cleandocker() {
 
 alias g=git
 alias gdiff="git diff --no-index"
+alias cdiff="diff --color=always"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
 alias btc=bluetoothctl
 
