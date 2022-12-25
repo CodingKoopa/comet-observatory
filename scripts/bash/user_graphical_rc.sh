@@ -8,6 +8,8 @@
 export DESKTOP_SESSION=plasma
 # Set the desktop environment variable for xdg-open integration.
 #export DE=kde
+# Set the user Compose file path.
+export XCOMPOSEFILE=$HOME/.config/Compose
 # Use the XDG portal for GTK applications.
 export GTK_USE_PORTAL=1
 # Use the fcitx input method for Qt applications.
