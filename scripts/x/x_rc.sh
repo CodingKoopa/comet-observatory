@@ -27,6 +27,8 @@ source "$CO"/scripts/bash/user_graphical_rc.sh
 # Enable job control. We need this, but it's disabled here because this is a login shell.
 set -m
 
+#exec startplasma-x11
+
 first_time=true
 while true; do
   dwm &
