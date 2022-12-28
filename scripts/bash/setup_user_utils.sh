@@ -57,7 +57,6 @@ function link_directories() {
     ["$CO/scripts/bash/bash_profile.sh"]="$INSTALL_HOME/.bash_profile"
     ["$CO/scripts/bash/bash_rc.sh"]="$INSTALL_HOME/.bashrc"
     ["$CO/scripts/x/x_rc.sh"]="$INSTALL_HOME/.xinitrc"
-    ["$CO/config/compose-keys.conf"]="$INSTALL_HOME/.config/Compose"
 
     # Tools
 
