@@ -1,5 +1,8 @@
 # Configuration file with sensitive info.
 scripts/bash/config.sh
 
+# fcitx5 variable data.
+/config/fcitx5/conf/cached_layouts
+
 # VSCode data.
 .vscode
