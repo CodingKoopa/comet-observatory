@@ -65,7 +65,7 @@ function link_directories() {
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
     ["$CO/config/gpg.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg.conf"
-    ["$CO/config/gpg-agent.conf"]="$INSTALL_HOME/.local/share/gpg-agent.conf"
+    ["$CO/config/gpg-agent.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg-agent.conf"
     ["$CO/config/pikaur.conf"]="$INSTALL_HOME/.config/pikaur.conf"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
 
