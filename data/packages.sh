@@ -104,6 +104,8 @@ reflector
 # pkgstats, for submitting package statistics.
 pkgstats
 
+# Wine, for running Windows applications.
+wine
 # Wine Mono, for .NET support in Wine.
 wine-mono
 # Wine Gecko, for browser support in Wine.
@@ -144,6 +146,8 @@ lolcat
 # xinit, for logging in.
 xorg-xinit
 xorg-server
+# xcape, for multipurpose ctrl.
+xcape
 # xsel, for clipboard support for tag_mp3.sh.
 xsel
 # Plasma Desktop, for Plasma Shell.
