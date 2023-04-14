@@ -17,7 +17,7 @@
   // If there aren't previous windows to open, create a new file.
   "workbench.startupEditor": "newUntitledFile",
   // Use the Default Light+ theme.
-  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.colorTheme": "Catppuccin Latte",
   // Indent the workbench tree more.
   "workbench.tree.indent": 20,
   // Don't scroll to files when they are opened.
