@@ -234,7 +234,7 @@ kwalletmanager
 # kwalletcli
 # Ksshaskpass, for Using KWallet for SSH key passwords.
 ksshaskpass
-# KeepassXC, for managing all passwords.
+# KeePassXC, for managing all passwords.
 keepassxc
 
 # Media
