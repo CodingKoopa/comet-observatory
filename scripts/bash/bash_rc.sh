@@ -179,8 +179,11 @@ But I, I'm with you"
   # Immediately show all options if there is ambiguity.
   bind "set show-all-if-ambiguous on"
 else
-  # If here, we're in a TTY.
-  setterm -cursor on
+  # x2go has issues here - TERM is unset.
+  if [[ -z "$TERM" ]]; then
+    # If here, we're in a TTY.
+    setterm -cursor on
+  fi
 fi
 
 # https://askubuntu.com/questions/70750/how-to-get-bash-to-stop-escaping-during-tab-completion
