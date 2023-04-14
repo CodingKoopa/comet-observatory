@@ -119,6 +119,7 @@ alias cdiff="diff --color=always"
 alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
 alias btc=bluetoothctl
+alias activate="source .venv/bin/activate"
 
 # Customize the prompt if we're not in a login shell. If we are in a login shell, we're probably
 # in a TTY that doesn't support this fancy stuff.
