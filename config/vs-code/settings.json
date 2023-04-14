@@ -51,8 +51,6 @@
   "editor.fontLigatures": true,
   // Don't show recommendations for extension installs.
   "extensions.ignoreRecommendations": true,
-  // Format when saving.
-  "editor.formatOnSave": true,
   "csscomb.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
