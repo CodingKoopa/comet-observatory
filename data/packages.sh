@@ -341,13 +341,15 @@ gdb
 # Doxygen, for building documentation.
 # doxygen
 # TeX Live core, for building LaTeX documents.
-# texlive-core
+texlive-core
 # TeX Live LaTeX extras.
-# texlive-latexextra
+texlive-latexextra
 # Packages necessary for using latex-indent. Workaround for: https://bugs.archlinux.org/task/60210.
-# texlive-latexindent-meta
+texlive-latexindent-meta
+# TeX Live extra fonts, for FontAwesome
+texlive-fontsextra
 # TeX Live science, for the siunitx package.
-# texlive-science
+texlive-science
 
 # Programming Libraries
 
