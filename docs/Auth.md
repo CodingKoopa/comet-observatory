@@ -1,24 +1,22 @@
 # Authentication Setup
-**Caveat: The GPG part of this is currently disabled because pinentry-kwallet is a huge pain and is hard to troubleshoot.**
 
-This document details how the Comet Observatory is configured in such a way that both GPG and SSH use KWallet for authentication.
-- ssh-agent is started on systemd user startup.
-  - The socket of this service is pointed to by $SSH_AUTH_SOCK at login.
-- `ksshaskpass` is registered as the SSH askpass program before Plasma launch.
-- During Plasma launch, the KWallet is automatically unlocked.
-- SSH identities are added to `ssh-agent`:
-```
-KWallet Passwords -> ssh-add -> ksshaskpass
-```
-- GPG identities are added to `gpg-agent`:
-```
-KWallet Passwords -> pinentry -> pinentry-kwallet -> gpg-agent
-```
-This one is a little inaccurate because no action is taken on startup; that is, we don't manually run `pinentry` like we do with `ssh-add`. Rather, `gpg-agent` is configured to ask `pinentry-kwallet` for the GPG password.
-- When the time comes to use an SSH or PGP key, `gpg-agent` and `ssh-agent` are both ready to rise up to the task!
+This document details how the Comet Observatory is configured in such a way that both GPG and SSH use KeePassXC for authentication. We use the ability of gpg-agent to emulate an [OpenSSH agent](https://wiki.archlinux.org/title/GnuPG#SSH_agent).
 
-Further reading:
-- https://wiki.archlinux.org/index.php/GnuPG#gpg-agent
-- https://wiki.archlinux.org/index.php/SSH_keys#ssh-agent
-- https://wiki.archlinux.org/index.php/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases
-- https://github.com/KDE/ksshaskpass
+On systemd user startup (after user login), the gpg-agent user service is started. Orthogonally, on DE launch, we launch KeePassXC.
+
+Here is the GPG authentication process, with Git as an example client program:
+
+```
+git -> gpg -> gpg-agent (as systemd user service) -> pinentry-tty -> Secret Service D-Bus API -> KeePassXC
+```
+
+Here is the SSH authentication process:
+
+```
+ssh -> "ssh-agent" (actually gpg-agent as systemd user service) -> pinentry-tty -> Secret Service D-Bus API -> KeePassXC
+```
+
+Finally, here is the NetworkManager process:
+```
+nmcli -> NetworkManager -> networkmanager-openconnect -> nm-applet (offers agent) -> Secret Service D-Bus API -> KeePassXC
+```
