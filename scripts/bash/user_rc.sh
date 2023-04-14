@@ -20,9 +20,8 @@ export GNUPGHOME=$HOME/.local/share/gnupg
 
 # Authentication
 
-# Set the SSH authentication socket to the socket that the SSH agent systemd user service is
-# configured to use.
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+# Set the SSH authentication socket to defer to the GPG agent.
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/d.sain89k17bnepd3ojwki9xob/S.gpg-agent.ssh
 
 # Runtimes
 
