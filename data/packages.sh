@@ -76,6 +76,10 @@ plasma-pa
 pavucontrol
 # KDE Partition Manager, for managing filesystems.
 partitionmanager
+# NetworkManager, for network connections.
+networkmanager
+# nm-applet, for notifications + configuring VPNs which don't support CLI configuration.
+network-manager-applet
 # Plasma NetworkManager, for managing network connections.
 plasma-nm
 # Nintendo Switch USB loader, for managing game and NAND backups.
