@@ -139,9 +139,7 @@ function configure_user_units() {
 #   - Installation progress.
 function enable_user_units() {
   local -ra units=(
-    # Enable the SSH agent.
-    "ssh-agent.service"
-    "syncthing.service"
+  "syncthing.service"
   )
 
   for unit in "${units[@]}"; do
