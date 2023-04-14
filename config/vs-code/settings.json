@@ -42,11 +42,8 @@
   "editor.rulers": [
     100
   ],
-  // Make each tab represent 2 spaces.
-  "editor.tabSize": 2,
-  // Never autoclose quotes or brackets, because they get in the way more than they help.
-  "editor.autoClosingQuotes": "never",
-  "editor.autoClosingBrackets": "never",
+  // Make each tab represent 4 spaces.
+  "editor.tabSize": 4,
   // Disable the editor minimap.
   "editor.minimap.enabled": false,
   // Use the Fira Code font.
