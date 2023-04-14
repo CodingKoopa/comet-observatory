@@ -42,6 +42,8 @@
   "editor.rulers": [
     100
   ],
+  // Disable soft-tabs by default.
+  "editor.insertSpaces": false,
   // Make each tab represent 4 spaces.
   "editor.tabSize": 4,
   // Disable the editor minimap.
