@@ -39,9 +39,7 @@
   // Wrap words at the viewport limit.
   "editor.wordWrap": "on",
   // Display a vertical ruler at 100 characters.
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   // Disable soft-tabs by default.
   "editor.insertSpaces": false,
   // Make each tab represent 4 spaces.
