@@ -132,6 +132,8 @@
   "latex-workshop.view.pdf.viewer": "tab",
   // Enable ChkTeX linting.
   "latex-workshop.linting.chktex.enabled": true,
+  // Use the last-ran recipe so that we can basically configure it per-repo.
+  "latex-workshop.latex.recipe.default": "lastUsed",
   ///   MIPS
   // Disable snippets to be less obtrusive.
   "[mips]": {
