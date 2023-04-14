@@ -123,10 +123,6 @@ function link_directories() {
 # Outputs:
 #   - Copy feedback.
 function configure_user_units() {
-  for service in "$CO"/config/systemd-user-units/*.service; do
-    safe_cp "$service" "$INSTALL_HOME"/.config/systemd/user/"$(basename "$service")" \
-      "$INSTALL_USER":"$INSTALL_USER" 600
-  done
   safe_cp "$CO"/config/systemd-overrides/gpg-agent.conf \
     "$INSTALL_HOME"/.config/systemd/user/gpg-agent.service.d/override.conf \
     "$INSTALL_USER":"$INSTALL_USER" 600
