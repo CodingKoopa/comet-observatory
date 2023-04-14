@@ -81,9 +81,7 @@
   "redhat.telemetry.enabled": false,
   ///   Bash
   // Allow ShellCheck to follow sources.
-  "shellcheck.customArgs": [
-    "-x"
-  ],
+  "shellcheck.customArgs": ["-x"],
   // Make ShellCheck use the project root as the working directory.
   "shellcheck.useWorkspaceRootAsCwd": true,
   ///   Python
@@ -160,5 +158,5 @@
   // Build in the "Build" directory for consistency with upper camel case projects.
   "cmake.buildDirectory": "${workspaceRoot}/Build",
   // Don't configure on open, because I like to open projects just for viewing.
-  "cmake.configureOnOpen": false,
+  "cmake.configureOnOpen": false
 }
