@@ -63,6 +63,19 @@
   ////
   /// Language Support
   ////
+  ///   Web
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   ///   YAML
   // When formatting YAML, allow a max of 100 characters per line.
   "yaml.format.printWidth": 100,
