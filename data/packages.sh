@@ -143,9 +143,10 @@ lolcat
 
 # Desktop Environment
 
+# Xorg implementation of X11.
+xorg-server
 # xinit, for logging in.
 xorg-xinit
-xorg-server
 # xcape, for multipurpose ctrl.
 xcape
 # xsel, for clipboard support for tag_mp3.sh.
