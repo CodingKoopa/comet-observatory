@@ -12,27 +12,26 @@ source "$CO"/scripts/bash/common.sh
 #   - VSCode installation progress
 function install_vscode_extensions() {
   local -ra EXTENSIONS=(
-    basdp.language-gas-x86
     bungcip.better-toml
     Catppuccin.catppuccin-vsc
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
+    esbenp.prettier-vscode
     exiasr.hadolint
     foxundermoon.shell-format
+    intellsmi.comment-translate
+    James-Yu.latex-workshop
     mikestead.dotenv
     mrmlnc.vscode-csscomb
+    ms-azuretools.vscode-docker
     ms-python.python
     ms-vscode.cmake-tools
     ms-vscode.cpptools
     ms-vscode.makefile-tools
-    redhat.java
     redhat.vscode-yaml
     timonwong.shellcheck
     twxs.cmake
-    vasilescur.better-mips
-    vscjava.vscode-gradle
-    vscjava.vscode-java-debug
-    vscjava.vscode-java-dependency
+    xdebug.php-pack
     yzhang.markdown-all-in-one
   )
   local -r installed_extensions=$(code --list-extensions)
