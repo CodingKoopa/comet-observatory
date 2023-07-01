@@ -74,6 +74,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   ///   YAML
   // When formatting YAML, allow a max of 100 characters per line.
   "yaml.format.printWidth": 100,
