@@ -90,6 +90,8 @@
   ///   Python
   // Disable the Python start page.
   "python.showStartPage": false,
+  // Use the system black installation.
+  "python.formatting.blackPath": "/usr/bin/black",
   // Disable linting with pylint.
   "python.linting.pylintEnabled": false,
   // We only want Python syntax highlighting, don't lint these as Python files.
