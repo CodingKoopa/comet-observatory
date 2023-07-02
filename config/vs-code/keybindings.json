@@ -157,7 +157,7 @@
   // Remap CMake start without debugging binding.
   {
     "key": "shift+f5",
-    "command": "-cmake.launchTarget",
+    "command": "-cmake.launchTarget"
   },
   {
     "key": "f5",
