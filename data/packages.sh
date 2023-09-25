@@ -346,6 +346,8 @@ gdb
 # doxygen
 # TeX Live core, for building LaTeX documents.
 texlive-core
+# TeX Live auxiliary programs, for latexmk.
+texlive-binextra
 # TeX Live LaTeX extras.
 texlive-latexextra
 # Packages necessary for using latex-indent. Workaround for: https://bugs.archlinux.org/task/60210.
