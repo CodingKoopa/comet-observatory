@@ -63,14 +63,8 @@ function configure_system_units() {
   safe_cp "$CO"/config/journald.conf /etc/systemd/journald.conf
   safe_cp "$CO"/config/httpd.conf /etc/httpd/conf/httpd.conf
   safe_cp "$CO"/config/bluetooth.conf /etc/bluetooth/main.conf
-  safe_cp "$CO"/config/sshd.conf /etc/ssh/sshd_config
-  safe_cp "$CO"/config/sshd-pam /etc/pam.d/sshd
   if [[ $CO_HOST = "DESKTOP" ]]; then
     safe_cp "$CO"/config/pulse-daemon.conf /etc/pulse/daemon.conf
-  fi
-  info "Reloading SSHD if active."
-  if [[ $DRY_RUN = false ]]; then
-    systemctl reload sshd || true
   fi
 }
 
@@ -87,8 +81,6 @@ function enable_system_units() {
     "reflector.timer"
     # Enable bluetooth.
     "bluetooth.service"
-    # Enable SSHD.
-    "sshd.service"
     # Enable CUPS.
     "cups.service"
     # Enable the NetworkManager daemon.
