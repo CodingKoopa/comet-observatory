@@ -126,6 +126,9 @@ function configure_user_units() {
   safe_cp "$CO"/config/systemd-overrides/gpg-agent.conf \
     "$INSTALL_HOME"/.config/systemd/user/gpg-agent.service.d/override.conf \
     "$INSTALL_USER":"$INSTALL_USER" 600
+  safe_cp "$CO"/config/systemd-overrides/xdg-desktop-portal.conf \
+    "$INSTALL_HOME"/.config/systemd/user/xdg-desktop-portal.service.d/override.conf \
+    "$INSTALL_USER":"$INSTALL_USER" 600
   systemctl --user daemon-reload
 }
 
