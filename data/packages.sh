@@ -334,7 +334,7 @@ gdb
 # Doxygen, for building documentation.
 # doxygen
 # TeX Live core, for building LaTeX documents.
-texlive-core
+texlive-basic
 # TeX Live auxiliary programs, for latexmk.
 texlive-binextra
 # TeX Live LaTeX extras.
@@ -344,7 +344,7 @@ texlive-latexindent-meta
 # TeX Live extra fonts, for FontAwesome
 texlive-fontsextra
 # TeX Live science, for the siunitx package.
-texlive-science
+texlive-mathscience
 
 # Programming Libraries
 
