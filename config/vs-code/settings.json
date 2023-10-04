@@ -135,6 +135,11 @@
   "latex-workshop.linting.chktex.enabled": true,
   // Use the last-ran recipe so that we can basically configure it per-repo.
   "latex-workshop.latex.recipe.default": "lastUsed",
+  ///   PHP
+  // Use Prettier (rather than PHP CS Fixer) for formatting.
+  "[php]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   ///   MIPS
   // Disable snippets to be less obtrusive.
   "[mips]": {
