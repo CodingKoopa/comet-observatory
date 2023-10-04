@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd /home/koopa/code/c++/OpenLoco/build || exit 1
-exec ./openloco "$@"
