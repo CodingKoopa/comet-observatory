@@ -74,7 +74,6 @@ function link_directories() {
 
     ["$CO/config/filters/documents.stignore"]="$SYNCED_DOCUMENTS_DIR/.stignore"
     ["$CO/config/chrome-flags.conf"]="$INSTALL_HOME/.config/chrome-flags.conf"
-    ["$CO/config/mpv.conf"]="$INSTALL_HOME/.config/mpv/mpv.conf"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
     ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Blender"]="$INSTALL_HOME/.config/blender"
 
@@ -103,8 +102,9 @@ function link_directories() {
     linked_paths["$TERRACE_MUSIC_DIR"]+="$INSTALL_HOME/Music"
     linked_paths["$INSTALL_HOME/Documents"]+="$INSTALL_HOME/Desktop"
     linked_paths["$CO/config/default.pa"]+="$INSTALL_HOME/.config/pulse/default.pa"
+    linked_paths["$CO/config/mpv.desktop.conf"]+="$INSTALL_HOME/.config/mpv/mpv.conf"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
-    true
+    linked_paths["$CO/config/mpv.laptop.conf"]+="$INSTALL_HOME/.config/mpv/mpv.conf"
   fi
 
   for target in "${!linked_paths[@]}"; do
