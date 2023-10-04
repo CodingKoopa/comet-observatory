@@ -121,7 +121,7 @@ function update() {
   if [[ $check_missing = true ]]; then
     section "Checking for Missing Packages"
 
-    diff=$(comm -13 <(get_installed_package_list) <(get_co_package_list))
+    diff=$(comm -13 <(pacman -Qqe | sort) <(get_co_package_list))
     if [[ -n $diff ]]; then
       info "These packages are on the CO list, but aren't installed on the system:"
       echo "$diff"
@@ -131,7 +131,7 @@ function update() {
   if [[ $check_extra = true ]]; then
     section "Checking for Extraneous Packages"
 
-    diff=$(comm -23 <(get_installed_package_list) <(get_co_package_list))
+    diff=$(comm -23 <(pacman -Qqe | sort) <(get_co_package_list))
     if [[ -n $diff ]]; then
       info "These packages are explicitly installed on the system, but aren't on the CO list:"
       echo "$diff"

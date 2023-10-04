@@ -213,23 +213,6 @@ function sanitize_zenity() {
   echo "$1" | sed -e 's/\\/\\\\/g' -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
 }
 
-# Gets the list of explicitly installed packages, excluding members of the "base" meta package and
-# the "base-devel" package group, and custom built packages. Thanks:
-# https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
-# Outputs:
-#   - The list of packages.
-function get_installed_package_list() {
-  comm -23 <(
-    {
-      echo "base-devel"
-      pacman -Qqe
-    } | sort
-  ) <({
-    pacman -Qqg base-devel
-    expac -l '\n' '%E' base
-  } | sort)
-}
-
 # Gets the list of packages specified in this repo. Empty lines and comments are stripped out.
 # Globals Read:
 #   - CO: See co_rc.sh.
