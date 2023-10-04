@@ -12,7 +12,7 @@ source "$CO"/scripts/bash/user_rc.sh
 
 # If the systemd graphical target unit is active, the display isn't setup, and the first virtual
 # console is active, start X. See /docs/Init.md.
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- vt1 &>"$HOME"/.local/share/xorg/startx.log
 else
   # shellcheck source=scripts/bash/bash_rc.sh
