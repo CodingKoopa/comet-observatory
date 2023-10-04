@@ -20,3 +20,5 @@ export GTK_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 # Use the fcitx input method for XIM.
 export XMODIFIERS=@im=fcitx
+# We are using a non-reparenting WM.
+export _JAVA_AWT_WM_NONREPARENTING=1
