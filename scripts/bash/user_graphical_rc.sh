@@ -4,6 +4,10 @@
 
 # Desktop Environment
 
+# Pretend we are KDE, for now.
+export XDG_CURRENT_DESKTOP=KDE
+# Make xdg-open believe us.
+export KDE_SESSION_VERSION=5
 # Set the desktop session variable, in case we aren't starting X at login but rather manually.
 export DESKTOP_SESSION=plasma
 # Set the desktop environment variable for xdg-open integration.
