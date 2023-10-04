@@ -151,8 +151,6 @@ xorg-server
 xorg-xinit
 # xkill, for killing unruly programs.
 xorg-xkill
-# xcape, for multipurpose ctrl.
-xcape
 # xsel, for clipboard support for tag_mp3.sh.
 xsel
 # Plasma Desktop, for Plasma Shell.
