@@ -226,14 +226,6 @@ plasma-systemmonitor
 
 # Authentication (See /docs/Auth.md)
 
-# KWallet, for storing passwords.
-kwallet
-# KWalletManager, for managing system passwords.
-kwalletmanager
-# kwalletcli, for using KWallet for GPG key passwords. Currently not in use.
-# kwalletcli
-# Ksshaskpass, for Using KWallet for SSH key passwords.
-ksshaskpass
 # KeePassXC, for managing all passwords.
 keepassxc
 
@@ -263,6 +255,7 @@ obs-studio
 
 # Internet
 
+tailscale
 # syncthing, for synchronizing files.
 syncthing
 # Firefox, for browsing the web.
