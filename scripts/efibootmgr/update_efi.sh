@@ -30,7 +30,7 @@ function find_bootnum() {
     fi
   }
 
-  efibootmgr | sed -n '{0,/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'$/s//\1/p}'
+  efibootmgr | sed -n '{0,/^Boot\([0-9A-Fa-f]\{4\}\)\*\? '"$(sed_escape_pattern "$1")"'.\+$/s//\1/p}'
 }
 
 # Removes a boot entry if it exists.
@@ -186,7 +186,7 @@ $CMDLINE_STR $*"
 
   # Assign a vmlinux suffix to the different kernels.
   local -A kernel_suffixes=(
-    ["Vanilla $(pacman -Q linux | cut -d" " -f2 | cut -d. -f1-2)"]=""
+    ["Vanilla $(pacman -Q linux | cut -d" " -f2 | cut -d. -f1-2 | tr -d .)"]=""
   )
 
   local -ra CONFIGURATIONS=(
