@@ -8,8 +8,6 @@
 export EDITOR=nano
 # Set the preferred diff viewer to the preferred editor.
 export DIFFPROG=$EDITOR
-# Set the preferred SSH askpass program to ksshaskpass.
-export SSH_ASKPASS=/usr/bin/ksshaskpass
 
 # Paths
 
