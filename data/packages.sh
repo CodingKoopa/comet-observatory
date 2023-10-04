@@ -242,7 +242,7 @@ python-eyed3
 # Clementine, for playing audio.
 clementine
 # youtube-dl, for downloading media.
-youtube-dl
+yt-dlp
 # mpv Git, for playing media.
 mpv
 mpv-mpris
