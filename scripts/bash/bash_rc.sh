@@ -34,7 +34,7 @@ function d() {
   if [ -f "$MP4" ]; then
     echo "already exists lol"
   else
-    youtube-dl "$1" -f mp4 -o "$MP4"
+    yt-dlp "$1" -f mp4 -o "$MP4"
   fi
 }
 

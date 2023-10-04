@@ -30,7 +30,7 @@ function download_music() {
   if local -r urls=$(get_bookmark_urls "Listening List"); then
     for url in $urls; do
       local title
-      if ! title=$(youtube-dl --get-title "$url"); then
+      if ! title=$(yt-dlp --get-title "$url"); then
         error "Music directory selection failed: $title"
         return 1
       fi
@@ -57,14 +57,14 @@ function download_music() {
       if [[ $download_dir != "SKIP" ]]; then
         verbose "Downloading to \"$download_dir\"."
         local output_str="$download_dir/%(title)s.%(ext)s"
-        if ! youtube-dl -q -o "$output_str" -x --audio-format mp3 --embed-thumbnail "$url"; then
+        if ! yt-dlp -q -o "$output_str" -x --audio-format mp3 --embed-thumbnail "$url"; then
           error "An error occured while downloading the file."
           return 1
         fi
 
         # Force MP3 here because otherwise it might return video formats, for YouTube videos.
         local file_paths
-        file_paths=$(youtube-dl -o "$download_dir/%(title)s.mp3" --get-filename "$url")
+        file_paths=$(yt-dlp -o "$download_dir/%(title)s.mp3" --get-filename "$url")
         # In the case of a playlist, there will be newlines in "file_paths". Iterate over them.
         while IFS= read -r file_path; do
           verbose "Cropping + trimming."
