@@ -95,8 +95,6 @@ bluedevil
 
 # expac, for list of packages in "base".
 expac
-# pikaur, for managing AUR packages.
-pikaur
 # Chaotic-AUR keyring, for using Chaotic-AUR.
 chaotic-keyring
 # Chaotic-AUR mirrorlist, for using Chaotic-AUR.
