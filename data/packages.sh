@@ -239,8 +239,6 @@ gimp
 imagemagick
 # eyed3, for tagging audio.
 python-eyed3
-# Clementine, for playing audio.
-clementine
 # youtube-dl, for downloading media.
 yt-dlp
 # mpv Git, for playing media.
