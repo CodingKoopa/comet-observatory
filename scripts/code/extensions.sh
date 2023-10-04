@@ -12,7 +12,7 @@ source "$CO"/scripts/bash/common.sh
 #   - VSCode installation progress
 function install_vscode_extensions() {
   local -ra EXTENSIONS=(
-    bungcip.better-toml
+    tamasfe.even-better-toml
     Catppuccin.catppuccin-vsc
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
