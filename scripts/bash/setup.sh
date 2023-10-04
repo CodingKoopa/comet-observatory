@@ -45,7 +45,7 @@ function export_constants() {
   export SSH_DIR=$INSTALL_HOME/.ssh
   export AUR_DIR=$INSTALL_HOME/code/bash
 
-  export PACMAN_ARGS=(--noconfirm --needed --noprogressbar)
+  export PACMAN_ARGS=(--noconfirm --noprogressbar)
 }
 
 # Sets up the system components of the system.
