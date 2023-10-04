@@ -20,7 +20,7 @@ xboxdrv
 # Runtimes, Virtualization
 
 # QEMU, for virtualization.
-qemu
+qemu-base
 # UEFI firmware for QEMU.
 edk2-ovmf
 # spicy, for viewing virtual machines.
