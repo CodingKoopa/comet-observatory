@@ -8,7 +8,7 @@ fcitx5 &
 _discord &
 workrave &
 firefox &
-if [[ $CO_HOST = "DESKTOP" ]]; then
+if [ "$CO_HOST" = "DESKTOP" ]; then
         steam-runtime -silent &
 fi
 nm-applet &
