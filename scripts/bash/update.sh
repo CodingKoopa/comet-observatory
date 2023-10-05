@@ -29,7 +29,6 @@ custom built packages.
   -p    Review and update prebuilt packages.
   -c    Review configuration conflicts.
   -f    Force update all custom packages even if repo is up to date. Implies -s. Not included by -a.
-  -s    Review and update custom suckless packages.
   -o    Remove orphan packages. Not included by -a because, generally, we will be keeping build
   dependencies installed, which are considered orphaned packages.
   -m    Check for missing packages. They won't be addded.
@@ -48,9 +47,7 @@ custom built packages.
 # TODO: only set AUR_DIR in once place
 function update() {
   local update_prebuilt=false
-  local update_suckless=false
   local review_config=false
-  local force_custom=false
   local check_missing=false
   local check_extra=false
   local remove_orphans=false
@@ -73,13 +70,6 @@ function update() {
       ;;
     c)
       review_config=true
-      ;;
-    f)
-      force_custom=true
-      update_suckless=true
-      ;;
-    s)
-      update_suckless=true
       ;;
     o)
       remove_orphans=true
