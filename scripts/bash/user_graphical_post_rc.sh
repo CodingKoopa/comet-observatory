@@ -9,6 +9,6 @@ _discord &
 workrave &
 firefox &
 if [ "$CO_HOST" = "DESKTOP" ]; then
-        steam-runtime -silent &
+  steam-runtime -silent &
 fi
 nm-applet &
