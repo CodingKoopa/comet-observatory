@@ -116,7 +116,6 @@ function cleandocker() {
 alias g=git
 alias gdiff="git diff --no-index"
 alias cdiff="diff --color=always"
-alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias play='DISPLAY= mpv --really-quiet -vo caca'
 alias btc=bluetoothctl
 alias activate="source .venv/bin/activate"
