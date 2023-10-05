@@ -10,6 +10,8 @@ Here is the GPG authentication process, with Git as an example client program:
 git -> gpg -> gpg-agent (as systemd user service) -> pinentry-tty -> Secret Service D-Bus API -> KeePassXC
 ```
 
+Since we are using a custom `GNUPGHOME` for `gpg`, it's important that the gpg-agent socket (and service) are configured to look at the correct socket location and home directory.
+
 Here is the SSH authentication process:
 
 ```
