@@ -170,7 +170,7 @@ prompt_segment() {
 
   if [[ $CURRENT_BG != NONE && $1 != "$CURRENT_BG" ]]; then
     # shellcheck disable=2034
-    declare -a intermediate=("$(fg_color $CURRENT_BG)" "$(bg_color "$1")")
+    declare -a intermediate=("$(fg_color "$CURRENT_BG")" "$(bg_color "$1")")
     PR="$PR $(ansi intermediate[@])$SEGMENT_SEPARATOR"
     PR="$PR$(ansi codes[@]) "
   else
