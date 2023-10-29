@@ -26,3 +26,5 @@ export SDL_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 # We are using a non-reparenting WM.
 export _JAVA_AWT_WM_NONREPARENTING=1
+# Force anti-aliasing in Java (necessary for JFLAP).
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
