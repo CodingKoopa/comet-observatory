@@ -92,8 +92,14 @@ function update() {
   if [[ $update_prebuilt = true ]]; then
     section "Updating Prebuilt Packages"
 
+    subsect "Uninstalling Vencord."
+    echo 1 | sudo vencordinstallercli -uninstall
+
     subsect "Syncing official packages."
     pikaur -Syuo
+
+    subsect "Installing Vencord."
+    echo 1 | sudo vencordinstallercli -install
 
     subsect "Syncing AUR packages."
     pikaur -Sua --devel
