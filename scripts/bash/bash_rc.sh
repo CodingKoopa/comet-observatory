@@ -113,6 +113,7 @@ function cleandocker() {
   docker buildx prune -a -f && docker system prune -a -f --volumes
 }
 
+alias p=pnpm
 alias g=git
 alias gdiff="git diff --no-index"
 alias cdiff="diff --color=always"
