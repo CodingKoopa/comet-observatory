@@ -1,6 +1,9 @@
 // Disable about:config warning.
 user_pref("browser.aboutConfig.showWarning", false);
 
+// Enable custom CSS.
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 // Disable form autofill.
 user_pref("signon.autofillForms", false);
 
