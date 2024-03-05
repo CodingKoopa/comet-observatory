@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the path to the Comet Observatory.
-export CO=/home/koopa/code/bash/comet-observatory
+export CO=/opt/co
 
 if [[ ! -d $CO ]]; then
   printf 'Error: CO doesn'\''t exist at "%s". Expect dragons.' $CO >&2
