@@ -2,4 +2,4 @@
 
 exec discord --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy \
   --enable-native-gpu-memory-buffers --enable-features=VaapiVideoDecoder \
-  --password-store=basic
+  --password-store=basic --ozone-platform-hint=auto
