@@ -213,7 +213,6 @@ $CMDLINE_STR $*"
   local -r default_entry_num=$(find_bootnum "$default_entry")
   if [[ -n $default_entry_num ]]; then
     info "Setting $default_entry as default entry."
-    efibootmgr -q -O
     efibootmgr -q -o "$default_entry_num"
   else
     info "Default entry doesn't seem to be present."
