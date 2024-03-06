@@ -93,8 +93,6 @@ bluedevil
 
 # Package Management
 
-# expac, for list of packages in "base".
-expac
 # Chaotic-AUR keyring, for using Chaotic-AUR.
 chaotic-keyring
 # Chaotic-AUR mirrorlist, for using Chaotic-AUR.
