@@ -10,7 +10,7 @@ linux-firmware
 # efibootmgr, for managing UEFI entries.
 efibootmgr
 # Linux kernel, for doing stuff.
-linux
+linux-zen
 # Linux kernel headers, for compiling kernel modules.
 linux-headers
 # mkinitcpio numlock hook, for turning on numlock.
