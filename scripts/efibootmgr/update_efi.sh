@@ -76,7 +76,7 @@ function add_entry() {
     error "Host unknown, I don't know which disk to use."
     exit 1
   fi
-  efibootmgr -q -c -d $device -p $part --label "$label" -l "$loader" -u "$cmdline"
+  efibootmgr --quiet --create --disk $device --part $part --label "$label" --loader "$loader" --unicode "$cmdline"
 }
 
 # Updates Arch Linux UEFI boot entries.
