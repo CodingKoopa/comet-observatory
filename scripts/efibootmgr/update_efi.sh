@@ -46,7 +46,7 @@ function remove_entry_if_existing() {
   if [[ -n "$bootnum" ]]; then
     info "Existing boot entry for \"$label\" found, deleting."
     set -x
-    efibootmgr -q -b "$bootnum" -B
+    efibootmgr --quiet --delete-bootnum --bootnum "$bootnum"
     set +x
   fi
 }
@@ -218,7 +218,7 @@ $CMDLINE_STR $*"
   if [[ -n $default_entry_num ]]; then
     info "Setting $default_entry as default entry."
     set -x
-    efibootmgr -q -o "$default_entry_num"
+    efibootmgr --quiet --bootorder "$default_entry_num"
     set +x
   else
     info "Default entry doesn't seem to be present."
@@ -235,7 +235,7 @@ function win_boot() {
   local -r windows_entry_num="$(find_bootnum "$WINDOWS_ENTRY_NAME")"
   if [[ -n $windows_entry_num ]]; then
     set -x
-    efibootmgr -q -n "$windows_entry_num"
+    efibootmgr --quiet --bootnext "$windows_entry_num"
     set +x
     systemctl reboot
   else
