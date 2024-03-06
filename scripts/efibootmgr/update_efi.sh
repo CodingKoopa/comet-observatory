@@ -94,7 +94,6 @@ function update_efi() {
     shift
   fi
 
-  figlet -k -f slant update-efi | lolcat -f -s 100 -p 1
   info "Comet Observatory UEFI Boot Entry Updater Script"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
 
