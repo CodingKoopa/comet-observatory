@@ -125,12 +125,13 @@ function update_efi() {
     # Disable the watch dog, optimize for performance, and disable staggered spinup,
     # for performance.
     "nowatchdog workqueue.power_efficient=0 libahci.ignore_sss=1"
-    # Enable DRM modesetting, for functionality.
-    "nvidia-drm.modeset=1"
     # Hide the cursor in new virtual terminals.
     "vt.global_cursor_default=0"
   )
-  if [[ $CO_HOST = "LAPTOP_P500" ]]; then
+  if [[ $CO_HOST = "DESKTOP" ]]; then
+    # Enable DRM modesetting , for functionality.
+    CMDLINE_ARRAY+=("nvidia-drm.modeset=1")
+  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     # Use the ACPI video.ko driver, because the vendor driver causes the brightness to be stuck.
     CMDLINE_ARRAY+=("acpi_backlight=video")
   fi
