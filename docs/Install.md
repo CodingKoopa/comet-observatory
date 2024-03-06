@@ -50,6 +50,6 @@ $ find $HOME -name "*.old" -delete
 14. Setup an internet connection with NetworkManager in your hopefully now pretty-much functioning desktop environment.
 15. Setup a Kwallet without GPG, and add an entry for `KeepassXC/Passwords.kbdx`.
 16. Re-run both setups to finish off what couldn't be done before.
-17. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile.
+17. Install the [Firefox config](../../config/firefox.js) to your new Firefox user profile (`user.js`).
 18. Install the [Firefox stylesheet](../../config/firefox.css) to your new Firefox user profile (`chrome/userChrome.css`).
 19. If desired, setup a shared Bluetooth link key with the Windows installation.
