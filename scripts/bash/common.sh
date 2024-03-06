@@ -182,10 +182,6 @@ function check_user() {
 function print_header() {
   local -r script=$1
 
-  # Within the context of setup-* comet observatory variable has not yet been checked.
-  if [[ $DEBUG != true && -d $CO ]]; then
-    lolcat -F 0.01 <"$CO"/data/luma.txt
-  fi
   info "Comet Observatory System $script Script"
   info "https://gitlab.com/CodingKoopa/comet-observatory"
   debug "Running in debug mode."

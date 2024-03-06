@@ -138,10 +138,6 @@ lsd
 # tree
 # nano, for editing text.
 nano
-# figlet, for making ASCII figures.
-figlet
-# lolcat, for making rainbow text.
-lolcat
 
 # Desktop Environment
 
