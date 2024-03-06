@@ -45,7 +45,9 @@ function remove_entry_if_existing() {
   bootnum="$(find_bootnum "$label")"
   if [[ -n "$bootnum" ]]; then
     info "Existing boot entry for \"$label\" found, deleting."
+    set -x
     efibootmgr -q -b "$bootnum" -B
+    set +x
   fi
 }
 
@@ -76,7 +78,9 @@ function add_entry() {
     error "Host unknown, I don't know which disk to use."
     exit 1
   fi
+  set -x
   efibootmgr --quiet --create --disk $device --part $part --label "$label" --loader "$loader" --unicode "$cmdline"
+  set +x
 }
 
 # Updates Arch Linux UEFI boot entries.
@@ -213,7 +217,9 @@ $CMDLINE_STR $*"
   local -r default_entry_num=$(find_bootnum "$default_entry")
   if [[ -n $default_entry_num ]]; then
     info "Setting $default_entry as default entry."
+    set -x
     efibootmgr -q -o "$default_entry_num"
+    set +x
   else
     info "Default entry doesn't seem to be present."
   fi
@@ -228,7 +234,9 @@ function win_boot() {
   local -r WINDOWS_ENTRY_NAME="Windows Boot Manager"
   local -r windows_entry_num="$(find_bootnum "$WINDOWS_ENTRY_NAME")"
   if [[ -n $windows_entry_num ]]; then
+    set -x
     efibootmgr -q -n "$windows_entry_num"
+    set +x
     systemctl reboot
   else
     error "Boot entry \"$WINDOWS_ENTRY_NAME\" not found."
