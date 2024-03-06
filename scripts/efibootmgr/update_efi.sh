@@ -190,7 +190,7 @@ $CMDLINE_STR $*"
 
   # Assign a vmlinux suffix to the different kernels.
   local -A kernel_suffixes=(
-    ["Vanilla $(pacman -Q linux | cut -d" " -f2 | cut -d. -f1-2 | tr -d .)"]=""
+    ["Zen $(pacman -Q linux-zen | cut -d" " -f2 | cut -d. -f1-2 | tr -d .)"]="-zen"
   )
 
   local -ra CONFIGURATIONS=(
