@@ -156,7 +156,7 @@ systemd.log_level=debug systemd.log_target=kmsg printk.devkmsg=on"
   function add_entry_decide_configuration() {
     local -r kernel=$1
     local -r vmlinuz_path=/vmlinuz-linux${2}
-    local -r kernel_initrd_str=initrd=initramfs-linux${2}.img
+    local -r kernel_initrd_str=\\initrd=initramfs-linux${2}.img
     local -r fallback_kernel_initrd_str=initrd=initramfs-linux${2}.img
     shift 2
 
