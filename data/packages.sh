@@ -132,8 +132,6 @@ apache
 bash-completion
 # neofetch, for obtaining system info.
 neofetch
-# LSDeluxe, for listing directories.
-lsd
 # tree, for listing directories.
 # tree
 # nano, for editing text.
