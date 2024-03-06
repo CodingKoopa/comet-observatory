@@ -71,6 +71,9 @@ function add_entry() {
   if [[ $CO_HOST = "DESKTOP" ]]; then
     local -r device=/dev/nvme0n1
     local -r part=1
+  elif [[ $CO_HOST = "LAPTOP_FRAMEWORK" ]]; then
+    local -r device=/dev/nvme0n1
+    local -r part=1
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r device=/dev/sda
     local -r part=1
@@ -103,6 +106,9 @@ function update_efi() {
 
   if [[ $CO_HOST = "DESKTOP" ]]; then
     local -r ROOT="PARTUUID=5e22d600-bd6a-42de-b0e5-c5978a17e3b3"
+    local -r MICROCODE="amd-ucode.img"
+  elif [[ $CO_HOST = "LAPTOP_FRAMEWORK" ]]; then
+    local -r ROOT="PARTUUID=f935b064-4c34-4082-9147-76d6d21b3c36"
     local -r MICROCODE="amd-ucode.img"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r ROOT="PARTUUID=90dd0890-79d3-4f66-b1f4-67f8fb2345c2"
