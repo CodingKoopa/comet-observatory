@@ -125,8 +125,6 @@ function update_efi() {
     # Disable the watch dog, optimize for performance, and disable staggered spinup,
     # for performance.
     "nowatchdog workqueue.power_efficient=0 libahci.ignore_sss=1"
-    # Hide the cursor in new virtual terminals.
-    "vt.global_cursor_default=0"
   )
   if [[ $CO_HOST = "DESKTOP" ]]; then
     # Enable DRM modesetting , for functionality.
