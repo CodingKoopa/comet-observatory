@@ -188,7 +188,6 @@ function setup_system() {
 # Globals Exported:
 #   - DRY_RUN: See setup().
 #   - INSTALL_USER: See setup().
-#   - SYNCED_DOCUMENTS: Whether documents have been synced.
 # Outputs:
 #   - Installation progress messages.
 # Returns:
@@ -207,7 +206,6 @@ function setup_user() {
     error "User \"$INSTALL_USER\" doesn't exist."
     exit 1
   fi
-  config_bool "Have private documents been synced yet? (y/n)?" SYNCED_DOCUMENTS "$2"
 
   info "Checking permissions."
   check_user false
