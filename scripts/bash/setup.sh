@@ -34,11 +34,6 @@ function export_constants() {
   INSTALL_HOME=$(eval echo "~$INSTALL_USER")
   export INSTALL_HOME
 
-  export TERRACE_DOWNLOADS_DIR=$INSTALL_HOME/Terrace/Downloads
-  export FOUNTAIN_DOCUMENTS_DIR=$INSTALL_HOME/Fountain/Documents
-  export TERRACE_PICTURES_DIR=$INSTALL_HOME/Terrace/Pictures
-  export TERRACE_VIDEOS_DIR=$INSTALL_HOME/Terrace/Videos
-  export TERRACE_MUSIC_DIR=$INSTALL_HOME/Terrace/Music
   export GNUPGHOME=$INSTALL_HOME/.local/share/gnupg
   export SSH_DIR=$INSTALL_HOME/.ssh
   export AUR_DIR=$INSTALL_HOME/code/bash
