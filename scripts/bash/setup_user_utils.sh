@@ -97,12 +97,6 @@ function link_directories() {
   )
 
   if [[ $CO_HOST = "DESKTOP" ]]; then
-    linked_paths["$TERRACE_DOWNLOADS_DIR"]+="$INSTALL_HOME/Downloads"
-    linked_paths["$FOUNTAIN_DOCUMENTS_DIR"]+="$INSTALL_HOME/Documents"
-    linked_paths["$TERRACE_PICTURES_DIR"]+="$INSTALL_HOME/Pictures"
-    linked_paths["$TERRACE_VIDEOS_DIR"]+="$INSTALL_HOME/Videos"
-    linked_paths["$TERRACE_MUSIC_DIR"]+="$INSTALL_HOME/Music"
-    linked_paths["$INSTALL_HOME/Documents"]+="$INSTALL_HOME/Desktop"
     linked_paths["$CO/config/default.pa"]+="$INSTALL_HOME/.config/pulse/default.pa"
     linked_paths["$CO/config/mpv.desktop.conf"]+="$INSTALL_HOME/.config/mpv/mpv.conf"
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
