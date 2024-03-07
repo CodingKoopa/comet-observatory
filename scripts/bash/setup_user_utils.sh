@@ -110,11 +110,6 @@ function link_directories() {
   fi
 
   for target in "${!linked_paths[@]}"; do
-    if [[ $SYNCED_DOCUMENTS = false ]]; then
-      if [[ $target == "$INSTALL_HOME/Documents"* ]]; then
-        continue
-      fi
-    fi
     safe_ln "$target" "${linked_paths[${target}]}"
   done
 }
@@ -179,7 +174,7 @@ function enable_user_units() {
 #   - DRY_RUN: See setup().
 #   - export_constants: See export_constants().
 function configure_gpg() {
-  if [[ $DRY_RUN = false && $SYNCED_DOCUMENTS = true ]]; then
+  if [[ $DRY_RUN = false ]]; then
     info "Importing GnuPG data from the private documents."
     # Use loopback pinentry because our normal pinentry may not be set up right now.
     gpg -q --pinentry-mode loopback \
