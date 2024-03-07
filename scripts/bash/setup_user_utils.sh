@@ -46,10 +46,12 @@ function create_directories() {
 #   - INSTALL_HOME: See export_constants().
 #   - INSTALL_USER: See setup_system().
 #   - CO: See co_rc.sh.
-#   - SYNCED_DOCUMENTS_DIR: See export_constants().
 # Outputs:
 #   - Link feedback.
 function link_directories() {
+  local -r program_configurations=$INSTALL_HOME/Documents/ProgramConfigurations
+  local -r program_data=$INSTALL_HOME/Documents/ProgramData
+
   # The structure here (although will be random at runtime) is parallel to that of the package list.
   declare -A linked_paths=(
     # Shell
@@ -63,30 +65,30 @@ function link_directories() {
 
     ["$CO/config/less.conf"]="$INSTALL_HOME/.config/lesskey"
     ["$CO/config/nano.conf"]="$INSTALL_HOME/.config/nano/nanorc"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Top Configuration"]="$INSTALL_HOME/.config/procps/toprc"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Git Configuration"]="$INSTALL_HOME/.gitconfig"
+    ["$program_configurations/toprc"]="$INSTALL_HOME/.config/procps/toprc"
+    ["$program_configurations/gitconfig"]="$INSTALL_HOME/.gitconfig"
     ["$CO/config/gpg.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg.conf"
     ["$CO/config/gpg-agent.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg-agent.conf"
     ["$CO/config/pikaur.conf"]="$INSTALL_HOME/.config/pikaur.conf"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
+    ["$program_configurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
 
     # Media
 
-    ["$CO/config/filters/documents.stignore"]="$SYNCED_DOCUMENTS_DIR/.stignore"
+    ["$CO/config/filters/documents.stignore"]="$INSTALL_HOME/Documents/.stignore"
     ["$CO/config/chrome-flags.conf"]="$INSTALL_HOME/.config/chrome-flags.conf"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Blender"]="$INSTALL_HOME/.config/blender"
+    ["$program_configurations/OBS Studio"]="$INSTALL_HOME/.config/obs-studio"
+    ["$program_configurations/Blender"]="$INSTALL_HOME/.config/blender"
 
     # Gaming
 
     ["$CO/config/gamemode.ini"]="$INSTALL_HOME/.config/gamemode.ini"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Citra"]="$INSTALL_HOME/.config/citra-emu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramData/Citra"]="$INSTALL_HOME/.local/share/citra-emu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Dolphin"]="$INSTALL_HOME/.config/dolphin-emu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramData/Dolphin"]="$INSTALL_HOME/.local/share/dolphin-emu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramConfigurations/Yuzu"]="$INSTALL_HOME/.config/yuzu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramData/Yuzu"]="$INSTALL_HOME/.local/share/yuzu"
-    ["$SYNCED_DOCUMENTS_DIR/ProgramData/Lucas' Simpsons Hit & Run Mod Launcher"]="$INSTALL_HOME/Documents/My Games/Lucas' Simpsons Hit & Run Mod Launcher"
+    ["$program_configurations/Citra"]="$INSTALL_HOME/.config/citra-emu"
+    ["$program_data/Citra"]="$INSTALL_HOME/.local/share/citra-emu"
+    ["$program_configurations/Dolphin"]="$INSTALL_HOME/.config/dolphin-emu"
+    ["$program_data/Dolphin"]="$INSTALL_HOME/.local/share/dolphin-emu"
+    ["$program_configurations/Yuzu"]="$INSTALL_HOME/.config/yuzu"
+    ["$program_data/Yuzu"]="$INSTALL_HOME/.local/share/yuzu"
+    ["$program_data/Lucas' Simpsons Hit & Run Mod Launcher"]="$INSTALL_HOME/Documents/My Games/Lucas' Simpsons Hit & Run Mod Launcher"
 
     # Programming
 
@@ -109,7 +111,7 @@ function link_directories() {
 
   for target in "${!linked_paths[@]}"; do
     if [[ $SYNCED_DOCUMENTS = false ]]; then
-      if [[ $target == "$SYNCED_DOCUMENTS_DIR"* ]]; then
+      if [[ $target == "$INSTALL_HOME/Documents"* ]]; then
         continue
       fi
     fi
@@ -175,14 +177,15 @@ function enable_user_units() {
 #     gpg --export-ownertrust > "Owner Trust.txt"
 # Globals Read:
 #   - DRY_RUN: See setup().
+#   - export_constants: See export_constants().
 function configure_gpg() {
   if [[ $DRY_RUN = false && $SYNCED_DOCUMENTS = true ]]; then
     info "Importing GnuPG data from the private documents."
     # Use loopback pinentry because our normal pinentry may not be set up right now.
     gpg -q --pinentry-mode loopback \
-      --import "$SYNCED_DOCUMENTS_DIR/Passwords & 2FA/GnuPG/Private Key.key"
+      --import "$INSTALL_HOME/Documents/Passwords & 2FA/GnuPG/Private Key.key"
     gpg -q --pinentry-mode loopback \
-      --import-ownertrust "$SYNCED_DOCUMENTS_DIR/Passwords & 2FA/GnuPG/Owner Trust.txt"
+      --import-ownertrust "$INSTALL_HOME/Documents/Passwords & 2FA/GnuPG/Owner Trust.txt"
   fi
 }
 

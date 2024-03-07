@@ -24,7 +24,6 @@ source "$CO"/scripts/code/extensions.sh
 # Globals Exported:
 #   - INSTALL_HOME: Location of the home directory of the current install user.
 #   - CO: Location of this Comet Observatory repository.
-#   - SYNCED_DOCUMENTS_DIR: Location of the synced documents directory of the current install user.
 #   - GNUPGHOME: Location of the GnuPG home directory of the current install user. Keep this in sync
 # with user_rc.sh.
 #   - SSH_DIR: Location of the SSH home directory of the current install user.
@@ -35,7 +34,6 @@ function export_constants() {
   INSTALL_HOME=$(eval echo "~$INSTALL_USER")
   export INSTALL_HOME
 
-  export SYNCED_DOCUMENTS_DIR=$INSTALL_HOME/Documents
   export TERRACE_DOWNLOADS_DIR=$INSTALL_HOME/Terrace/Downloads
   export FOUNTAIN_DOCUMENTS_DIR=$INSTALL_HOME/Fountain/Documents
   export TERRACE_PICTURES_DIR=$INSTALL_HOME/Terrace/Pictures
@@ -183,7 +181,6 @@ function setup_system() {
 # Globals Read:
 #   - INSTALL_HOME: See export_constants().
 #   - CO: See co_rc.sh.
-#   - SYNCED_DOCUMENTS_DIR: See export_constants().
 #   - SYNCED_GTK_DIR: See export_constants().
 #   - ABS_DIR: See export_constants().
 #   - GNUPGHOME: See export_constants().
