@@ -115,7 +115,7 @@ function setup_system() {
   section "Setting Up Kernel & Hardware"
 
   info "Configuring initial ramdisk."
-  cp_for_host "$CO"/config/mkinitcpio.{desktop,p500}.conf /etc/mkinitcpio.conf
+  cp_for_host "$CO"/config/mkinitcpio.{desktop,fw}.conf /etc/mkinitcpio.conf
 
   info "Making initial ramdisks."
   if [[ $DRY_RUN = false ]]; then
