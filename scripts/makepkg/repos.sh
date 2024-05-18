@@ -44,7 +44,7 @@ function install_from_repo() {
       # Skip the PGP check becasue we might not have yet established our PGP keyring.
       cd "$package_build_dir" && sudo -u "$INSTALL_USER" makepkg -sifc --noconfirm --skippgpcheck
       safe_cd -
-      rm -rf "$package_build_dir"
+      rm -r "$package_build_dir"
     fi
   else
     verbose "$package is already installed."
