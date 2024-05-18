@@ -38,7 +38,7 @@ function cp_for_form_factor() {
 #   - DRY_RUN: See setup().
 # Arguments:
 #   - The source location if the host is the desktop.
-#   - The source location if the host is Lenovo P500.
+#   - The source location if the host is the Framework.
 #   - The destination location.
 # Outputs:
 #   - Copy feedback, or error.
@@ -47,12 +47,12 @@ function cp_for_form_factor() {
 #   - 1 if the host isn't recognized.
 function cp_for_host() {
   local -r src_desktop=$1
-  local -r src_p500=$2
+  local -r src_fw=$2
   local -r dest=$3
   if [[ $CO_HOST = "DESKTOP" ]]; then
     safe_cp "$src_desktop" "$dest"
-  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
-    safe_cp "$src_p500" "$dest"
+  elif [[ $CO_HOST = "LAPTOP_FRAMEWORK" ]]; then
+    safe_cp "$src_fw" "$dest"
   else
     error "Host unknown, I don't know which configuration to use."
     return 1
