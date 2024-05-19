@@ -1,98 +1,123 @@
 #!/bin/bash
 
-# Base system.
-base
+# Boot
 
-# Hardware
-
-# Firmware files.
-linux-firmware
 # efibootmgr, for managing UEFI entries.
 efibootmgr
-# Linux kernel, for doing stuff.
+# Linux kernel.
 linux-zen
-# Linux kernel headers, for compiling kernel modules.
-linux-headers
-# mkinitcpio numlock hook, for turning on numlock.
+# Firmware files.
+linux-firmware
+# Linux kernel headers for compiling kernel modules.
+linux-zen-headers
+# Base system.
+base
+# mkinitcpio hook to turn on numlock.
 mkinitcpio-numlock
+
+# Graphics
+
 # Vulkan ICD loader, for initializing Vulkan.
 vulkan-icd-loader
 lib32-vulkan-icd-loader
-# PulseAudio, for audio support.
-pulseaudio
-# PulseAudio ALSA, for ALSA support in PA.
-pulseaudio-alsa
-# PulseAudio Bluetooth modules.
-pulseaudio-bluetooth
-# PipeWire stuff:
-# pipewire
-# pipewire-pulse
-# pipewire-jack
-# pipewire-jack-dropin
-# qjackctl
-# Ext2/3/4 filesystem utilities, for Ext4 support.
-e2fsprogs
-# NTFS filesystem utilities, for NTFS support.
-ntfs-3g
-# DOS filesystem utilities, for FAT32 support.
-dosfstools
-# SSHFS, for remote filesystem support. This is used by KDE Connect.
+# GPU usage monitor.
+nvtop
+# For OpenGL checker (eglinfo).
+mesa-utils
+# For Vulkan checker (vulkaninfo).
+vulkan-tools
+# VA-API checker.
+libva-utils
+# VDPAU checker.
+vdpauinfo
+
+# Audio
+
+# Audio + video server, including native PW client support.
+pipewire
+lib32-pipewire
+# PW session manager.
+wireplumber
+# PulseAudio client support for PW.
+pipewire-pulse
+# ALSA client support for PW.
+pipewire-alsa
+
+# Filesystems
+
+# FUSE-based VFS interface (not to be confused w/ the kernel VFS).
+# Provides access in file manager to:
+# - Removable storage via UDisks daemon.
+# - Trash protocol. 
+gvfs
+# MTP protocol backend for GVFS.
+gvfs-mtp
+# Samba protocol backend for GVFS.
+gvfs-smb
+# Remote filesystem support.
 sshfs
-# scrcpy, for phone mirroring.
-scrcpy
-# ncdu, for managing disk usage.
-ncdu
-# Plasma Disks, for montoring drive health.
-plasma-disks
-# f3, for error checking filesystems.
-#f3
-# Nintendo Switch udev rules, for not requiring root for access.
-nx-udev
-# bluez, for the Bluetooth stack.
-bluez
-# bluez utilities, for interacting with the Bluetooth stack.
-bluez-utils
-# CUPS, for printing support.
-cups
-# Canon Pixma TR7500 series drivers, for home printer support.
-canon-pixma-lt7500-complete
-# GfxTablet, for using an Android tablet as a drawing tablet.
-# gfxtablet-git
-
-# Disc Drive Emulation
-
-# VHBA module, for disk drive support.
+# NTFS support + tools.
+ntfs-3g
+# VHBA module, for emulated disk drive support.
 # vhba-module-dkms
 # CDEmu daemon, for emulating drives.
 # cdemu-daemon
-# KDE CDEmu manager, for emulating drives.
-# kde-cdemu-manager-kf5
 
-# Hardware Management
+# Filesystem Tools
 
-# plasma-pa, for volume slider.
-plasma-pa
-# pavucontrol, for managing audio. This is more flexible than plasma-pa.
-pavucontrol
-# KDE Partition Manager, for managing filesystems.
-partitionmanager
-# NetworkManager, for network connections.
+# btrfs tools.
+btrfs-progs
+# Ext2/3/4 tools.
+e2fsprogs
+# FAT32 tools.
+dosfstools
+# Filesystem error checker.
+f3
+# Interactive disk usage checker.
+ncdu
+# File handle checker.
+lsof
+
+# Wireless
+
+# Lower-level wireless utility.
+iw
+# Wireless regulatory database.
+wireless-regdb
+# Network service.
 networkmanager
-# nm-applet, for notifications + configuring VPNs which don't support CLI configuration.
-network-manager-applet
-# Plasma NetworkManager, for managing network connections.
-plasma-nm
-# Nintendo Switch USB loader, for managing game and NAND backups.
-# ns-usbloader
-# print-manager, for managing printers.
-print-manager
-# system-config-printer, for automatically detecting printer drivers.
-system-config-printer
-# Bluedevil, for managing bluetooth.
-bluedevil
+# mDNS (+ DNS-SD) service discovery.
+avahi
+# Support for hostname resolution via mDNS in glibc.
+nss-mdns
+# Bluetooth service.
+bluez
+# Bluetooth tools.
+bluez-utils
+
+# Other Devices
+
+# USB utilities (such as lsusb).
+usbutils
+# evdev tester.
+evtest
+# Razer peripheral driver.
+openrazer-daemon
+# Print service.
+cups
+# PDF renderer (for CUPS).
+ghostscript
+# Nintendo Switch udev rules, for not requiring root for access.
+nx-udev
+# GfxTablet, for using an Android tablet as a drawing tablet.
+# gfxtablet-git
+# scrcpy, for phone mirroring.
+scrcpy
 
 # Package Management
 
+# AUR manager.
+pikaur
 # Chaotic-AUR keyring, for using Chaotic-AUR.
 chaotic-keyring
 # Chaotic-AUR mirrorlist, for using Chaotic-AUR.
@@ -104,158 +129,175 @@ reflector
 # pkgstats, for submitting package statistics.
 pkgstats
 
-# Wine, for running Windows applications.
-wine
-# Wine Mono, for .NET support in Wine.
-wine-mono
-# Wine Gecko, for browser support in Wine.
-wine-gecko
-# Winetricks, for managing Wine.
-winetricks
-# OpenJDK JRE, for running Java applications.
-jre-openjdk
-
-# Service Hosting
-
-# Docker, for hosting containerized services.
-docker
-# Docker Compose, for controlling Docker.
-docker-compose
-# Apache, for hosting HTTP services.
-apache
-
 # CLI Utilities
 
+# Privilege escalation tool.
+sudo
+# System manuals.
+man-db
+man-pages
 # bash-completion, for programs to provide auto-completion within Bash.
 bash-completion
-# neofetch, for obtaining system info.
-neofetch
-# tree, for listing directories.
-# tree
-# nano, for editing text.
+# System info tool.
+fastfetch
+# Pager.
+less
+# Simple terminal text editor.
 nano
+# Asymmetric cryptography tool.
+gnupg
+# ZIP + 7z extraction/creation.
+p7zip
+# RAR extraction.
+unrar
 
 # Desktop Environment
 
-# Xorg implementation of X11.
-xorg-server
-# xinit, for logging in.
-xorg-xinit
-# xkill, for killing unruly programs.
-xorg-xkill
-# xsel, for clipboard support for tag_mp3.sh.
-xsel
-# Plasma Desktop, for Plasma Shell.
-plasma-desktop
-# Plasma Addons, for improving Plasma Shell.
-kdeplasma-addons
-# khotkeys, for custom keyboard shortcuts.
-khotkeys
-# fcitx5 input method, for inputting characters. This is the "fcitx5-im" group, expanded.
-fcitx5
-fcitx5-gtk
-fcitx5-qt
-# xdg-desktop-portal, for interfacing with containment frameworks.
+# Compositor.
+hyprland
+# Idle daemon.
+hypridle
+# Screen locker.
+hyprlock
+# Notification daemon.
+rofi-lbonn-wayland-git
+# Bar.
+waybar
+# Background image.
+swaybg
+# Screenshot utility.
+hyprshot
+# Xwayland support.
+xorg-xwayland
+# Xwayland detector.
+xorg-xeyes
+# Key tester.
+wev
+
+# Desktop Environment Integration
+
+# Privilege escalation for GUI programs.
+lxqt-policykit
+# Wayland support for Qt.
+qt5-wayland
+qt6-wayland
+# XDG Desktop Portal interface.
 xdg-desktop-portal
-# xdg-desktop-portal-kde, a Qt/KF5 backend for xdg-desktop-portal.
-xdg-desktop-portal-kde
-# KDE GTK config, for customizing GTK applications.
-kde-gtk-config
-# Plasma Browser Integration, for integrating browsers with Plasma.
-plasma-browser-integration
-# KDEConnect, for integrating the desktop with Android.
-kdeconnect
-# RSIBreak, for taking breaks.
-rsibreak
+xdg-desktop-portal-hyprland
 
-# Graphical Resources
+# Desktop Resources
 
+# English dictionary
+hunspell-en_us
 # Noto fonts, for most applications.
 noto-fonts
-# Liberation fonts, for websites that ask for it.
-ttf-liberation
-# Microsoft fonts, for making spicy impact font memes.
-ttf-ms-fonts
 # Chinese/Japanese/Korean Noto fonts, for foreign text.
 noto-fonts-cjk
 # Emoji Noto fonts, for emoji.
 noto-fonts-emoji
 # Extra Noto fonts, for monospaced text.
 noto-fonts-extra
-# Fira Code font patched with additional symbols, for terminals and code editors.
-ttf-firacode-nerd
-# Breeze GTK theme, for GTK applications to look nice.
-breeze-gtk
-# GNOME icon theme, for when applications ask about it.
-gnome-icon-theme
-# GNOME themes, for when applications ask about it (this seems to provide Adwaita).
-gnome-themes-extra
+# FontAwesome icons.
+otf-font-awesome
 
 # Desktop Utilities
 
-# Dolphin, for managing files.
-dolphin
-# kdegraphics-thumbnailers, for image/PDF thumbnail support in Dolphin.
-kdegraphics-thumbnailers
-# ffmpegthumbs, for video thumbnail support in Dolphin.
-ffmpegthumbs
-# Ark, for managing archives.
-ark
-# p7zip, for ZIP and 7z support in Ark.
-p7zip
-# unrar, for RAR support in Ark.
-unrar
-# Spectacle, for taking screenshots.
-spectacle
-# Konsole, for using the terminal.
-konsole
-# Plasma System Monitor, for monitoring the system.
-plasma-systemmonitor
-
-# Authentication (See /docs/Auth.md)
-
-# KeePassXC, for managing all passwords.
+# Removable storage GUI.
+udiskie
+# Volume control GUI.
+pavucontrol-qt
+# Patchbay GUI.
+qpwgraph
+# Bluetooth GUI.
+blueman
+# Network GUI.
+network-manager-applet
+# Printer GUI.
+system-config-printer
+# GTK appearance settings GUI.
+nwg-look
+# Qt appearance settings GUI.
+qt6ct
+# Display settings CLI.
+wlr-randr
+# Display settings GUI.
+nwg-displays
+# Terminal.
+kitty
+# File manager.
+pcmanfm-qt
+# Video thumbnail support for file manager.
+ffmpegthumbnailer
+# File archiver.
+lxqt-archiver
+# Image viewer.
+imv
+# RSI prevention.
+# TODO: fix me
+safeeyes
+# For Do Not Disturb support in safeeyes.
+wlrctl
+# Razer peripheral GUI.
+polychromatic
+# Password manager.
 keepassxc
 
-# Media
+# Multimedia
 
-# Gwenview, for viewing images.
-gwenview
-# GIMP, for editing images.
-gimp
-# ImageMagick, for editing images.
-imagemagick
-# eyed3, for tagging audio.
-python-eyed3
-# youtube-dl, for downloading media.
-yt-dlp
-# mpv Git, for playing media.
+# Document viewer + PDF thumbnail support for file manager.
+evince
+# Note app.
+xournalpp
+# Video player.
 mpv
+# MPRIS integration for mpv.
 mpv-mpris
-# OBS Studio, for recording media.
+# Watch party integration for mpv.
+syncplay-git
+pyside6
+# Media manipulator CLI.
+ffmpeg
+# Video downloader.
+yt-dlp
+# Image manipulator CLI.
+imagemagick
+# Image editor GUI.
+gimp
+# Vector image editor.
+inkscape
+# Video recorder.
 obs-studio
-# Linux-Fake-Background-Webcam
-# linux-fake-background-webcam-opt-git
-# Blender, for editing 3D models.
-# blender
+# Fake webcam module.
+v4l2loopback-dkms
 
 # Internet
 
-tailscale
-# syncthing, for synchronizing files.
-syncthing
-# Firefox, for browsing the web.
-firefox
-# Google Chrome, for browsing the internet.
-google-chrome
-# Discord, for messaging.
-discord
-# Konversation, for messaging.
-konversation
-# OpenSSH, for connecting to other computers.
+# Remote shell.
 openssh
-# Transmission (Qt interface), for downloading files from other computers.
-transmission-qt
+# Simple file synchronization.
+rsync
+# Two-way file synchronization.
+syncthing
+# VPN.
+tailscale
+# Also VPN.
+openconnect
+# Web browser. The developer edition is blue and cute :3
+firefox-developer-edition
+# Spyware web browser.
+google-chrome
+# Anonymous web browser (for scene things).
+torbrowser-launcher
+# Email client
+thunderbird
+# Instant messenger.
+discord
+# Instant messenger.
+telegram-desktop
+# Video conference app.
+zoom
+# Torrent client.
+qbittorrent
 
 # Gaming
 
@@ -263,99 +305,79 @@ transmission-qt
 gamemode
 # GameMode 32-bit.
 lib32-gamemode
-# Steam, for managing games.
+# Game manager.
 steam
+# Game manager.
+lutris
 # protontricks, for managing Proton prefixes.
-# protontricks-git
-# Minecraft Launcher, for launching Minecraft.
-minecraft-launcher
-# PolyMC, for launching Minecraft but not suck at it.
-polymc
+protontricks
+# Minecraft launcher.
+prismlauncher
 
-# Programming (Editors/IDEs, Compilers/Interpreters, Linters, Build Systems, Libraries)
+# Programming
 
-# base-devel packages, for development.
+# Basic dev packages.
 base-devel
-# Git, for version control.
+# LLVM compiler infrastructure.
+clang
+lld
+llvm
+# Caching compiler wrapper.
+ccache
+# Build system.
+cmake
+# Build system.
+ninja
+# Version control system.
 git
-# Visual Studio Code, for editing code.
+# Code editor.
 code
 # VSCode Marketplace Hook, for having extensions.
 code-marketplace
-# Eclipse common files.
-# eclipse-common
-# Eclipse IDE for Java Developers, for developing Java applications.
-# eclipse-java
-# OpenJDK JDK docs, for writing Java applications.
-# openjdk-doc
-# Android Studio, for developing Android applications, and for adb.
-# android-studio
-# ShellCheck, for Bash linting. This is the statically compiled version without the Haskell
-# dependencies.
+
+# Lower-level Tools
+
+# Debugger.
+gdb
+# Hex editor.
+imhex
+# Reverse engineer suite.
+ghidra
+# Network mapper.
+nmap
+
+# Runtime + Runtime Tools
+
+# Tool version manager.
+asdf-vm
+# Containerization service.
+docker
+# Docker manager.
+docker-compose
+# Windows translation layer.
+wine
+# Adds Mono's .NET implementation to Wine.
+wine-mono
+# Manages Wine.
+winetricks
+# Java runtime.
+jdk-openjdk
+
+# Specific Runtime + Language Tools
+
+# Bash linter. This is the statically compiled version without the Haskell dependencies.
 shellcheck-bin
 # shfmt, for Bash formatting.
 shfmt
-# namcap, for PKGBUILD linting.
-# namcap
-# GCC 7, for Cuda and cuDNN.
-# gcc7
-# GCC 7 libraries, for GCC 7.
-# gcc7-libs
-# Cmake, for building projects.
-cmake
-# Ninja, for building projects.
-# ninja
-# Gradle, for building projects.
-# gradle
-# npm, for managing Node.JS packages.
-# npm
-# npm-check-updates, for upgrading packages.
-# npm-check-updates
-# Gulp.js, for building websites.
-# gulp
-# Hugo, for building websites.
-# hugo
-# OpenJDK JDK, for compiling Java applications.
-# jdk-openjdk
-# ccache, for compiling code faster.
-ccache
-# GDB, for debugging code.
-gdb
-# Doxygen, for building documentation.
-# doxygen
-# TeX Live core, for building LaTeX documents.
-texlive-basic
-# TeX Live auxiliary programs, for latexmk.
-texlive-binextra
-# TeX Live LaTeX extras.
-texlive-latexextra
-# Packages necessary for using latex-indent. Workaround for: https://bugs.archlinux.org/task/60210.
-texlive-latexindent-meta
-# TeX Live extra fonts, for FontAwesome
-texlive-fontsextra
-# TeX Live science, for the siunitx package.
-texlive-mathscience
-
-# Programming Libraries
-
-# SDL2 32-bit, for OpenLoco.
-# lib32-sdl2
-# SDL2 mixer 32-bit, for OpenLoco.
-# lib32-sdl2_mixer
-# yaml-cpp 32-bit, for OpenLoco.
-# lib32-yaml-cpp
-# Bullet, for donut.
-# bullet
-
-# Modding
-
-# Okteta, for editing data.
-okteta
-# 3dstool, for managing 3DS ROMs.
-# 3dstool
-# ctrtool, for managing 3DS ROMs.
-# ctrtool-git
-# firmtool, for managing 3DS firmware.
-# firmtool-git
-# hactool, for managing Switch ROMs.
-# hactool
+# PKGBUILD linter.
+namcap
+# Dockerfile linter.
+hadolint-bin
+# JavaScript runtime.
+nodejs
+# Node.JS package manager.
+pnpm
+# PHP runtime.
+php
+# PHP package manager.
+composer
