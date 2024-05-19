@@ -13,6 +13,29 @@ source "$CO"/scripts/bash/file_utils.sh
 # Globals Read:
 #   - DRY_RUN: See setup().
 # Outputs:
+#   - Key import feedback.
+function configure_chaoticaur() {
+  if [[ $DRY_RUN = false ]]; then
+    local -r FINGERPRINT=3056513887B78AEB
+    if ! pacman-key --list-sigs | grep $FINGERPRINT &>/dev/null; then
+      info "Importing signing key."
+      [[ $DRY_RUN = false ]] &&
+        pacman-key --recv-key $FINGERPRINT --keyserver keyserver.ubuntu.com &&
+        pacman-key --lsign-key $FINGERPRINT
+    fi
+    if ! pacman -Qi chaotic-{keyring,mirrorlist} >/dev/null; then
+      info "Installing keyring + mirrorlist."
+      [[ $DRY_RUN = false ]] &&
+        pacman -U \
+          https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-{keyring,mirrorlist}.pkg.tar.zst
+    fi
+  fi
+}
+
+# Configures Pacman.
+# Globals Read:
+#   - DRY_RUN: See setup().
+# Outputs:
 #   - Copy feedback.
 function configure_pacman() {
   safe_cp "$CO"/config/pacman.conf /etc/pacman.conf
