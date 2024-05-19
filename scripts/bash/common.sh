@@ -215,7 +215,7 @@ function sanitize_zenity() {
 #   - CO_HOST: See co_rc.sh.
 # Outputs:
 #   - The list of packages.
-function get_co_package_list() {
+function get_wanted_packages() {
   function parse() {
     grep "^[a-z|A-Z]" "$CO"/data/"$1"
   }
@@ -225,11 +225,33 @@ function get_co_package_list() {
   if [[ $CO_HOST = "DESKTOP" ]]; then
     packages+="
 $(parse packages.desktop.sh)"
-  elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
+  elif [[ $CO_HOST = "LAPTOP_FRAMEWORK" ]]; then
     packages+="
-$(parse packages.p500.sh)"
+$(parse packages.fw.sh)"
   fi
   packages=$(echo "$packages" | sort)
 
   echo "$packages"
+}
+
+# Gets the list of packages specified in the repo but not installed.
+# Globals Read:
+#   - CO: See co_rc.sh.
+#   - CO_HOST: See co_rc.sh.
+# Outputs:
+#   - The list of packages.
+function get_missing_packages() {
+  # Sorting the pacman output is necessary because of disagreements about how hyphens work.
+  # `pacman` sorts hyphens before letters, whereas `sort` does the contrary.
+  comm -13 <(pacman -Qqe | sort) <(get_wanted_packages)
+}
+
+# Gets the list of packages explicitly installed but not specified in the repo.
+# Globals Read:
+#   - CO: See co_rc.sh.
+#   - CO_HOST: See co_rc.sh.
+# Outputs:
+#   - The list of packages.
+function get_extraneous_packages() {
+  comm -23 <(pacman -Qqe | sort) <(get_wanted_packages)
 }
