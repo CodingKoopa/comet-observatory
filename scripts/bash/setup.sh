@@ -97,12 +97,10 @@ function setup_system() {
     pacman -Syu "${PACMAN_ARGS[@]}"
   fi
 
-  info "Installing packages."
-  if [[ $DRY_RUN = false ]]; then
-    # Initially run pikaur as the user, to utilize the pikaur cache in their home directory.
-    comm -13 <(pacman -Qqe | sort) <(get_co_package_list) |
-      sudo -u "$INSTALL_USER" xargs pikaur -S "${PACMAN_ARGS[@]}" --confirm --asexplicit
-  fi
+  info "Installing new packages."
+  [[ $DRY_RUN = false ]] &&
+    # Run pikaur as the user to utilize their pikaur cache.
+    get_missing_packages | sudo -u "$INSTALL_USER" xargs pikaur -S --asexplicit
 
   # Kernel & Hardware
   section "Setting Up Kernel & Hardware"
