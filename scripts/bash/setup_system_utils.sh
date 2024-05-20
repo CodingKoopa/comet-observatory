@@ -43,29 +43,6 @@ function configure_pacman() {
   safe_cp "$CO"/config/reflector.conf /etc/xdg/reflector/reflector.conf
 }
 
-# Creates a swap file. See: https://wiki.archlinux.org/index.php/Swap#Manually
-# Globals Read:
-#   - DRY_RUN: See setup().
-# Arguments:
-#   - The number of gigabytes of swap to create.
-function create_swap() {
-  local -r gigabytes=$1
-
-  if [[ -f /swapfile ]]; then
-    verbose "Swap file already exists."
-  else
-    info "Creating swapfile."
-    if [[ $DRY_RUN = false ]]; then
-      dd if=/dev/zero of=/swapfile bs=1M count="$gigabytes"GB status=progress iflag=count_bytes
-      chmod 600 /swapfile
-      mkswap /swapfile
-      swapon /swapfile
-      # This is applied upon reboot in /etc/sysctl.conf
-      sysctl -q vm.swappiness=10
-    fi
-  fi
-}
-
 # Configures systemwide systemd units.
 # Globals Read:
 #   - DRY_RUN: See setup().
