@@ -78,11 +78,11 @@ function enable_system_units() {
     "reflector.timer"
     # Enable bluetooth.
     "bluetooth.service"
-    # Enable CUPS.
-    "cups.service"
     # Enable the NetworkManager daemon.
     "NetworkManager.service"
-    # Enable Docker socket, so running a docker command automatically starts dockerd.
+    # Start CUPS on demand.
+    "cups.socket"
+    # Start Docker on demand.
     "docker.socket"
   )
 
