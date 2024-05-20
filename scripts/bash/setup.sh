@@ -117,10 +117,7 @@ function setup_system() {
   safe_cp "$CO"/config/sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
   info "Configuring filesystems."
-  cp_for_host "$CO"/config/fstab.{desktop,p500} /etc/fstab
-
-  info "Creating swap memory."
-  create_swap 8
+  cp_for_host "$CO"/config/fstab.{desktop,fw} /etc/fstab
 
   # System Services
   section "Setting Up System Services"
