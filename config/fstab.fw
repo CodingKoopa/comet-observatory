@@ -1,0 +1,12 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+
+# /dev/nvme0n1p5 LABEL=Arch\134x20Engine\134x20Room
+UUID=9fe2f737-3dd5-4ce2-9318-9718ab9bdcee	/         	btrfs     	rw,relatime,ssd,discard=async,space_cache=v2,subvolid=5,subvol=/	0 0
+
+# /dev/nvme0n1p1
+UUID=B668-E551      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+PARTUUID=6e74dfda-f95d-43d7-8360-ddd9e3847817 /home/koopa/Fountain ntfs defaults,nodev,noauto,x-systemd.automount 0 2

@@ -1,7 +1,0 @@
-# Static information about the filesystems.
-# See fstab(5) for details.
-# <file system> <dir> <type> <options> <dump> <pass>
-
-PARTUUID=6490753d-8107-4c61-874d-a429614f81ba /boot vfat  defaults,noatime,nodev,noexec 0 2
-PARTUUID=90dd0890-79d3-4f66-b1f4-67f8fb2345c2 /     ext4  defaults,noatime,nodev        0 1
-/swapfile none  swap  defaults  0 0
