@@ -23,7 +23,7 @@ function configure_chaoticaur() {
         pacman-key --recv-key $FINGERPRINT --keyserver keyserver.ubuntu.com &&
         pacman-key --lsign-key $FINGERPRINT
     fi
-    if ! pacman -Qi chaotic-{keyring,mirrorlist} >/dev/null; then
+    if ! pacman -Qi chaotic-{keyring,mirrorlist} &>/dev/null; then
       info "Installing keyring + mirrorlist."
       [[ $DRY_RUN = false ]] &&
         pacman -U \
