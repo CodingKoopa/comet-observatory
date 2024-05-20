@@ -122,6 +122,9 @@ function setup_system() {
   # System Services
   section "Setting Up System Services"
 
+  info "Installing coredump-notifier."
+  install_from_repo coredump-notify https://git.sr.ht/~vilhalmer/coredump-notify
+
   info "Configuring system systemd services."
   configure_system_units
 
