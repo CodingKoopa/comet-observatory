@@ -235,9 +235,6 @@ function setup_user() {
   info "Configuring GPG."
   configure_gpg
 
-  info "Installing dwm."
-  install_local dwm
-
   info "Setting Up VSCode"
   install_vscode_extensions
 
