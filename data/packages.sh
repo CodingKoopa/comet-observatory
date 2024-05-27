@@ -48,7 +48,7 @@ pipewire-alsa
 # FUSE-based VFS interface (not to be confused w/ the kernel VFS).
 # Provides access in file manager to:
 # - Removable storage via UDisks daemon.
-# - Trash protocol. 
+# - Trash protocol.
 gvfs
 # MTP protocol backend for GVFS.
 gvfs-mtp
