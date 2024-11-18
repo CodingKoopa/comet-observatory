@@ -60,7 +60,7 @@ function configure_system_units() {
     fi
   done
 
-  safe_cp "$CO"/config/journald.conf /etc/systemd/journald.conf
+  safe_cp "$CO"/config/journald.conf /etc/systemd/journald.conf.d/90-co.conf
   safe_cp "$CO"/config/bluetooth.conf /etc/bluetooth/main.conf
 }
 
