@@ -50,7 +50,7 @@ function create_directories() {
 #   - Link feedback.
 function link_directories() {
   local -r program_configurations=$INSTALL_HOME/Documents/ProgramConfigurations
-  local -r program_data=$INSTALL_HOME/Documents/ProgramData
+  local -r pwdata=$INSTALL_HOME/Documents/Passwords \& 2FA
 
   # The structure here (although will be random at runtime) is parallel to that of the package list.
   declare -A linked_paths=(
@@ -69,7 +69,7 @@ function link_directories() {
     ["$CO/config/gpg.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg.conf"
     ["$CO/config/gpg-agent.conf"]="$INSTALL_HOME/.local/share/gnupg/gpg-agent.conf"
     ["$CO/config/pikaur.conf"]="$INSTALL_HOME/.config/pikaur.conf"
-    ["$program_configurations/KeePassXC.ini"]="$INSTALL_HOME/.config/keepassxc/keepassxc.ini"
+    ["$pwdata/SSH"]="$INSTALL_HOME/.ssh"
 
     # Media
 
