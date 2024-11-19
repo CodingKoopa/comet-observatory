@@ -15,6 +15,10 @@ export DIFFPROG=$EDITOR
 export PATH=/usr/lib/ccache/bin/:$HOME/.local/bin/:$PATH:$CO/bin
 # Set the path to the GnuPG home directory. Keep this in sync with export_constants().
 export GNUPGHOME=$HOME/.local/share/gnupg
+# Point asdf-vm away from `~/.asdfrc`.
+export ASDF_CONFIG_FILE=/opt/co/config/asdf.conf
+# Point asdf-vm away from `~/.asdf`.
+export ASDF_DATA_DIR=$HOME/.local/share/asdf
 
 # Authentication
 
