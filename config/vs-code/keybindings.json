@@ -88,7 +88,7 @@
   // Remap run without debugging.
   {
     "key": "ctrl+f5",
-    "command": "-workbench.action.debug.run",
+    "command": "-workbench.action.debug.run"
   },
   {
     "key": "f5",
