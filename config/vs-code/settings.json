@@ -8,8 +8,6 @@
   "window.zoomLevel": -1,
   // Restore all windows.
   "window.restoreWindows": "all",
-  // Don't show the menu bar.
-  "window.menuBarVisibility": "toggle",
   // Fix keyboard inputs (esp. remapping Caps Lock to Ctrl) on Linux.
   "keyboard.dispatch": "keyCode",
   // Insert a final newline by default.
@@ -17,13 +15,11 @@
   // If there aren't previous windows to open, create a new file.
   "workbench.startupEditor": "newUntitledFile",
   // Use the Default Light+ theme.
-  "workbench.colorTheme": "Catppuccin Latte",
+  "workbench.colorTheme": "Catppuccin Frappé",
   // Indent the workbench tree more.
   "workbench.tree.indent": 20,
   // Don't scroll to files when they are opened.
   "explorer.autoReveal": false,
-  // Don't confirm explorer deletes.
-  "explorer.confirmDelete": false,
   // Exclude files that aren't generally edited.
   "files.exclude": {
     "**/.classpath": true,
@@ -53,7 +49,7 @@
   "extensions.ignoreRecommendations": true,
   "csscomb.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   ////
   /// Language Support
