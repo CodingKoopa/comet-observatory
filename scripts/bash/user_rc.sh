@@ -19,6 +19,8 @@ export GNUPGHOME=$HOME/.local/share/gnupg
 export ASDF_CONFIG_FILE=/opt/co/config/asdf.conf
 # Point asdf-vm away from `~/.asdf`.
 export ASDF_DATA_DIR=$HOME/.local/share/asdf
+# Use XDG directories for OCaml's `opam``.
+export OPAMROOT=$HOME/.local/share/opam
 
 # Authentication
 
