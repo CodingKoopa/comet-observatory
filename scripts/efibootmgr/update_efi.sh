@@ -82,7 +82,8 @@ function add_entry() {
     exit 1
   fi
   set -x
-  efibootmgr --quiet --create --disk $device --part $part --label "$label" --loader "$loader" --unicode "$cmdline"
+  efibootmgr --quiet --create --disk $device --part $part --label "$label" \
+    --loader "$loader" --unicode "$cmdline"
   set +x
 }
 
