@@ -131,9 +131,6 @@ function setup_system() {
   info "Enabling system systemd services."
   enable_system_units
 
-  info "Configuring udev."
-  configure_udev_rules
-
   info "Configuring Xorg."
   configure_xorg
 
