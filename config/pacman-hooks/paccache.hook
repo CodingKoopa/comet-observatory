@@ -6,5 +6,5 @@ Target = *
 
 [Action]
 Description = Cleaning package cache...
-Exec = /usr/bin/env bash -c "paccache -vrk1; paccache -vruk0; paccache --cachedir /home/koopa/.cache/pikaur/pkg/ -vrk1; paccache --cachedir /home/koopa/.cache/pikaur/pkg/ -vruk0 --min-mtime '1 day ago'"
+Exec = /usr/bin/env bash -c "paccache -vrk2; paccache -vruk0; paccache --cachedir /home/koopa/.cache/pikaur/pkg/ -vrk2; paccache --cachedir /home/koopa/.cache/pikaur/pkg/ -vruk0 --min-mtime '1 day ago'"
 When = PostTransaction
