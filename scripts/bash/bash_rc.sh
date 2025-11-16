@@ -145,4 +145,3 @@ fi
 
 # https://askubuntu.com/questions/70750/how-to-get-bash-to-stop-escaping-during-tab-completion
 shopt -s globstar
-
