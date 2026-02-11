@@ -73,7 +73,7 @@ function add_entry() {
     local -r part=1
   elif [[ $CO_HOST = "LAPTOP_FRAMEWORK" ]]; then
     local -r device=/dev/nvme0n1
-    local -r part=1
+    local -r part=4
   elif [[ $CO_HOST = "LAPTOP_P500" ]]; then
     local -r device=/dev/sda
     local -r part=1
